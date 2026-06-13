@@ -6,13 +6,6 @@
 > ⚠️ **非公式アプリです。** 本アプリは一般社団法人Pythonエンジニア育成推進協会／株式会社オデッセイ コミュニケーションズとは一切関係ありません。
 > 掲載問題はすべてオリジナル作問で、**公式試験問題や教材『Python実践レシピ』の文章は転載していません**。
 
-## 公開URL（GitHub Pages）
-
-`main` または開発ブランチへ push すると、GitHub Actions が自動でビルド・検証・デプロイします。
-
-- 公開URL: **https://developperx.github.io/python-study/**
-- 初回のみ GitHub の **Settings → Pages → Build and deployment → Source** を **「GitHub Actions」** に設定してください。
-
 ## 主な機能
 
 | モード | 内容 |
