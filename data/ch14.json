@@ -1,0 +1,233 @@
+[
+ {
+  "id": "ch14-001",
+  "chapter": 14,
+  "topic": "urllib",
+  "difficulty": 2,
+  "type": "single",
+  "question": "標準ライブラリだけで URL を開いてデータを取得するモジュールはどれか。",
+  "choices": [
+   "urllib.request",
+   "requests",
+   "httplib3",
+   "urlopen2"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "urllib.request.urlopen で取得できる。requests はサードパーティ（試験範囲外）。",
+  "reference": "urllib.request"
+ },
+ {
+  "id": "ch14-002",
+  "chapter": 14,
+  "topic": "urllib.parse",
+  "difficulty": 2,
+  "type": "single",
+  "question": "URL を構成要素（スキーム・ホスト・パス等）に分解する関数はどれか。",
+  "choices": [
+   "urllib.parse.urlparse",
+   "urllib.split",
+   "url.parse",
+   "urllib.request.parse"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "urllib.parse.urlparse は URL を ParseResult（scheme, netloc, path, ...）に分解する。",
+  "reference": "urllib.parse.urlparse"
+ },
+ {
+  "id": "ch14-003",
+  "chapter": 14,
+  "topic": "urllib.parse",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "example.com",
+   "https",
+   "/path",
+   "http://example.com"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "urlparse の netloc 属性はホスト（とポート）部分を返す。",
+  "code": "from urllib.parse import urlparse\nprint(urlparse('https://example.com/path').netloc)",
+  "reference": "urlparse --- netloc"
+ },
+ {
+  "id": "ch14-004",
+  "chapter": 14,
+  "topic": "urllib.parse",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "a=1&b=2",
+   "a:1,b:2",
+   "{'a': 1, 'b': 2}",
+   "a=1,b=2"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "urlencode は辞書をクエリ文字列 'キー=値&...' に変換する。",
+  "code": "from urllib.parse import urlencode\nprint(urlencode({'a': 1, 'b': 2}))",
+  "reference": "urllib.parse.urlencode"
+ },
+ {
+  "id": "ch14-005",
+  "chapter": 14,
+  "topic": "urllib.parse",
+  "difficulty": 3,
+  "type": "single",
+  "question": "URL に使えない文字（空白など）を %XX 形式へ変換（パーセントエンコード）する関数はどれか。",
+  "choices": [
+   "urllib.parse.quote",
+   "urllib.parse.escape",
+   "urllib.encode",
+   "urllib.parse.urlparse"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "quote は文字列をパーセントエンコードする。逆は unquote。",
+  "reference": "urllib.parse.quote"
+ },
+ {
+  "id": "ch14-006",
+  "chapter": 14,
+  "topic": "json API",
+  "difficulty": 2,
+  "type": "single",
+  "question": "Web API から取得した JSON 文字列（bytes/str）を Python オブジェクトに変換するのに使う関数はどれか。",
+  "choices": [
+   "json.loads",
+   "json.dumps",
+   "json.read",
+   "json.fetch"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "取得したレスポンス本文（JSON文字列）は json.loads で Python オブジェクトに変換する。",
+  "reference": "json.loads --- Web API"
+ },
+ {
+  "id": "ch14-007",
+  "chapter": 14,
+  "topic": "HTTP",
+  "difficulty": 2,
+  "type": "single",
+  "question": "HTTP のステータスコード 404 が表す意味はどれか。",
+  "choices": [
+   "Not Found（リソースが見つからない）",
+   "OK（成功）",
+   "Internal Server Error",
+   "リダイレクト"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "404 は Not Found。200=OK、500=サーバエラー、3xx=リダイレクト。",
+  "reference": "HTTPステータスコード"
+ },
+ {
+  "id": "ch14-008",
+  "chapter": 14,
+  "topic": "HTTP",
+  "difficulty": 2,
+  "type": "single",
+  "question": "HTTP のステータスコード 200 が表す意味はどれか。",
+  "choices": [
+   "OK（成功）",
+   "Not Found",
+   "Forbidden",
+   "Bad Request"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "200 は成功（OK）。",
+  "reference": "HTTPステータスコード --- 200"
+ },
+ {
+  "id": "ch14-009",
+  "chapter": 14,
+  "topic": "email",
+  "difficulty": 3,
+  "type": "single",
+  "question": "メール（MIME）メッセージを組み立てる標準ライブラリはどれか。",
+  "choices": [
+   "email",
+   "smtp",
+   "mailbox2",
+   "mime"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "email パッケージで MIME メッセージを構築する。送信は smtplib。",
+  "reference": "email パッケージ"
+ },
+ {
+  "id": "ch14-010",
+  "chapter": 14,
+  "topic": "smtplib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "SMTP を使ってメールを送信する標準ライブラリはどれか。",
+  "choices": [
+   "smtplib",
+   "email",
+   "imaplib",
+   "poplib"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "smtplib が送信（SMTP）。受信は imaplib（IMAP）/poplib（POP3）。",
+  "reference": "smtplib"
+ },
+ {
+  "id": "ch14-011",
+  "chapter": 14,
+  "topic": "html",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "&lt;a&gt;",
+   "<a>",
+   "&a;",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "html.escape は <, >, & などを HTML エンティティに変換し、HTMLインジェクションを防ぐ。",
+  "code": "import html\nprint(html.escape('<a>'))",
+  "reference": "html.escape"
+ },
+ {
+  "id": "ch14-012",
+  "chapter": 14,
+  "topic": "ipaddress",
+  "difficulty": 3,
+  "type": "single",
+  "question": "IPアドレスを検証・操作する標準ライブラリはどれか。",
+  "choices": [
+   "ipaddress",
+   "socket",
+   "netaddr",
+   "iplib"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "ipaddress モジュールで IPv4/IPv6 アドレスやネットワークを扱える。",
+  "reference": "ipaddress"
+ }
+]

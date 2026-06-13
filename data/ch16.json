@@ -1,0 +1,421 @@
+[
+ {
+  "id": "ch16-001",
+  "chapter": 16,
+  "topic": "unittest",
+  "difficulty": 1,
+  "type": "single",
+  "question": "標準ライブラリの単体テストフレームワークはどれか。",
+  "choices": [
+   "unittest",
+   "pytest",
+   "nose",
+   "testlib"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "unittest が標準ライブラリのテストフレームワーク。pytest・nose はサードパーティ。",
+  "reference": "unittest"
+ },
+ {
+  "id": "ch16-002",
+  "chapter": 16,
+  "topic": "unittest",
+  "difficulty": 2,
+  "type": "single",
+  "question": "unittest でテストケースを書くとき継承する基底クラスはどれか。",
+  "choices": [
+   "unittest.TestCase",
+   "unittest.Test",
+   "unittest.Case",
+   "unittest.Suite"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "unittest.TestCase を継承し、test_ で始まるメソッドにテストを書く。",
+  "reference": "unittest.TestCase"
+ },
+ {
+  "id": "ch16-003",
+  "chapter": 16,
+  "topic": "unittest",
+  "difficulty": 2,
+  "type": "single",
+  "question": "unittest で2つの値が等しいことを表明（assert）するメソッドはどれか。",
+  "choices": [
+   "assertEqual",
+   "assertSame",
+   "assertEquals2",
+   "checkEqual"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "assertEqual(a, b) は a == b を表明する。失敗するとテストが fail する。",
+  "reference": "assertEqual"
+ },
+ {
+  "id": "ch16-004",
+  "chapter": 16,
+  "topic": "unittest",
+  "difficulty": 2,
+  "type": "single",
+  "question": "条件が真であることを表明するメソッドはどれか。",
+  "choices": [
+   "assertTrue",
+   "assertOk",
+   "assertYes",
+   "assertValid"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "assertTrue(x) は bool(x) が True であることを表明する。逆は assertFalse。",
+  "reference": "assertTrue"
+ },
+ {
+  "id": "ch16-005",
+  "chapter": 16,
+  "topic": "unittest",
+  "difficulty": 2,
+  "type": "single",
+  "question": "値が None であることを表明するメソッドはどれか。",
+  "choices": [
+   "assertIsNone",
+   "assertNull",
+   "assertNone",
+   "assertEmpty"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "assertIsNone(x) は x is None を表明する。逆は assertIsNotNone。",
+  "reference": "assertIsNone"
+ },
+ {
+  "id": "ch16-006",
+  "chapter": 16,
+  "topic": "unittest",
+  "difficulty": 2,
+  "type": "single",
+  "question": "要素がコンテナに含まれることを表明するメソッドはどれか。",
+  "choices": [
+   "assertIn",
+   "assertContains",
+   "assertHas",
+   "assertMember"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "assertIn(a, b) は a in b を表明する。",
+  "reference": "assertIn"
+ },
+ {
+  "id": "ch16-007",
+  "chapter": 16,
+  "topic": "unittest",
+  "difficulty": 3,
+  "type": "single",
+  "question": "特定の例外が送出されることをテストするメソッドはどれか。",
+  "choices": [
+   "assertRaises",
+   "assertException",
+   "assertError",
+   "expectRaises"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "with self.assertRaises(ValueError): ... の形で、ブロック内が例外を送出することを表明する。",
+  "reference": "assertRaises"
+ },
+ {
+  "id": "ch16-008",
+  "chapter": 16,
+  "topic": "unittest",
+  "difficulty": 3,
+  "type": "single",
+  "question": "各テストメソッドの実行前に毎回呼ばれる準備用メソッドはどれか。",
+  "choices": [
+   "setUp",
+   "setUpClass のみ",
+   "before",
+   "init"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "setUp は各テストの前、tearDown は後に毎回実行される。クラス単位は setUpClass/tearDownClass。",
+  "reference": "setUp / tearDown"
+ },
+ {
+  "id": "ch16-009",
+  "chapter": 16,
+  "topic": "unittest",
+  "difficulty": 3,
+  "type": "single",
+  "question": "クラス内の全テストの前に一度だけ実行されるメソッドはどれか。",
+  "choices": [
+   "setUpClass（@classmethod）",
+   "setUp",
+   "beforeAll",
+   "initClass"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "setUpClass は @classmethod として定義し、クラスの全テスト前に一度だけ実行される。",
+  "reference": "setUpClass"
+ },
+ {
+  "id": "ch16-010",
+  "chapter": 16,
+  "topic": "実行",
+  "difficulty": 2,
+  "type": "single",
+  "question": "コマンドラインで unittest を使ってテストを自動検出・実行するコマンドはどれか。",
+  "choices": [
+   "python -m unittest",
+   "python unittest",
+   "python -t",
+   "python --test"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`python -m unittest`（discover）でテストを自動検出して実行できる。",
+  "reference": "unittest --- 実行"
+ },
+ {
+  "id": "ch16-011",
+  "chapter": 16,
+  "topic": "doctest",
+  "difficulty": 3,
+  "type": "single",
+  "question": "docstring 内に書いた対話例（>>> ...）を検証する標準ライブラリはどれか。",
+  "choices": [
+   "doctest",
+   "unittest",
+   "pydoc",
+   "docexam"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "doctest は docstring の対話例を実行し、出力が一致するか検証する。",
+  "reference": "doctest"
+ },
+ {
+  "id": "ch16-012",
+  "chapter": 16,
+  "topic": "doctest",
+  "difficulty": 3,
+  "type": "single",
+  "question": "doctest で検証されるのは、docstring 内のどの記述か。",
+  "choices": [
+   ">>> で始まる行とその直後の期待出力",
+   "# で始まるコメント",
+   "通常の説明文すべて",
+   "関数のシグネチャ"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "doctest は `>>>` の式とその次行の期待される出力を比較する。",
+  "reference": "doctest --- 記法"
+ },
+ {
+  "id": "ch16-013",
+  "chapter": 16,
+  "topic": "mock",
+  "difficulty": 3,
+  "type": "single",
+  "question": "依存オブジェクトを偽物に差し替えるための標準ライブラリはどれか。",
+  "choices": [
+   "unittest.mock",
+   "unittest.fake",
+   "mocklib",
+   "stubs"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "unittest.mock の Mock/MagicMock/patch で依存を置き換え、外部依存を切り離してテストできる。",
+  "reference": "unittest.mock"
+ },
+ {
+  "id": "ch16-014",
+  "chapter": 16,
+  "topic": "mock",
+  "difficulty": 3,
+  "type": "single",
+  "question": "unittest.mock で、テスト中だけ対象を一時的に置き換えるのに使うものはどれか。",
+  "choices": [
+   "patch",
+   "replace",
+   "swap",
+   "override"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "mock.patch はデコレータ/コンテキストマネージャとして対象を一時的に Mock に置き換える。",
+  "reference": "mock.patch"
+ },
+ {
+  "id": "ch16-015",
+  "chapter": 16,
+  "topic": "命名",
+  "difficulty": 2,
+  "type": "single",
+  "question": "unittest が自動的にテストと認識するメソッド名の条件はどれか。",
+  "choices": [
+   "test で始まる",
+   "必ず check で始まる",
+   "末尾が _test",
+   "大文字で始まる"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "既定では `test` で始まるメソッドがテストとして収集・実行される。",
+  "reference": "テストメソッドの命名規則"
+ },
+ {
+  "id": "ch16-016",
+  "chapter": 16,
+  "topic": "assertAlmostEqual",
+  "difficulty": 3,
+  "type": "single",
+  "question": "浮動小数点の比較で、丸め誤差を考慮して『ほぼ等しい』ことを表明するメソッドはどれか。",
+  "choices": [
+   "assertAlmostEqual",
+   "assertEqual",
+   "assertFloatEqual",
+   "assertnear"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "assertAlmostEqual は指定桁数で丸めて比較する。0.1+0.2 のような誤差に有効。",
+  "reference": "assertAlmostEqual"
+ },
+ {
+  "id": "ch16-017",
+  "chapter": 16,
+  "topic": "skip",
+  "difficulty": 3,
+  "type": "single",
+  "question": "特定のテストを条件付きでスキップするデコレータはどれか。",
+  "choices": [
+   "@unittest.skipIf",
+   "@unittest.ignore",
+   "@skiptest",
+   "@unittest.pass"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "@unittest.skip / @unittest.skipIf / @unittest.skipUnless でスキップを制御できる。",
+  "reference": "unittest --- skip"
+ },
+ {
+  "id": "ch16-018",
+  "chapter": 16,
+  "topic": "AAA",
+  "difficulty": 2,
+  "type": "single",
+  "question": "単体テストの基本構成 Arrange-Act-Assert の説明として正しいものはどれか。",
+  "choices": [
+   "準備→実行→検証 の順にテストを書く",
+   "実行→準備→検証 の順",
+   "全てのテストを1つの関数にまとめる",
+   "本番DBを必ず使う"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "Arrange（準備）→ Act（実行）→ Assert（検証）が読みやすいテストの基本構造。",
+  "reference": "テスト構造 --- AAA"
+ },
+ {
+  "id": "ch16-019",
+  "chapter": 16,
+  "topic": "原則",
+  "difficulty": 2,
+  "type": "single",
+  "question": "良い単体テストの性質として最も適切なものはどれか。",
+  "choices": [
+   "独立していて、実行順序に依存しない",
+   "互いに依存し、決まった順序で動く必要がある",
+   "必ずネットワークにアクセスする",
+   "1つのテストで全機能を検証する"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "各テストは独立・再現可能で、順序に依存しないのが望ましい。外部依存は mock で切り離す。",
+  "reference": "テストの独立性"
+ },
+ {
+  "id": "ch16-020",
+  "chapter": 16,
+  "topic": "assertEqual",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次の unittest のテストは成功するか失敗するか。",
+  "choices": [
+   "成功する",
+   "失敗する",
+   "エラーで実行できない",
+   "スキップされる"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "1 + 1 は 2 なので assertEqual(2, 1+1) は真、テストは成功する。",
+  "code": "import unittest\nclass T(unittest.TestCase):\n    def test_add(self):\n        self.assertEqual(2, 1 + 1)\nr = unittest.TextTestRunner(verbosity=0).run(unittest.defaultTestLoader.loadTestsFromTestCase(T))\nprint('成功する' if r.wasSuccessful() else '失敗する')",
+  "reference": "assertEqual の判定"
+ },
+ {
+  "id": "ch16-021",
+  "chapter": 16,
+  "topic": "カバレッジ",
+  "difficulty": 2,
+  "type": "single",
+  "question": "テストがソースコードのどれだけを実行したかを測る指標を何と呼ぶか。",
+  "choices": [
+   "コードカバレッジ（網羅率）",
+   "ベンチマーク",
+   "リント率",
+   "複雑度"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "コードカバレッジはテストが実行した行・分岐の割合。coverage.py 等で計測する。",
+  "reference": "コードカバレッジ"
+ },
+ {
+  "id": "ch16-022",
+  "chapter": 16,
+  "topic": "pytest",
+  "difficulty": 2,
+  "type": "single",
+  "question": "シンプルな assert 文でテストを書けることで知られるサードパーティ製テストツールはどれか（参考）。",
+  "choices": [
+   "pytest",
+   "unittest",
+   "doctest",
+   "mock"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "pytest は plain な assert でテストを書ける人気ツール。ただしサードパーティ製のため本試験の出題対象は標準ライブラリ中心であることに注意。",
+  "reference": "pytest（参考）"
+ }
+]

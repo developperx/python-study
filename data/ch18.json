@@ -1,0 +1,155 @@
+[
+ {
+  "id": "ch18-001",
+  "chapter": 18,
+  "topic": "hashlib",
+  "difficulty": 2,
+  "type": "single",
+  "question": "MD5 や SHA-256 などのハッシュ値を計算する標準ライブラリはどれか。",
+  "choices": [
+   "hashlib",
+   "crypt",
+   "hashes",
+   "digest"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "hashlib が各種ハッシュアルゴリズム（sha256, md5, sha1 等）を提供する。",
+  "reference": "hashlib"
+ },
+ {
+  "id": "ch18-002",
+  "chapter": 18,
+  "topic": "hashlib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "64",
+   "32",
+   "256",
+   "16"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "SHA-256 のダイジェストは256ビット＝32バイト。hexdigest() は1バイトを16進2文字で表すため文字数は64。",
+  "code": "import hashlib\nprint(len(hashlib.sha256(b'abc').hexdigest()))",
+  "reference": "hashlib --- SHA-256 の長さ"
+ },
+ {
+  "id": "ch18-003",
+  "chapter": 18,
+  "topic": "hashlib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "ハッシュ関数の性質として正しいものはどれか。",
+  "choices": [
+   "同じ入力からは常に同じハッシュ値が得られ、ハッシュから元の入力を復元するのは困難",
+   "ハッシュ値から元のデータを簡単に復元できる",
+   "同じ入力でも毎回異なる値になる",
+   "入力長に比例してハッシュ長が伸びる"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "暗号学的ハッシュは決定的（同入力→同出力）かつ一方向性（逆算困難）。固定長の値を返す。",
+  "reference": "ハッシュ関数の性質"
+ },
+ {
+  "id": "ch18-004",
+  "chapter": 18,
+  "topic": "secrets",
+  "difficulty": 3,
+  "type": "single",
+  "question": "トークンやパスワードなど、安全な乱数を生成するために推奨される標準ライブラリはどれか。",
+  "choices": [
+   "secrets",
+   "random",
+   "os.rand",
+   "uuid"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "secrets は暗号用途向けの安全な乱数を生成する。random モジュールはセキュリティ用途には使わない。",
+  "reference": "secrets"
+ },
+ {
+  "id": "ch18-005",
+  "chapter": 18,
+  "topic": "random",
+  "difficulty": 2,
+  "type": "single",
+  "question": "セキュリティ用途で random モジュールを使うべきでない理由として正しいものはどれか。",
+  "choices": [
+   "疑似乱数で予測可能なため、トークン生成等には不適切",
+   "生成が遅すぎるため",
+   "整数しか生成できないため",
+   "標準ライブラリではないため"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "random は決定的な疑似乱数生成器で予測可能。鍵・トークンには secrets を使う。",
+  "reference": "random と secrets の使い分け"
+ },
+ {
+  "id": "ch18-006",
+  "chapter": 18,
+  "topic": "パスワード",
+  "difficulty": 3,
+  "type": "single",
+  "question": "パスワードを保存する際の適切な扱いとして最も正しいものはどれか。",
+  "choices": [
+   "ソルト付きの専用ハッシュ（例: hashlib.pbkdf2_hmac 等）でハッシュ化して保存する",
+   "平文のまま保存する",
+   "可逆暗号で暗号化して必ず復号できるようにする",
+   "MD5 で1回だけハッシュ化すれば十分"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "パスワードはソルト付きの鍵導出関数（pbkdf2_hmac, scrypt 等）でハッシュ化して保存する。平文保存や単純MD5は不適切。",
+  "reference": "パスワードのハッシュ化"
+ },
+ {
+  "id": "ch18-007",
+  "chapter": 18,
+  "topic": "hmac",
+  "difficulty": 3,
+  "type": "single",
+  "question": "メッセージの改ざん検知・認証に使う、鍵付きハッシュを扱う標準ライブラリはどれか。",
+  "choices": [
+   "hmac",
+   "hashlib のみ",
+   "secrets",
+   "ssl"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "hmac は秘密鍵とハッシュ関数を組み合わせ、メッセージ認証コード（MAC）を生成する。",
+  "reference": "hmac"
+ },
+ {
+  "id": "ch18-008",
+  "chapter": 18,
+  "topic": "比較",
+  "difficulty": 3,
+  "type": "single",
+  "question": "ハッシュ値やトークンを比較する際、タイミング攻撃を避けるために使う関数はどれか。",
+  "choices": [
+   "hmac.compare_digest",
+   "==",
+   "is",
+   "str.equals"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "秘密情報の比較は hmac.compare_digest（または secrets.compare_digest）を使い、比較時間を一定にしてタイミング攻撃を防ぐ。",
+  "reference": "compare_digest"
+ }
+]

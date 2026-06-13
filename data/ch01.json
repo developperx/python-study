@@ -1,0 +1,155 @@
+[
+ {
+  "id": "ch01-001",
+  "chapter": 1,
+  "topic": "仮想環境",
+  "difficulty": 1,
+  "type": "single",
+  "question": "標準ライブラリだけを使い、プロジェクト専用の仮想環境を作成するコマンドとして正しいものはどれか。",
+  "choices": [
+   "python -m venv .venv",
+   "python -m virtualenv .venv",
+   "pip install venv",
+   "python -m pip venv .venv"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "仮想環境は標準ライブラリの venv モジュールで作成する。`python -m venv <dir>` が正しい。virtualenv はサードパーティ製で標準ではない。",
+  "reference": "venv --- 仮想環境の作成"
+ },
+ {
+  "id": "ch01-002",
+  "chapter": 1,
+  "topic": "pip",
+  "difficulty": 1,
+  "type": "single",
+  "question": "インストール済みパッケージの一覧を、requirements.txt 形式で出力するコマンドはどれか。",
+  "choices": [
+   "pip freeze",
+   "pip list --all",
+   "pip show",
+   "pip dump"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`pip freeze` は `名前==バージョン` の形式で一覧を出力し、requirements.txt の生成に使う。`pip list` は表形式で freeze 形式ではない。",
+  "reference": "pip freeze"
+ },
+ {
+  "id": "ch01-003",
+  "chapter": 1,
+  "topic": "モジュール実行",
+  "difficulty": 2,
+  "type": "single",
+  "question": "コマンドラインからモジュールをスクリプトとして実行するオプションはどれか。",
+  "choices": [
+   "python -m モジュール名",
+   "python -c モジュール名",
+   "python -x モジュール名",
+   "python --run モジュール名"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`-m` は指定したモジュールを sys.path から探して __main__ として実行する。`-c` は文字列のコードを実行するオプション。",
+  "reference": "コマンドラインと環境 --- -m"
+ },
+ {
+  "id": "ch01-004",
+  "chapter": 1,
+  "topic": "インタプリタ",
+  "difficulty": 1,
+  "type": "single",
+  "question": "Python本体のバージョンを表示するコマンドとして正しいものを選べ。",
+  "choices": [
+   "python --version",
+   "python --ver",
+   "python -version",
+   "python version"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`python --version`（または `-V`）でバージョンを表示する。",
+  "reference": "コマンドライン"
+ },
+ {
+  "id": "ch01-005",
+  "chapter": 1,
+  "topic": "sys",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードを Python 3 で実行したときの出力として正しいものはどれか。",
+  "choices": [
+   "3",
+   "3.11",
+   "python3",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "sys.version_info はバージョン情報の名前付きタプルで、major 属性はメジャーバージョン番号（整数の3）を返す。",
+  "code": "import sys\nprint(sys.version_info.major)",
+  "reference": "sys.version_info"
+ },
+ {
+  "id": "ch01-006",
+  "chapter": 1,
+  "topic": "pip",
+  "difficulty": 2,
+  "type": "single",
+  "question": "特定バージョン 2.28.1 のパッケージ requests を pip でインストールするコマンドはどれか。",
+  "choices": [
+   "pip install requests==2.28.1",
+   "pip install requests:2.28.1",
+   "pip install requests-2.28.1",
+   "pip install requests@2.28.1"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "バージョン指定は `パッケージ名==バージョン` の形式で行う。",
+  "reference": "pip --- バージョン指定"
+ },
+ {
+  "id": "ch01-007",
+  "chapter": 1,
+  "topic": "仮想環境",
+  "difficulty": 2,
+  "type": "single",
+  "question": "仮想環境を有効化（activate）する目的として最も適切なものはどれか。",
+  "choices": [
+   "そのシェルで python / pip が仮想環境内のものを指すようにする",
+   "仮想環境を新規に作成する",
+   "インストール済みパッケージをすべて削除する",
+   "Python本体をアップグレードする"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "activate するとシェルの PATH が書き換わり、python・pip がその仮想環境のものを指すようになる。作成は venv、活性化は activate と役割が分かれている。",
+  "reference": "venv --- activate"
+ },
+ {
+  "id": "ch01-008",
+  "chapter": 1,
+  "topic": "対話モード",
+  "difficulty": 1,
+  "type": "single",
+  "question": "Python の対話モード（REPL）で、直前の式の評価結果を参照する変数はどれか。",
+  "choices": [
+   "_",
+   "$",
+   "ans",
+   "it"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "対話モードでは直前に評価した式の結果がアンダースコア `_` に格納される。",
+  "reference": "対話モード --- _"
+ }
+]
