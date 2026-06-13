@@ -1,0 +1,291 @@
+[
+ {
+  "id": "ch10-001",
+  "chapter": 10,
+  "topic": "os.environ",
+  "difficulty": 2,
+  "type": "single",
+  "question": "環境変数を辞書ライクに参照できる os の属性はどれか。",
+  "choices": [
+   "os.environ",
+   "os.env",
+   "os.getenvs",
+   "os.variables"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "os.environ は環境変数の辞書。os.environ.get('KEY') や os.getenv('KEY') で安全に取得できる。",
+  "reference": "os.environ"
+ },
+ {
+  "id": "ch10-002",
+  "chapter": 10,
+  "topic": "os.getenv",
+  "difficulty": 2,
+  "type": "single",
+  "question": "環境変数 PATH を、未設定なら None を返す形で取得する式はどれか。",
+  "choices": [
+   "os.getenv('PATH')",
+   "os.environ['PATH'] は未設定でも None",
+   "os.path('PATH')",
+   "os.env('PATH')"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "os.getenv('PATH') は未設定で None を返す。os.environ['PATH'] は未設定だと KeyError。",
+  "reference": "os.getenv"
+ },
+ {
+  "id": "ch10-003",
+  "chapter": 10,
+  "topic": "sys.argv",
+  "difficulty": 2,
+  "type": "single",
+  "question": "コマンドライン引数のリストを保持する sys の属性はどれか。",
+  "choices": [
+   "sys.argv",
+   "sys.args",
+   "sys.params",
+   "sys.input"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "sys.argv はコマンドライン引数のリスト。argv[0] はスクリプト名。",
+  "reference": "sys.argv"
+ },
+ {
+  "id": "ch10-004",
+  "chapter": 10,
+  "topic": "sys.argv",
+  "difficulty": 2,
+  "type": "single",
+  "question": "`python script.py foo bar` を実行したとき sys.argv[1] の値はどれか。",
+  "choices": [
+   "foo",
+   "script.py",
+   "bar",
+   "python"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "argv[0] が 'script.py'、argv[1] が 'foo'、argv[2] が 'bar'。",
+  "reference": "sys.argv のインデックス"
+ },
+ {
+  "id": "ch10-005",
+  "chapter": 10,
+  "topic": "argparse",
+  "difficulty": 2,
+  "type": "single",
+  "question": "コマンドライン引数を本格的に解析する標準ライブラリはどれか。",
+  "choices": [
+   "argparse",
+   "getopts",
+   "click",
+   "optparse2"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "argparse がコマンドライン引数解析の標準。ヘルプやオプション定義を簡潔に書ける。",
+  "reference": "argparse"
+ },
+ {
+  "id": "ch10-006",
+  "chapter": 10,
+  "topic": "sys.exit",
+  "difficulty": 2,
+  "type": "single",
+  "question": "プログラムを終了させる関数はどれか。",
+  "choices": [
+   "sys.exit()",
+   "os.quit()",
+   "exit.now()",
+   "sys.stop()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "sys.exit([status]) で終了できる。status に整数（0=正常）や文字列を渡せる。",
+  "reference": "sys.exit"
+ },
+ {
+  "id": "ch10-007",
+  "chapter": 10,
+  "topic": "os.path",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "a/b/c.txt",
+   "a\\\\b\\\\c.txt",
+   "abc.txt",
+   "['a', 'b', 'c.txt']"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "os.path.join はパス区切りで結合する（POSIX では '/'）。",
+  "code": "import os\nprint(os.path.join('a', 'b', 'c.txt'))",
+  "reference": "os.path.join"
+ },
+ {
+  "id": "ch10-008",
+  "chapter": 10,
+  "topic": "os.path",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "c.txt",
+   "a/b",
+   "txt",
+   "c"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "os.path.basename はパスの末尾（ファイル名）を返す。",
+  "code": "import os\nprint(os.path.basename('a/b/c.txt'))",
+  "reference": "os.path.basename"
+ },
+ {
+  "id": "ch10-009",
+  "chapter": 10,
+  "topic": "os.path",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "('a/b', 'c.txt')",
+   "('a', 'b/c.txt')",
+   "('a/b/c', '.txt')",
+   "['a', 'b', 'c.txt']"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "os.path.split はディレクトリ部分とファイル名に分ける。",
+  "code": "import os\nprint(os.path.split('a/b/c.txt'))",
+  "reference": "os.path.split"
+ },
+ {
+  "id": "ch10-010",
+  "chapter": 10,
+  "topic": "os.path",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "('a/b/c', '.txt')",
+   "('a/b/c.txt', '')",
+   "('.txt', 'a/b/c')",
+   "('c', 'txt')"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "os.path.splitext は拡張子を分離する。",
+  "code": "import os\nprint(os.path.splitext('a/b/c.txt'))",
+  "reference": "os.path.splitext"
+ },
+ {
+  "id": "ch10-011",
+  "chapter": 10,
+  "topic": "subprocess",
+  "difficulty": 3,
+  "type": "single",
+  "question": "外部コマンドを実行する標準ライブラリで、推奨される高レベル関数はどれか。",
+  "choices": [
+   "subprocess.run()",
+   "os.system2()",
+   "commands.run()",
+   "exec.shell()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "subprocess.run() が推奨される高レベルAPI。os.system は機能が限定的。",
+  "reference": "subprocess.run"
+ },
+ {
+  "id": "ch10-012",
+  "chapter": 10,
+  "topic": "logging",
+  "difficulty": 2,
+  "type": "single",
+  "question": "アプリケーションのログ出力に使う標準ライブラリはどれか。",
+  "choices": [
+   "logging",
+   "log",
+   "syslog2",
+   "printlog"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "logging モジュールがログ出力の標準。レベル（DEBUG/INFO/WARNING/ERROR/CRITICAL）を持つ。",
+  "reference": "logging"
+ },
+ {
+  "id": "ch10-013",
+  "chapter": 10,
+  "topic": "logging",
+  "difficulty": 3,
+  "type": "single",
+  "question": "logging のログレベルを、低い（詳細）方から高い（重大）方へ正しく並べたものはどれか。",
+  "choices": [
+   "DEBUG < INFO < WARNING < ERROR < CRITICAL",
+   "INFO < DEBUG < WARNING < ERROR < CRITICAL",
+   "CRITICAL < ERROR < WARNING < INFO < DEBUG",
+   "WARNING < INFO < DEBUG < ERROR < CRITICAL"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "深刻度は DEBUG(10) < INFO(20) < WARNING(30) < ERROR(40) < CRITICAL(50)。既定の出力閾値は WARNING。",
+  "reference": "logging --- ログレベル"
+ },
+ {
+  "id": "ch10-014",
+  "chapter": 10,
+  "topic": "platform",
+  "difficulty": 2,
+  "type": "single",
+  "question": "実行中のOS名やマシン情報を取得できる標準ライブラリはどれか。",
+  "choices": [
+   "platform",
+   "machine",
+   "osinfo",
+   "sysconfig2"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "platform モジュールで platform.system()（OS名）や platform.python_version() などを取得できる。",
+  "reference": "platform"
+ },
+ {
+  "id": "ch10-015",
+  "chapter": 10,
+  "topic": "os",
+  "difficulty": 2,
+  "type": "single",
+  "question": "カレントワーキングディレクトリを取得する os の関数はどれか。",
+  "choices": [
+   "os.getcwd()",
+   "os.pwd()",
+   "os.curdir()",
+   "os.path.cwd()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "os.getcwd() が現在の作業ディレクトリ（文字列）を返す。変更は os.chdir()。",
+  "reference": "os.getcwd"
+ }
+]

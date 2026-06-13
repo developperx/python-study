@@ -1,0 +1,314 @@
+[
+ {
+  "id": "ch08-001",
+  "chapter": 8,
+  "topic": "datetime",
+  "difficulty": 1,
+  "type": "single",
+  "question": "日付と時刻を扱う標準ライブラリのモジュールはどれか。",
+  "choices": [
+   "datetime",
+   "date",
+   "calendar",
+   "chrono"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "datetime モジュールが date・time・datetime・timedelta などのクラスを提供する。",
+  "reference": "datetime モジュール"
+ },
+ {
+  "id": "ch08-002",
+  "chapter": 8,
+  "topic": "date.today",
+  "difficulty": 1,
+  "type": "single",
+  "question": "今日の日付（date オブジェクト）を取得するメソッドはどれか。",
+  "choices": [
+   "date.today()",
+   "date.now()",
+   "datetime.date()",
+   "date.current()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "date.today() が今日の日付を返す。現在日時（datetime）は datetime.now()。",
+  "reference": "date.today"
+ },
+ {
+  "id": "ch08-003",
+  "chapter": 8,
+  "topic": "datetime.now",
+  "difficulty": 1,
+  "type": "single",
+  "question": "現在の日付と時刻を返すメソッドはどれか。",
+  "choices": [
+   "datetime.now()",
+   "datetime.today_time()",
+   "time.now()",
+   "date.now()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "datetime.now() が現在の日付＋時刻の datetime オブジェクトを返す。",
+  "reference": "datetime.now"
+ },
+ {
+  "id": "ch08-004",
+  "chapter": 8,
+  "topic": "timedelta",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "2024-01-08",
+   "2024-01-01",
+   "2024-01-07",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "timedelta(days=7) を足すと7日後になる。2024-01-01 + 7日 = 2024-01-08。",
+  "code": "from datetime import date, timedelta\nprint(date(2024, 1, 1) + timedelta(days=7))",
+  "reference": "timedelta による加算"
+ },
+ {
+  "id": "ch08-005",
+  "chapter": 8,
+  "topic": "timedelta",
+  "difficulty": 2,
+  "type": "single",
+  "question": "2つの date を引き算した結果の型はどれか。",
+  "choices": [
+   "timedelta",
+   "date",
+   "int",
+   "datetime"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "date 同士の引き算は経過日数を表す timedelta を返す。",
+  "code": "from datetime import date\nprint(type(date(2024,1,8) - date(2024,1,1)).__name__)",
+  "reference": "date の差 --- timedelta"
+ },
+ {
+  "id": "ch08-006",
+  "chapter": 8,
+  "topic": "timedelta",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "7",
+   "1",
+   "7 days",
+   "168"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "date の差は timedelta になり、その days 属性で日数を取れる。差は7日。",
+  "code": "from datetime import date\nd = date(2024, 1, 8) - date(2024, 1, 1)\nprint(d.days)",
+  "reference": "timedelta.days"
+ },
+ {
+  "id": "ch08-007",
+  "chapter": 8,
+  "topic": "strftime",
+  "difficulty": 2,
+  "type": "single",
+  "question": "datetime を指定書式の文字列に変換するメソッドはどれか。",
+  "choices": [
+   "strftime",
+   "strptime",
+   "format_time",
+   "tostr"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "strftime（string from time）は datetime→文字列。strptime（string parse time）は文字列→datetime。",
+  "reference": "strftime"
+ },
+ {
+  "id": "ch08-008",
+  "chapter": 8,
+  "topic": "strftime",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "2024-03-05",
+   "03-05-2024",
+   "2024/03/05",
+   "24-3-5"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "%Y=4桁年, %m=2桁月, %d=2桁日。書式 '%Y-%m-%d' で '2024-03-05'。",
+  "code": "from datetime import date\nprint(date(2024, 3, 5).strftime('%Y-%m-%d'))",
+  "reference": "strftime --- 書式コード"
+ },
+ {
+  "id": "ch08-009",
+  "chapter": 8,
+  "topic": "strptime",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "2024-03-05",
+   "03-05-2024",
+   "datetime(2024, 3, 5)",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "strptime で文字列をパースし datetime を得る。date() で日付部分にし print すると '2024-03-05'。",
+  "code": "from datetime import datetime\nd = datetime.strptime('2024/03/05', '%Y/%m/%d')\nprint(d.date())",
+  "reference": "strptime"
+ },
+ {
+  "id": "ch08-010",
+  "chapter": 8,
+  "topic": "属性",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "2024",
+   "3",
+   "5",
+   "(2024, 3, 5)"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "date オブジェクトの year 属性で年を取得できる。",
+  "code": "from datetime import date\nprint(date(2024, 3, 5).year)",
+  "reference": "date.year"
+ },
+ {
+  "id": "ch08-011",
+  "chapter": 8,
+  "topic": "isoformat",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "2024-03-05",
+   "2024/03/05",
+   "20240305",
+   "March 5, 2024"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "date.isoformat() は ISO 8601 形式 'YYYY-MM-DD' の文字列を返す。",
+  "code": "from datetime import date\nprint(date(2024, 3, 5).isoformat())",
+  "reference": "isoformat"
+ },
+ {
+  "id": "ch08-012",
+  "chapter": 8,
+  "topic": "weekday",
+  "difficulty": 3,
+  "type": "single",
+  "question": "date.weekday() が月曜日に対して返す値はどれか。",
+  "choices": [
+   "0",
+   "1",
+   "7",
+   "月"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "weekday() は月曜=0 〜 日曜=6。isoweekday() は月曜=1〜日曜=7。",
+  "reference": "weekday"
+ },
+ {
+  "id": "ch08-013",
+  "chapter": 8,
+  "topic": "time",
+  "difficulty": 2,
+  "type": "single",
+  "question": "プログラムの経過時間を測るのに適した、time モジュールの関数はどれか。",
+  "choices": [
+   "time.time()",
+   "time.date()",
+   "time.now()",
+   "time.clock_date()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "time.time() はエポックからの秒数（float）を返す。差を取って経過時間を測れる。",
+  "reference": "time.time"
+ },
+ {
+  "id": "ch08-014",
+  "chapter": 8,
+  "topic": "timezone",
+  "difficulty": 3,
+  "type": "single",
+  "question": "タイムゾーン情報を持たない datetime を表す用語はどれか。",
+  "choices": [
+   "naive",
+   "aware",
+   "utc",
+   "local"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "tzinfo を持たない datetime は naive、持つものは aware と呼ばれる。",
+  "reference": "naive / aware"
+ },
+ {
+  "id": "ch08-015",
+  "chapter": 8,
+  "topic": "timezone",
+  "difficulty": 3,
+  "type": "single",
+  "question": "UTC を表す固定タイムゾーンとして使える定数はどれか。",
+  "choices": [
+   "timezone.utc",
+   "timezone.UTC",
+   "datetime.utc",
+   "tz.UTC"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "datetime.timezone.utc が UTC を表す。aware な datetime を作る際に tzinfo として渡す。",
+  "reference": "timezone.utc"
+ },
+ {
+  "id": "ch08-016",
+  "chapter": 8,
+  "topic": "calendar",
+  "difficulty": 2,
+  "type": "single",
+  "question": "うるう年かどうかを判定できる標準ライブラリの関数はどれか。",
+  "choices": [
+   "calendar.isleap(year)",
+   "datetime.isleap(year)",
+   "time.isleap(year)",
+   "date.leap(year)"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "calendar.isleap(year) がうるう年判定を行う。",
+  "code": "import calendar\nprint(calendar.isleap(2024))",
+  "reference": "calendar.isleap"
+ }
+]

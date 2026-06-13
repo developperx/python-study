@@ -1,0 +1,290 @@
+[
+ {
+  "id": "ch11-001",
+  "chapter": 11,
+  "topic": "open mode",
+  "difficulty": 1,
+  "type": "single",
+  "question": "ファイルを「書き込み（既存内容を消去）」で開くモード文字列はどれか。",
+  "choices": [
+   "'w'",
+   "'r'",
+   "'a'",
+   "'x'"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "'w' は書き込み（truncate）、'r' は読み込み、'a' は追記、'x' は排他生成（既存だとエラー）。",
+  "reference": "open --- モード"
+ },
+ {
+  "id": "ch11-002",
+  "chapter": 11,
+  "topic": "open mode",
+  "difficulty": 2,
+  "type": "single",
+  "question": "既存ファイルの末尾に追記するモードはどれか。",
+  "choices": [
+   "'a'",
+   "'w'",
+   "'r+'",
+   "'x'"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "'a'（append）は末尾に追記する。'w' は内容を消してから書く。",
+  "reference": "open --- 追記モード"
+ },
+ {
+  "id": "ch11-003",
+  "chapter": 11,
+  "topic": "open mode",
+  "difficulty": 2,
+  "type": "single",
+  "question": "バイナリ読み込みモードを表す文字列はどれか。",
+  "choices": [
+   "'rb'",
+   "'r'",
+   "'br'は不可",
+   "'binary'"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "'rb' はバイナリ読み込み。テキストは 'r'、書き込みバイナリは 'wb'。",
+  "reference": "open --- バイナリモード"
+ },
+ {
+  "id": "ch11-004",
+  "chapter": 11,
+  "topic": "with open",
+  "difficulty": 2,
+  "type": "single",
+  "question": "ファイルを扱うとき with 文を使う主な理由はどれか。",
+  "choices": [
+   "ブロックを抜けるときに自動で close される",
+   "読み込み速度が必ず速くなる",
+   "ファイルを暗号化できる",
+   "文字コードを自動判別する"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "with open(...) as f: は確実にファイルを閉じる（例外時も）。close 漏れを防ぐ定石。",
+  "reference": "with open"
+ },
+ {
+  "id": "ch11-005",
+  "chapter": 11,
+  "topic": "encoding",
+  "difficulty": 2,
+  "type": "single",
+  "question": "テキストファイルを UTF-8 で開くときの正しい指定はどれか。",
+  "choices": [
+   "open(path, encoding='utf-8')",
+   "open(path, charset='utf-8')",
+   "open(path, 'utf-8')",
+   "open(path, code='utf-8')"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "文字コードは encoding 引数で指定する。プラットフォーム依存を避けるため明示が推奨される。",
+  "reference": "open --- encoding"
+ },
+ {
+  "id": "ch11-006",
+  "chapter": 11,
+  "topic": "read",
+  "difficulty": 2,
+  "type": "single",
+  "question": "ファイルオブジェクト f の全内容を1つの文字列として読むメソッドはどれか。",
+  "choices": [
+   "f.read()",
+   "f.readline()",
+   "f.readlines()",
+   "f.readall_str()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "f.read() は全体を文字列で返す。readline は1行、readlines は行のリスト。",
+  "reference": "file.read"
+ },
+ {
+  "id": "ch11-007",
+  "chapter": 11,
+  "topic": "readlines",
+  "difficulty": 2,
+  "type": "single",
+  "question": "ファイルの全行をリストとして読み込むメソッドはどれか。",
+  "choices": [
+   "f.readlines()",
+   "f.read()",
+   "f.lines()",
+   "f.readline()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "f.readlines() は各行（改行付き）を要素とするリストを返す。",
+  "reference": "file.readlines"
+ },
+ {
+  "id": "ch11-008",
+  "chapter": 11,
+  "topic": "イテレーション",
+  "difficulty": 2,
+  "type": "single",
+  "question": "ファイルオブジェクトを for 文で回したときに得られるものはどれか。",
+  "choices": [
+   "1行ずつ",
+   "1文字ずつ",
+   "1バイトずつ",
+   "全体を1つの文字列で1回"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "ファイルオブジェクトはイテレートすると1行ずつ返す。大きなファイルでもメモリ効率が良い。",
+  "reference": "ファイルの行イテレーション"
+ },
+ {
+  "id": "ch11-009",
+  "chapter": 11,
+  "topic": "pathlib",
+  "difficulty": 2,
+  "type": "single",
+  "question": "オブジェクト指向でパスを扱う標準ライブラリのクラスはどれか。",
+  "choices": [
+   "pathlib.Path",
+   "os.Path",
+   "pathlib.File",
+   "path.Path"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "pathlib.Path はパス操作をメソッド/演算子で扱える。`/` でパスを結合できる。",
+  "reference": "pathlib.Path"
+ },
+ {
+  "id": "ch11-010",
+  "chapter": 11,
+  "topic": "pathlib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "a/b/c.txt",
+   "a\\\\b\\\\c.txt",
+   "a-b-c.txt",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "pathlib では `/` 演算子でパスを連結できる。POSIX 環境では 'a/b/c.txt'。",
+  "code": "from pathlib import Path\nprint(Path('a') / 'b' / 'c.txt')",
+  "reference": "Path --- / 演算子"
+ },
+ {
+  "id": "ch11-011",
+  "chapter": 11,
+  "topic": "pathlib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   ".txt",
+   "c",
+   "c.txt",
+   "txt"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "Path.suffix は拡張子（ドット付き）を返す。",
+  "code": "from pathlib import Path\nprint(Path('a/b/c.txt').suffix)",
+  "reference": "Path.suffix"
+ },
+ {
+  "id": "ch11-012",
+  "chapter": 11,
+  "topic": "pathlib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "c.txt",
+   "c",
+   "a/b",
+   ".txt"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "Path.name はパス末尾の名前（拡張子含む）を返す。",
+  "code": "from pathlib import Path\nprint(Path('a/b/c.txt').name)",
+  "reference": "Path.name"
+ },
+ {
+  "id": "ch11-013",
+  "chapter": 11,
+  "topic": "存在確認",
+  "difficulty": 2,
+  "type": "single",
+  "question": "パスが存在するか確認する方法として正しいものはどれか。",
+  "choices": [
+   "os.path.exists(path) または Path(path).exists()",
+   "os.check(path)",
+   "Path(path).is_there()",
+   "os.path.has(path)"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "os.path.exists または pathlib の Path.exists() でファイル/ディレクトリの存在を確認できる。",
+  "reference": "exists"
+ },
+ {
+  "id": "ch11-014",
+  "chapter": 11,
+  "topic": "glob",
+  "difficulty": 3,
+  "type": "single",
+  "question": "パターンに一致するファイル一覧を取得する標準ライブラリはどれか。",
+  "choices": [
+   "glob",
+   "fnmatch2",
+   "listdir",
+   "scandir2"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "glob.glob('*.txt') のようにワイルドカードでファイルを列挙できる。pathlib の Path.glob も同様。",
+  "reference": "glob"
+ },
+ {
+  "id": "ch11-015",
+  "chapter": 11,
+  "topic": "shutil",
+  "difficulty": 3,
+  "type": "single",
+  "question": "ファイルやディレクトリのコピー・移動を行う高レベルな標準ライブラリはどれか。",
+  "choices": [
+   "shutil",
+   "os.copy",
+   "filecopy",
+   "movelib"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "shutil は shutil.copy/copytree/move/rmtree など高レベルなファイル操作を提供する。",
+  "reference": "shutil"
+ }
+]

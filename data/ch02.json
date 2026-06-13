@@ -1,0 +1,287 @@
+[
+ {
+  "id": "ch02-001",
+  "chapter": 2,
+  "topic": "PEP8",
+  "difficulty": 1,
+  "type": "single",
+  "question": "PEP 8 が推奨するインデントの方法として正しいものはどれか。",
+  "choices": [
+   "スペース4つ",
+   "タブ1つ",
+   "スペース2つ",
+   "タブとスペースの混在"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "PEP 8 はインデントに半角スペース4つを推奨している。タブとスペースの混在は禁止。",
+  "reference": "PEP 8 --- インデント"
+ },
+ {
+  "id": "ch02-002",
+  "chapter": 2,
+  "topic": "PEP8",
+  "difficulty": 1,
+  "type": "single",
+  "question": "PEP 8 が推奨する1行の最大文字数はどれか。",
+  "choices": [
+   "79文字",
+   "80文字",
+   "100文字",
+   "120文字"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "PEP 8 ではコード行は最大79文字、docstring・コメントは72文字を推奨している。",
+  "reference": "PEP 8 --- 行の長さ"
+ },
+ {
+  "id": "ch02-003",
+  "chapter": 2,
+  "topic": "命名規約",
+  "difficulty": 2,
+  "type": "single",
+  "question": "PEP 8 における関数名・変数名の推奨スタイルはどれか。",
+  "choices": [
+   "snake_case（小文字とアンダースコア）",
+   "camelCase",
+   "PascalCase",
+   "UPPER_CASE"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "関数名・変数名は snake_case。クラス名は PascalCase（CapWords）、定数は UPPER_CASE が推奨される。",
+  "reference": "PEP 8 --- 命名規約"
+ },
+ {
+  "id": "ch02-004",
+  "chapter": 2,
+  "topic": "命名規約",
+  "difficulty": 2,
+  "type": "single",
+  "question": "PEP 8 におけるクラス名の推奨スタイルはどれか。",
+  "choices": [
+   "CapWords（PascalCase）",
+   "snake_case",
+   "camelCase",
+   "UPPER_SNAKE_CASE"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "クラス名は各単語の先頭を大文字にする CapWords 方式（例: MyClass）が推奨される。",
+  "reference": "PEP 8 --- クラス名"
+ },
+ {
+  "id": "ch02-005",
+  "chapter": 2,
+  "topic": "命名規約",
+  "difficulty": 2,
+  "type": "single",
+  "question": "PEP 8 における定数の推奨スタイルはどれか。",
+  "choices": [
+   "MAX_COUNT のように全て大文字とアンダースコア",
+   "maxCount",
+   "MaxCount",
+   "max_count"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "モジュールレベルの定数は全て大文字＋アンダースコア区切り（例: MAX_OVERFLOW）が推奨される。",
+  "reference": "PEP 8 --- 定数"
+ },
+ {
+  "id": "ch02-006",
+  "chapter": 2,
+  "topic": "import",
+  "difficulty": 2,
+  "type": "single",
+  "question": "PEP 8 における import 文の並び順として正しいものはどれか。",
+  "choices": [
+   "標準ライブラリ → サードパーティ → ローカル の順にグループ化",
+   "ローカル → サードパーティ → 標準ライブラリ の順",
+   "アルファベット順のみで分類しない",
+   "使う直前に書き、ファイル先頭にまとめない"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "import は (1)標準ライブラリ (2)サードパーティ (3)自作（ローカル）の順にグループ分けし、各グループを空行で区切る。",
+  "reference": "PEP 8 --- インポート"
+ },
+ {
+  "id": "ch02-007",
+  "chapter": 2,
+  "topic": "import",
+  "difficulty": 2,
+  "type": "single",
+  "question": "PEP 8 が推奨する import の書き方として正しいものはどれか。",
+  "choices": [
+   "import os\\nimport sys のように1行に1モジュール",
+   "import os, sys のように1行にまとめる",
+   "from os import * を推奨",
+   "import は関数内に書くのが原則"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "複数モジュールを import するときは1行に1つずつ書く。`import os, sys` は非推奨。ワイルドカード import も避ける。",
+  "reference": "PEP 8 --- インポート"
+ },
+ {
+  "id": "ch02-008",
+  "chapter": 2,
+  "topic": "空白",
+  "difficulty": 2,
+  "type": "single",
+  "question": "PEP 8 の空白に関する規約として正しいものはどれか。",
+  "choices": [
+   "カンマの前には空白を入れず、後ろに1つ入れる",
+   "関数呼び出しの括弧の内側に空白を入れる",
+   "二項演算子の前後に空白を入れない",
+   "代入演算子 = の前後は常に空白を入れない"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "カンマ・セミコロンの前に空白を置かず後ろに1つ。括弧の内側直後には空白を置かない。キーワード引数のデフォルト指定の = は前後に空白を入れない。",
+  "reference": "PEP 8 --- 式と文中の空白"
+ },
+ {
+  "id": "ch02-009",
+  "chapter": 2,
+  "topic": "比較",
+  "difficulty": 2,
+  "type": "single",
+  "question": "PEP 8 が推奨する、None との比較方法はどれか。",
+  "choices": [
+   "if x is None:",
+   "if x == None:",
+   "if x = None:",
+   "if None(x):"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "None はシングルトンなので、`==` ではなく `is` / `is not` で比較するのが PEP 8 の推奨。",
+  "reference": "PEP 8 --- 推奨事項"
+ },
+ {
+  "id": "ch02-010",
+  "chapter": 2,
+  "topic": "docstring",
+  "difficulty": 2,
+  "type": "single",
+  "question": "ドキュメンテーション文字列（docstring）の規約を定めた PEP はどれか。",
+  "choices": [
+   "PEP 257",
+   "PEP 8",
+   "PEP 20",
+   "PEP 484"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "PEP 257 が docstring の規約。PEP 8 はコーディング規約、PEP 20 は The Zen of Python、PEP 484 は型ヒント。",
+  "reference": "PEP 257"
+ },
+ {
+  "id": "ch02-011",
+  "chapter": 2,
+  "topic": "PEP20",
+  "difficulty": 1,
+  "type": "single",
+  "question": "対話モードで `import this` を実行すると表示されるものはどれか。",
+  "choices": [
+   "The Zen of Python（Pythonの設計哲学）",
+   "ライセンス文",
+   "インストール済みパッケージ一覧",
+   "現在時刻"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`import this` は PEP 20「The Zen of Python」を表示するイースターエッグ。",
+  "reference": "PEP 20"
+ },
+ {
+  "id": "ch02-012",
+  "chapter": 2,
+  "topic": "ツール",
+  "difficulty": 2,
+  "type": "single",
+  "question": "PEP 8 準拠かどうかをチェックする静的解析ツールとして代表的なものはどれか。",
+  "choices": [
+   "flake8 / pycodestyle",
+   "pytest",
+   "venv",
+   "pdb"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "pycodestyle（旧 pep8）や flake8 がスタイルチェックに使われる。pytest はテスト、pdb はデバッガ。",
+  "reference": "コーディング規約チェックツール"
+ },
+ {
+  "id": "ch02-013",
+  "chapter": 2,
+  "topic": "コメント",
+  "difficulty": 2,
+  "type": "single",
+  "question": "PEP 8 のコメントに関する規約として正しいものはどれか。",
+  "choices": [
+   "インラインコメントはコードと少なくとも2スペース空け、# の後に1スペース",
+   "コメントは必ず英語で書かなければならない",
+   "ブロックコメントの # の後ろに空白を入れてはならない",
+   "インラインコメントはコードに密着させる"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "インラインコメントは文と最低2スペース空け、`#` の直後に空白を1つ入れる。言語の指定はない。",
+  "reference": "PEP 8 --- コメント"
+ },
+ {
+  "id": "ch02-014",
+  "chapter": 2,
+  "topic": "命名規約",
+  "difficulty": 3,
+  "type": "single",
+  "question": "PEP 8 で、予約語と衝突する場合に推奨される変数名の付け方はどれか。",
+  "choices": [
+   "末尾にアンダースコアを付ける（例: class_）",
+   "先頭に2つアンダースコアを付ける",
+   "全て大文字にする",
+   "数字を付ける（例: class1）"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "予約語と被る場合は、略語や綴り変更より末尾にアンダースコアを付ける（trailing underscore）方法が推奨される。",
+  "reference": "PEP 8 --- 命名のヒント"
+ },
+ {
+  "id": "ch02-015",
+  "chapter": 2,
+  "topic": "PEP8",
+  "difficulty": 3,
+  "type": "single",
+  "question": "PEP 8 における、トップレベルの関数定義やクラス定義の前後に入れる空行の数はどれか。",
+  "choices": [
+   "2行",
+   "1行",
+   "3行",
+   "0行（空けない）"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "トップレベルの関数・クラス定義は前後を2行空ける。クラス内のメソッド定義は1行空ける。",
+  "reference": "PEP 8 --- 空行"
+ }
+]

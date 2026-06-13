@@ -1,0 +1,154 @@
+[
+ {
+  "id": "ch05-001",
+  "chapter": 5,
+  "topic": "型ヒント",
+  "difficulty": 1,
+  "type": "single",
+  "question": "型ヒント（型アノテーション）の仕様を定めた PEP はどれか。",
+  "choices": [
+   "PEP 484",
+   "PEP 8",
+   "PEP 257",
+   "PEP 20"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "PEP 484 が型ヒントを導入した。typing モジュールもこれに基づく。",
+  "reference": "PEP 484"
+ },
+ {
+  "id": "ch05-002",
+  "chapter": 5,
+  "topic": "型ヒント",
+  "difficulty": 1,
+  "type": "single",
+  "question": "関数の引数と戻り値に型ヒントを付ける正しい構文はどれか。",
+  "choices": [
+   "def f(x: int) -> str:",
+   "def f(x is int) returns str:",
+   "def f(int x) -> str:",
+   "def f(x: int) => str:"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "引数は `名前: 型`、戻り値は `-> 型` で書く。",
+  "reference": "型ヒントの構文"
+ },
+ {
+  "id": "ch05-003",
+  "chapter": 5,
+  "topic": "実行時",
+  "difficulty": 2,
+  "type": "single",
+  "question": "Python の型ヒントの実行時の扱いとして正しいものはどれか。",
+  "choices": [
+   "実行時には強制されず、原則チェックされない",
+   "実行時に型が違うと必ず例外になる",
+   "型ヒントを書くと自動でキャストされる",
+   "型ヒントは構文エラーになる"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "型ヒントは原則として実行時に強制されない（ドキュメント・静的解析用）。チェックは mypy 等のツールで行う。",
+  "reference": "型ヒントは実行時に強制されない"
+ },
+ {
+  "id": "ch05-004",
+  "chapter": 5,
+  "topic": "ツール",
+  "difficulty": 2,
+  "type": "single",
+  "question": "型ヒントに基づく静的型チェックを行う代表的なツールはどれか。",
+  "choices": [
+   "mypy",
+   "pytest",
+   "flake8",
+   "black"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "mypy が代表的な静的型チェッカー。pytest はテスト、flake8 はスタイル、black はフォーマッタ。",
+  "reference": "mypy"
+ },
+ {
+  "id": "ch05-005",
+  "chapter": 5,
+  "topic": "typing",
+  "difficulty": 2,
+  "type": "single",
+  "question": "「int のリスト」を表す型ヒントとして適切なものはどれか（Python 3.9以降の組み込み記法）。",
+  "choices": [
+   "list[int]",
+   "List(int)",
+   "int[]",
+   "array[int]"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "Python 3.9 以降は組み込み型で `list[int]` と書ける。以前は typing.List[int] を使った。",
+  "reference": "ジェネリック型 --- list[int]"
+ },
+ {
+  "id": "ch05-006",
+  "chapter": 5,
+  "topic": "Optional",
+  "difficulty": 2,
+  "type": "single",
+  "question": "「int または None」を表す型ヒントとして適切なものはどれか。",
+  "choices": [
+   "Optional[int]",
+   "Maybe[int]",
+   "Nullable[int]",
+   "int?"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "typing.Optional[int] は int | None を意味する。Python 3.10 以降は `int | None` とも書ける。",
+  "reference": "typing.Optional"
+ },
+ {
+  "id": "ch05-007",
+  "chapter": 5,
+  "topic": "Union",
+  "difficulty": 2,
+  "type": "single",
+  "question": "Python 3.10 以降で「int または str」を表す最も簡潔な記法はどれか。",
+  "choices": [
+   "int | str",
+   "int & str",
+   "Union(int, str)",
+   "int, str"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "3.10 以降はパイプ演算子で `int | str` と書ける（PEP 604）。従来は typing.Union[int, str]。",
+  "reference": "Union 型 --- |"
+ },
+ {
+  "id": "ch05-008",
+  "chapter": 5,
+  "topic": "変数アノテーション",
+  "difficulty": 2,
+  "type": "single",
+  "question": "変数に型ヒントだけを付ける正しい構文はどれか。",
+  "choices": [
+   "count: int",
+   "int count",
+   "count = int",
+   "count :: int"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "変数アノテーションは `変数名: 型`（必要なら `= 初期値`）の形式（PEP 526）。",
+  "reference": "変数アノテーション"
+ }
+]

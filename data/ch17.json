@@ -1,0 +1,288 @@
+[
+ {
+  "id": "ch17-001",
+  "chapter": 17,
+  "topic": "pdb",
+  "difficulty": 2,
+  "type": "single",
+  "question": "Python 標準のデバッガはどれか。",
+  "choices": [
+   "pdb",
+   "gdb",
+   "ipdb",
+   "debugpy"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "pdb が標準ライブラリのデバッガ。ipdb・debugpy はサードパーティ。",
+  "reference": "pdb"
+ },
+ {
+  "id": "ch17-002",
+  "chapter": 17,
+  "topic": "breakpoint",
+  "difficulty": 2,
+  "type": "single",
+  "question": "Python 3.7 以降で、コード中に書くだけでデバッガを起動できる組み込み関数はどれか。",
+  "choices": [
+   "breakpoint()",
+   "debug()",
+   "pdb()",
+   "trace()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "breakpoint() は 3.7 で追加。既定で pdb.set_trace() を呼ぶ。環境変数 PYTHONBREAKPOINT で切替可能。",
+  "reference": "breakpoint()"
+ },
+ {
+  "id": "ch17-003",
+  "chapter": 17,
+  "topic": "pdb",
+  "difficulty": 3,
+  "type": "single",
+  "question": "コード内で実行を止めて pdb を起動する従来の関数呼び出しはどれか。",
+  "choices": [
+   "pdb.set_trace()",
+   "pdb.start()",
+   "pdb.run_here()",
+   "pdb.break()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "import pdb; pdb.set_trace() で対話デバッグに入る。breakpoint() はこれの新しい入口。",
+  "reference": "pdb.set_trace"
+ },
+ {
+  "id": "ch17-004",
+  "chapter": 17,
+  "topic": "pdb コマンド",
+  "difficulty": 3,
+  "type": "single",
+  "question": "pdb の対話中で『次の行へ進む（関数には入らない）』コマンドはどれか。",
+  "choices": [
+   "n (next)",
+   "s (step)",
+   "c (continue)",
+   "q (quit)"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "n は次行へ（ステップオーバー）、s は関数内へ入る（ステップイン）、c は次のブレークまで継続。",
+  "reference": "pdb --- コマンド"
+ },
+ {
+  "id": "ch17-005",
+  "chapter": 17,
+  "topic": "pdb コマンド",
+  "difficulty": 3,
+  "type": "single",
+  "question": "pdb で『関数の内部へ入る（ステップイン）』コマンドはどれか。",
+  "choices": [
+   "s (step)",
+   "n (next)",
+   "r (return)",
+   "l (list)"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "s は呼び出し先の関数に入る。n は関数を実行して次行に進む。",
+  "reference": "pdb --- step"
+ },
+ {
+  "id": "ch17-006",
+  "chapter": 17,
+  "topic": "traceback",
+  "difficulty": 2,
+  "type": "single",
+  "question": "例外発生時に表示される、呼び出し履歴付きのエラー情報を何と呼ぶか。",
+  "choices": [
+   "トレースバック（traceback）",
+   "スタックダンプ",
+   "コアダンプ",
+   "ログレベル"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "例外時に出る呼び出し履歴付きのメッセージがトレースバック。traceback モジュールで整形・取得できる。",
+  "reference": "traceback"
+ },
+ {
+  "id": "ch17-007",
+  "chapter": 17,
+  "topic": "traceback",
+  "difficulty": 3,
+  "type": "single",
+  "question": "捕捉した例外のトレースバックを文字列やコンソールに出力する標準ライブラリはどれか。",
+  "choices": [
+   "traceback",
+   "sys.exc",
+   "inspect",
+   "warnings"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "traceback.print_exc() や format_exc() でトレースバックを出力・取得できる。",
+  "reference": "traceback モジュール"
+ },
+ {
+  "id": "ch17-008",
+  "chapter": 17,
+  "topic": "assert",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードを通常実行（最適化なし）したときの挙動として正しいものはどれか。",
+  "choices": [
+   "AssertionError が送出される",
+   "False と表示される",
+   "何も起きずに終了",
+   "SyntaxError"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "assert 条件 は条件が偽のとき AssertionError を送出する。デバッグ・前提条件チェックに使う。",
+  "code": "try:\n    assert 1 == 2\nexcept AssertionError:\n    print('AssertionError が送出される')",
+  "reference": "assert 文"
+ },
+ {
+  "id": "ch17-009",
+  "chapter": 17,
+  "topic": "assert",
+  "difficulty": 3,
+  "type": "single",
+  "question": "Python を `-O`（最適化）オプション付きで実行したときの assert の扱いはどれか。",
+  "choices": [
+   "assert 文は無効化される（実行されない）",
+   "assert がより厳密になる",
+   "全ての例外が無視される",
+   "影響はない"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`-O` 実行時は __debug__ が False になり assert 文が取り除かれる。前提保証を assert だけに頼らない理由。",
+  "reference": "assert と -O オプション"
+ },
+ {
+  "id": "ch17-010",
+  "chapter": 17,
+  "topic": "warnings",
+  "difficulty": 3,
+  "type": "single",
+  "question": "将来非推奨になる機能などについて、実行を止めずに警告を出す標準ライブラリはどれか。",
+  "choices": [
+   "warnings",
+   "logging",
+   "exceptions",
+   "alerts"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "warnings.warn(...) で警告を出せる。DeprecationWarning などのカテゴリがある。",
+  "reference": "warnings"
+ },
+ {
+  "id": "ch17-011",
+  "chapter": 17,
+  "topic": "logging",
+  "difficulty": 2,
+  "type": "single",
+  "question": "print デバッグの代わりに、レベル付き・出力先制御が可能なデバッグ手段として推奨されるのはどれか。",
+  "choices": [
+   "logging モジュール",
+   "コメントアウト",
+   "time.sleep",
+   "input()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "logging は出力レベルやフォーマット、出力先を制御でき、print デバッグより保守的。",
+  "reference": "logging によるデバッグ"
+ },
+ {
+  "id": "ch17-012",
+  "chapter": 17,
+  "topic": "pprint",
+  "difficulty": 2,
+  "type": "single",
+  "question": "ネストした大きなデータ構造を見やすく整形して表示する標準ライブラリはどれか。",
+  "choices": [
+   "pprint",
+   "prettyprint",
+   "format",
+   "display"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "pprint.pprint は辞書やリストを整形（インデント・改行）して表示する。",
+  "reference": "pprint"
+ },
+ {
+  "id": "ch17-013",
+  "chapter": 17,
+  "topic": "inspect",
+  "difficulty": 3,
+  "type": "single",
+  "question": "実行中のオブジェクトのソースや引数情報などを調べる標準ライブラリはどれか。",
+  "choices": [
+   "inspect",
+   "dis",
+   "trace",
+   "reflection"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "inspect は関数のシグネチャやソース、スタックフレームなどを調べられる。",
+  "reference": "inspect"
+ },
+ {
+  "id": "ch17-014",
+  "chapter": 17,
+  "topic": "timeit",
+  "difficulty": 3,
+  "type": "single",
+  "question": "小さなコード断片の実行時間を計測する標準ライブラリはどれか。",
+  "choices": [
+   "timeit",
+   "time.clock",
+   "profile2",
+   "benchmark"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "timeit はコードを多数回実行して所要時間を計測する。マイクロベンチマーク向け。",
+  "reference": "timeit"
+ },
+ {
+  "id": "ch17-015",
+  "chapter": 17,
+  "topic": "cProfile",
+  "difficulty": 3,
+  "type": "single",
+  "question": "関数ごとの呼び出し回数や所要時間を計測（プロファイリング）する標準ライブラリはどれか。",
+  "choices": [
+   "cProfile",
+   "timeit",
+   "pdb",
+   "trace"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "cProfile は実行をプロファイルし、関数単位の統計を出力する。ボトルネック特定に使う。",
+  "reference": "cProfile"
+ }
+]

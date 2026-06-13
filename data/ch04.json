@@ -1,0 +1,311 @@
+[
+ {
+  "id": "ch04-001",
+  "chapter": 4,
+  "topic": "コンストラクタ",
+  "difficulty": 1,
+  "type": "single",
+  "question": "インスタンス生成時に自動的に呼ばれる初期化メソッドはどれか。",
+  "choices": [
+   "__init__",
+   "__new__",
+   "__call__",
+   "__construct__"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`__init__` がインスタンスの初期化メソッド。__new__ は実際のインスタンス生成（通常は意識しない）。",
+  "reference": "クラス --- __init__"
+ },
+ {
+  "id": "ch04-002",
+  "chapter": 4,
+  "topic": "self",
+  "difficulty": 1,
+  "type": "single",
+  "question": "インスタンスメソッドの第1引数として慣例的に使われる名前はどれか。",
+  "choices": [
+   "self",
+   "this",
+   "cls",
+   "me"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "インスタンスメソッドの第1引数は慣例で `self`（インスタンス自身）。クラスメソッドでは `cls`。",
+  "reference": "メソッド --- self"
+ },
+ {
+  "id": "ch04-003",
+  "chapter": 4,
+  "topic": "クラス変数",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "dog",
+   "Animal",
+   "None",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "クラス変数 kind はインスタンスから参照できる。a.kind は 'dog'。",
+  "code": "class Animal:\n    kind = 'dog'\na = Animal()\nprint(a.kind)",
+  "reference": "クラス変数"
+ },
+ {
+  "id": "ch04-004",
+  "chapter": 4,
+  "topic": "継承",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "bark",
+   "sound",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "Dog は Animal を継承し speak をオーバーライドしている。d.speak() は 'bark'。",
+  "code": "class Animal:\n    def speak(self):\n        return 'sound'\nclass Dog(Animal):\n    def speak(self):\n        return 'bark'\nprint(Dog().speak())",
+  "reference": "継承とオーバーライド"
+ },
+ {
+  "id": "ch04-005",
+  "chapter": 4,
+  "topic": "super",
+  "difficulty": 2,
+  "type": "single",
+  "question": "親クラスのメソッドを子クラスから呼び出す組み込み関数はどれか。",
+  "choices": [
+   "super()",
+   "parent()",
+   "base()",
+   "self.super"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`super()` で親クラス（MRO上の次のクラス）のメソッドを呼べる。",
+  "reference": "super()"
+ },
+ {
+  "id": "ch04-006",
+  "chapter": 4,
+  "topic": "super",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "hello from A",
+   "hello from B",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "B.greet が super().greet() で A.greet を呼ぶため 'hello from A' が出力される。",
+  "code": "class A:\n    def greet(self):\n        print('hello from A')\nclass B(A):\n    def greet(self):\n        super().greet()\nB().greet()",
+  "reference": "super() による親メソッド呼び出し"
+ },
+ {
+  "id": "ch04-007",
+  "chapter": 4,
+  "topic": "クラスメソッド",
+  "difficulty": 2,
+  "type": "single",
+  "question": "クラスメソッドを定義するデコレータはどれか。",
+  "choices": [
+   "@classmethod",
+   "@staticmethod",
+   "@property",
+   "@classfunc"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`@classmethod` は第1引数に cls を取るクラスメソッドを定義する。",
+  "reference": "@classmethod"
+ },
+ {
+  "id": "ch04-008",
+  "chapter": 4,
+  "topic": "スタティックメソッド",
+  "difficulty": 2,
+  "type": "single",
+  "question": "self も cls も受け取らないメソッドを定義するデコレータはどれか。",
+  "choices": [
+   "@staticmethod",
+   "@classmethod",
+   "@property",
+   "@method"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`@staticmethod` は self/cls を取らず、名前空間としてクラスに属するだけのメソッド。",
+  "reference": "@staticmethod"
+ },
+ {
+  "id": "ch04-009",
+  "chapter": 4,
+  "topic": "プロパティ",
+  "difficulty": 2,
+  "type": "single",
+  "question": "メソッドを属性のようにアクセスできるようにするデコレータはどれか。",
+  "choices": [
+   "@property",
+   "@attribute",
+   "@getter",
+   "@field"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`@property` を付けると、メソッドを括弧なしの属性アクセスで呼び出せる（ゲッター）。",
+  "reference": "@property"
+ },
+ {
+  "id": "ch04-010",
+  "chapter": 4,
+  "topic": "特殊メソッド",
+  "difficulty": 2,
+  "type": "single",
+  "question": "print() や str() に渡したときの「人間向け」文字列表現を返す特殊メソッドはどれか。",
+  "choices": [
+   "__str__",
+   "__repr__",
+   "__format__",
+   "__print__"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`__str__` は print/str 向けの読みやすい表現、`__repr__` は開発者向けの厳密な表現を返す。",
+  "reference": "特殊メソッド --- __str__"
+ },
+ {
+  "id": "ch04-011",
+  "chapter": 4,
+  "topic": "特殊メソッド",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "P(1, 2)",
+   "<__main__.P object>",
+   "(1, 2)",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "__repr__ を定義すると repr() や対話表示で使われる。ここでは print(repr(p)) 相当ではないが、__repr__ の戻り値が表示される。",
+  "code": "class P:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n    def __repr__(self):\n        return f'P({self.x}, {self.y})'\nprint(P(1, 2))",
+  "reference": "__repr__"
+ },
+ {
+  "id": "ch04-012",
+  "chapter": 4,
+  "topic": "特殊メソッド",
+  "difficulty": 3,
+  "type": "single",
+  "question": "len(obj) を可能にするために実装すべき特殊メソッドはどれか。",
+  "choices": [
+   "__len__",
+   "__length__",
+   "__size__",
+   "__count__"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "組み込み len() はオブジェクトの `__len__` を呼ぶ。",
+  "reference": "特殊メソッド --- __len__"
+ },
+ {
+  "id": "ch04-013",
+  "chapter": 4,
+  "topic": "カプセル化",
+  "difficulty": 2,
+  "type": "single",
+  "question": "Python で「外部から触れてほしくない」ことを示す、属性名の慣例はどれか。",
+  "choices": [
+   "先頭にアンダースコア1つ（_name）",
+   "末尾にアンダースコア（name_）",
+   "全て大文字（NAME）",
+   "@private を付ける"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "先頭 `_` は「内部用」という慣習的マーカー（強制力はない）。先頭 `__`（2つ）は名前マングリングが起こる。",
+  "reference": "命名 --- 非公開属性"
+ },
+ {
+  "id": "ch04-014",
+  "chapter": 4,
+  "topic": "名前マングリング",
+  "difficulty": 3,
+  "type": "single",
+  "question": "クラス内で `__x`（先頭アンダースコア2つ）と定義した属性に対して起こることはどれか。",
+  "choices": [
+   "_クラス名__x に名前が変換される（名前マングリング）",
+   "完全に外部からアクセス不可能になる",
+   "自動的に property になる",
+   "定数になる"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "先頭2つのアンダースコアは `_ClassName__x` へ変換され、サブクラスとの名前衝突を避ける（完全な private ではない）。",
+  "reference": "名前マングリング"
+ },
+ {
+  "id": "ch04-015",
+  "chapter": 4,
+  "topic": "isinstance",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "True",
+   "False",
+   "エラー",
+   "Dog"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "isinstance はサブクラスのインスタンスも True とする。Dog は Animal のサブクラスなので True。",
+  "code": "class Animal: pass\nclass Dog(Animal): pass\nprint(isinstance(Dog(), Animal))",
+  "reference": "isinstance と継承"
+ },
+ {
+  "id": "ch04-016",
+  "chapter": 4,
+  "topic": "dataclass",
+  "difficulty": 3,
+  "type": "single",
+  "question": "__init__ や __repr__ を自動生成するためにクラスへ付けるデコレータはどれか。",
+  "choices": [
+   "@dataclass",
+   "@struct",
+   "@record",
+   "@autoinit"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "標準ライブラリ dataclasses の `@dataclass` を付けると、フィールドから __init__・__repr__・__eq__ などを自動生成する。",
+  "reference": "dataclasses.dataclass"
+ }
+]

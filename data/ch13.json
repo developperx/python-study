@@ -1,0 +1,427 @@
+[
+ {
+  "id": "ch13-001",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 1,
+  "type": "single",
+  "question": "Python オブジェクトを JSON 文字列に変換する関数はどれか。",
+  "choices": [
+   "json.dumps",
+   "json.loads",
+   "json.parse",
+   "json.encode"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "json.dumps はオブジェクト→JSON文字列、json.loads は JSON文字列→オブジェクト。s 付きが文字列版。",
+  "reference": "json.dumps"
+ },
+ {
+  "id": "ch13-002",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "{\"a\": 1}",
+   "{'a': 1}",
+   "a=1",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "json.dumps は JSON 形式の文字列を返す。JSON ではキーも文字列でダブルクォートになる。",
+  "code": "import json\nprint(json.dumps({'a': 1}))",
+  "reference": "json.dumps の出力"
+ },
+ {
+  "id": "ch13-003",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "<class 'dict'>",
+   "<class 'str'>",
+   "<class 'list'>",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "json.loads は JSON文字列を Python オブジェクト（オブジェクト→dict）に変換する。",
+  "code": "import json\nprint(type(json.loads('{\"a\": 1}')))",
+  "reference": "json.loads"
+ },
+ {
+  "id": "ch13-004",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 3,
+  "type": "single",
+  "question": "json.dumps で日本語を `\\uXXXX` にエスケープせず、そのまま出力するための引数はどれか。",
+  "choices": [
+   "ensure_ascii=False",
+   "ascii=False",
+   "encoding='utf-8'",
+   "raw=True"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "ensure_ascii=False を指定すると非ASCII文字をそのまま出力する。既定は True でエスケープされる。",
+  "reference": "json.dumps --- ensure_ascii"
+ },
+ {
+  "id": "ch13-005",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 3,
+  "type": "single",
+  "question": "json.dumps で人間が読みやすいようインデントを付ける引数はどれか。",
+  "choices": [
+   "indent",
+   "pretty",
+   "spaces",
+   "tab"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "indent=2 のように指定すると整形（pretty print）される。",
+  "reference": "json.dumps --- indent"
+ },
+ {
+  "id": "ch13-006",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 2,
+  "type": "single",
+  "question": "ファイルオブジェクトに直接 JSON を書き出す関数はどれか。",
+  "choices": [
+   "json.dump",
+   "json.dumps",
+   "json.write",
+   "json.tofile"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "json.dump(obj, f) はファイルへ書き出す。json.dumps は文字列を返す（s=string）。",
+  "reference": "json.dump / json.load"
+ },
+ {
+  "id": "ch13-007",
+  "chapter": 13,
+  "topic": "csv",
+  "difficulty": 2,
+  "type": "single",
+  "question": "CSV ファイルを扱う標準ライブラリはどれか。",
+  "choices": [
+   "csv",
+   "table",
+   "spreadsheet",
+   "tsv"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "csv モジュールが CSV の読み書きを提供する。csv.reader / csv.writer など。",
+  "reference": "csv モジュール"
+ },
+ {
+  "id": "ch13-008",
+  "chapter": 13,
+  "topic": "csv",
+  "difficulty": 3,
+  "type": "single",
+  "question": "CSV の各行を辞書として読み込めるクラスはどれか（先頭行をキーにする）。",
+  "choices": [
+   "csv.DictReader",
+   "csv.HeaderReader",
+   "csv.MapReader",
+   "csv.reader"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "csv.DictReader はヘッダ行をキーとして各行を辞書で返す。書き込みは csv.DictWriter。",
+  "reference": "csv.DictReader"
+ },
+ {
+  "id": "ch13-009",
+  "chapter": 13,
+  "topic": "csv",
+  "difficulty": 3,
+  "type": "single",
+  "question": "csv.writer で行を書き込むとき、Windows でも余計な空行を防ぐためにファイルを開く際に指定すべき引数はどれか。",
+  "choices": [
+   "newline=''",
+   "binary=True",
+   "mode='wb'",
+   "lineterminator=None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "csv 書き込みでは open(path, 'w', newline='') を使うのが定石。改行の二重化を防ぐ。",
+  "reference": "csv --- newline=''"
+ },
+ {
+  "id": "ch13-010",
+  "chapter": 13,
+  "topic": "pickle",
+  "difficulty": 2,
+  "type": "single",
+  "question": "Python オブジェクトをバイト列に直列化（シリアライズ）する標準ライブラリはどれか。",
+  "choices": [
+   "pickle",
+   "json",
+   "marshal2",
+   "serialize"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "pickle は Python 固有のバイナリ直列化。json と違い任意の Python オブジェクトを扱えるが、互換性・安全性に注意。",
+  "reference": "pickle"
+ },
+ {
+  "id": "ch13-011",
+  "chapter": 13,
+  "topic": "pickle",
+  "difficulty": 3,
+  "type": "single",
+  "question": "pickle の利用上の注意として正しいものはどれか。",
+  "choices": [
+   "信頼できないデータを unpickle すると任意コード実行の危険がある",
+   "JSON より常に安全である",
+   "他言語と容易に相互運用できる",
+   "テキスト形式なので人間が読める"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "pickle.load は信頼できないソースに対して安全でない（任意コード実行の恐れ）。外部入力には使わない。",
+  "reference": "pickle --- セキュリティ"
+ },
+ {
+  "id": "ch13-012",
+  "chapter": 13,
+  "topic": "configparser",
+  "difficulty": 2,
+  "type": "single",
+  "question": "INI 形式の設定ファイルを読み書きする標準ライブラリはどれか。",
+  "choices": [
+   "configparser",
+   "inifile",
+   "settings",
+   "config"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "configparser が INI 形式（[section] key=value）を扱う。",
+  "reference": "configparser"
+ },
+ {
+  "id": "ch13-013",
+  "chapter": 13,
+  "topic": "sqlite3",
+  "difficulty": 2,
+  "type": "single",
+  "question": "追加サーバ不要で使える、標準ライブラリ同梱のデータベースはどれか。",
+  "choices": [
+   "sqlite3",
+   "mysql",
+   "postgres",
+   "redis"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "sqlite3 は標準ライブラリに含まれ、ファイルベースのDBを扱える。",
+  "reference": "sqlite3"
+ },
+ {
+  "id": "ch13-014",
+  "chapter": 13,
+  "topic": "sqlite3",
+  "difficulty": 3,
+  "type": "single",
+  "question": "sqlite3 でSQLを実行するために、接続から取得して使うオブジェクトはどれか。",
+  "choices": [
+   "カーソル（cursor）",
+   "セッション",
+   "エンジン",
+   "トランザクタ"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "connection.cursor() で得たカーソルの execute でSQLを実行し、fetchone/fetchall で結果を取る。",
+  "reference": "sqlite3 --- cursor"
+ },
+ {
+  "id": "ch13-015",
+  "chapter": 13,
+  "topic": "base64",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "b'YWJj'",
+   "abc",
+   "b'abc'",
+   "YWJj"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "base64.b64encode はバイト列を Base64 のバイト列に変換する。'abc' は b'YWJj'。",
+  "code": "import base64\nprint(base64.b64encode(b'abc'))",
+  "reference": "base64.b64encode"
+ },
+ {
+  "id": "ch13-016",
+  "chapter": 13,
+  "topic": "base64",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "b'abc'",
+   "abc",
+   "YWJj",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "base64.b64decode は Base64 を元のバイト列に戻す。b'YWJj' → b'abc'。",
+  "code": "import base64\nprint(base64.b64decode(b'YWJj'))",
+  "reference": "base64.b64decode"
+ },
+ {
+  "id": "ch13-017",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 2,
+  "type": "single",
+  "question": "JSON の値 null は Python では何に変換されるか。",
+  "choices": [
+   "None",
+   "0",
+   "''",
+   "False"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "JSON の null は Python の None、true/false は True/False に対応する。",
+  "reference": "json --- null と None"
+ },
+ {
+  "id": "ch13-018",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "{\"b\": 1, \"a\": 2}",
+   "{\"a\": 2, \"b\": 1}",
+   "{'b': 1, 'a': 2}",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "json.dumps は既定で辞書の挿入順を保つ。sort_keys=True を付けない限り並べ替えない。",
+  "code": "import json\nprint(json.dumps({'b': 1, 'a': 2}))",
+  "reference": "json.dumps --- 順序"
+ },
+ {
+  "id": "ch13-019",
+  "chapter": 13,
+  "topic": "csv",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "['a', 'b', 'c']",
+   "['a,b,c']",
+   "'a,b,c'",
+   "[['a'], ['b'], ['c']]"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "csv.reader は1行をフィールドのリストに分割する。ここでは1行 'a,b,c' を読み ['a', 'b', 'c']。",
+  "code": "import csv, io\nr = csv.reader(io.StringIO('a,b,c'))\nprint(next(r))",
+  "reference": "csv.reader"
+ },
+ {
+  "id": "ch13-020",
+  "chapter": 13,
+  "topic": "tomllib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "Python 3.11 で標準ライブラリに追加された、TOML を読み込むモジュールはどれか。",
+  "choices": [
+   "tomllib",
+   "toml",
+   "tomlparser",
+   "configtoml"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "Python 3.11 から tomllib が標準で TOML の読み込みに対応した（書き込みは非対応）。",
+  "reference": "tomllib"
+ },
+ {
+  "id": "ch13-021",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力として正しいものはどれか。",
+  "choices": [
+   "[1, 2, 3]",
+   "(1, 2, 3)",
+   "{1, 2, 3}",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "JSON 配列は Python のリストに変換される。",
+  "code": "import json\nprint(json.loads('[1, 2, 3]'))",
+  "reference": "json.loads --- 配列"
+ },
+ {
+  "id": "ch13-022",
+  "chapter": 13,
+  "topic": "gzip以外",
+  "difficulty": 2,
+  "type": "single",
+  "question": "CSV と JSON の使い分けに関する説明として最も適切なものはどれか。",
+  "choices": [
+   "表形式・行指向のデータには CSV、入れ子構造を含むデータには JSON が向く",
+   "JSON は表形式しか表現できない",
+   "CSV は階層構造を自然に表現できる",
+   "両者は完全に同一で違いはない"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "CSV はフラットな表データ向け、JSON は入れ子（オブジェクト・配列）を表現できる点が強み。",
+  "reference": "データ形式の選択"
+ }
+]
