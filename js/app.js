@@ -386,22 +386,36 @@ function revealAnswer(q, multi) {
   saveCurrent();
   const ok = isCorrect(q, SELECTED);
   store.recordAnswer(q.id, ok);
-  const ans = new Set(Array.isArray(q.answer) ? q.answer : [q.answer]);
-  appEl.querySelectorAll('.choice').forEach((btn) => {
-    const i = Number(btn.dataset.i);
-    btn.classList.remove('is-selected');
-    if (ans.has(i)) btn.classList.add('is-correct');
-    else if (SELECTED.includes(i)) btn.classList.add('is-wrong');
-    btn.disabled = true;
-  });
+  // 選択肢を「正誤＋理由つき」の静的表示に差し替える
+  document.getElementById('choices').innerHTML = annotatedChoicesHtml(q, SELECTED);
   document.getElementById('explain').innerHTML = explanationHtml(q, ok);
   document.getElementById('checkBtn').style.display = 'none';
   document.getElementById('nextBtn').style.display = '';
 }
 
+// 各選択肢を正誤マーク＋個別理由つきで描画する（採点後・見直し共通）
+function annotatedChoicesHtml(q, selected) {
+  const ans = new Set(Array.isArray(q.answer) ? q.answer : [q.answer]);
+  const sel = new Set(selected || []);
+  return q.choices.map((c, idx) => {
+    const correct = ans.has(idx);
+    let cls = 'choice choice--static';
+    if (correct) cls += ' is-correct';
+    else if (sel.has(idx)) cls += ' is-wrong';
+    const rat = (q.rationales && q.rationales[idx]) ? q.rationales[idx] : (correct ? '正解。' : '不正解。');
+    return `<div class="${cls}">
+      <span class="choice__mark">${correct ? '✓' : '✗'}</span>
+      <div class="choice__col">
+        <div class="choice__body">${MARK(idx)}. ${escapeHtml(c)}${sel.has(idx) ? ' <span class="choice__picked">あなたの解答</span>' : ''}</div>
+        <div class="choice__rat">${escapeHtml(rat)}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
 function explanationHtml(q, ok) {
   return `<div class="explanation ${ok ? 'explanation--correct' : 'explanation--wrong'}">
-    <div class="explanation__head">${ok ? '✅ 正解' : '❌ 不正解'}</div>
+    <div class="explanation__head">${ok ? '✅ 正解' : '❌ 不正解'} ・ 総合解説</div>
     <div>${escapeHtml(q.explanation)}</div>
     ${q.reference ? `<div class="explanation__ref">📘 参考: ${escapeHtml(q.reference)}</div>` : ''}
   </div>`;
@@ -476,26 +490,19 @@ function renderResult(result) {
 
 function questionReviewHtml(d, i) {
   const q = d.q;
-  const ans = new Set(Array.isArray(q.answer) ? q.answer : [q.answer]);
-  const choices = q.choices.map((c, idx) => {
-    let cls = 'choice';
-    if (ans.has(idx)) cls += ' is-correct';
-    else if (d.selected.includes(idx)) cls += ' is-wrong';
-    return `<div class="${cls}"><span class="choice__mark">${MARK(idx)}</span><span class="choice__body">${escapeHtml(c)}</span></div>`;
-  }).join('');
   return `<div class="card" style="background:var(--bg-soft)">
     <div class="qmeta">
       <span class="tag tag--ch">${chLabel(q.chapter)}</span>
       ${q.topic ? `<span class="tag">${escapeHtml(q.topic)}</span>` : ''}
-      <span class="tag ${d.correct ? '' : ''}" style="color:${d.correct ? 'var(--green)' : 'var(--red)'}">${d.correct ? '正解' : '不正解'}</span>
+      <span class="tag" style="color:${d.correct ? 'var(--green)' : 'var(--red)'}">${d.correct ? '正解' : '不正解'}</span>
       <span class="spacer"></span>
       <button class="tag" data-bm="${q.id}">${store.isBookmarked(q.id) ? '★ 保存済' : '☆ 保存'}</button>
     </div>
     <div class="question-text" style="font-size:15px">${i + 1}. ${escapeHtml(q.question)}</div>
     ${codeBlock(q.code)}
-    <div class="choices">${choices}</div>
+    <div class="choices">${annotatedChoicesHtml(q, d.selected)}</div>
     <div class="explanation ${d.correct ? 'explanation--correct' : 'explanation--wrong'}">
-      <div class="explanation__head">解説</div>
+      <div class="explanation__head">総合解説</div>
       <div>${escapeHtml(q.explanation)}</div>
       ${q.reference ? `<div class="explanation__ref">📘 参考: ${escapeHtml(q.reference)}</div>` : ''}
     </div>

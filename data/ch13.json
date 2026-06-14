@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "json.dumps はオブジェクト→JSON文字列、json.loads は JSON文字列→オブジェクト。s 付きが文字列版。",
+  "explanation": "dumps は obj→str。",
+  "rationales": [
+   "正解。dumps が JSON 文字列を生成。",
+   "不正解。loads は逆変換。",
+   "不正解。json.parse は無い。",
+   "不正解。json.encode は無い。"
+  ],
   "reference": "json.dumps"
  },
  {
@@ -24,7 +30,7 @@
   "topic": "json",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "{\"a\": 1}",
    "{'a': 1}",
@@ -34,7 +40,13 @@
   "answer": [
    0
   ],
-  "explanation": "json.dumps は JSON 形式の文字列を返す。JSON ではキーも文字列でダブルクォートになる。",
+  "explanation": "JSON はダブルクォート。",
+  "rationales": [
+   "正解。JSON では文字列がダブルクォート。",
+   "不正解。シングルではない。",
+   "不正解。key=value 形式ではない。",
+   "不正解。正常動作。"
+  ],
   "code": "import json\nprint(json.dumps({'a': 1}))",
   "reference": "json.dumps の出力"
  },
@@ -44,7 +56,7 @@
   "topic": "json",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "<class 'dict'>",
    "<class 'str'>",
@@ -54,7 +66,13 @@
   "answer": [
    0
   ],
-  "explanation": "json.loads は JSON文字列を Python オブジェクト（オブジェクト→dict）に変換する。",
+  "explanation": "loads は obj 化。",
+  "rationales": [
+   "正解。JSON オブジェクトは dict に。",
+   "不正解。文字列のままではない。",
+   "不正解。list ではない。",
+   "不正解。正常動作。"
+  ],
   "code": "import json\nprint(type(json.loads('{\"a\": 1}')))",
   "reference": "json.loads"
  },
@@ -64,7 +82,7 @@
   "topic": "json",
   "difficulty": 3,
   "type": "single",
-  "question": "json.dumps で日本語を `\\uXXXX` にエスケープせず、そのまま出力するための引数はどれか。",
+  "question": "json.dumps で日本語をそのまま出力する引数はどれか。",
   "choices": [
    "ensure_ascii=False",
    "ascii=False",
@@ -74,7 +92,13 @@
   "answer": [
    0
   ],
-  "explanation": "ensure_ascii=False を指定すると非ASCII文字をそのまま出力する。既定は True でエスケープされる。",
+  "explanation": "ensure_ascii=False。",
+  "rationales": [
+   "正解。False で非ASCIIをエスケープしない。",
+   "不正解。ascii 引数は無い。",
+   "不正解。dumps に encoding は無い。",
+   "不正解。raw は無い。"
+  ],
   "reference": "json.dumps --- ensure_ascii"
  },
  {
@@ -83,7 +107,7 @@
   "topic": "json",
   "difficulty": 3,
   "type": "single",
-  "question": "json.dumps で人間が読みやすいようインデントを付ける引数はどれか。",
+  "question": "json.dumps で整形（インデント）する引数はどれか。",
   "choices": [
    "indent",
    "pretty",
@@ -93,7 +117,13 @@
   "answer": [
    0
   ],
-  "explanation": "indent=2 のように指定すると整形（pretty print）される。",
+  "explanation": "indent。",
+  "rationales": [
+   "正解。indent=2 等で整形。",
+   "不正解。pretty は無い。",
+   "不正解。spaces は無い。",
+   "不正解。tab は無い。"
+  ],
   "reference": "json.dumps --- indent"
  },
  {
@@ -102,7 +132,7 @@
   "topic": "json",
   "difficulty": 2,
   "type": "single",
-  "question": "ファイルオブジェクトに直接 JSON を書き出す関数はどれか。",
+  "question": "ファイルへ直接 JSON を書き出す関数はどれか。",
   "choices": [
    "json.dump",
    "json.dumps",
@@ -112,227 +142,22 @@
   "answer": [
    0
   ],
-  "explanation": "json.dump(obj, f) はファイルへ書き出す。json.dumps は文字列を返す（s=string）。",
-  "reference": "json.dump / json.load"
+  "explanation": "dump はファイル、dumps は文字列。",
+  "rationales": [
+   "正解。dump(obj, f) がファイルへ書く。",
+   "不正解。dumps は文字列を返す。",
+   "不正解。json.write は無い。",
+   "不正解。json.tofile は無い。"
+  ],
+  "reference": "json.dump / load"
  },
  {
   "id": "ch13-007",
   "chapter": 13,
-  "topic": "csv",
-  "difficulty": 2,
-  "type": "single",
-  "question": "CSV ファイルを扱う標準ライブラリはどれか。",
-  "choices": [
-   "csv",
-   "table",
-   "spreadsheet",
-   "tsv"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "csv モジュールが CSV の読み書きを提供する。csv.reader / csv.writer など。",
-  "reference": "csv モジュール"
- },
- {
-  "id": "ch13-008",
-  "chapter": 13,
-  "topic": "csv",
-  "difficulty": 3,
-  "type": "single",
-  "question": "CSV の各行を辞書として読み込めるクラスはどれか（先頭行をキーにする）。",
-  "choices": [
-   "csv.DictReader",
-   "csv.HeaderReader",
-   "csv.MapReader",
-   "csv.reader"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "csv.DictReader はヘッダ行をキーとして各行を辞書で返す。書き込みは csv.DictWriter。",
-  "reference": "csv.DictReader"
- },
- {
-  "id": "ch13-009",
-  "chapter": 13,
-  "topic": "csv",
-  "difficulty": 3,
-  "type": "single",
-  "question": "csv.writer で行を書き込むとき、Windows でも余計な空行を防ぐためにファイルを開く際に指定すべき引数はどれか。",
-  "choices": [
-   "newline=''",
-   "binary=True",
-   "mode='wb'",
-   "lineterminator=None"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "csv 書き込みでは open(path, 'w', newline='') を使うのが定石。改行の二重化を防ぐ。",
-  "reference": "csv --- newline=''"
- },
- {
-  "id": "ch13-010",
-  "chapter": 13,
-  "topic": "pickle",
-  "difficulty": 2,
-  "type": "single",
-  "question": "Python オブジェクトをバイト列に直列化（シリアライズ）する標準ライブラリはどれか。",
-  "choices": [
-   "pickle",
-   "json",
-   "marshal2",
-   "serialize"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "pickle は Python 固有のバイナリ直列化。json と違い任意の Python オブジェクトを扱えるが、互換性・安全性に注意。",
-  "reference": "pickle"
- },
- {
-  "id": "ch13-011",
-  "chapter": 13,
-  "topic": "pickle",
-  "difficulty": 3,
-  "type": "single",
-  "question": "pickle の利用上の注意として正しいものはどれか。",
-  "choices": [
-   "信頼できないデータを unpickle すると任意コード実行の危険がある",
-   "JSON より常に安全である",
-   "他言語と容易に相互運用できる",
-   "テキスト形式なので人間が読める"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "pickle.load は信頼できないソースに対して安全でない（任意コード実行の恐れ）。外部入力には使わない。",
-  "reference": "pickle --- セキュリティ"
- },
- {
-  "id": "ch13-012",
-  "chapter": 13,
-  "topic": "configparser",
-  "difficulty": 2,
-  "type": "single",
-  "question": "INI 形式の設定ファイルを読み書きする標準ライブラリはどれか。",
-  "choices": [
-   "configparser",
-   "inifile",
-   "settings",
-   "config"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "configparser が INI 形式（[section] key=value）を扱う。",
-  "reference": "configparser"
- },
- {
-  "id": "ch13-013",
-  "chapter": 13,
-  "topic": "sqlite3",
-  "difficulty": 2,
-  "type": "single",
-  "question": "追加サーバ不要で使える、標準ライブラリ同梱のデータベースはどれか。",
-  "choices": [
-   "sqlite3",
-   "mysql",
-   "postgres",
-   "redis"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "sqlite3 は標準ライブラリに含まれ、ファイルベースのDBを扱える。",
-  "reference": "sqlite3"
- },
- {
-  "id": "ch13-014",
-  "chapter": 13,
-  "topic": "sqlite3",
-  "difficulty": 3,
-  "type": "single",
-  "question": "sqlite3 でSQLを実行するために、接続から取得して使うオブジェクトはどれか。",
-  "choices": [
-   "カーソル（cursor）",
-   "セッション",
-   "エンジン",
-   "トランザクタ"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "connection.cursor() で得たカーソルの execute でSQLを実行し、fetchone/fetchall で結果を取る。",
-  "reference": "sqlite3 --- cursor"
- },
- {
-  "id": "ch13-015",
-  "chapter": 13,
-  "topic": "base64",
-  "difficulty": 3,
-  "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
-  "choices": [
-   "b'YWJj'",
-   "abc",
-   "b'abc'",
-   "YWJj"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "base64.b64encode はバイト列を Base64 のバイト列に変換する。'abc' は b'YWJj'。",
-  "code": "import base64\nprint(base64.b64encode(b'abc'))",
-  "reference": "base64.b64encode"
- },
- {
-  "id": "ch13-016",
-  "chapter": 13,
-  "topic": "base64",
-  "difficulty": 3,
-  "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
-  "choices": [
-   "b'abc'",
-   "abc",
-   "YWJj",
-   "エラー"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "base64.b64decode は Base64 を元のバイト列に戻す。b'YWJj' → b'abc'。",
-  "code": "import base64\nprint(base64.b64decode(b'YWJj'))",
-  "reference": "base64.b64decode"
- },
- {
-  "id": "ch13-017",
-  "chapter": 13,
-  "topic": "json",
-  "difficulty": 2,
-  "type": "single",
-  "question": "JSON の値 null は Python では何に変換されるか。",
-  "choices": [
-   "None",
-   "0",
-   "''",
-   "False"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "JSON の null は Python の None、true/false は True/False に対応する。",
-  "reference": "json --- null と None"
- },
- {
-  "id": "ch13-018",
-  "chapter": 13,
   "topic": "json",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "{\"b\": 1, \"a\": 2}",
    "{\"a\": 2, \"b\": 1}",
@@ -342,56 +167,74 @@
   "answer": [
    0
   ],
-  "explanation": "json.dumps は既定で辞書の挿入順を保つ。sort_keys=True を付けない限り並べ替えない。",
+  "explanation": "既定で挿入順を保持。",
+  "rationales": [
+   "正解。挿入順を保つ。",
+   "不正解。sort_keys を付けない限り並べ替えない。",
+   "不正解。ダブルクォートになる。",
+   "不正解。正常動作。"
+  ],
   "code": "import json\nprint(json.dumps({'b': 1, 'a': 2}))",
   "reference": "json.dumps --- 順序"
  },
  {
-  "id": "ch13-019",
+  "id": "ch13-008",
   "chapter": 13,
-  "topic": "csv",
+  "topic": "json",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
-   "['a', 'b', 'c']",
-   "['a,b,c']",
-   "'a,b,c'",
-   "[['a'], ['b'], ['c']]"
+   "{\"a\": 1, \"b\": 2}",
+   "{\"b\": 2, \"a\": 1}",
+   "エラー",
+   "{'a': 1}"
   ],
   "answer": [
    0
   ],
-  "explanation": "csv.reader は1行をフィールドのリストに分割する。ここでは1行 'a,b,c' を読み ['a', 'b', 'c']。",
-  "code": "import csv, io\nr = csv.reader(io.StringIO('a,b,c'))\nprint(next(r))",
-  "reference": "csv.reader"
+  "explanation": "sort_keys でキー整列。",
+  "rationales": [
+   "正解。キーを昇順に整列。",
+   "不正解。挿入順ではなくソート。",
+   "不正解。正常動作。",
+   "不正解。全キーが出る。"
+  ],
+  "code": "import json\nprint(json.dumps({'b': 2, 'a': 1}, sort_keys=True))",
+  "reference": "json.dumps --- sort_keys"
  },
  {
-  "id": "ch13-020",
-  "chapter": 13,
-  "topic": "tomllib",
-  "difficulty": 3,
-  "type": "single",
-  "question": "Python 3.11 で標準ライブラリに追加された、TOML を読み込むモジュールはどれか。",
-  "choices": [
-   "tomllib",
-   "toml",
-   "tomlparser",
-   "configtoml"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "Python 3.11 から tomllib が標準で TOML の読み込みに対応した（書き込みは非対応）。",
-  "reference": "tomllib"
- },
- {
-  "id": "ch13-021",
+  "id": "ch13-009",
   "chapter": 13,
   "topic": "json",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "JSON の null は Python では何になるか。",
+  "choices": [
+   "None",
+   "0",
+   "''",
+   "False"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "null→None。",
+  "rationales": [
+   "正解。null は None。",
+   "不正解。0 ではない。",
+   "不正解。空文字ではない。",
+   "不正解。False ではない。"
+  ],
+  "reference": "json --- null"
+ },
+ {
+  "id": "ch13-010",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[1, 2, 3]",
    "(1, 2, 3)",
@@ -401,27 +244,745 @@
   "answer": [
    0
   ],
-  "explanation": "JSON 配列は Python のリストに変換される。",
+  "explanation": "JSON 配列→list。",
+  "rationales": [
+   "正解。配列はリストに。",
+   "不正解。タプルではない。",
+   "不正解。集合ではない。",
+   "不正解。正常動作。"
+  ],
   "code": "import json\nprint(json.loads('[1, 2, 3]'))",
   "reference": "json.loads --- 配列"
  },
  {
-  "id": "ch13-022",
+  "id": "ch13-011",
   "chapter": 13,
-  "topic": "gzip以外",
-  "difficulty": 2,
+  "topic": "json",
+  "difficulty": 3,
   "type": "single",
-  "question": "CSV と JSON の使い分けに関する説明として最も適切なものはどれか。",
+  "question": "Python の True は JSON では何になるか。",
   "choices": [
-   "表形式・行指向のデータには CSV、入れ子構造を含むデータには JSON が向く",
-   "JSON は表形式しか表現できない",
-   "CSV は階層構造を自然に表現できる",
-   "両者は完全に同一で違いはない"
+   "true",
+   "True",
+   "1",
+   "yes"
   ],
   "answer": [
    0
   ],
-  "explanation": "CSV はフラットな表データ向け、JSON は入れ子（オブジェクト・配列）を表現できる点が強み。",
+  "explanation": "True→true。",
+  "rationales": [
+   "正解。JSON では小文字 true。",
+   "不正解。大文字 True ではない。",
+   "不正解。数値1ではない。",
+   "不正解。yes ではない。"
+  ],
+  "reference": "json --- 真偽値"
+ },
+ {
+  "id": "ch13-012",
+  "chapter": 13,
+  "topic": "csv",
+  "difficulty": 2,
+  "type": "single",
+  "question": "CSV を扱う標準ライブラリはどれか。",
+  "choices": [
+   "csv",
+   "table",
+   "spreadsheet",
+   "tsv"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "csv。",
+  "rationales": [
+   "正解。csv が読み書きを提供。",
+   "不正解。table は無い。",
+   "不正解。spreadsheet は無い。",
+   "不正解。tsv モジュールは無い。"
+  ],
+  "reference": "csv モジュール"
+ },
+ {
+  "id": "ch13-013",
+  "chapter": 13,
+  "topic": "csv",
+  "difficulty": 3,
+  "type": "single",
+  "question": "CSV の各行を辞書として読み込むクラスはどれか。",
+  "choices": [
+   "csv.DictReader",
+   "csv.HeaderReader",
+   "csv.MapReader",
+   "csv.reader"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "DictReader。",
+  "rationales": [
+   "正解。DictReader はヘッダをキーに各行を辞書化。",
+   "不正解。HeaderReader は無い。",
+   "不正解。MapReader は無い。",
+   "不正解。reader はリストを返す。"
+  ],
+  "reference": "csv.DictReader"
+ },
+ {
+  "id": "ch13-014",
+  "chapter": 13,
+  "topic": "csv",
+  "difficulty": 3,
+  "type": "single",
+  "question": "csv 書き込み時、余計な空行を防ぐため open で指定する引数はどれか。",
+  "choices": [
+   "newline=''",
+   "binary=True",
+   "mode='wb'",
+   "lineterminator=None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "newline='' が定石。",
+  "rationales": [
+   "正解。open(path,'w',newline='') が定石。",
+   "不正解。binary 引数は無い。",
+   "不正解。テキストモードで書く。",
+   "不正解。lineterminator は writer 側設定。"
+  ],
+  "reference": "csv --- newline"
+ },
+ {
+  "id": "ch13-015",
+  "chapter": 13,
+  "topic": "csv",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "['a', 'b', 'c']",
+   "['a,b,c']",
+   "'a,b,c'",
+   "[['a'], ['b'], ['c']]"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "reader は行をフィールドに分割。",
+  "rationales": [
+   "正解。1行をフィールドのリストに分割。",
+   "不正解。分割される。",
+   "不正解。リストになる。",
+   "不正解。1列ずつ分かれない。"
+  ],
+  "code": "import csv, io\nr = csv.reader(io.StringIO('a,b,c'))\nprint(next(r))",
+  "reference": "csv.reader"
+ },
+ {
+  "id": "ch13-016",
+  "chapter": 13,
+  "topic": "pickle",
+  "difficulty": 2,
+  "type": "single",
+  "question": "Python オブジェクトをバイト列に直列化する標準ライブラリはどれか。",
+  "choices": [
+   "pickle",
+   "json",
+   "marshal2",
+   "serialize"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "pickle。",
+  "rationales": [
+   "正解。pickle は任意オブジェクトをバイナリ直列化。",
+   "不正解。json は文字列で型が限定的。",
+   "不正解。marshal2 は無い。",
+   "不正解。serialize は無い。"
+  ],
+  "reference": "pickle"
+ },
+ {
+  "id": "ch13-017",
+  "chapter": 13,
+  "topic": "pickle",
+  "difficulty": 3,
+  "type": "single",
+  "question": "pickle の利用上の注意として正しいものはどれか。",
+  "choices": [
+   "信頼できないデータの unpickle は任意コード実行の危険がある",
+   "JSON より常に安全",
+   "他言語と容易に相互運用できる",
+   "テキストで人間が読める"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "信頼できない入力に使わない。",
+  "rationales": [
+   "正解。load は信頼できないデータに対し危険。",
+   "不正解。JSON より安全ではない。",
+   "不正解。Python 固有で相互運用は難しい。",
+   "不正解。バイナリで人間可読ではない。"
+  ],
+  "reference": "pickle --- セキュリティ"
+ },
+ {
+  "id": "ch13-018",
+  "chapter": 13,
+  "topic": "configparser",
+  "difficulty": 2,
+  "type": "single",
+  "question": "INI 形式の設定ファイルを扱う標準ライブラリはどれか。",
+  "choices": [
+   "configparser",
+   "inifile",
+   "settings",
+   "config"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "configparser。",
+  "rationales": [
+   "正解。configparser が INI を扱う。",
+   "不正解。inifile は無い。",
+   "不正解。settings は無い。",
+   "不正解。config モジュールは無い。"
+  ],
+  "reference": "configparser"
+ },
+ {
+  "id": "ch13-019",
+  "chapter": 13,
+  "topic": "sqlite3",
+  "difficulty": 2,
+  "type": "single",
+  "question": "追加サーバ不要で使える標準ライブラリ同梱のDBはどれか。",
+  "choices": [
+   "sqlite3",
+   "mysql",
+   "postgres",
+   "redis"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "sqlite3。",
+  "rationales": [
+   "正解。sqlite3 はファイルベースで標準同梱。",
+   "不正解。mysql は別途必要。",
+   "不正解。postgres は別途必要。",
+   "不正解。redis は別途必要。"
+  ],
+  "reference": "sqlite3"
+ },
+ {
+  "id": "ch13-020",
+  "chapter": 13,
+  "topic": "sqlite3",
+  "difficulty": 3,
+  "type": "single",
+  "question": "sqlite3 でSQLを実行するために接続から取得するオブジェクトはどれか。",
+  "choices": [
+   "カーソル（cursor）",
+   "セッション",
+   "エンジン",
+   "トランザクタ"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "cursor で実行。",
+  "rationales": [
+   "正解。connection.cursor() で得て execute する。",
+   "不正解。session は無い。",
+   "不正解。engine は無い。",
+   "不正解。transactor は無い。"
+  ],
+  "reference": "sqlite3 --- cursor"
+ },
+ {
+  "id": "ch13-021",
+  "chapter": 13,
+  "topic": "base64",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "b'YWJj'",
+   "abc",
+   "b'abc'",
+   "YWJj"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "b64encode は Base64 bytes。",
+  "rationales": [
+   "正解。'abc' は b'YWJj'。",
+   "不正解。エンコードされる。",
+   "不正解。元のままではない。",
+   "不正解。bytes で返る。"
+  ],
+  "code": "import base64\nprint(base64.b64encode(b'abc'))",
+  "reference": "base64.b64encode"
+ },
+ {
+  "id": "ch13-022",
+  "chapter": 13,
+  "topic": "base64",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "b'abc'",
+   "abc",
+   "YWJj",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "b64decode は復号。",
+  "rationales": [
+   "正解。元の b'abc' に戻る。",
+   "不正解。bytes で返る。",
+   "不正解。デコードされる。",
+   "不正解。正常動作。"
+  ],
+  "code": "import base64\nprint(base64.b64decode(b'YWJj'))",
+  "reference": "base64.b64decode"
+ },
+ {
+  "id": "ch13-023",
+  "chapter": 13,
+  "topic": "tomllib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "Python 3.11 で標準追加された TOML 読み込みモジュールはどれか。",
+  "choices": [
+   "tomllib",
+   "toml",
+   "tomlparser",
+   "configtoml"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "tomllib（3.11+）。",
+  "rationales": [
+   "正解。tomllib が標準で読み込み対応。",
+   "不正解。toml はサードパーティ。",
+   "不正解。tomlparser は無い。",
+   "不正解。configtoml は無い。"
+  ],
+  "reference": "tomllib"
+ },
+ {
+  "id": "ch13-024",
+  "chapter": 13,
+  "topic": "選択",
+  "difficulty": 2,
+  "type": "single",
+  "question": "CSV と JSON の使い分けとして適切なものはどれか。",
+  "choices": [
+   "表形式は CSV、入れ子構造は JSON",
+   "JSON は表形式しか扱えない",
+   "CSV は階層を自然に表現できる",
+   "両者は同一"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "用途で使い分ける。",
+  "rationales": [
+   "正解。フラットな表は CSV、入れ子は JSON。",
+   "不正解。JSON は入れ子も扱える。",
+   "不正解。CSV は階層を自然に表せない。",
+   "不正解。両者は異なる。"
+  ],
   "reference": "データ形式の選択"
+ },
+ {
+  "id": "ch13-025",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "2",
+   "[1, 2]",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "loads 後にキーアクセス。",
+  "rationales": [
+   "正解。b の値2。",
+   "不正解。全体ではない。",
+   "不正解。正常動作。",
+   "不正解。値が取れる。"
+  ],
+  "code": "import json\nd = json.loads('{\"a\": 1, \"b\": 2}')\nprint(d['b'])",
+  "reference": "json.loads --- 利用"
+ },
+ {
+  "id": "ch13-026",
+  "chapter": 13,
+  "topic": "gzip",
+  "difficulty": 3,
+  "type": "single",
+  "question": "テキストを gzip 圧縮しながらファイルに書ける標準ライブラリはどれか。",
+  "choices": [
+   "gzip",
+   "zlib のみ",
+   "zipfile のみ",
+   "compress"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "gzip モジュール。",
+  "rationales": [
+   "正解。gzip.open で透過的に圧縮できる。",
+   "不正解。zlib は低水準で .gz ファイル管理は gzip。",
+   "不正解。zipfile は ZIP 書庫用。",
+   "不正解。compress モジュールは無い。"
+  ],
+  "reference": "gzip"
+ },
+ {
+  "id": "ch13-027",
+  "chapter": 13,
+  "topic": "zipfile",
+  "difficulty": 3,
+  "type": "single",
+  "question": "ZIP 書庫を作成・展開する標準ライブラリはどれか。",
+  "choices": [
+   "zipfile",
+   "gzip",
+   "tarfile",
+   "archive"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "zipfile。",
+  "rationales": [
+   "正解。zipfile が ZIP を扱う。",
+   "不正解。gzip は単一ファイル圧縮。",
+   "不正解。tarfile は tar 書庫。",
+   "不正解。archive モジュールは無い。"
+  ],
+  "reference": "zipfile"
+ },
+ {
+  "id": "ch13-028",
+  "chapter": 13,
+  "topic": "csv",
+  "difficulty": 3,
+  "type": "single",
+  "question": "csv.writer で1行書き込むメソッドはどれか。",
+  "choices": [
+   "writerow",
+   "writeline",
+   "addrow",
+   "putrow"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "writerow。",
+  "rationales": [
+   "正解。writerow がリストを1行書く。",
+   "不正解。writeline は無い。",
+   "不正解。addrow は無い。",
+   "不正解。putrow は無い。"
+  ],
+  "reference": "csv.writer.writerow"
+ },
+ {
+  "id": "ch13-029",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 3,
+  "type": "single",
+  "question": "json.dumps が直接シリアライズできないオブジェクト（例: datetime）への対処はどれか。",
+  "choices": [
+   "default 引数に変換関数を渡す",
+   "自動でISO文字列になる",
+   "必ずエラーで対処不可",
+   "pickle に切り替えるしかない"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "default で変換指定。",
+  "rationales": [
+   "正解。default にコールバックを渡して変換できる。",
+   "不正解。datetime は自動変換されない。",
+   "不正解。対処は可能。",
+   "不正解。pickle 以外にも default で対応できる。"
+  ],
+  "reference": "json.dumps --- default"
+ },
+ {
+  "id": "ch13-030",
+  "chapter": 13,
+  "topic": "base64",
+  "difficulty": 3,
+  "type": "single",
+  "question": "URL で安全な Base64 を扱う base64 の関数はどれか。",
+  "choices": [
+   "urlsafe_b64encode",
+   "url_b64encode",
+   "b64url",
+   "safe_encode"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "urlsafe_b64encode。",
+  "rationales": [
+   "正解。+ や / を - _ に置き換える URL 安全版。",
+   "不正解。url_b64encode は無い。",
+   "不正解。b64url は無い。",
+   "不正解。safe_encode は無い。"
+  ],
+  "reference": "base64.urlsafe_b64encode"
+ },
+ {
+  "id": "ch13-031",
+  "chapter": 13,
+  "topic": "csv",
+  "difficulty": 3,
+  "type": "single",
+  "question": "csv.DictWriter で使う、ヘッダ行を書くメソッドはどれか。",
+  "choices": [
+   "writeheader",
+   "writehead",
+   "header",
+   "writefieldnames"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "writeheader。",
+  "rationales": [
+   "正解。writeheader がヘッダ行を出力。",
+   "不正解。writehead は無い。",
+   "不正解。header は無い。",
+   "不正解。writefieldnames は無い。"
+  ],
+  "reference": "csv.DictWriter.writeheader"
+ },
+ {
+  "id": "ch13-032",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "true",
+   "True",
+   "1",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "True は JSON で true。",
+  "rationales": [
+   "正解。小文字 true になる。",
+   "不正解。Python の True 表記ではない。",
+   "不正解。数値ではない。",
+   "不正解。正常動作。"
+  ],
+  "code": "import json\nprint(json.dumps(True))",
+  "reference": "json.dumps --- bool"
+ },
+ {
+  "id": "ch13-033",
+  "chapter": 13,
+  "topic": "shelve",
+  "difficulty": 3,
+  "type": "single",
+  "question": "辞書のように使え、永続化される標準ライブラリのキーバリューストアはどれか。",
+  "choices": [
+   "shelve",
+   "pickledict",
+   "kvstore",
+   "dbmstore"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "shelve。",
+  "rationales": [
+   "正解。shelve は辞書風の永続ストア（内部で pickle）。",
+   "不正解。pickledict は無い。",
+   "不正解。kvstore は無い。",
+   "不正解。dbmstore は無い。"
+  ],
+  "reference": "shelve"
+ },
+ {
+  "id": "ch13-034",
+  "chapter": 13,
+  "topic": "struct",
+  "difficulty": 3,
+  "type": "single",
+  "question": "C 構造体のようなバイナリデータをパック/アンパックする標準ライブラリはどれか。",
+  "choices": [
+   "struct",
+   "binascii のみ",
+   "ctypes のみ",
+   "bytespack"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "struct。",
+  "rationales": [
+   "正解。struct.pack/unpack でバイナリを扱う。",
+   "不正解。binascii は別用途。",
+   "不正解。ctypes は C 連携で別。",
+   "不正解。bytespack は無い。"
+  ],
+  "reference": "struct"
+ },
+ {
+  "id": "ch13-035",
+  "chapter": 13,
+  "topic": "csv",
+  "difficulty": 2,
+  "type": "single",
+  "question": "CSV の区切り文字をタブにするための writer/reader の引数はどれか。",
+  "choices": [
+   "delimiter='\\t'",
+   "sep='\\t'",
+   "separator='\\t'",
+   "tab=True"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "delimiter で指定。",
+  "rationales": [
+   "正解。delimiter 引数で区切りを変える。",
+   "不正解。sep は pandas の引数。",
+   "不正解。separator は無い。",
+   "不正解。tab 引数は無い。"
+  ],
+  "reference": "csv --- delimiter"
+ },
+ {
+  "id": "ch13-036",
+  "chapter": 13,
+  "topic": "json",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "null",
+   "None",
+   "''",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "None は JSON で null。",
+  "rationales": [
+   "正解。None は null に変換。",
+   "不正解。Python 表記ではない。",
+   "不正解。空文字ではない。",
+   "不正解。正常動作。"
+  ],
+  "code": "import json\nprint(json.dumps(None))",
+  "reference": "json.dumps --- None"
+ },
+ {
+  "id": "ch13-037",
+  "chapter": 13,
+  "topic": "datetime",
+  "difficulty": 3,
+  "type": "single",
+  "question": "JSON に日付を含めたいとき一般的な方法はどれか。",
+  "choices": [
+   "ISO 8601 文字列にして格納する",
+   "そのまま datetime を入れれば自動変換される",
+   "数値にできない",
+   "JSON は日付を一切扱えない"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "ISO 文字列が一般的。",
+  "rationales": [
+   "正解。isoformat() の文字列にするのが一般的。",
+   "不正解。自動変換はされない。",
+   "不正解。エポック秒など数値化も可能。",
+   "不正解。文字列/数値で表現できる。"
+  ],
+  "reference": "JSON と日付"
+ },
+ {
+  "id": "ch13-038",
+  "chapter": 13,
+  "topic": "pretty",
+  "difficulty": 2,
+  "type": "single",
+  "question": "辞書を読みやすく JSON 整形して表示するための dumps 引数の組はどれか。",
+  "choices": [
+   "indent=2, ensure_ascii=False",
+   "pretty=True",
+   "format='pretty'",
+   "spaces=2"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "indent と ensure_ascii。",
+  "rationales": [
+   "正解。indent と ensure_ascii=False で読みやすくできる。",
+   "不正解。pretty 引数は無い。",
+   "不正解。format 引数は無い。",
+   "不正解。spaces 引数は無い。"
+  ],
+  "reference": "json.dumps --- 整形"
+ },
+ {
+  "id": "ch13-039",
+  "chapter": 13,
+  "topic": "csv",
+  "difficulty": 3,
+  "type": "single",
+  "question": "CSV 読み込みでフィールド内にカンマや改行を含められる仕組みはどれか。",
+  "choices": [
+   "ダブルクォートで囲む（quoting）",
+   "バックスラッシュのみ",
+   "不可能",
+   "タブで代用するしかない"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "クォートで囲う。",
+  "rationales": [
+   "正解。値をダブルクォートで囲めばカンマや改行を含められる。",
+   "不正解。エスケープだけではない。",
+   "不正解。可能である。",
+   "不正解。タブ代用は不要。"
+  ],
+  "reference": "csv --- クォート"
  }
 ]

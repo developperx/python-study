@@ -5,7 +5,7 @@
   "topic": "数値",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "3",
    "2",
@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "`//` は整数除算（切り捨て除算）。5 // 2 は商の整数部 2 ではなく、5//2=2。ここでは 7//2=3 となる。",
+  "explanation": "`//` は切り捨て除算。7//2=3。",
+  "rationales": [
+   "正解。7//2 は商の整数部 3。",
+   "不正解。2 ではなく 3。",
+   "不正解。// は小数を返さない。",
+   "不正解。整数同士の // は float にならない。"
+  ],
   "code": "print(7 // 2)",
   "reference": "算術演算 --- //"
  },
@@ -25,7 +31,7 @@
   "topic": "数値",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "8",
    "9",
@@ -35,7 +41,13 @@
   "answer": [
    0
   ],
-  "explanation": "`**` はべき乗演算子。2 ** 3 は 2 の 3 乗 = 8。",
+  "explanation": "`**` はべき乗。2**3=8。",
+  "rationales": [
+   "正解。2 の 3 乗で 8。",
+   "不正解。3 の 2 乗 9 ではない。",
+   "不正解。2*3=6 は掛け算で ** ではない。",
+   "不正解。8 を 8^3 等にはしない。"
+  ],
   "code": "print(2 ** 3)",
   "reference": "算術演算 --- **"
  },
@@ -45,7 +57,7 @@
   "topic": "数値",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "1",
    "-1",
@@ -55,17 +67,49 @@
   "answer": [
    0
   ],
-  "explanation": "`%` の結果は除数（右辺）と同じ符号になる。-7 % 4 は 1（-7 = 4*(-2) + 1）。",
+  "explanation": "% の符号は除数に従う。-7%4=1。",
+  "rationales": [
+   "正解。-7 = 4*(-2)+1 なので余りは 1。",
+   "不正解。結果は除数 4 と同符号で正になる。",
+   "不正解。2 ではない。",
+   "不正解。-2 は商であって余りではない。"
+  ],
   "code": "print(-7 % 4)",
   "reference": "剰余演算 --- %"
  },
  {
   "id": "ch03-004",
   "chapter": 3,
+  "topic": "数値",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "(2, 1)",
+   "2 1",
+   "[2, 1]",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "divmod は (商, 余り) のタプル。",
+  "rationales": [
+   "正解。divmod(7,3)=(2,1) のタプルを返す。",
+   "不正解。print はタプルを括弧つきで表示する。",
+   "不正解。リストではなくタプル。",
+   "不正解。正しく動作しエラーにならない。"
+  ],
+  "code": "print(divmod(7, 3))",
+  "reference": "divmod"
+ },
+ {
+  "id": "ch03-005",
+  "chapter": 3,
   "topic": "真偽値",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "3",
    "0",
@@ -75,17 +119,23 @@
   "answer": [
    0
   ],
-  "explanation": "`or` は最初の真の値を返す（短絡評価）。0 は偽なので次の 3 が返る。",
+  "explanation": "or は最初の真の値を返す。",
+  "rationales": [
+   "正解。0 は偽なので次の 3 を返す。",
+   "不正解。0 は返らない（偽だから次へ）。",
+   "不正解。値そのもの 3 を返し True ではない。",
+   "不正解。1 ではない。"
+  ],
   "code": "print(0 or 3)",
   "reference": "ブール演算 --- or"
  },
  {
-  "id": "ch03-005",
+  "id": "ch03-006",
   "chapter": 3,
   "topic": "真偽値",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "0",
    "3",
@@ -95,17 +145,23 @@
   "answer": [
    0
   ],
-  "explanation": "`and` は最初の偽の値を返し、すべて真なら最後の値を返す。0 が偽なので 0 が返る。",
+  "explanation": "and は最初の偽の値を返す。",
+  "rationales": [
+   "正解。0 が偽なので 0 を返す。",
+   "不正解。3 までは評価されない（短絡）。",
+   "不正解。値 0 を返し False ではない。",
+   "不正解。None ではない。"
+  ],
   "code": "print(0 and 3)",
   "reference": "ブール演算 --- and"
  },
  {
-  "id": "ch03-006",
+  "id": "ch03-007",
   "chapter": 3,
   "topic": "比較",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "True",
    "False",
@@ -115,36 +171,74 @@
   "answer": [
    0
   ],
-  "explanation": "Python は比較演算子を連鎖できる。1 < 2 < 3 は (1<2) and (2<3) と等価で True。",
+  "explanation": "比較は連鎖できる。",
+  "rationales": [
+   "正解。(1<2) and (2<3) と等価で True。",
+   "不正解。両方成立するため False ではない。",
+   "不正解。連鎖比較は正当な構文。",
+   "不正解。比較結果は bool。"
+  ],
   "code": "print(1 < 2 < 3)",
   "reference": "比較の連鎖"
  },
  {
-  "id": "ch03-007",
+  "id": "ch03-008",
   "chapter": 3,
   "topic": "is と ==",
   "difficulty": 2,
   "type": "single",
   "question": "`is` 演算子の説明として正しいものはどれか。",
   "choices": [
-   "2つのオブジェクトが同一（同じid）かを判定する",
-   "2つの値が等しいかを判定する",
-   "型が等しいかを判定する",
-   "文字列が含まれるかを判定する"
+   "同一オブジェクト（id一致）かを判定",
+   "値が等しいかを判定",
+   "型が等しいかを判定",
+   "部分文字列を判定"
   ],
   "answer": [
    0
   ],
-  "explanation": "`is` は同一性（identity, id が同じか）、`==` は等価性（値が等しいか）を判定する。",
+  "explanation": "is は同一性、== は等価性。",
+  "rationales": [
+   "正解。is は id（同一性）を比較する。",
+   "不正解。値の等価は == の役割。",
+   "不正解。型比較は isinstance/type。",
+   "不正解。包含は in 演算子。"
+  ],
   "reference": "is 演算子"
  },
  {
-  "id": "ch03-008",
+  "id": "ch03-009",
+  "chapter": 3,
+  "topic": "is と ==",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "True True",
+   "True False",
+   "False True",
+   "False False"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "小さい整数はキャッシュされ is も True。",
+  "rationales": [
+   "正解。値は等しく、CPython は小整数をキャッシュするため is も True。",
+   "不正解。この範囲では is も True になる。",
+   "不正解。== が False になることはない。",
+   "不正解。両方 False にはならない。"
+  ],
+  "code": "a = 100\nb = 100\nprint(a == b, a is b)",
+  "reference": "整数キャッシュ"
+ },
+ {
+  "id": "ch03-010",
   "chapter": 3,
   "topic": "リスト",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[1, 2, 3, 4]",
    "[1, 2, [3, 4]]",
@@ -154,17 +248,23 @@
   "answer": [
    0
   ],
-  "explanation": "リストの `+` は連結。[1,2] + [3,4] は [1, 2, 3, 4]。",
+  "explanation": "リストの + は連結。",
+  "rationales": [
+   "正解。+ は要素を平坦に連結する。",
+   "不正解。入れ子にはならない。",
+   "不正解。順序は保たれ逆順にならない。",
+   "不正解。正常に連結できる。"
+  ],
   "code": "print([1, 2] + [3, 4])",
   "reference": "シーケンス演算 --- +"
  },
  {
-  "id": "ch03-009",
+  "id": "ch03-011",
   "chapter": 3,
   "topic": "スライス",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[1, 2]",
    "[0, 1]",
@@ -174,17 +274,23 @@
   "answer": [
    0
   ],
-  "explanation": "スライス [start:stop] は stop を含まない。[0,1,2,3][1:3] はインデックス1,2の要素 [1, 2]。",
+  "explanation": "stop は含まれない。",
+  "rationales": [
+   "正解。インデックス1,2 で [1,2]。stop=3 は含まない。",
+   "不正解。開始は1なので0は含まない。",
+   "不正解。3は含まれない。",
+   "不正解。開始位置が違う。"
+  ],
   "code": "print([0, 1, 2, 3][1:3])",
   "reference": "スライス"
  },
  {
-  "id": "ch03-010",
+  "id": "ch03-012",
   "chapter": 3,
   "topic": "スライス",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[3, 2, 1, 0]",
    "[0, 1, 2, 3]",
@@ -194,17 +300,23 @@
   "answer": [
    0
   ],
-  "explanation": "ステップに -1 を指定すると逆順になる。[::-1] は全要素を逆順にしたリストを返す。",
+  "explanation": "[::-1] は逆順。",
+  "rationales": [
+   "正解。ステップ -1 で全体を逆順にする。",
+   "不正解。元のままではない。",
+   "不正解。1つ飛ばしではなく全要素。",
+   "不正解。正しい構文。"
+  ],
   "code": "print([0, 1, 2, 3][::-1])",
   "reference": "スライス --- ステップ"
  },
  {
-  "id": "ch03-011",
+  "id": "ch03-013",
   "chapter": 3,
   "topic": "スライス",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[0, 2, 4]",
    "[0, 1, 2]",
@@ -214,37 +326,49 @@
   "answer": [
    0
   ],
-  "explanation": "[start:stop:step] でステップ2。range(6)=0..5 を 0 から 2 飛ばしで取ると 0,2,4。",
+  "explanation": "ステップ2で偶数インデックス。",
+  "rationales": [
+   "正解。0,2,4 を取り出す。",
+   "不正解。ステップ2なので連番ではない。",
+   "不正解。0 始まりなので 1,3,5 ではない。",
+   "不正解。range(6) は 5 まで、6は含まない。"
+  ],
   "code": "print(list(range(6))[::2])",
   "reference": "スライス --- ステップ"
  },
  {
-  "id": "ch03-012",
+  "id": "ch03-014",
   "chapter": 3,
   "topic": "文字列",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "ababab",
    "abababab",
-   "['ab', 'ab', 'ab']",
+   "['ab','ab','ab']",
    "エラー"
   ],
   "answer": [
    0
   ],
-  "explanation": "文字列 * 整数 は繰り返し。'ab' * 3 は 'ababab'。",
+  "explanation": "文字列*整数は繰り返し。",
+  "rationales": [
+   "正解。'ab' を3回繰り返す。",
+   "不正解。4回ではない。",
+   "不正解。リストにはならず連結文字列。",
+   "不正解。正常に動く。"
+  ],
   "code": "print('ab' * 3)",
   "reference": "シーケンス演算 --- *"
  },
  {
-  "id": "ch03-013",
+  "id": "ch03-015",
   "chapter": 3,
   "topic": "f文字列",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "x=10",
    "x={x}",
@@ -254,17 +378,23 @@
   "answer": [
    0
   ],
-  "explanation": "f文字列では `{式}` が値に置換される。x=10 なので 'x=10'。",
+  "explanation": "f文字列は {式} を値に置換。",
+  "rationales": [
+   "正解。{x} が 10 に置換され 'x=10'。",
+   "不正解。f を付ければ波括弧は展開される。",
+   "不正解。変数名そのものは出ない。",
+   "不正解。左辺の x は普通の文字。"
+  ],
   "code": "x = 10\nprint(f'x={x}')",
-  "reference": "フォーマット済み文字列リテラル"
+  "reference": "f-string"
  },
  {
-  "id": "ch03-014",
+  "id": "ch03-016",
   "chapter": 3,
   "topic": "関数",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "6",
    "(1, 2, 3)",
@@ -274,17 +404,23 @@
   "answer": [
    0
   ],
-  "explanation": "`*args` は可変長位置引数をタプルで受け取る。sum で合計され 1+2+3=6。",
+  "explanation": "*args はタプルで受ける。",
+  "rationales": [
+   "正解。sum((1,2,3))=6。",
+   "不正解。sum するので合計が返る。",
+   "不正解。リストではなく合計値。",
+   "不正解。文字列連結ではない。"
+  ],
   "code": "def f(*args):\n    return sum(args)\nprint(f(1, 2, 3))",
   "reference": "可変長引数 --- *args"
  },
  {
-  "id": "ch03-015",
+  "id": "ch03-017",
   "chapter": 3,
   "topic": "関数",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "{'a': 1, 'b': 2}",
    "['a', 'b']",
@@ -294,17 +430,23 @@
   "answer": [
    0
   ],
-  "explanation": "`**kwargs` はキーワード引数を辞書で受け取る。",
+  "explanation": "**kwargs は辞書で受ける。",
+  "rationales": [
+   "正解。キーワード引数を辞書で受け取る。",
+   "不正解。キーのみのリストではない。",
+   "不正解。値のみのリストではない。",
+   "不正解。タプルではなく辞書。"
+  ],
   "code": "def f(**kwargs):\n    return kwargs\nprint(f(a=1, b=2))",
   "reference": "可変長引数 --- **kwargs"
  },
  {
-  "id": "ch03-016",
+  "id": "ch03-018",
   "chapter": 3,
   "topic": "関数",
   "difficulty": 2,
   "type": "single",
-  "question": "デフォルト引数に関する次のコードを2回呼び出したときの出力はどれか。",
+  "question": "次のコードを2回呼んだ出力はどれか。",
   "choices": [
    "[1]\n[1, 2]",
    "[1]\n[2]",
@@ -314,36 +456,48 @@
   "answer": [
    0
   ],
-  "explanation": "デフォルト引数はデフォルト値（リスト）が関数定義時に一度だけ生成され共有される。可変オブジェクトをデフォルトにすると状態が持ち越される典型的な罠。",
+  "explanation": "可変デフォルト引数は共有される。",
+  "rationales": [
+   "正解。デフォルトのリストは1度だけ生成され持ち越される。",
+   "不正解。状態が残るため [2] にならない。",
+   "不正解。1回目は [1]。",
+   "不正解。エラーにはならず罠として動く。"
+  ],
   "code": "def f(x, lst=[]):\n    lst.append(x)\n    return lst\nprint(f(1))\nprint(f(2))",
-  "reference": "デフォルト引数値の評価タイミング"
+  "reference": "デフォルト引数の評価"
  },
  {
-  "id": "ch03-017",
+  "id": "ch03-019",
   "chapter": 3,
   "topic": "関数",
   "difficulty": 2,
   "type": "single",
-  "question": "可変オブジェクトをデフォルト引数にする問題を避ける慣用句として正しいものはどれか。",
+  "question": "可変デフォルト引数の問題を避ける定石はどれか。",
   "choices": [
-   "def f(lst=None): lst = lst or [] のように None を既定にする",
-   "def f(lst=[]) のままで問題ない",
+   "既定を None にし関数内で生成",
+   "def f(lst=[]) のままでよい",
    "グローバル変数を使う",
    "デフォルト引数は使えない"
   ],
   "answer": [
    0
   ],
-  "explanation": "可変デフォルト値の共有を避けるには、既定を None にして関数内で新しいリストを生成するのが定石。",
+  "explanation": "None 既定＋内部生成が定石。",
+  "rationales": [
+   "正解。None を既定にして毎回新リストを作る。",
+   "不正解。[] のままだと共有問題が残る。",
+   "不正解。グローバルは別の副作用を招く。",
+   "不正解。デフォルト引数自体は使える。"
+  ],
   "reference": "デフォルト引数のイディオム"
  },
  {
-  "id": "ch03-018",
+  "id": "ch03-020",
   "chapter": 3,
   "topic": "lambda",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "25",
    "10",
@@ -353,17 +507,23 @@
   "answer": [
    0
   ],
-  "explanation": "lambda は無名関数。`(lambda x: x*x)(5)` は 5 の2乗で 25。",
+  "explanation": "lambda は無名関数。",
+  "rationales": [
+   "正解。5*5=25。",
+   "不正解。5*2=10 ではない。",
+   "不正解。関数オブジェクトではなく呼び出し結果。",
+   "不正解。正しく呼び出せる。"
+  ],
   "code": "print((lambda x: x * x)(5))",
   "reference": "ラムダ式"
  },
  {
-  "id": "ch03-019",
+  "id": "ch03-021",
   "chapter": 3,
   "topic": "内包表記",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[0, 1, 4, 9]",
    "[1, 2, 3]",
@@ -373,49 +533,15 @@
   "answer": [
    0
   ],
-  "explanation": "リスト内包表記。range(4)=0,1,2,3 の各2乗で [0, 1, 4, 9]。",
+  "explanation": "各要素の2乗。",
+  "rationales": [
+   "正解。0,1,2,3 の2乗で [0,1,4,9]。",
+   "不正解。2乗していない。",
+   "不正解。元の値ではない。",
+   "不正解。0 の2乗 0 も含む。"
+  ],
   "code": "print([x**2 for x in range(4)])",
   "reference": "リスト内包表記"
- },
- {
-  "id": "ch03-020",
-  "chapter": 3,
-  "topic": "内包表記",
-  "difficulty": 2,
-  "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
-  "choices": [
-   "[0, 2, 4]",
-   "[1, 3, 5]",
-   "[0, 1, 2, 3, 4, 5]",
-   "[2, 4]"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "条件付き内包表記。0..5 のうち偶数（x%2==0）だけを残す。",
-  "code": "print([x for x in range(6) if x % 2 == 0])",
-  "reference": "内包表記 --- 条件"
- },
- {
-  "id": "ch03-021",
-  "chapter": 3,
-  "topic": "内包表記",
-  "difficulty": 2,
-  "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
-  "choices": [
-   "{0, 1, 2}",
-   "[0, 1, 2]",
-   "{0: 0, 1: 1, 2: 2}",
-   "(0, 1, 2)"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "`{}` で要素のみを書くと集合内包表記。重複のない set が得られる。",
-  "code": "print({x for x in range(3)})",
-  "reference": "集合内包表記"
  },
  {
   "id": "ch03-022",
@@ -423,7 +549,59 @@
   "topic": "内包表記",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "[0, 2, 4]",
+   "[1, 3, 5]",
+   "[0,1,2,3,4,5]",
+   "[2, 4]"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "条件付き内包表記。",
+  "rationales": [
+   "正解。偶数だけ残す。",
+   "不正解。奇数ではない。",
+   "不正解。条件で絞られる。",
+   "不正解。0 も偶数で含まれる。"
+  ],
+  "code": "print([x for x in range(6) if x % 2 == 0])",
+  "reference": "内包表記 --- 条件"
+ },
+ {
+  "id": "ch03-023",
+  "chapter": 3,
+  "topic": "内包表記",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "{0, 1, 2}",
+   "[0, 1, 2]",
+   "{0:0,1:1,2:2}",
+   "(0, 1, 2)"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "集合内包表記。",
+  "rationales": [
+   "正解。{} で要素のみだと set。",
+   "不正解。リストではない。",
+   "不正解。コロンが無いので辞書ではない。",
+   "不正解。タプルではない。"
+  ],
+  "code": "print({x for x in range(3)})",
+  "reference": "集合内包表記"
+ },
+ {
+  "id": "ch03-024",
+  "chapter": 3,
+  "topic": "内包表記",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "{0: 0, 1: 1, 2: 4}",
    "{0, 1, 4}",
@@ -433,17 +611,23 @@
   "answer": [
    0
   ],
-  "explanation": "`{キー: 値 for ...}` は辞書内包表記。x:x**2 で {0:0, 1:1, 2:4}。",
+  "explanation": "辞書内包表記。",
+  "rationales": [
+   "正解。キー:値 で辞書になる。",
+   "不正解。コロンがあるので set ではない。",
+   "不正解。リストではない。",
+   "不正解。タプルではない。"
+  ],
   "code": "print({x: x**2 for x in range(3)})",
   "reference": "辞書内包表記"
  },
  {
-  "id": "ch03-023",
+  "id": "ch03-025",
   "chapter": 3,
   "topic": "ジェネレータ",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "<class 'generator'>",
    "<class 'list'>",
@@ -453,17 +637,23 @@
   "answer": [
    0
   ],
-  "explanation": "丸括弧の内包表記はジェネレータ式で、generator オブジェクトを生成する（リストではない）。",
+  "explanation": "丸括弧はジェネレータ式。",
+  "rationales": [
+   "正解。() の内包はジェネレータを生成。",
+   "不正解。[] ならリストだが () は違う。",
+   "不正解。タプルにはならない。",
+   "不正解。関数ではない。"
+  ],
   "code": "g = (x for x in range(3))\nprint(type(g))",
   "reference": "ジェネレータ式"
  },
  {
-  "id": "ch03-024",
+  "id": "ch03-026",
   "chapter": 3,
   "topic": "ジェネレータ",
   "difficulty": 2,
   "type": "single",
-  "question": "yield を含む関数を呼び出したときに返るものはどれか。",
+  "question": "yield を含む関数を呼ぶと返るものはどれか。",
   "choices": [
    "ジェネレータオブジェクト",
    "最初の yield の値",
@@ -473,16 +663,22 @@
   "answer": [
    0
   ],
-  "explanation": "yield を含む関数（ジェネレータ関数）を呼ぶと、本体は実行されずジェネレータオブジェクトが返る。next() や for で値が取り出される。",
-  "reference": "yield 式"
+  "explanation": "本体は実行されずジェネレータが返る。",
+  "rationales": [
+   "正解。呼び出しでジェネレータが返り、本体は遅延実行。",
+   "不正解。next や for で初めて値が出る。",
+   "不正解。None ではない。",
+   "不正解。リストではなく遅延評価。"
+  ],
+  "reference": "yield"
  },
  {
-  "id": "ch03-025",
+  "id": "ch03-027",
   "chapter": 3,
   "topic": "アンパック",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "1 [2, 3]",
    "1 2 3",
@@ -492,17 +688,23 @@
   "answer": [
    0
   ],
-  "explanation": "`a, *b = ...` の星付きターゲットは残りをリストで受け取る。a=1, b=[2,3]。",
+  "explanation": "* ターゲットは残りをリストで受ける。",
+  "rationales": [
+   "正解。a=1, b=[2,3]。",
+   "不正解。b はリストになる。",
+   "不正解。a はリストでなく値。",
+   "不正解。正しい構文。"
+  ],
   "code": "a, *b = [1, 2, 3]\nprint(a, b)",
-  "reference": "アンパック代入 --- *"
+  "reference": "アンパック --- *"
  },
  {
-  "id": "ch03-026",
+  "id": "ch03-028",
   "chapter": 3,
   "topic": "アンパック",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "2 1",
    "1 2",
@@ -512,17 +714,23 @@
   "answer": [
    0
   ],
-  "explanation": "タプルのアンパックで2変数を同時に入れ替えられる。a,b = b,a により a=2, b=1。",
+  "explanation": "タプルで入れ替え。",
+  "rationales": [
+   "正解。a=2,b=1 に入れ替わる。",
+   "不正解。入れ替え後なので 1 2 ではない。",
+   "不正解。print(a,b) は空白区切りで括弧なし。",
+   "不正解。一時変数なしで正しく動く。"
+  ],
   "code": "a, b = 1, 2\na, b = b, a\nprint(a, b)",
   "reference": "多重代入による入れ替え"
  },
  {
-  "id": "ch03-027",
+  "id": "ch03-029",
   "chapter": 3,
   "topic": "例外",
   "difficulty": 2,
   "type": "single",
-  "question": "例外処理で、例外の有無にかかわらず必ず実行される節はどれか。",
+  "question": "例外の有無に関わらず必ず実行される節はどれか。",
   "choices": [
    "finally",
    "else",
@@ -532,36 +740,48 @@
   "answer": [
    0
   ],
-  "explanation": "`finally` 節は例外発生の有無に関係なく必ず実行される。`else` は例外が起きなかった場合のみ実行される。",
+  "explanation": "finally は常に実行。",
+  "rationales": [
+   "正解。finally は例外有無に関係なく実行。",
+   "不正解。else は例外が無かった時のみ。",
+   "不正解。except は例外発生時のみ。",
+   "不正解。ensure という節はない。"
+  ],
   "reference": "try 文 --- finally"
  },
  {
-  "id": "ch03-028",
+  "id": "ch03-030",
   "chapter": 3,
   "topic": "例外",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "caught",
    "0",
-   "エラーで停止",
+   "停止する",
    "done"
   ],
   "answer": [
    0
   ],
-  "explanation": "1/0 で ZeroDivisionError が発生し except で捕捉、'caught' を出力する。",
+  "explanation": "ZeroDivisionError を捕捉。",
+  "rationales": [
+   "正解。0除算を except が捕まえ 'caught'。",
+   "不正解。数値は出ない。",
+   "不正解。捕捉するので停止しない。",
+   "不正解。'done' は出力していない。"
+  ],
   "code": "try:\n    1 / 0\nexcept ZeroDivisionError:\n    print('caught')",
   "reference": "例外処理"
  },
  {
-  "id": "ch03-029",
+  "id": "ch03-031",
   "chapter": 3,
   "topic": "例外",
   "difficulty": 3,
   "type": "single",
-  "question": "raise した独自例外を作るとき、継承すべき基底クラスとして最も一般的なものはどれか。",
+  "question": "ユーザー定義例外で継承すべき基底クラスはどれか。",
   "choices": [
    "Exception",
    "BaseException",
@@ -571,35 +791,47 @@
   "answer": [
    0
   ],
-  "explanation": "ユーザー定義例外は通常 Exception を継承する。BaseException は SystemExit 等も含む最上位で、直接継承は推奨されない。",
-  "reference": "例外 --- ユーザー定義例外"
+  "explanation": "通常は Exception を継承。",
+  "rationales": [
+   "正解。独自例外は Exception を継承するのが定石。",
+   "不正解。BaseException は SystemExit 等も含み広すぎる。",
+   "不正解。object 直接継承は例外として機能しない。",
+   "不正解。StopIteration は反復終了用の特殊例外。"
+  ],
+  "reference": "ユーザー定義例外"
  },
  {
-  "id": "ch03-030",
+  "id": "ch03-032",
   "chapter": 3,
   "topic": "with文",
   "difficulty": 2,
   "type": "single",
   "question": "with 文（コンテキストマネージャ）の主な利点はどれか。",
   "choices": [
-   "ブロックを抜けるときにリソースの後始末（close等）を自動で行う",
-   "処理速度が必ず速くなる",
+   "ブロック終了時に後始末を自動実行",
+   "必ず高速化する",
    "例外を必ず無視する",
-   "変数のスコープをグローバルにする"
+   "変数をグローバル化する"
   ],
   "answer": [
    0
   ],
-  "explanation": "with 文は __enter__/__exit__ を使い、ブロック終了時（例外時も含む）に確実に後始末を行う。ファイルクローズ等に使う。",
+  "explanation": "__enter__/__exit__ で後始末。",
+  "rationales": [
+   "正解。例外時も含め確実に後始末する。",
+   "不正解。速度向上のための構文ではない。",
+   "不正解。例外を握り潰すわけではない。",
+   "不正解。スコープを変える機能はない。"
+  ],
   "reference": "with 文"
  },
  {
-  "id": "ch03-031",
+  "id": "ch03-033",
   "chapter": 3,
   "topic": "スコープ",
   "difficulty": 3,
   "type": "single",
-  "question": "関数内からグローバル変数へ代入できるようにするキーワードはどれか。",
+  "question": "関数内からグローバル変数へ代入可能にするキーワードはどれか。",
   "choices": [
    "global",
    "nonlocal",
@@ -609,18 +841,24 @@
   "answer": [
    0
   ],
-  "explanation": "`global x` で x をグローバル変数として扱える。`nonlocal` は1つ外側（ネスト関数）の変数を指す。",
+  "explanation": "global でモジュール変数を代入。",
+  "rationales": [
+   "正解。global x でグローバルへ代入できる。",
+   "不正解。nonlocal は1つ外の関数スコープ用。",
+   "不正解。extern は Python に無い。",
+   "不正解。public は Python に無い。"
+  ],
   "reference": "global 文"
  },
  {
-  "id": "ch03-032",
+  "id": "ch03-034",
   "chapter": 3,
   "topic": "スコープ",
   "difficulty": 3,
   "type": "single",
-  "question": "Python の名前解決の順序（スコープ）を表す略語はどれか。",
+  "question": "Python の名前解決順序を表す略語はどれか。",
   "choices": [
-   "LEGB（Local → Enclosing → Global → Built-in）",
+   "LEGB",
    "GLOB",
    "BGEL",
    "OOP"
@@ -628,16 +866,22 @@
   "answer": [
    0
   ],
-  "explanation": "名前は Local → Enclosing（外側の関数）→ Global（モジュール）→ Built-in の順に探索される（LEGB則）。",
-  "reference": "名前解決 --- LEGB"
+  "explanation": "Local→Enclosing→Global→Built-in。",
+  "rationales": [
+   "正解。LEGB の順で名前を探索する。",
+   "不正解。GLOB は誤り。",
+   "不正解。BGEL は順序が誤り。",
+   "不正解。OOP は無関係。"
+  ],
+  "reference": "LEGB"
  },
  {
-  "id": "ch03-033",
+  "id": "ch03-035",
   "chapter": 3,
   "topic": "クロージャ",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "15",
    "5",
@@ -647,17 +891,23 @@
   "answer": [
    0
   ],
-  "explanation": "make_adder(10) が x=10 を閉じ込めたクロージャを返し、それに 5 を渡すので 15。",
+  "explanation": "クロージャが x=10 を保持。",
+  "rationales": [
+   "正解。10+5=15。",
+   "不正解。5 だけではない。",
+   "不正解。10 だけではない。",
+   "不正解。正しく動作する。"
+  ],
   "code": "def make_adder(x):\n    def add(y):\n        return x + y\n    return add\nprint(make_adder(10)(5))",
   "reference": "クロージャ"
  },
  {
-  "id": "ch03-034",
+  "id": "ch03-036",
   "chapter": 3,
   "topic": "三項演算子",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "even",
    "odd",
@@ -667,17 +917,23 @@
   "answer": [
    0
   ],
-  "explanation": "条件式 `A if 条件 else B`。4%2==0 が真なので 'even'。",
+  "explanation": "条件式 A if 条件 else B。",
+  "rationales": [
+   "正解。4 は偶数なので 'even'。",
+   "不正解。奇数ではない。",
+   "不正解。文字列を返し True ではない。",
+   "不正解。余り 0 は表示しない。"
+  ],
   "code": "n = 4\nprint('even' if n % 2 == 0 else 'odd')",
-  "reference": "条件式（三項演算子）"
+  "reference": "条件式"
  },
  {
-  "id": "ch03-035",
+  "id": "ch03-037",
   "chapter": 3,
   "topic": "セイウチ演算子",
   "difficulty": 3,
   "type": "single",
-  "question": "Python 3.8 で導入された、式の中で代入を行う演算子（セイウチ演算子）はどれか。",
+  "question": "式の中で代入を行う演算子はどれか。",
   "choices": [
    ":=",
    "=>",
@@ -687,35 +943,47 @@
   "answer": [
    0
   ],
-  "explanation": "代入式（セイウチ演算子）`:=` は式の評価と同時に代入できる。例: if (n := len(a)) > 10:。",
-  "reference": "代入式 :="
+  "explanation": "セイウチ演算子 :=（3.8）。",
+  "rationales": [
+   "正解。:= が代入式（3.8 で追加）。",
+   "不正解。=> は Python に無い。",
+   "不正解。<- は Python に無い。",
+   "不正解。:: はスライスの一部で代入ではない。"
+  ],
+  "reference": "代入式"
  },
  {
-  "id": "ch03-036",
+  "id": "ch03-038",
   "chapter": 3,
   "topic": "真偽値",
   "difficulty": 2,
   "type": "single",
-  "question": "次のうち、ブール値として False と評価されるものはどれか（最も適切なものを選べ）。",
+  "question": "次のうち False と評価されるものはどれか。",
   "choices": [
    "空のリスト []",
    "[0]",
-   "'False' という文字列",
+   "文字列 'False'",
    "1"
   ],
   "answer": [
    0
   ],
-  "explanation": "空のシーケンス・コレクション（[]、''、{}、()）、0、None、False は偽。非空の 'False' 文字列や [0] は真。",
+  "explanation": "空コレクションは偽。",
+  "rationales": [
+   "正解。空のリストは偽。",
+   "不正解。要素を持つ [0] は真。",
+   "不正解。非空文字列 'False' は真。",
+   "不正解。1 は真。"
+  ],
   "reference": "真理値判定"
  },
  {
-  "id": "ch03-037",
+  "id": "ch03-039",
   "chapter": 3,
   "topic": "文字列",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "True",
    "False",
@@ -725,36 +993,48 @@
   "answer": [
    0
   ],
-  "explanation": "`in` 演算子は部分文字列の包含を判定する。'py' は 'python' に含まれるので True。",
+  "explanation": "in は部分文字列判定。",
+  "rationales": [
+   "正解。'py' は 'python' に含まれる。",
+   "不正解。含まれるので False ではない。",
+   "不正解。正しい構文。",
+   "不正解。bool を返す。"
+  ],
   "code": "print('py' in 'python')",
   "reference": "in 演算子"
  },
  {
-  "id": "ch03-038",
+  "id": "ch03-040",
   "chapter": 3,
   "topic": "ループ",
   "difficulty": 2,
   "type": "single",
-  "question": "for ループの else 節が実行されるのはどんなときか。",
+  "question": "for-else の else が実行されるのはどんな時か。",
   "choices": [
-   "ループが break されずに最後まで回り切ったとき",
-   "ループが1度も実行されなかったときのみ",
-   "break されたとき",
-   "例外が発生したとき"
+   "break されず最後まで回った時",
+   "一度も実行されなかった時のみ",
+   "break された時",
+   "例外発生時"
   ],
   "answer": [
    0
   ],
-  "explanation": "for/while の else 節は、ループが break で中断されずに正常終了したときに実行される。",
+  "explanation": "正常終了時に else。",
+  "rationales": [
+   "正解。break で抜けなければ else が実行。",
+   "不正解。回数に関わらず break しなければ実行。",
+   "不正解。break すると else はスキップ。",
+   "不正解。例外時ではない。"
+  ],
   "reference": "for-else"
  },
  {
-  "id": "ch03-039",
+  "id": "ch03-041",
   "chapter": 3,
   "topic": "ループ",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "found",
    "not found",
@@ -764,17 +1044,23 @@
   "answer": [
    0
   ],
-  "explanation": "2 を見つけて break するため else は実行されず 'found' のみ出力。",
+  "explanation": "break で else をスキップ。",
+  "rationales": [
+   "正解。2 で break し 'found' のみ。",
+   "不正解。break したため else は出ない。",
+   "不正解。番号は表示しない。",
+   "不正解。正常動作。"
+  ],
   "code": "for i in [1, 2, 3]:\n    if i == 2:\n        print('found')\n        break\nelse:\n    print('not found')",
   "reference": "for-else / break"
  },
  {
-  "id": "ch03-040",
+  "id": "ch03-042",
   "chapter": 3,
   "topic": "enumerate",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "0 a\n1 b",
    "1 a\n2 b",
@@ -784,17 +1070,23 @@
   "answer": [
    0
   ],
-  "explanation": "enumerate はインデックスと要素のタプルを返す。既定の開始は 0。",
+  "explanation": "enumerate は (索引, 値)。",
+  "rationales": [
+   "正解。既定の開始は0で 0 a / 1 b。",
+   "不正解。1 始まりではない。",
+   "不正解。順序は (索引,値)。",
+   "不正解。索引も出力される。"
+  ],
   "code": "for i, v in enumerate(['a', 'b']):\n    print(i, v)",
   "reference": "enumerate"
  },
  {
-  "id": "ch03-041",
+  "id": "ch03-043",
   "chapter": 3,
   "topic": "zip",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[(1, 'a'), (2, 'b')]",
    "[(1, 2), ('a', 'b')]",
@@ -804,17 +1096,23 @@
   "answer": [
    0
   ],
-  "explanation": "zip は複数イテラブルを要素ごとに組にする。長さが違う場合は短い方に合わせる。",
+  "explanation": "zip は要素ごとに組にする。",
+  "rationales": [
+   "正解。対応する要素をタプルにする。",
+   "不正解。縦割りではなく横割り。",
+   "不正解。平坦化はしない。",
+   "不正解。正常動作。"
+  ],
   "code": "print(list(zip([1, 2], ['a', 'b'])))",
   "reference": "zip"
  },
  {
-  "id": "ch03-042",
+  "id": "ch03-044",
   "chapter": 3,
   "topic": "デコレータ",
   "difficulty": 3,
   "type": "single",
-  "question": "デコレータ `@deco` を関数 f に付けることと等価なものはどれか。",
+  "question": "`@deco` を関数 f に付けるのと等価なものはどれか。",
   "choices": [
    "f = deco(f)",
    "f = deco(f())",
@@ -824,16 +1122,22 @@
   "answer": [
    0
   ],
-  "explanation": "`@deco` を付けた関数定義は、定義後に `f = deco(f)` を実行するのと等価。",
+  "explanation": "デコレータは f = deco(f)。",
+  "rationales": [
+   "正解。定義後に f を deco に通す。",
+   "不正解。f() の呼び出し結果ではない。",
+   "不正解。向きが逆。",
+   "不正解。f に deco を渡すのではない。"
+  ],
   "reference": "デコレータ"
  },
  {
-  "id": "ch03-043",
+  "id": "ch03-045",
   "chapter": 3,
   "topic": "可変・不変",
   "difficulty": 2,
   "type": "single",
-  "question": "次のうちイミュータブル（変更不可）な型はどれか。",
+  "question": "次のうちイミュータブルな型はどれか。",
   "choices": [
    "タプル",
    "リスト",
@@ -843,16 +1147,22 @@
   "answer": [
    0
   ],
-  "explanation": "tuple・str・int・frozenset などはイミュータブル。list・dict・set はミュータブル。",
-  "reference": "ミュータブル / イミュータブル"
+  "explanation": "tuple は不変。",
+  "rationales": [
+   "正解。タプルは変更不可。",
+   "不正解。list は可変。",
+   "不正解。dict は可変。",
+   "不正解。set は可変（frozenset は不変）。"
+  ],
+  "reference": "ミュータブル/イミュータブル"
  },
  {
-  "id": "ch03-044",
+  "id": "ch03-046",
   "chapter": 3,
   "topic": "参照",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[1, 2, 3]",
    "[1, 2]",
@@ -862,12 +1172,18 @@
   "answer": [
    0
   ],
-  "explanation": "b = a はリストの参照のコピー。同じオブジェクトを指すため b.append の結果が a にも反映される。",
+  "explanation": "b=a は同じ参照。",
+  "rationales": [
+   "正解。a と b は同じリストを指すため a にも反映。",
+   "不正解。コピーではないので [1,2] のままにならない。",
+   "不正解。エラーにはならない。",
+   "不正解。全置換ではない。"
+  ],
   "code": "a = [1, 2]\nb = a\nb.append(3)\nprint(a)",
   "reference": "参照とエイリアス"
  },
  {
-  "id": "ch03-045",
+  "id": "ch03-047",
   "chapter": 3,
   "topic": "コピー",
   "difficulty": 3,
@@ -882,16 +1198,22 @@
   "answer": [
    0
   ],
-  "explanation": "`b = a` は参照の共有でコピーではない。スライス a[:]、list(a)、a.copy() は浅いコピーを作る。",
+  "explanation": "b=a はコピーではない。",
+  "rationales": [
+   "正解。b=a は参照共有でコピーにならない（これが誤り）。",
+   "不正解。a[:] は浅いコピー。",
+   "不正解。list(a) は浅いコピー。",
+   "不正解。a.copy() は浅いコピー。"
+  ],
   "reference": "浅いコピー"
  },
  {
-  "id": "ch03-046",
+  "id": "ch03-048",
   "chapter": 3,
   "topic": "数値",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "True",
    "False",
@@ -901,17 +1223,23 @@
   "answer": [
    0
   ],
-  "explanation": "bool は int のサブクラスで True==1。よって True + True == 2 ではなく、ここでは True == 1 が True。",
+  "explanation": "bool は int のサブクラス。",
+  "rationales": [
+   "正解。True==1 は True。",
+   "不正解。等しいので False ではない。",
+   "不正解。正当な比較。",
+   "不正解。比較結果は bool で 1 ではない。"
+  ],
   "code": "print(True == 1)",
   "reference": "bool と int"
  },
  {
-  "id": "ch03-047",
+  "id": "ch03-049",
   "chapter": 3,
   "topic": "数値",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "2",
    "True",
@@ -921,17 +1249,23 @@
   "answer": [
    0
   ],
-  "explanation": "True は 1、False は 0 として算術に使える。True + True = 2。",
+  "explanation": "True は 1 として演算。",
+  "rationales": [
+   "正解。1+1=2。",
+   "不正解。算術では数値になり bool 表示にならない。",
+   "不正解。1 ではない。",
+   "不正解。正当な演算。"
+  ],
   "code": "print(True + True)",
   "reference": "bool の算術"
  },
  {
-  "id": "ch03-048",
+  "id": "ch03-050",
   "chapter": 3,
   "topic": "文字列",
-  "difficulty": 2,
+  "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "3",
    "2",
@@ -941,17 +1275,23 @@
   "answer": [
    0
   ],
-  "explanation": "len は要素数（文字列なら文字数）を返す。'abc' は3文字。",
+  "explanation": "len は文字数。",
+  "rationales": [
+   "正解。'abc' は3文字。",
+   "不正解。2ではない。",
+   "不正解。4ではない。",
+   "不正解。正常動作。"
+  ],
   "code": "print(len('abc'))",
   "reference": "len"
  },
  {
-  "id": "ch03-049",
+  "id": "ch03-051",
   "chapter": 3,
   "topic": "辞書",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "default",
    "None",
@@ -961,37 +1301,23 @@
   "answer": [
    0
   ],
-  "explanation": "dict.get(key, default) はキーが無ければ default を返す（例外を出さない）。",
+  "explanation": "get は既定値を返す。",
+  "rationales": [
+   "正解。キーが無いので 'default'。",
+   "不正解。既定値を指定したので None ではない。",
+   "不正解。get は例外を出さない。",
+   "不正解。0 ではない。"
+  ],
   "code": "d = {'a': 1}\nprint(d.get('b', 'default'))",
   "reference": "dict.get"
  },
  {
-  "id": "ch03-050",
-  "chapter": 3,
-  "topic": "演算子",
-  "difficulty": 2,
-  "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
-  "choices": [
-   "[1, 2, 1, 2]",
-   "[2, 4]",
-   "[1, 2, 2]",
-   "エラー"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "リストの `*` は繰り返し連結。[1,2]*2 は [1, 2, 1, 2]。",
-  "code": "print([1, 2] * 2)",
-  "reference": "シーケンスの繰り返し"
- },
- {
-  "id": "ch03-051",
+  "id": "ch03-052",
   "chapter": 3,
   "topic": "型変換",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "15",
    "123",
@@ -1001,17 +1327,23 @@
   "answer": [
    0
   ],
-  "explanation": "int('12') は整数 12 に変換され、12 + 3 = 15 となる。文字列のままなら連結だが、int で数値化している点に注意。",
+  "explanation": "int で数値化して加算。",
+  "rationales": [
+   "正解。12+3=15。",
+   "不正解。文字列連結ではない。",
+   "不正解。数値になるのでクォートは付かない。",
+   "不正解。int 変換は成功する。"
+  ],
   "code": "print(int('12') + 3)",
   "reference": "型変換 --- int()"
  },
  {
-  "id": "ch03-052",
+  "id": "ch03-053",
   "chapter": 3,
   "topic": "識別子",
   "difficulty": 1,
   "type": "single",
-  "question": "Python の識別子（変数名）として使えないものはどれか。",
+  "question": "Python の識別子として使えないものはどれか。",
   "choices": [
    "2nd",
    "_value",
@@ -1021,7 +1353,886 @@
   "answer": [
    0
   ],
-  "explanation": "識別子は数字で始められない。'2nd' は不可。Unicode 文字（日本語）は使用可能。",
+  "explanation": "数字始まりは不可。",
+  "rationales": [
+   "正解。数字で始まる名前は使えない。",
+   "不正解。_ 始まりは有効。",
+   "不正解。日本語など Unicode 文字は使える。",
+   "不正解。英数字混在は有効。"
+  ],
   "reference": "識別子の規則"
+ },
+ {
+  "id": "ch03-054",
+  "chapter": 3,
+  "topic": "数値",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "0.30000000000000004",
+   "0.3",
+   "0",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "浮動小数点の誤差。",
+  "rationales": [
+   "正解。二進浮動小数点の丸め誤差でこの値になる。",
+   "不正解。厳密な 0.3 にはならない。",
+   "不正解。0 ではない。",
+   "不正解。計算自体は成立する。"
+  ],
+  "code": "print(0.1 + 0.2)",
+  "reference": "浮動小数点誤差"
+ },
+ {
+  "id": "ch03-055",
+  "chapter": 3,
+  "topic": "数値",
+  "difficulty": 2,
+  "type": "single",
+  "question": "丸め誤差を避けて正確な十進計算を行う標準ライブラリはどれか。",
+  "choices": [
+   "decimal",
+   "math",
+   "fractions だけ",
+   "random"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "decimal.Decimal で正確に。",
+  "rationales": [
+   "正解。decimal は十進で正確な計算を提供。",
+   "不正解。math は浮動小数点演算。",
+   "不正解。fractions も有理数で正確だが十進固定小数は decimal。",
+   "不正解。random は乱数で無関係。"
+  ],
+  "reference": "decimal"
+ },
+ {
+  "id": "ch03-056",
+  "chapter": 3,
+  "topic": "文字列",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "True",
+   "False",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "== は値の比較。",
+  "rationales": [
+   "正解。連結結果 'abc' と等しい。",
+   "不正解。等しいので False ではない。",
+   "不正解。正当な比較。",
+   "不正解。bool を返す。"
+  ],
+  "code": "print('abc' == 'ab' + 'c')",
+  "reference": "文字列の等価"
+ },
+ {
+  "id": "ch03-057",
+  "chapter": 3,
+  "topic": "ループ",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "0\n1\n2",
+   "1\n2\n3",
+   "0\n1\n2\n3",
+   "[0, 1, 2]"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "range(3) は 0,1,2。",
+  "rationales": [
+   "正解。0,1,2 を順に出力。",
+   "不正解。0 始まりで 1 からではない。",
+   "不正解。3 は含まない。",
+   "不正解。1つずつ出力されリスト表示ではない。"
+  ],
+  "code": "for i in range(3):\n    print(i)",
+  "reference": "range"
+ },
+ {
+  "id": "ch03-058",
+  "chapter": 3,
+  "topic": "ループ",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "2\n4",
+   "0\n2\n4",
+   "1\n3",
+   "2\n4\n6"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "range(2,6,2) は 2,4。",
+  "rationales": [
+   "正解。2 から 2 ずつ、6未満なので 2,4。",
+   "不正解。開始は2なので0は含まない。",
+   "不正解。偶数列で奇数ではない。",
+   "不正解。6 は含まない。"
+  ],
+  "code": "for i in range(2, 6, 2):\n    print(i)",
+  "reference": "range --- start/step"
+ },
+ {
+  "id": "ch03-059",
+  "chapter": 3,
+  "topic": "continue",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "0\n2\n4",
+   "1\n3",
+   "0\n1\n2\n3\n4",
+   "2\n4"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "奇数を continue で飛ばす。",
+  "rationales": [
+   "正解。奇数をスキップし 0,2,4。",
+   "不正解。偶数が残る。",
+   "不正解。全ては出ない。",
+   "不正解。0 も偶数で出力される。"
+  ],
+  "code": "for i in range(5):\n    if i % 2:\n        continue\n    print(i)",
+  "reference": "continue"
+ },
+ {
+  "id": "ch03-060",
+  "chapter": 3,
+  "topic": "pass",
+  "difficulty": 1,
+  "type": "single",
+  "question": "何もしないが構文上必要な場所に置くキーワードはどれか。",
+  "choices": [
+   "pass",
+   "skip",
+   "void",
+   "none"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "pass は空文。",
+  "rationales": [
+   "正解。pass は何もしないプレースホルダ。",
+   "不正解。skip は無い。",
+   "不正解。void は無い。",
+   "不正解。none という文は無い（None は値）。"
+  ],
+  "reference": "pass 文"
+ },
+ {
+  "id": "ch03-061",
+  "chapter": 3,
+  "topic": "f文字列",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "x=10",
+   "x 10",
+   "10",
+   "{x}=10"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "{x=} はデバッグ記法。",
+  "rationales": [
+   "正解。'変数名=値' を出力する（3.8+）。",
+   "不正解。= は省略されない。",
+   "不正解。変数名も出る。",
+   "不正解。波括弧は出ない。"
+  ],
+  "code": "x = 10\nprint(f'{x=}')",
+  "reference": "f-string --- = 記法"
+ },
+ {
+  "id": "ch03-062",
+  "chapter": 3,
+  "topic": "文字列",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "a\tb",
+   "ab",
+   "a b",
+   "a\\tb"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "\\t はタブのエスケープ。",
+  "rationales": [
+   "正解。\\t がタブ文字になり 'a<タブ>b'。",
+   "不正解。区切りは消えない。",
+   "不正解。スペースではなくタブ。",
+   "不正解。raw でないので \\t は展開される。"
+  ],
+  "code": "print('a\\tb')",
+  "reference": "エスケープシーケンス"
+ },
+ {
+  "id": "ch03-063",
+  "chapter": 3,
+  "topic": "raw文字列",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "a\\tb",
+   "a\tb",
+   "ab",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "r'' はエスケープを無効化。",
+  "rationales": [
+   "正解。raw 文字列は \\t をそのまま表示。",
+   "不正解。タブには変換されない。",
+   "不正解。文字は消えない。",
+   "不正解。正当な構文。"
+  ],
+  "code": "print(r'a\\tb')",
+  "reference": "raw 文字列"
+ },
+ {
+  "id": "ch03-064",
+  "chapter": 3,
+  "topic": "演算子",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "[1, 2, 1, 2]",
+   "[2, 4]",
+   "[1, 2, 2]",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "リスト * は繰り返し。",
+  "rationales": [
+   "正解。[1,2] を2回繰り返す。",
+   "不正解。各要素を2倍するのではない。",
+   "不正解。部分的繰り返しではない。",
+   "不正解。正常動作。"
+  ],
+  "code": "print([1, 2] * 2)",
+  "reference": "シーケンスの繰り返し"
+ },
+ {
+  "id": "ch03-065",
+  "chapter": 3,
+  "topic": "アンパック",
+  "difficulty": 2,
+  "type": "single",
+  "question": "関数呼び出しで `f(*[1, 2])` はどれと等価か。",
+  "choices": [
+   "f(1, 2)",
+   "f([1, 2])",
+   "f(1)",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "* は引数展開。",
+  "rationales": [
+   "正解。リストを位置引数に展開する。",
+   "不正解。リストそのものを渡すのではない。",
+   "不正解。1要素だけにはならない。",
+   "不正解。正当な構文。"
+  ],
+  "reference": "呼び出し時の * 展開"
+ },
+ {
+  "id": "ch03-066",
+  "chapter": 3,
+  "topic": "アンパック",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "{'a': 1, 'b': 2}",
+   "{'a': 1}",
+   "エラー",
+   "{'b': 2}"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "** は辞書の展開（マージ）。",
+  "rationales": [
+   "正解。2つの辞書を展開して結合。",
+   "不正解。片方だけにならない。",
+   "不正解。正当な構文。",
+   "不正解。両方の要素が入る。"
+  ],
+  "code": "d1 = {'a': 1}\nd2 = {'b': 2}\nprint({**d1, **d2})",
+  "reference": "辞書の ** 展開"
+ },
+ {
+  "id": "ch03-067",
+  "chapter": 3,
+  "topic": "globals",
+  "difficulty": 3,
+  "type": "single",
+  "question": "ネストした内側の関数から、1つ外側の関数の変数へ代入するキーワードはどれか。",
+  "choices": [
+   "nonlocal",
+   "global",
+   "outer",
+   "static"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "nonlocal は外側関数の変数。",
+  "rationales": [
+   "正解。nonlocal で外側関数スコープの変数に代入できる。",
+   "不正解。global はモジュールレベル。",
+   "不正解。outer は無い。",
+   "不正解。static は Python に無い。"
+  ],
+  "reference": "nonlocal 文"
+ },
+ {
+  "id": "ch03-068",
+  "chapter": 3,
+  "topic": "例外",
+  "difficulty": 3,
+  "type": "single",
+  "question": "複数の例外型を1つの except でまとめて捕捉する書き方はどれか。",
+  "choices": [
+   "except (ValueError, TypeError):",
+   "except ValueError, TypeError:",
+   "except ValueError | TypeError:",
+   "except [ValueError, TypeError]:"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "タプルで複数指定。",
+  "rationales": [
+   "正解。丸括弧のタプルで複数指定する。",
+   "不正解。カンマ区切り（括弧なし）は Python3 で無効。",
+   "不正解。| での指定はできない。",
+   "不正解。リストでは指定できない。"
+  ],
+  "reference": "except --- 複数例外"
+ },
+ {
+  "id": "ch03-069",
+  "chapter": 3,
+  "topic": "例外",
+  "difficulty": 3,
+  "type": "single",
+  "question": "except 節で捕捉した例外オブジェクトに別名を付ける構文はどれか。",
+  "choices": [
+   "except ValueError as e:",
+   "except ValueError -> e:",
+   "except ValueError, e:",
+   "except e in ValueError:"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "as で束縛する。",
+  "rationales": [
+   "正解。as e で例外を変数に束縛する。",
+   "不正解。-> は使わない。",
+   "不正解。Python3 ではカンマ記法は不可。",
+   "不正解。in 記法は無い。"
+  ],
+  "reference": "except --- as"
+ },
+ {
+  "id": "ch03-070",
+  "chapter": 3,
+  "topic": "raise",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "bad",
+   "0",
+   "停止のみ",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "raise した例外を捕捉。",
+  "rationales": [
+   "正解。例外メッセージ 'bad' を出力。",
+   "不正解。数値は出ない。",
+   "不正解。捕捉するので止まらない。",
+   "不正解。メッセージが出る。"
+  ],
+  "code": "try:\n    raise ValueError('bad')\nexcept ValueError as e:\n    print(e)",
+  "reference": "raise"
+ },
+ {
+  "id": "ch03-071",
+  "chapter": 3,
+  "topic": "assert",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "ok",
+   "AssertionError",
+   "何も出ない",
+   "True"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "条件が真なら通過。",
+  "rationales": [
+   "正解。条件が真なので通過し 'ok'。",
+   "不正解。条件が真なので例外は出ない。",
+   "不正解。print が実行される。",
+   "不正解。True は表示しない。"
+  ],
+  "code": "assert 1 + 1 == 2\nprint('ok')",
+  "reference": "assert"
+ },
+ {
+  "id": "ch03-072",
+  "chapter": 3,
+  "topic": "内包表記",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "[0, 1, 2, 3]",
+   "[[0, 1], [2, 3]]",
+   "[0, 2]",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "二重 for の平坦化内包表記。",
+  "rationales": [
+   "正解。入れ子を平坦化して [0,1,2,3]。",
+   "不正解。平坦化されるため入れ子にならない。",
+   "不正解。全要素が入る。",
+   "不正解。正当な構文。"
+  ],
+  "code": "print([x for row in [[0, 1], [2, 3]] for x in row])",
+  "reference": "ネスト内包表記の平坦化"
+ },
+ {
+  "id": "ch03-073",
+  "chapter": 3,
+  "topic": "ジェネレータ",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "0",
+   "1",
+   "2",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "next で最初の値を取得。",
+  "rationales": [
+   "正解。最初の要素 0 を返す。",
+   "不正解。2番目ではない。",
+   "不正解。最後ではない。",
+   "不正解。正当な操作。"
+  ],
+  "code": "g = (x for x in range(3))\nprint(next(g))",
+  "reference": "next"
+ },
+ {
+  "id": "ch03-074",
+  "chapter": 3,
+  "topic": "文字列",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "olleh",
+   "hello",
+   "hell",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "文字列スライスで逆順。",
+  "rationales": [
+   "正解。逆順で 'olleh'。",
+   "不正解。元のままではない。",
+   "不正解。切り詰めではない。",
+   "不正解。文字列も逆順スライス可能。"
+  ],
+  "code": "print('hello'[::-1])",
+  "reference": "文字列スライス"
+ },
+ {
+  "id": "ch03-075",
+  "chapter": 3,
+  "topic": "比較",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "True",
+   "False",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "リストの == は要素比較。",
+  "rationales": [
+   "正解。要素が同じなので True。",
+   "不正解。同値なので False ではない。",
+   "不正解。正当な比較。",
+   "不正解。bool を返す。"
+  ],
+  "code": "print([1, 2] == [1, 2])",
+  "reference": "リストの等価"
+ },
+ {
+  "id": "ch03-076",
+  "chapter": 3,
+  "topic": "is",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "False",
+   "True",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "別オブジェクトなので is は False。",
+  "rationales": [
+   "正解。内容は同じでも別オブジェクトなので is は False。",
+   "不正解。== なら True だが is は同一性。",
+   "不正解。正当な比較。",
+   "不正解。bool を返す。"
+  ],
+  "code": "print([1, 2] is [1, 2])",
+  "reference": "is とリスト"
+ },
+ {
+  "id": "ch03-077",
+  "chapter": 3,
+  "topic": "in",
+  "difficulty": 1,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "True",
+   "False",
+   "エラー",
+   "2"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "in はメンバーシップ判定。",
+  "rationales": [
+   "正解。2 はリストに含まれる。",
+   "不正解。含まれるので False ではない。",
+   "不正解。正当な構文。",
+   "不正解。bool を返す。"
+  ],
+  "code": "print(2 in [1, 2, 3])",
+  "reference": "in --- リスト"
+ },
+ {
+  "id": "ch03-078",
+  "chapter": 3,
+  "topic": "not",
+  "difficulty": 1,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "True",
+   "False",
+   "0",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "not False は True。",
+  "rationales": [
+   "正解。not False は True。",
+   "不正解。False ではない。",
+   "不正解。bool を返す。",
+   "不正解。None ではない。"
+  ],
+  "code": "print(not False)",
+  "reference": "not 演算子"
+ },
+ {
+  "id": "ch03-079",
+  "chapter": 3,
+  "topic": "演算子",
+  "difficulty": 2,
+  "type": "single",
+  "question": "整数除算の結果を切り捨てる演算子はどれか。",
+  "choices": [
+   "//",
+   "/",
+   "%",
+   "**"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "// が切り捨て除算。",
+  "rationales": [
+   "正解。// は床除算（切り捨て）。",
+   "不正解。/ は float を返す真の除算。",
+   "不正解。% は剰余。",
+   "不正解。** はべき乗。"
+  ],
+  "reference": "演算子 --- //"
+ },
+ {
+  "id": "ch03-080",
+  "chapter": 3,
+  "topic": "文字列",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "HELLO",
+   "hello",
+   "Hello",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "メソッドチェーン。",
+  "rationales": [
+   "正解。strip 後 upper で 'HELLO'。",
+   "不正解。upper されるので小文字ではない。",
+   "不正解。全て大文字になる。",
+   "不正解。正当なチェーン。"
+  ],
+  "code": "print('  hello  '.strip().upper())",
+  "reference": "メソッドチェーン"
+ },
+ {
+  "id": "ch03-081",
+  "chapter": 3,
+  "topic": "f文字列",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "1,000",
+   "1000",
+   "1 000",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "桁区切り書式 :,。",
+  "rationales": [
+   "正解。, 書式でカンマ区切りになる。",
+   "不正解。区切りが入る。",
+   "不正解。空白区切りではない。",
+   "不正解。正当な書式。"
+  ],
+  "code": "print(f'{1000:,}')",
+  "reference": "f-string --- 桁区切り"
+ },
+ {
+  "id": "ch03-082",
+  "chapter": 3,
+  "topic": "ternary",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "positive",
+   "negative",
+   "zero",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "三項演算子の連鎖。",
+  "rationales": [
+   "正解。n>0 なので 'positive'。",
+   "不正解。負ではない。",
+   "不正解。0 ではない。",
+   "不正解。正当な式。"
+  ],
+  "code": "n = 5\nprint('positive' if n > 0 else 'negative' if n < 0 else 'zero')",
+  "reference": "条件式の連鎖"
+ },
+ {
+  "id": "ch03-083",
+  "chapter": 3,
+  "topic": "args順序",
+  "difficulty": 3,
+  "type": "single",
+  "question": "関数定義で、位置引数・*args・キーワード専用引数・**kwargs の正しい並び順はどれか。",
+  "choices": [
+   "位置 → *args → キーワード専用 → **kwargs",
+   "**kwargs → *args → 位置",
+   "*args → 位置 → **kwargs",
+   "順序は自由"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "この順序が文法上必須。",
+  "rationales": [
+   "正解。位置→*args→キーワード専用→**kwargs の順が必須。",
+   "不正解。**kwargs を先頭には置けない。",
+   "不正解。*args は位置引数の後。",
+   "不正解。順序は固定されている。"
+  ],
+  "reference": "引数の順序"
+ },
+ {
+  "id": "ch03-084",
+  "chapter": 3,
+  "topic": "keyword-only",
+  "difficulty": 3,
+  "type": "single",
+  "question": "関数定義中の `*` 単独（例: def f(a, *, b)）の意味はどれか。",
+  "choices": [
+   "以降の引数をキーワード専用にする",
+   "可変長位置引数を受ける",
+   "辞書を受け取る",
+   "デフォルト値を表す"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "* 以降はキーワード専用。",
+  "rationales": [
+   "正解。* の後ろの引数はキーワードでのみ渡せる。",
+   "不正解。可変長は *args（名前付き）。",
+   "不正解。辞書は **kwargs。",
+   "不正解。デフォルト値とは無関係。"
+  ],
+  "reference": "キーワード専用引数"
+ },
+ {
+  "id": "ch03-085",
+  "chapter": 3,
+  "topic": "docstring",
+  "difficulty": 2,
+  "type": "single",
+  "question": "関数の最初の文字列リテラルは何になるか。",
+  "choices": [
+   "docstring（__doc__）",
+   "コメント",
+   "戻り値",
+   "無視される"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "先頭の文字列は docstring。",
+  "rationales": [
+   "正解。先頭の文字列リテラルは __doc__ に入る。",
+   "不正解。# のコメントとは別。",
+   "不正解。戻り値ではない。",
+   "不正解。無視されず文書化に使われる。"
+  ],
+  "reference": "docstring"
+ },
+ {
+  "id": "ch03-086",
+  "chapter": 3,
+  "topic": "None",
+  "difficulty": 1,
+  "type": "single",
+  "question": "関数が return を書かなかった場合の戻り値はどれか。",
+  "choices": [
+   "None",
+   "0",
+   "''",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "明示しないと None。",
+  "rationales": [
+   "正解。return が無ければ None を返す。",
+   "不正解。0 ではない。",
+   "不正解。空文字ではない。",
+   "不正解。エラーにはならない。"
+  ],
+  "reference": "暗黙の None"
+ },
+ {
+  "id": "ch03-087",
+  "chapter": 3,
+  "topic": "truthy",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "empty",
+   "full",
+   "None",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "空リストは偽。",
+  "rationales": [
+   "正解。空リストは偽なので not lst が真で 'empty'。",
+   "不正解。空なので 'full' ではない。",
+   "不正解。文字列を出力する。",
+   "不正解。正当な式。"
+  ],
+  "code": "lst = []\nprint('empty' if not lst else 'full')",
+  "reference": "コンテナの真偽"
  }
 ]

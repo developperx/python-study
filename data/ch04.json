@@ -5,7 +5,7 @@
   "topic": "コンストラクタ",
   "difficulty": 1,
   "type": "single",
-  "question": "インスタンス生成時に自動的に呼ばれる初期化メソッドはどれか。",
+  "question": "インスタンス生成時に自動で呼ばれる初期化メソッドはどれか。",
   "choices": [
    "__init__",
    "__new__",
@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "`__init__` がインスタンスの初期化メソッド。__new__ は実際のインスタンス生成（通常は意識しない）。",
+  "explanation": "初期化は __init__。",
+  "rationales": [
+   "正解。__init__ が初期化メソッド。",
+   "不正解。__new__ は実体生成で通常意識しない。",
+   "不正解。__call__ はインスタンスを関数的に呼ぶ時。",
+   "不正解。__construct__ は存在しない。"
+  ],
   "reference": "クラス --- __init__"
  },
  {
@@ -24,7 +30,7 @@
   "topic": "self",
   "difficulty": 1,
   "type": "single",
-  "question": "インスタンスメソッドの第1引数として慣例的に使われる名前はどれか。",
+  "question": "インスタンスメソッドの第1引数の慣例名はどれか。",
   "choices": [
    "self",
    "this",
@@ -34,7 +40,13 @@
   "answer": [
    0
   ],
-  "explanation": "インスタンスメソッドの第1引数は慣例で `self`（インスタンス自身）。クラスメソッドでは `cls`。",
+  "explanation": "第1引数は self。",
+  "rationales": [
+   "正解。インスタンス自身を受ける self が慣例。",
+   "不正解。this は他言語の慣習。",
+   "不正解。cls はクラスメソッド用。",
+   "不正解。me は慣例ではない。"
+  ],
   "reference": "メソッド --- self"
  },
  {
@@ -43,7 +55,7 @@
   "topic": "クラス変数",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "dog",
    "Animal",
@@ -53,7 +65,13 @@
   "answer": [
    0
   ],
-  "explanation": "クラス変数 kind はインスタンスから参照できる。a.kind は 'dog'。",
+  "explanation": "クラス変数はインスタンスから参照可。",
+  "rationales": [
+   "正解。クラス変数 kind を参照でき 'dog'。",
+   "不正解。クラス名は出ない。",
+   "不正解。値があるので None ではない。",
+   "不正解。正常動作。"
+  ],
   "code": "class Animal:\n    kind = 'dog'\na = Animal()\nprint(a.kind)",
   "reference": "クラス変数"
  },
@@ -63,7 +81,7 @@
   "topic": "継承",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "bark",
    "sound",
@@ -73,7 +91,13 @@
   "answer": [
    0
   ],
-  "explanation": "Dog は Animal を継承し speak をオーバーライドしている。d.speak() は 'bark'。",
+  "explanation": "オーバーライドが優先。",
+  "rationales": [
+   "正解。子の speak が優先され 'bark'。",
+   "不正解。親の 'sound' は上書きされる。",
+   "不正解。正常動作。",
+   "不正解。戻り値がある。"
+  ],
   "code": "class Animal:\n    def speak(self):\n        return 'sound'\nclass Dog(Animal):\n    def speak(self):\n        return 'bark'\nprint(Dog().speak())",
   "reference": "継承とオーバーライド"
  },
@@ -83,7 +107,7 @@
   "topic": "super",
   "difficulty": 2,
   "type": "single",
-  "question": "親クラスのメソッドを子クラスから呼び出す組み込み関数はどれか。",
+  "question": "親クラスのメソッドを呼ぶ組み込み関数はどれか。",
   "choices": [
    "super()",
    "parent()",
@@ -93,7 +117,13 @@
   "answer": [
    0
   ],
-  "explanation": "`super()` で親クラス（MRO上の次のクラス）のメソッドを呼べる。",
+  "explanation": "super() を使う。",
+  "rationales": [
+   "正解。super() で MRO 上の親を呼ぶ。",
+   "不正解。parent() は無い。",
+   "不正解。base() は無い。",
+   "不正解。self.super という属性は無い。"
+  ],
   "reference": "super()"
  },
  {
@@ -102,7 +132,7 @@
   "topic": "super",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "hello from A",
    "hello from B",
@@ -112,9 +142,15 @@
   "answer": [
    0
   ],
-  "explanation": "B.greet が super().greet() で A.greet を呼ぶため 'hello from A' が出力される。",
+  "explanation": "super で親を呼ぶ。",
+  "rationales": [
+   "正解。super().greet() が A.greet を呼ぶ。",
+   "不正解。B 自身のメッセージは出さない。",
+   "不正解。正常動作。",
+   "不正解。出力がある。"
+  ],
   "code": "class A:\n    def greet(self):\n        print('hello from A')\nclass B(A):\n    def greet(self):\n        super().greet()\nB().greet()",
-  "reference": "super() による親メソッド呼び出し"
+  "reference": "super() による親呼び出し"
  },
  {
   "id": "ch04-007",
@@ -132,7 +168,13 @@
   "answer": [
    0
   ],
-  "explanation": "`@classmethod` は第1引数に cls を取るクラスメソッドを定義する。",
+  "explanation": "第1引数 cls を取る。",
+  "rationales": [
+   "正解。@classmethod は cls を受ける。",
+   "不正解。@staticmethod は self/cls 無し。",
+   "不正解。@property は属性化。",
+   "不正解。@classfunc は無い。"
+  ],
   "reference": "@classmethod"
  },
  {
@@ -141,7 +183,7 @@
   "topic": "スタティックメソッド",
   "difficulty": 2,
   "type": "single",
-  "question": "self も cls も受け取らないメソッドを定義するデコレータはどれか。",
+  "question": "self も cls も受け取らないメソッドのデコレータはどれか。",
   "choices": [
    "@staticmethod",
    "@classmethod",
@@ -151,7 +193,13 @@
   "answer": [
    0
   ],
-  "explanation": "`@staticmethod` は self/cls を取らず、名前空間としてクラスに属するだけのメソッド。",
+  "explanation": "名前空間に属する関数。",
+  "rationales": [
+   "正解。@staticmethod は self/cls を取らない。",
+   "不正解。@classmethod は cls を取る。",
+   "不正解。@property は属性化。",
+   "不正解。@method は無い。"
+  ],
   "reference": "@staticmethod"
  },
  {
@@ -160,7 +208,7 @@
   "topic": "プロパティ",
   "difficulty": 2,
   "type": "single",
-  "question": "メソッドを属性のようにアクセスできるようにするデコレータはどれか。",
+  "question": "メソッドを属性のようにアクセスさせるデコレータはどれか。",
   "choices": [
    "@property",
    "@attribute",
@@ -170,7 +218,13 @@
   "answer": [
    0
   ],
-  "explanation": "`@property` を付けると、メソッドを括弧なしの属性アクセスで呼び出せる（ゲッター）。",
+  "explanation": "@property でゲッター化。",
+  "rationales": [
+   "正解。@property で括弧なしアクセスできる。",
+   "不正解。@attribute は無い。",
+   "不正解。@getter 単独では無い。",
+   "不正解。@field は無い。"
+  ],
   "reference": "@property"
  },
  {
@@ -179,7 +233,7 @@
   "topic": "特殊メソッド",
   "difficulty": 2,
   "type": "single",
-  "question": "print() や str() に渡したときの「人間向け」文字列表現を返す特殊メソッドはどれか。",
+  "question": "print() / str() 向けの読みやすい文字列表現を返す特殊メソッドはどれか。",
   "choices": [
    "__str__",
    "__repr__",
@@ -189,8 +243,14 @@
   "answer": [
    0
   ],
-  "explanation": "`__str__` は print/str 向けの読みやすい表現、`__repr__` は開発者向けの厳密な表現を返す。",
-  "reference": "特殊メソッド --- __str__"
+  "explanation": "__str__ は人間向け。",
+  "rationales": [
+   "正解。__str__ が str()/print 向け。",
+   "不正解。__repr__ は開発者向けの厳密表現。",
+   "不正解。__format__ は format() 用。",
+   "不正解。__print__ は無い。"
+  ],
+  "reference": "__str__"
  },
  {
   "id": "ch04-011",
@@ -198,7 +258,7 @@
   "topic": "特殊メソッド",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "P(1, 2)",
    "<__main__.P object>",
@@ -208,7 +268,13 @@
   "answer": [
    0
   ],
-  "explanation": "__repr__ を定義すると repr() や対話表示で使われる。ここでは print(repr(p)) 相当ではないが、__repr__ の戻り値が表示される。",
+  "explanation": "__repr__ の戻り値が表示。",
+  "rationales": [
+   "正解。__repr__ により 'P(1, 2)'。",
+   "不正解。既定の object 表示は上書きされる。",
+   "不正解。タプルではない。",
+   "不正解。正常動作。"
+  ],
   "code": "class P:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n    def __repr__(self):\n        return f'P({self.x}, {self.y})'\nprint(P(1, 2))",
   "reference": "__repr__"
  },
@@ -218,7 +284,7 @@
   "topic": "特殊メソッド",
   "difficulty": 3,
   "type": "single",
-  "question": "len(obj) を可能にするために実装すべき特殊メソッドはどれか。",
+  "question": "len(obj) を可能にするために実装する特殊メソッドはどれか。",
   "choices": [
    "__len__",
    "__length__",
@@ -228,16 +294,47 @@
   "answer": [
    0
   ],
-  "explanation": "組み込み len() はオブジェクトの `__len__` を呼ぶ。",
-  "reference": "特殊メソッド --- __len__"
+  "explanation": "len は __len__ を呼ぶ。",
+  "rationales": [
+   "正解。__len__ が呼ばれる。",
+   "不正解。__length__ は無い。",
+   "不正解。__size__ は無い。",
+   "不正解。__count__ は無い。"
+  ],
+  "reference": "__len__"
  },
  {
   "id": "ch04-013",
   "chapter": 4,
+  "topic": "特殊メソッド",
+  "difficulty": 3,
+  "type": "single",
+  "question": "obj[key] でアクセスできるようにする特殊メソッドはどれか。",
+  "choices": [
+   "__getitem__",
+   "__index__",
+   "__get__",
+   "__getattr__"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "添字アクセスは __getitem__。",
+  "rationales": [
+   "正解。__getitem__ が [] アクセスを担う。",
+   "不正解。__index__ は整数化用。",
+   "不正解。__get__ はディスクリプタ用。",
+   "不正解。__getattr__ は属性アクセス用。"
+  ],
+  "reference": "__getitem__"
+ },
+ {
+  "id": "ch04-014",
+  "chapter": 4,
   "topic": "カプセル化",
   "difficulty": 2,
   "type": "single",
-  "question": "Python で「外部から触れてほしくない」ことを示す、属性名の慣例はどれか。",
+  "question": "外部から触れてほしくないことを示す属性名の慣例はどれか。",
   "choices": [
    "先頭にアンダースコア1つ（_name）",
    "末尾にアンダースコア（name_）",
@@ -247,35 +344,47 @@
   "answer": [
    0
   ],
-  "explanation": "先頭 `_` は「内部用」という慣習的マーカー（強制力はない）。先頭 `__`（2つ）は名前マングリングが起こる。",
-  "reference": "命名 --- 非公開属性"
+  "explanation": "_ 始まりは内部用の慣習。",
+  "rationales": [
+   "正解。先頭 _ は内部用の慣習（強制力なし）。",
+   "不正解。末尾 _ は予約語回避用。",
+   "不正解。全大文字は定数。",
+   "不正解。@private は Python に無い。"
+  ],
+  "reference": "命名 --- 非公開"
  },
  {
-  "id": "ch04-014",
+  "id": "ch04-015",
   "chapter": 4,
   "topic": "名前マングリング",
   "difficulty": 3,
   "type": "single",
-  "question": "クラス内で `__x`（先頭アンダースコア2つ）と定義した属性に対して起こることはどれか。",
+  "question": "クラス内で `__x` と定義した属性に起こることはどれか。",
   "choices": [
-   "_クラス名__x に名前が変換される（名前マングリング）",
-   "完全に外部からアクセス不可能になる",
-   "自動的に property になる",
+   "_クラス名__x に変換される",
+   "完全にアクセス不可になる",
+   "自動で property になる",
    "定数になる"
   ],
   "answer": [
    0
   ],
-  "explanation": "先頭2つのアンダースコアは `_ClassName__x` へ変換され、サブクラスとの名前衝突を避ける（完全な private ではない）。",
+  "explanation": "名前マングリングが起きる。",
+  "rationales": [
+   "正解。_ClassName__x へ変換される。",
+   "不正解。完全な private ではなく規約上の保護。",
+   "不正解。property 化はされない。",
+   "不正解。定数にはならない。"
+  ],
   "reference": "名前マングリング"
  },
  {
-  "id": "ch04-015",
+  "id": "ch04-016",
   "chapter": 4,
   "topic": "isinstance",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "True",
    "False",
@@ -285,17 +394,23 @@
   "answer": [
    0
   ],
-  "explanation": "isinstance はサブクラスのインスタンスも True とする。Dog は Animal のサブクラスなので True。",
+  "explanation": "サブクラスも True。",
+  "rationales": [
+   "正解。Dog は Animal のサブクラスなので True。",
+   "不正解。継承関係があり False ではない。",
+   "不正解。正常動作。",
+   "不正解。bool を返す。"
+  ],
   "code": "class Animal: pass\nclass Dog(Animal): pass\nprint(isinstance(Dog(), Animal))",
   "reference": "isinstance と継承"
  },
  {
-  "id": "ch04-016",
+  "id": "ch04-017",
   "chapter": 4,
   "topic": "dataclass",
   "difficulty": 3,
   "type": "single",
-  "question": "__init__ や __repr__ を自動生成するためにクラスへ付けるデコレータはどれか。",
+  "question": "__init__ や __repr__ を自動生成するデコレータはどれか。",
   "choices": [
    "@dataclass",
    "@struct",
@@ -305,7 +420,216 @@
   "answer": [
    0
   ],
-  "explanation": "標準ライブラリ dataclasses の `@dataclass` を付けると、フィールドから __init__・__repr__・__eq__ などを自動生成する。",
-  "reference": "dataclasses.dataclass"
+  "explanation": "dataclasses の @dataclass。",
+  "rationales": [
+   "正解。@dataclass がフィールドから自動生成する。",
+   "不正解。@struct は無い。",
+   "不正解。@record は無い。",
+   "不正解。@autoinit は無い。"
+  ],
+  "reference": "dataclass"
+ },
+ {
+  "id": "ch04-018",
+  "chapter": 4,
+  "topic": "クラスメソッド",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "Foo",
+   "cls",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "classmethod は cls を受ける。",
+  "rationales": [
+   "正解。cls.__name__ で 'Foo'。",
+   "不正解。'cls' という文字列ではない。",
+   "不正解。正常動作。",
+   "不正解。戻り値がある。"
+  ],
+  "code": "class Foo:\n    @classmethod\n    def name(cls):\n        return cls.__name__\nprint(Foo.name())",
+  "reference": "@classmethod の動作"
+ },
+ {
+  "id": "ch04-019",
+  "chapter": 4,
+  "topic": "プロパティ",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "10",
+   "<property>",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "@property で括弧なし参照。",
+  "rationales": [
+   "正解。value を属性として参照でき 10。",
+   "不正解。property オブジェクトは表に出ない。",
+   "不正解。正常動作。",
+   "不正解。値を返す。"
+  ],
+  "code": "class C:\n    @property\n    def value(self):\n        return 10\nprint(C().value)",
+  "reference": "@property の動作"
+ },
+ {
+  "id": "ch04-020",
+  "chapter": 4,
+  "topic": "多重継承",
+  "difficulty": 3,
+  "type": "single",
+  "question": "多重継承時のメソッド探索順序を表す略語はどれか。",
+  "choices": [
+   "MRO",
+   "LEGB",
+   "GIL",
+   "ORM"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "MRO=Method Resolution Order。",
+  "rationales": [
+   "正解。MRO がメソッド解決順序。",
+   "不正解。LEGB は名前解決スコープ。",
+   "不正解。GIL は並行処理の排他。",
+   "不正解。ORM はDBマッピング。"
+  ],
+  "reference": "MRO"
+ },
+ {
+  "id": "ch04-021",
+  "chapter": 4,
+  "topic": "インスタンス変数",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "5",
+   "0",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "__init__ で属性を設定。",
+  "rationales": [
+   "正解。self.n=5 を参照し 5。",
+   "不正解。初期化済みで 0 ではない。",
+   "不正解。正常動作。",
+   "不正解。値を持つ。"
+  ],
+  "code": "class Counter:\n    def __init__(self):\n        self.n = 5\nprint(Counter().n)",
+  "reference": "インスタンス変数"
+ },
+ {
+  "id": "ch04-022",
+  "chapter": 4,
+  "topic": "特殊メソッド",
+  "difficulty": 3,
+  "type": "single",
+  "question": "a == b の比較をカスタマイズする特殊メソッドはどれか。",
+  "choices": [
+   "__eq__",
+   "__cmp__",
+   "__equal__",
+   "__is__"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "等価比較は __eq__。",
+  "rationales": [
+   "正解。__eq__ が == を担う。",
+   "不正解。__cmp__ は Python3 で廃止。",
+   "不正解。__equal__ は無い。",
+   "不正解。__is__ は無い（is は上書き不可）。"
+  ],
+  "reference": "__eq__"
+ },
+ {
+  "id": "ch04-023",
+  "chapter": 4,
+  "topic": "継承確認",
+  "difficulty": 2,
+  "type": "single",
+  "question": "あるクラスが別クラスのサブクラスか調べる組み込み関数はどれか。",
+  "choices": [
+   "issubclass",
+   "isinstance",
+   "subclass",
+   "type"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "issubclass はクラス同士。",
+  "rationales": [
+   "正解。issubclass(A, B) はクラス間の継承を判定。",
+   "不正解。isinstance はインスタンスとクラス。",
+   "不正解。subclass 単独関数は無い。",
+   "不正解。type は型取得用。"
+  ],
+  "reference": "issubclass"
+ },
+ {
+  "id": "ch04-024",
+  "chapter": 4,
+  "topic": "抽象基底クラス",
+  "difficulty": 3,
+  "type": "single",
+  "question": "サブクラスにメソッド実装を強制する仕組みを提供する標準ライブラリはどれか。",
+  "choices": [
+   "abc（abstractmethod）",
+   "typing",
+   "dataclasses",
+   "enum"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "abc.abstractmethod で抽象化。",
+  "rationales": [
+   "正解。abc モジュールの @abstractmethod で実装を強制できる。",
+   "不正解。typing は型ヒント。",
+   "不正解。dataclasses は定型生成。",
+   "不正解。enum は列挙型。"
+  ],
+  "reference": "abc"
+ },
+ {
+  "id": "ch04-025",
+  "chapter": 4,
+  "topic": "メソッド",
+  "difficulty": 2,
+  "type": "single",
+  "question": "インスタンスメソッド内で同じインスタンスの別メソッドを呼ぶ書き方はどれか。",
+  "choices": [
+   "self.other()",
+   "other()",
+   "this.other()",
+   "Class.other()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "self 経由で呼ぶ。",
+  "rationales": [
+   "正解。self.other() が正しい。",
+   "不正解。名前単独では未定義参照になる。",
+   "不正解。this は使わない。",
+   "不正解。クラス名経由は self を渡す必要があり通常は使わない。"
+  ],
+  "reference": "メソッド呼び出し"
  }
 ]

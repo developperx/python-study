@@ -5,7 +5,7 @@
   "topic": "urllib",
   "difficulty": 2,
   "type": "single",
-  "question": "標準ライブラリだけで URL を開いてデータを取得するモジュールはどれか。",
+  "question": "標準ライブラリだけで URL を開いてデータ取得するモジュールはどれか。",
   "choices": [
    "urllib.request",
    "requests",
@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "urllib.request.urlopen で取得できる。requests はサードパーティ（試験範囲外）。",
+  "explanation": "urllib.request。",
+  "rationales": [
+   "正解。urlopen で取得できる。",
+   "不正解。requests はサードパーティ（試験範囲外）。",
+   "不正解。httplib3 は無い。",
+   "不正解。urlopen2 は無い。"
+  ],
   "reference": "urllib.request"
  },
  {
@@ -24,7 +30,7 @@
   "topic": "urllib.parse",
   "difficulty": 2,
   "type": "single",
-  "question": "URL を構成要素（スキーム・ホスト・パス等）に分解する関数はどれか。",
+  "question": "URL を構成要素に分解する関数はどれか。",
   "choices": [
    "urllib.parse.urlparse",
    "urllib.split",
@@ -34,8 +40,14 @@
   "answer": [
    0
   ],
-  "explanation": "urllib.parse.urlparse は URL を ParseResult（scheme, netloc, path, ...）に分解する。",
-  "reference": "urllib.parse.urlparse"
+  "explanation": "urlparse。",
+  "rationales": [
+   "正解。urlparse が scheme/netloc/path 等に分解。",
+   "不正解。urllib.split は無い。",
+   "不正解。url.parse は無い。",
+   "不正解。request.parse は無い。"
+  ],
+  "reference": "urlparse"
  },
  {
   "id": "ch14-003",
@@ -43,7 +55,7 @@
   "topic": "urllib.parse",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "example.com",
    "https",
@@ -53,7 +65,13 @@
   "answer": [
    0
   ],
-  "explanation": "urlparse の netloc 属性はホスト（とポート）部分を返す。",
+  "explanation": "netloc はホスト部。",
+  "rationales": [
+   "正解。netloc は 'example.com'。",
+   "不正解。それは scheme。",
+   "不正解。それは path。",
+   "不正解。全体ではない。"
+  ],
   "code": "from urllib.parse import urlparse\nprint(urlparse('https://example.com/path').netloc)",
   "reference": "urlparse --- netloc"
  },
@@ -63,7 +81,33 @@
   "topic": "urllib.parse",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "https",
+   "example.com",
+   "/path",
+   "http"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "scheme はスキーム。",
+  "rationales": [
+   "正解。scheme は 'https'。",
+   "不正解。それは netloc。",
+   "不正解。それは path。",
+   "不正解。http ではなく https。"
+  ],
+  "code": "from urllib.parse import urlparse\nprint(urlparse('https://example.com/path').scheme)",
+  "reference": "urlparse --- scheme"
+ },
+ {
+  "id": "ch14-005",
+  "chapter": 14,
+  "topic": "urllib.parse",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "a=1&b=2",
    "a:1,b:2",
@@ -73,17 +117,23 @@
   "answer": [
    0
   ],
-  "explanation": "urlencode は辞書をクエリ文字列 'キー=値&...' に変換する。",
+  "explanation": "urlencode はクエリ文字列。",
+  "rationales": [
+   "正解。'キー=値&...' に変換。",
+   "不正解。コロン形式ではない。",
+   "不正解。辞書表記ではない。",
+   "不正解。& で連結される。"
+  ],
   "code": "from urllib.parse import urlencode\nprint(urlencode({'a': 1, 'b': 2}))",
-  "reference": "urllib.parse.urlencode"
+  "reference": "urlencode"
  },
  {
-  "id": "ch14-005",
+  "id": "ch14-006",
   "chapter": 14,
   "topic": "urllib.parse",
   "difficulty": 3,
   "type": "single",
-  "question": "URL に使えない文字（空白など）を %XX 形式へ変換（パーセントエンコード）する関数はどれか。",
+  "question": "URL に使えない文字を %XX へ変換する関数はどれか。",
   "choices": [
    "urllib.parse.quote",
    "urllib.parse.escape",
@@ -93,16 +143,47 @@
   "answer": [
    0
   ],
-  "explanation": "quote は文字列をパーセントエンコードする。逆は unquote。",
-  "reference": "urllib.parse.quote"
+  "explanation": "quote。",
+  "rationales": [
+   "正解。quote がパーセントエンコードする。",
+   "不正解。escape は無い。",
+   "不正解。urllib.encode は無い。",
+   "不正解。urlparse は分解用。"
+  ],
+  "reference": "quote"
  },
  {
-  "id": "ch14-006",
+  "id": "ch14-007",
+  "chapter": 14,
+  "topic": "urllib.parse",
+  "difficulty": 3,
+  "type": "single",
+  "question": "%XX のパーセントエンコードを元に戻す関数はどれか。",
+  "choices": [
+   "urllib.parse.unquote",
+   "urllib.parse.decode",
+   "urllib.unescape",
+   "urllib.parse.quote"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "unquote。",
+  "rationales": [
+   "正解。unquote が復号する。",
+   "不正解。parse.decode は無い。",
+   "不正解。unescape は無い。",
+   "不正解。quote は符号化側。"
+  ],
+  "reference": "unquote"
+ },
+ {
+  "id": "ch14-008",
   "chapter": 14,
   "topic": "json API",
   "difficulty": 2,
   "type": "single",
-  "question": "Web API から取得した JSON 文字列（bytes/str）を Python オブジェクトに変換するのに使う関数はどれか。",
+  "question": "取得した JSON 文字列を Python オブジェクトに変換する関数はどれか。",
   "choices": [
    "json.loads",
    "json.dumps",
@@ -112,35 +193,47 @@
   "answer": [
    0
   ],
-  "explanation": "取得したレスポンス本文（JSON文字列）は json.loads で Python オブジェクトに変換する。",
-  "reference": "json.loads --- Web API"
+  "explanation": "loads で変換。",
+  "rationales": [
+   "正解。loads が文字列→オブジェクト。",
+   "不正解。dumps は逆。",
+   "不正解。json.read は無い。",
+   "不正解。json.fetch は無い。"
+  ],
+  "reference": "json.loads --- API"
  },
  {
-  "id": "ch14-007",
+  "id": "ch14-009",
   "chapter": 14,
   "topic": "HTTP",
   "difficulty": 2,
   "type": "single",
-  "question": "HTTP のステータスコード 404 が表す意味はどれか。",
+  "question": "HTTP ステータスコード 404 の意味はどれか。",
   "choices": [
-   "Not Found（リソースが見つからない）",
-   "OK（成功）",
+   "Not Found",
+   "OK",
    "Internal Server Error",
    "リダイレクト"
   ],
   "answer": [
    0
   ],
-  "explanation": "404 は Not Found。200=OK、500=サーバエラー、3xx=リダイレクト。",
-  "reference": "HTTPステータスコード"
+  "explanation": "404=Not Found。",
+  "rationales": [
+   "正解。404 はリソース未検出。",
+   "不正解。200 が OK。",
+   "不正解。500 がサーバエラー。",
+   "不正解。3xx がリダイレクト。"
+  ],
+  "reference": "HTTPステータス"
  },
  {
-  "id": "ch14-008",
+  "id": "ch14-010",
   "chapter": 14,
   "topic": "HTTP",
   "difficulty": 2,
   "type": "single",
-  "question": "HTTP のステータスコード 200 が表す意味はどれか。",
+  "question": "HTTP ステータスコード 200 の意味はどれか。",
   "choices": [
    "OK（成功）",
    "Not Found",
@@ -150,11 +243,117 @@
   "answer": [
    0
   ],
-  "explanation": "200 は成功（OK）。",
-  "reference": "HTTPステータスコード --- 200"
+  "explanation": "200=OK。",
+  "rationales": [
+   "正解。200 は成功。",
+   "不正解。404 が Not Found。",
+   "不正解。403 が Forbidden。",
+   "不正解。400 が Bad Request。"
+  ],
+  "reference": "HTTPステータス --- 200"
  },
  {
-  "id": "ch14-009",
+  "id": "ch14-011",
+  "chapter": 14,
+  "topic": "HTTP",
+  "difficulty": 2,
+  "type": "single",
+  "question": "HTTP ステータスコード 500 番台が表す分類はどれか。",
+  "choices": [
+   "サーバ側エラー",
+   "成功",
+   "クライアント側エラー",
+   "リダイレクト"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "5xx はサーバエラー。",
+  "rationales": [
+   "正解。5xx はサーバ側の問題。",
+   "不正解。2xx が成功。",
+   "不正解。4xx がクライアントエラー。",
+   "不正解。3xx がリダイレクト。"
+  ],
+  "reference": "HTTPステータス --- 5xx"
+ },
+ {
+  "id": "ch14-012",
+  "chapter": 14,
+  "topic": "HTTP",
+  "difficulty": 2,
+  "type": "single",
+  "question": "HTTP ステータスコード 403 の意味はどれか。",
+  "choices": [
+   "Forbidden（アクセス禁止）",
+   "Not Found",
+   "OK",
+   "Moved Permanently"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "403=Forbidden。",
+  "rationales": [
+   "正解。403 はアクセス禁止。",
+   "不正解。404 が Not Found。",
+   "不正解。200 が OK。",
+   "不正解。301 が恒久移動。"
+  ],
+  "reference": "HTTPステータス --- 403"
+ },
+ {
+  "id": "ch14-013",
+  "chapter": 14,
+  "topic": "HTTPメソッド",
+  "difficulty": 2,
+  "type": "single",
+  "question": "リソースの取得に使う代表的な HTTP メソッドはどれか。",
+  "choices": [
+   "GET",
+   "DELETE",
+   "PUT",
+   "PATCH"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "取得は GET。",
+  "rationales": [
+   "正解。GET が取得用。",
+   "不正解。DELETE は削除。",
+   "不正解。PUT は置換。",
+   "不正解。PATCH は部分更新。"
+  ],
+  "reference": "HTTPメソッド"
+ },
+ {
+  "id": "ch14-014",
+  "chapter": 14,
+  "topic": "HTTPメソッド",
+  "difficulty": 2,
+  "type": "single",
+  "question": "サーバへデータを送信して作成・処理させる代表的なメソッドはどれか。",
+  "choices": [
+   "POST",
+   "GET",
+   "HEAD",
+   "OPTIONS"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "送信は POST。",
+  "rationales": [
+   "正解。POST がデータ送信・作成。",
+   "不正解。GET は取得。",
+   "不正解。HEAD はヘッダのみ。",
+   "不正解。OPTIONS は対応メソッド確認。"
+  ],
+  "reference": "HTTPメソッド --- POST"
+ },
+ {
+  "id": "ch14-015",
   "chapter": 14,
   "topic": "email",
   "difficulty": 3,
@@ -169,16 +368,22 @@
   "answer": [
    0
   ],
-  "explanation": "email パッケージで MIME メッセージを構築する。送信は smtplib。",
-  "reference": "email パッケージ"
+  "explanation": "email パッケージ。",
+  "rationales": [
+   "正解。email が MIME を構築。",
+   "不正解。smtp は送信プロトコル。",
+   "不正解。mailbox2 は無い。",
+   "不正解。mime モジュールは無い。"
+  ],
+  "reference": "email"
  },
  {
-  "id": "ch14-010",
+  "id": "ch14-016",
   "chapter": 14,
   "topic": "smtplib",
   "difficulty": 3,
   "type": "single",
-  "question": "SMTP を使ってメールを送信する標準ライブラリはどれか。",
+  "question": "SMTP でメールを送信する標準ライブラリはどれか。",
   "choices": [
    "smtplib",
    "email",
@@ -188,16 +393,22 @@
   "answer": [
    0
   ],
-  "explanation": "smtplib が送信（SMTP）。受信は imaplib（IMAP）/poplib（POP3）。",
+  "explanation": "smtplib。",
+  "rationales": [
+   "正解。smtplib が送信。",
+   "不正解。email は組み立て。",
+   "不正解。imaplib は IMAP 受信。",
+   "不正解。poplib は POP3 受信。"
+  ],
   "reference": "smtplib"
  },
  {
-  "id": "ch14-011",
+  "id": "ch14-017",
   "chapter": 14,
   "topic": "html",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "&lt;a&gt;",
    "<a>",
@@ -207,12 +418,44 @@
   "answer": [
    0
   ],
-  "explanation": "html.escape は <, >, & などを HTML エンティティに変換し、HTMLインジェクションを防ぐ。",
+  "explanation": "html.escape は実体参照化。",
+  "rationales": [
+   "正解。< > を実体参照に変換。",
+   "不正解。エスケープされる。",
+   "不正解。別の実体ではない。",
+   "不正解。正常動作。"
+  ],
   "code": "import html\nprint(html.escape('<a>'))",
   "reference": "html.escape"
  },
  {
-  "id": "ch14-012",
+  "id": "ch14-018",
+  "chapter": 14,
+  "topic": "html",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "<a>",
+   "&lt;a&gt;",
+   "a",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "html.unescape は復元。",
+  "rationales": [
+   "正解。実体参照を元に戻す。",
+   "不正解。エスケープのままではない。",
+   "不正解。文字は残る。",
+   "不正解。正常動作。"
+  ],
+  "code": "import html\nprint(html.unescape('&lt;a&gt;'))",
+  "reference": "html.unescape"
+ },
+ {
+  "id": "ch14-019",
   "chapter": 14,
   "topic": "ipaddress",
   "difficulty": 3,
@@ -227,7 +470,188 @@
   "answer": [
    0
   ],
-  "explanation": "ipaddress モジュールで IPv4/IPv6 アドレスやネットワークを扱える。",
+  "explanation": "ipaddress。",
+  "rationales": [
+   "正解。ipaddress が IPv4/IPv6 を扱う。",
+   "不正解。socket は通信用。",
+   "不正解。netaddr はサードパーティ。",
+   "不正解。iplib は無い。"
+  ],
   "reference": "ipaddress"
+ },
+ {
+  "id": "ch14-020",
+  "chapter": 14,
+  "topic": "socket",
+  "difficulty": 3,
+  "type": "single",
+  "question": "低水準のネットワーク通信を行う標準ライブラリはどれか。",
+  "choices": [
+   "socket",
+   "urllib",
+   "http",
+   "ssl"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "socket。",
+  "rationales": [
+   "正解。socket が TCP/UDP の低水準API。",
+   "不正解。urllib は高水準。",
+   "不正解。http はプロトコル実装。",
+   "不正解。ssl は暗号化層。"
+  ],
+  "reference": "socket"
+ },
+ {
+  "id": "ch14-021",
+  "chapter": 14,
+  "topic": "urllib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "urlopen のレスポンスから本文（バイト列）を読むメソッドはどれか。",
+  "choices": [
+   "read()",
+   "body()",
+   "content()",
+   "text()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "read で本文取得。",
+  "rationales": [
+   "正解。レスポンスの read() で bytes を得る。",
+   "不正解。body() は無い。",
+   "不正解。content は requests の属性。",
+   "不正解。text は requests の属性。"
+  ],
+  "reference": "urlopen --- read"
+ },
+ {
+  "id": "ch14-022",
+  "chapter": 14,
+  "topic": "json",
+  "difficulty": 2,
+  "type": "single",
+  "question": "Web API のレスポンス（bytes）を JSON として読むには、まず何をするのが一般的か。",
+  "choices": [
+   "bytes を decode して json.loads に渡す（または直接 loads）",
+   "そのまま json.dumps に渡す",
+   "pickle.loads を使う",
+   "eval で評価する"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "loads で解析。",
+  "rationales": [
+   "正解。本文を文字列にして json.loads で解析する。",
+   "不正解。dumps は逆方向。",
+   "不正解。pickle は別形式。",
+   "不正解。eval は危険で不適切。"
+  ],
+  "reference": "JSON レスポンスの解析"
+ },
+ {
+  "id": "ch14-023",
+  "chapter": 14,
+  "topic": "urllib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "URL にクエリ文字列を付けて GET する際、辞書からクエリを作るのに使う関数はどれか。",
+  "choices": [
+   "urllib.parse.urlencode",
+   "urllib.parse.quote_plus のみ",
+   "json.dumps",
+   "str(dict)"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "urlencode。",
+  "rationales": [
+   "正解。urlencode が辞書→クエリ文字列。",
+   "不正解。quote_plus は1値の符号化用。",
+   "不正解。json.dumps は JSON 化で不適。",
+   "不正解。str(dict) は無効な形式。"
+  ],
+  "reference": "クエリ生成"
+ },
+ {
+  "id": "ch14-024",
+  "chapter": 14,
+  "topic": "http.client",
+  "difficulty": 3,
+  "type": "single",
+  "question": "HTTP 通信を低〜中水準で行う標準ライブラリはどれか。",
+  "choices": [
+   "http.client",
+   "httplib",
+   "requests",
+   "urllib3"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "http.client。",
+  "rationales": [
+   "正解。http.client が標準のHTTPクライアント実装。",
+   "不正解。httplib は Python2 の名前。",
+   "不正解。requests はサードパーティ。",
+   "不正解。urllib3 もサードパーティ。"
+  ],
+  "reference": "http.client"
+ },
+ {
+  "id": "ch14-025",
+  "chapter": 14,
+  "topic": "HTTPS",
+  "difficulty": 2,
+  "type": "single",
+  "question": "HTTPS が HTTP に追加している主な要素はどれか。",
+  "choices": [
+   "TLS/SSL による暗号化",
+   "圧縮の強制",
+   "認証の禁止",
+   "速度低下のみ"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "TLS で暗号化。",
+  "rationales": [
+   "正解。TLS/SSL で通信を暗号化する。",
+   "不正解。圧縮の強制ではない。",
+   "不正解。むしろ認証を可能にする。",
+   "不正解。速度低下が目的ではない。"
+  ],
+  "reference": "HTTPS"
+ },
+ {
+  "id": "ch14-026",
+  "chapter": 14,
+  "topic": "URL構造",
+  "difficulty": 2,
+  "type": "single",
+  "question": "URL `https://example.com:8080/path?q=1` の `8080` が表すものはどれか。",
+  "choices": [
+   "ポート番号",
+   "パス",
+   "クエリ",
+   "スキーム"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "コロンの後はポート。",
+  "rationales": [
+   "正解。8080 はポート番号。",
+   "不正解。/path がパス。",
+   "不正解。?q=1 がクエリ。",
+   "不正解。https がスキーム。"
+  ],
+  "reference": "URL の構造"
  }
 ]

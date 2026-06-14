@@ -5,7 +5,7 @@
   "topic": "list",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[1, 2, 3]",
    "[1, 2]",
@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "list.append(x) は末尾に要素を追加する。",
+  "explanation": "append は末尾追加。",
+  "rationales": [
+   "正解。末尾に3を追加。",
+   "不正解。追加される。",
+   "不正解。先頭ではなく末尾。",
+   "不正解。正常動作。"
+  ],
   "code": "a = [1, 2]\na.append(3)\nprint(a)",
   "reference": "list.append"
  },
@@ -25,7 +31,7 @@
   "topic": "list",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[1, 2, 3, 4]",
    "[1, 2, [3, 4]]",
@@ -35,7 +41,13 @@
   "answer": [
    0
   ],
-  "explanation": "list.extend(iterable) は各要素を末尾に追加する。append との違いに注意。",
+  "explanation": "extend は要素展開。",
+  "rationales": [
+   "正解。各要素を末尾追加。",
+   "不正解。入れ子にはならない（append との違い）。",
+   "不正解。末尾に追加。",
+   "不正解。正常動作。"
+  ],
   "code": "a = [1, 2]\na.extend([3, 4])\nprint(a)",
   "reference": "list.extend"
  },
@@ -45,7 +57,7 @@
   "topic": "list",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[1, 9, 2]",
    "[1, 2, 9]",
@@ -55,7 +67,13 @@
   "answer": [
    0
   ],
-  "explanation": "list.insert(i, x) は位置 i に挿入する。インデックス1に9を入れる。",
+  "explanation": "insert は位置挿入。",
+  "rationales": [
+   "正解。インデックス1に9を挿入。",
+   "不正解。末尾ではない。",
+   "不正解。先頭ではない。",
+   "不正解。正常動作。"
+  ],
   "code": "a = [1, 2]\na.insert(1, 9)\nprint(a)",
   "reference": "list.insert"
  },
@@ -65,7 +83,7 @@
   "topic": "list",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "2",
    "[1, 3]",
@@ -75,17 +93,75 @@
   "answer": [
    0
   ],
-  "explanation": "list.pop(i) は指定位置の要素を取り除いて返す。pop(1) は値 2 を返す。",
+  "explanation": "pop は取り出して返す。",
+  "rationales": [
+   "正解。pop(1) は値2を返す。",
+   "不正解。返り値は残りリストではない。",
+   "不正解。1 ではない。",
+   "不正解。値そのものでリストではない。"
+  ],
   "code": "a = [1, 2, 3]\nprint(a.pop(1))",
   "reference": "list.pop"
  },
  {
   "id": "ch09-005",
   "chapter": 9,
+  "topic": "list",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "[3, 2, 1]",
+   "[1, 2, 3]",
+   "[1, 3, 2]",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "reverse は破壊的逆順。",
+  "rationales": [
+   "正解。逆順に並べ替える。",
+   "不正解。元のままではない。",
+   "不正解。完全逆順になる。",
+   "不正解。正常動作。"
+  ],
+  "code": "a = [1, 2, 3]\na.reverse()\nprint(a)",
+  "reference": "list.reverse"
+ },
+ {
+  "id": "ch09-006",
+  "chapter": 9,
+  "topic": "list",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "2",
+   "1",
+   "3",
+   "0"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "count は出現回数。",
+  "rationales": [
+   "正解。2 は2回。",
+   "不正解。1 ではない。",
+   "不正解。3 ではない。",
+   "不正解。0 ではない。"
+  ],
+  "code": "print([1, 2, 2, 3].count(2))",
+  "reference": "list.count"
+ },
+ {
+  "id": "ch09-007",
+  "chapter": 9,
   "topic": "sorted",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[1, 2, 3]",
    "[3, 2, 1]",
@@ -95,17 +171,23 @@
   "answer": [
    0
   ],
-  "explanation": "sorted() は新しいソート済みリストを返す（元は変更しない）。",
+  "explanation": "sorted は新リスト。",
+  "rationales": [
+   "正解。昇順 [1,2,3]。",
+   "不正解。降順ではない。",
+   "不正解。並べ替えられる。",
+   "不正解。正常動作。"
+  ],
   "code": "print(sorted([3, 1, 2]))",
   "reference": "sorted"
  },
  {
-  "id": "ch09-006",
+  "id": "ch09-008",
   "chapter": 9,
   "topic": "sort key",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "['bb', 'aaa', 'cccc']",
    "['aaa', 'bb', 'cccc']",
@@ -115,17 +197,23 @@
   "answer": [
    0
   ],
-  "explanation": "key=len で文字数順にソートする。'bb'(2) < 'aaa'(3) < 'cccc'(4)。",
+  "explanation": "key=len で長さ順。",
+  "rationales": [
+   "正解。長さ 2<3<4 順。",
+   "不正解。文字列順ではなく長さ順。",
+   "不正解。昇順である。",
+   "不正解。長さ順に整列。"
+  ],
   "code": "print(sorted(['aaa', 'bb', 'cccc'], key=len))",
   "reference": "sorted --- key"
  },
  {
-  "id": "ch09-007",
+  "id": "ch09-009",
   "chapter": 9,
   "topic": "sort reverse",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[3, 2, 1]",
    "[1, 2, 3]",
@@ -135,17 +223,48 @@
   "answer": [
    0
   ],
-  "explanation": "reverse=True で降順ソートになる。",
+  "explanation": "reverse=True で降順。",
+  "rationales": [
+   "正解。降順 [3,2,1]。",
+   "不正解。昇順ではない。",
+   "不正解。整列される。",
+   "不正解。正常動作。"
+  ],
   "code": "print(sorted([1, 3, 2], reverse=True))",
   "reference": "sorted --- reverse"
  },
  {
-  "id": "ch09-008",
+  "id": "ch09-010",
+  "chapter": 9,
+  "topic": "sort vs sorted",
+  "difficulty": 2,
+  "type": "single",
+  "question": "list.sort() と sorted() の違いはどれか。",
+  "choices": [
+   "sort は破壊的で None を返し、sorted は新リストを返す",
+   "両方新リストを返す",
+   "両方破壊的",
+   "sort が新リスト、sorted が破壊的"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "sort=破壊的 / sorted=新規。",
+  "rationales": [
+   "正解。sort はその場で並べ替え None を返す。",
+   "不正解。sort は新リストを返さない。",
+   "不正解。sorted は破壊しない。",
+   "不正解。逆である。"
+  ],
+  "reference": "sort と sorted"
+ },
+ {
+  "id": "ch09-011",
   "chapter": 9,
   "topic": "dict",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "dict_keys(['a', 'b'])",
    "['a', 'b']",
@@ -155,17 +274,23 @@
   "answer": [
    0
   ],
-  "explanation": "dict.keys() はキーのビュー（dict_keys）を返す。",
+  "explanation": "keys はビュー。",
+  "rationales": [
+   "正解。dict_keys ビューを返す。",
+   "不正解。list ではない。",
+   "不正解。tuple ではない。",
+   "不正解。set ではない。"
+  ],
   "code": "print({'a': 1, 'b': 2}.keys())",
   "reference": "dict.keys"
  },
  {
-  "id": "ch09-009",
+  "id": "ch09-012",
   "chapter": 9,
   "topic": "dict",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[('a', 1), ('b', 2)]",
    "['a', 'b']",
@@ -175,17 +300,23 @@
   "answer": [
    0
   ],
-  "explanation": "dict.items() はキーと値のタプルのビューを返す。list 化すると [(キー,値), ...]。",
+  "explanation": "items は (k, v)。",
+  "rationales": [
+   "正解。(キー,値)のタプル列。",
+   "不正解。キーのみではない。",
+   "不正解。値のみではない。",
+   "不正解。正常動作。"
+  ],
   "code": "print(list({'a': 1, 'b': 2}.items()))",
   "reference": "dict.items"
  },
  {
-  "id": "ch09-010",
+  "id": "ch09-013",
   "chapter": 9,
   "topic": "dict",
   "difficulty": 2,
   "type": "single",
-  "question": "辞書に存在しないキーをデフォルト値付きで取得・設定するメソッドはどれか。",
+  "question": "存在しないキーをデフォルト付きで取得・設定するメソッドはどれか。",
   "choices": [
    "setdefault",
    "getdefault",
@@ -195,16 +326,22 @@
   "answer": [
    0
   ],
-  "explanation": "dict.setdefault(key, default) はキーが無ければ default を設定して返す。",
+  "explanation": "setdefault。",
+  "rationales": [
+   "正解。setdefault はキーが無ければ設定して返す。",
+   "不正解。getdefault は無い。",
+   "不正解。default は無い。",
+   "不正解。fetch は無い。"
+  ],
   "reference": "dict.setdefault"
  },
  {
-  "id": "ch09-011",
+  "id": "ch09-014",
   "chapter": 9,
   "topic": "dict",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "{'a': 1, 'b': 3, 'c': 4}",
    "{'a': 1, 'b': 2}",
@@ -214,17 +351,49 @@
   "answer": [
    0
   ],
-  "explanation": "dict.update(other) は other の内容で更新（既存キーは上書き、新規は追加）。",
+  "explanation": "update は更新。",
+  "rationales": [
+   "正解。b 上書き、c 追加。",
+   "不正解。更新される。",
+   "不正解。既存 a は残る。",
+   "不正解。正常動作。"
+  ],
   "code": "d = {'a': 1, 'b': 2}\nd.update({'b': 3, 'c': 4})\nprint(d)",
   "reference": "dict.update"
  },
  {
-  "id": "ch09-012",
+  "id": "ch09-015",
+  "chapter": 9,
+  "topic": "dict",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "1",
+   "[1, 2]",
+   "None",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "pop は値を取り出す。",
+  "rationales": [
+   "正解。キー a の値1を返す。",
+   "不正解。リストではない。",
+   "不正解。値があるので None ではない。",
+   "不正解。正常動作。"
+  ],
+  "code": "d = {'a': 1}\nprint(d.pop('a'))",
+  "reference": "dict.pop"
+ },
+ {
+  "id": "ch09-016",
   "chapter": 9,
   "topic": "set",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "{1, 2, 3}",
    "{1, 1, 2, 3, 3}",
@@ -234,17 +403,23 @@
   "answer": [
    0
   ],
-  "explanation": "set は重複を除去する。",
+  "explanation": "set は重複排除。",
+  "rationales": [
+   "正解。重複が除かれる。",
+   "不正解。重複は保持されない。",
+   "不正解。リストではない。",
+   "不正解。正常動作。"
+  ],
   "code": "print(set([1, 1, 2, 3, 3]))",
-  "reference": "set --- 重複排除"
+  "reference": "set"
  },
  {
-  "id": "ch09-013",
+  "id": "ch09-017",
   "chapter": 9,
   "topic": "set",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "{2, 3}",
    "{1, 2, 3, 4}",
@@ -254,17 +429,23 @@
   "answer": [
    0
   ],
-  "explanation": "`&` は集合の積（共通部分）。{1,2,3} と {2,3,4} の共通は {2, 3}。",
+  "explanation": "& は積集合。",
+  "rationales": [
+   "正解。共通要素 {2,3}。",
+   "不正解。和ではない。",
+   "不正解。差ではない。",
+   "不正解。空ではない。"
+  ],
   "code": "print({1, 2, 3} & {2, 3, 4})",
   "reference": "集合演算 --- 積"
  },
  {
-  "id": "ch09-014",
+  "id": "ch09-018",
   "chapter": 9,
   "topic": "set",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "{1, 2, 3, 4}",
    "{2, 3}",
@@ -274,17 +455,23 @@
   "answer": [
    0
   ],
-  "explanation": "`|` は和集合（合併）。",
+  "explanation": "| は和集合。",
+  "rationales": [
+   "正解。全要素を合併。",
+   "不正解。積ではない。",
+   "不正解。対称差ではない。",
+   "不正解。正常動作。"
+  ],
   "code": "print({1, 2} | {3, 4})",
   "reference": "集合演算 --- 和"
  },
  {
-  "id": "ch09-015",
+  "id": "ch09-019",
   "chapter": 9,
   "topic": "set",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "{1}",
    "{2, 3}",
@@ -294,36 +481,74 @@
   "answer": [
    0
   ],
-  "explanation": "`-` は差集合。{1,2,3} から {2,3} を除くと {1}。",
+  "explanation": "- は差集合。",
+  "rationales": [
+   "正解。1 のみ残る。",
+   "不正解。差の向きが逆。",
+   "不正解。全部ではない。",
+   "不正解。空ではない。"
+  ],
   "code": "print({1, 2, 3} - {2, 3})",
   "reference": "集合演算 --- 差"
  },
  {
-  "id": "ch09-016",
+  "id": "ch09-020",
+  "chapter": 9,
+  "topic": "set",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "{1, 4}",
+   "{2, 3}",
+   "{1, 2, 3, 4}",
+   "set()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "^ は対称差。",
+  "rationales": [
+   "正解。どちらか一方だけの {1,4}。",
+   "不正解。共通部分ではない。",
+   "不正解。和ではない。",
+   "不正解。空ではない。"
+  ],
+  "code": "print({1, 2, 3} ^ {2, 3, 4})",
+  "reference": "集合演算 --- 対称差"
+ },
+ {
+  "id": "ch09-021",
   "chapter": 9,
   "topic": "tuple",
   "difficulty": 2,
   "type": "single",
-  "question": "要素が1つだけのタプルを正しく定義しているものはどれか。",
+  "question": "要素1つのタプルを正しく定義しているものはどれか。",
   "choices": [
    "(1,)",
    "(1)",
-   "1,1",
+   "1;1",
    "tuple(1)"
   ],
   "answer": [
    0
   ],
-  "explanation": "1要素タプルは末尾のカンマが必須。`(1)` はただの整数1。",
+  "explanation": "末尾カンマが必須。",
+  "rationales": [
+   "正解。(1,) が1要素タプル。",
+   "不正解。(1) は整数1。",
+   "不正解。セミコロンは無効。",
+   "不正解。tuple(1) は反復不可でエラー。"
+  ],
   "reference": "1要素タプル"
  },
  {
-  "id": "ch09-017",
+  "id": "ch09-022",
   "chapter": 9,
   "topic": "Counter",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[('a', 3), ('b', 2)]",
    "[('a', 2), ('b', 3)]",
@@ -333,37 +558,49 @@
   "answer": [
    0
   ],
-  "explanation": "collections.Counter は要素の出現回数を数える。most_common(n) は多い順に上位 n 件を返す。",
+  "explanation": "most_common は多い順。",
+  "rationales": [
+   "正解。a=3,b=2 を多い順に。",
+   "不正解。回数が逆。",
+   "不正解。リストで返る（辞書ではない）。",
+   "不正解。回数も含む。"
+  ],
   "code": "from collections import Counter\nc = Counter('aaabb')\nprint(c.most_common(2))",
-  "reference": "collections.Counter"
+  "reference": "Counter"
  },
  {
-  "id": "ch09-018",
+  "id": "ch09-023",
   "chapter": 9,
   "topic": "defaultdict",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[1, 2]",
-   "エラー(KeyError)",
+   "KeyError",
    "None",
    "[]"
   ],
   "answer": [
    0
   ],
-  "explanation": "defaultdict(list) は未知キーへのアクセス時に list() を自動生成するため、append できる。",
+  "explanation": "未知キーで list を自動生成。",
+  "rationales": [
+   "正解。自動で空リストが作られ append できる。",
+   "不正解。例外は出ない。",
+   "不正解。None ではない。",
+   "不正解。要素が入る。"
+  ],
   "code": "from collections import defaultdict\nd = defaultdict(list)\nd['x'].append(1)\nd['x'].append(2)\nprint(d['x'])",
-  "reference": "collections.defaultdict"
+  "reference": "defaultdict"
  },
  {
-  "id": "ch09-019",
+  "id": "ch09-024",
   "chapter": 9,
   "topic": "namedtuple",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "1 2",
    "Point(1, 2)",
@@ -373,17 +610,23 @@
   "answer": [
    0
   ],
-  "explanation": "namedtuple は名前付きフィールドを持つタプル。p.x, p.y で値にアクセスできる。",
+  "explanation": "属性アクセス可能。",
+  "rationales": [
+   "正解。p.x=1, p.y=2。",
+   "不正解。repr ではなく値を表示。",
+   "不正解。個別属性を出力。",
+   "不正解。名前ではなく値。"
+  ],
   "code": "from collections import namedtuple\nPoint = namedtuple('Point', ['x', 'y'])\np = Point(1, 2)\nprint(p.x, p.y)",
-  "reference": "collections.namedtuple"
+  "reference": "namedtuple"
  },
  {
-  "id": "ch09-020",
+  "id": "ch09-025",
   "chapter": 9,
   "topic": "deque",
   "difficulty": 3,
   "type": "single",
-  "question": "両端への高速な追加・削除に適した collections のデータ構造はどれか。",
+  "question": "両端への高速な追加・削除に適した構造はどれか。",
   "choices": [
    "deque",
    "Counter",
@@ -393,16 +636,22 @@
   "answer": [
    0
   ],
-  "explanation": "collections.deque は両端キュー。appendleft/popleft が O(1)。",
-  "reference": "collections.deque"
+  "explanation": "deque は両端キュー。",
+  "rationales": [
+   "正解。deque は両端 O(1)。",
+   "不正解。Counter は集計用。",
+   "不正解。OrderedDict は順序保持辞書。",
+   "不正解。namedtuple は不変タプル。"
+  ],
+  "reference": "deque"
  },
  {
-  "id": "ch09-021",
+  "id": "ch09-026",
   "chapter": 9,
   "topic": "deque",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "deque([0, 1, 2])",
    "deque([1, 2, 0])",
@@ -412,17 +661,23 @@
   "answer": [
    0
   ],
-  "explanation": "appendleft は左端に追加する。1,2 を append 後、0 を左端へ追加すると [0, 1, 2]。",
+  "explanation": "appendleft は左端追加。",
+  "rationales": [
+   "正解。左端に0を追加。",
+   "不正解。右端ではない。",
+   "不正解。順序は保たれる。",
+   "不正解。deque 表示になる。"
+  ],
   "code": "from collections import deque\nd = deque([1, 2])\nd.appendleft(0)\nprint(d)",
   "reference": "deque.appendleft"
  },
  {
-  "id": "ch09-022",
+  "id": "ch09-027",
   "chapter": 9,
   "topic": "itertools",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[1, 2, 3, 4]",
    "[(1, 3), (2, 4)]",
@@ -432,17 +687,23 @@
   "answer": [
    0
   ],
-  "explanation": "itertools.chain は複数のイテラブルを連結する。",
+  "explanation": "chain は連結。",
+  "rationales": [
+   "正解。順に連結。",
+   "不正解。zip ではない。",
+   "不正解。交互ではない。",
+   "不正解。正常動作。"
+  ],
   "code": "import itertools\nprint(list(itertools.chain([1, 2], [3, 4])))",
   "reference": "itertools.chain"
  },
  {
-  "id": "ch09-023",
+  "id": "ch09-028",
   "chapter": 9,
   "topic": "itertools",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[(1, 2), (1, 3), (2, 3)]",
    "[(1, 2), (2, 3)]",
@@ -452,17 +713,23 @@
   "answer": [
    0
   ],
-  "explanation": "itertools.combinations(iterable, 2) は2要素の組合せ（順序は元の並び、重複なし）を返す。",
+  "explanation": "combinations は組合せ。",
+  "rationales": [
+   "正解。2要素の組合せ（順序区別なし）。",
+   "不正解。隣接ペアだけではない。",
+   "不正解。順列ではない。",
+   "不正解。タプルの列になる。"
+  ],
   "code": "import itertools\nprint(list(itertools.combinations([1, 2, 3], 2)))",
   "reference": "itertools.combinations"
  },
  {
-  "id": "ch09-024",
+  "id": "ch09-029",
   "chapter": 9,
   "topic": "itertools",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[(1, 2), (2, 1)]",
    "[(1, 2)]",
@@ -472,17 +739,23 @@
   "answer": [
    0
   ],
-  "explanation": "itertools.permutations(iterable, 2) は2要素の順列（順序を区別）を返す。",
+  "explanation": "permutations は順列。",
+  "rationales": [
+   "正解。順序を区別する順列。",
+   "不正解。組合せではない。",
+   "不正解。重複ではない。",
+   "不正解。タプルの列になる。"
+  ],
   "code": "import itertools\nprint(list(itertools.permutations([1, 2], 2)))",
   "reference": "itertools.permutations"
  },
  {
-  "id": "ch09-025",
+  "id": "ch09-030",
   "chapter": 9,
   "topic": "itertools",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[(1, 'a'), (1, 'b'), (2, 'a'), (2, 'b')]",
    "[(1, 'a'), (2, 'b')]",
@@ -492,17 +765,23 @@
   "answer": [
    0
   ],
-  "explanation": "itertools.product は直積（すべての組合せ）を返す。",
+  "explanation": "product は直積。",
+  "rationales": [
+   "正解。全組合せの直積。",
+   "不正解。zip ではない。",
+   "不正解。平坦化ではない。",
+   "不正解。正常動作。"
+  ],
   "code": "import itertools\nprint(list(itertools.product([1, 2], ['a', 'b'])))",
   "reference": "itertools.product"
  },
  {
-  "id": "ch09-026",
+  "id": "ch09-031",
   "chapter": 9,
   "topic": "functools",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "10",
    "[1, 2, 3, 4]",
@@ -512,17 +791,23 @@
   "answer": [
    0
   ],
-  "explanation": "functools.reduce は累積的に二項演算を適用する。1+2+3+4 = 10。",
+  "explanation": "reduce は畳み込み。",
+  "rationales": [
+   "正解。1+2+3+4=10。",
+   "不正解。リストではなく合計。",
+   "不正解。積ではなく和。",
+   "不正解。要素数ではない。"
+  ],
   "code": "from functools import reduce\nprint(reduce(lambda a, b: a + b, [1, 2, 3, 4]))",
   "reference": "functools.reduce"
  },
  {
-  "id": "ch09-027",
+  "id": "ch09-032",
   "chapter": 9,
   "topic": "functools",
   "difficulty": 3,
   "type": "single",
-  "question": "関数の結果をキャッシュ（メモ化）する functools のデコレータはどれか。",
+  "question": "関数の結果をキャッシュ（メモ化）するデコレータはどれか。",
   "choices": [
    "@lru_cache",
    "@cache_result",
@@ -532,16 +817,22 @@
   "answer": [
    0
   ],
-  "explanation": "functools.lru_cache（または cache）が結果をキャッシュする。再帰の高速化に有効。",
+  "explanation": "lru_cache。",
+  "rationales": [
+   "正解。functools.lru_cache / cache がキャッシュする。",
+   "不正解。cache_result は無い。",
+   "不正解。memoize は標準に無い。",
+   "不正解。store は無い。"
+  ],
   "reference": "functools.lru_cache"
  },
  {
-  "id": "ch09-028",
+  "id": "ch09-033",
   "chapter": 9,
   "topic": "functools",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "8",
    "5",
@@ -551,17 +842,23 @@
   "answer": [
    0
   ],
-  "explanation": "functools.partial は引数を部分適用した新しい関数を作る。add に 3 を固定し、5 を渡すと 8。",
+  "explanation": "partial は部分適用。",
+  "rationales": [
+   "正解。3 を固定し 3+5=8。",
+   "不正解。5 だけではない。",
+   "不正解。3 だけではない。",
+   "不正解。正常動作。"
+  ],
   "code": "from functools import partial\ndef add(a, b):\n    return a + b\nadd3 = partial(add, 3)\nprint(add3(5))",
   "reference": "functools.partial"
  },
  {
-  "id": "ch09-029",
+  "id": "ch09-034",
   "chapter": 9,
   "topic": "bisect",
   "difficulty": 3,
   "type": "single",
-  "question": "ソート済みリストへ順序を保ったまま挿入位置を求める標準ライブラリはどれか。",
+  "question": "ソート済みリストへ順序を保って挿入位置を求める標準ライブラリはどれか。",
   "choices": [
    "bisect",
    "heapq",
@@ -571,16 +868,48 @@
   "answer": [
    0
   ],
-  "explanation": "bisect は二分探索で挿入位置を求める（bisect_left/insort 等）。",
+  "explanation": "bisect は二分探索。",
+  "rationales": [
+   "正解。bisect が挿入位置を二分探索する。",
+   "不正解。heapq はヒープ。",
+   "不正解。array は配列。",
+   "不正解。queue はキュー。"
+  ],
   "reference": "bisect"
  },
  {
-  "id": "ch09-030",
+  "id": "ch09-035",
+  "chapter": 9,
+  "topic": "bisect",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "2",
+   "1",
+   "3",
+   "0"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "bisect_left は挿入位置。",
+  "rationales": [
+   "正解。25 は 20 と 30 の間で位置2。",
+   "不正解。1 ではない。",
+   "不正解。3 ではない。",
+   "不正解。0 ではない。"
+  ],
+  "code": "import bisect\nprint(bisect.bisect_left([10, 20, 30], 25))",
+  "reference": "bisect.bisect_left"
+ },
+ {
+  "id": "ch09-036",
   "chapter": 9,
   "topic": "heapq",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "1",
    "3",
@@ -590,17 +919,23 @@
   "answer": [
    0
   ],
-  "explanation": "heapq はリストを最小ヒープとして扱う。heappush 後、heappop は最小値 1 を返す。",
+  "explanation": "heappop は最小値。",
+  "rationales": [
+   "正解。最小ヒープなので 1。",
+   "不正解。3 ではない。",
+   "不正解。5 ではない。",
+   "不正解。1要素だけ取り出す。"
+  ],
   "code": "import heapq\nh = []\nheapq.heappush(h, 5)\nheapq.heappush(h, 1)\nheapq.heappush(h, 3)\nprint(heapq.heappop(h))",
   "reference": "heapq"
  },
  {
-  "id": "ch09-031",
+  "id": "ch09-037",
   "chapter": 9,
   "topic": "copy",
   "difficulty": 3,
   "type": "single",
-  "question": "ネストしたオブジェクトも含めて完全に複製するには、copy モジュールのどの関数を使うか。",
+  "question": "ネストも含め完全複製する copy の関数はどれか。",
   "choices": [
    "deepcopy",
    "copy",
@@ -610,16 +945,22 @@
   "answer": [
    0
   ],
-  "explanation": "copy.deepcopy は再帰的に複製する。copy.copy は浅いコピー。",
+  "explanation": "deepcopy は再帰複製。",
+  "rationales": [
+   "正解。deepcopy は入れ子も複製。",
+   "不正解。copy は浅いコピー。",
+   "不正解。clone は無い。",
+   "不正解。duplicate は無い。"
+  ],
   "reference": "copy.deepcopy"
  },
  {
-  "id": "ch09-032",
+  "id": "ch09-038",
   "chapter": 9,
   "topic": "copy",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[[1, 2], [3]]",
    "[[1, 2, 99], [3]]",
@@ -629,17 +970,49 @@
   "answer": [
    0
   ],
-  "explanation": "deepcopy は内側のリストも複製するため、コピー側への変更は元に影響しない。",
+  "explanation": "deepcopy は独立。",
+  "rationales": [
+   "正解。b の変更は a に影響しない。",
+   "不正解。deepcopy なので元は不変。",
+   "不正解。別要素にも影響しない。",
+   "不正解。正常動作。"
+  ],
   "code": "import copy\na = [[1, 2], [3]]\nb = copy.deepcopy(a)\nb[0].append(99)\nprint(a)",
   "reference": "deepcopy の効果"
  },
  {
-  "id": "ch09-033",
+  "id": "ch09-039",
+  "chapter": 9,
+  "topic": "copy",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "[[1, 2, 99], [3]]",
+   "[[1, 2], [3]]",
+   "エラー",
+   "[[99], [3]]"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "浅いコピーは内側を共有。",
+  "rationales": [
+   "正解。浅いコピーは内側リストを共有し a にも反映。",
+   "不正解。copy（浅い）では独立にならない。",
+   "不正解。正常動作。",
+   "不正解。全置換ではない。"
+  ],
+  "code": "import copy\na = [[1, 2], [3]]\nb = copy.copy(a)\nb[0].append(99)\nprint(a)",
+  "reference": "浅いコピーの罠"
+ },
+ {
+  "id": "ch09-040",
   "chapter": 9,
   "topic": "enum",
   "difficulty": 3,
   "type": "single",
-  "question": "列挙型を定義するための標準ライブラリのクラスはどれか。",
+  "question": "列挙型を定義する標準ライブラリのクラスはどれか。",
   "choices": [
    "enum.Enum",
    "collections.Enum",
@@ -649,16 +1022,22 @@
   "answer": [
    0
   ],
-  "explanation": "enum.Enum を継承して列挙型を定義する。メンバは name/value を持つ。",
+  "explanation": "enum.Enum。",
+  "rationales": [
+   "正解。enum.Enum を継承して定義。",
+   "不正解。collections に Enum は無い。",
+   "不正解。typing に Enum は無い。",
+   "不正解。enum.List は無い。"
+  ],
   "reference": "enum.Enum"
  },
  {
-  "id": "ch09-034",
+  "id": "ch09-041",
   "chapter": 9,
   "topic": "dict",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "3",
    "2",
@@ -668,17 +1047,23 @@
   "answer": [
    0
   ],
-  "explanation": "辞書の len はキー（＝エントリ）の数。3個のキーがある。",
+  "explanation": "len はキー数。",
+  "rationales": [
+   "正解。キー3個。",
+   "不正解。2 ではない。",
+   "不正解。数値が返る。",
+   "不正解。正常動作。"
+  ],
   "code": "print(len({'a': 1, 'b': 2, 'c': 3}))",
   "reference": "len(dict)"
  },
  {
-  "id": "ch09-035",
+  "id": "ch09-042",
   "chapter": 9,
   "topic": "list",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "2",
    "1",
@@ -688,17 +1073,23 @@
   "answer": [
    0
   ],
-  "explanation": "list.index(x) は最初に x が現れるインデックスを返す。30 はインデックス2。",
+  "explanation": "index は最初の位置。",
+  "rationales": [
+   "正解。30 はインデックス2。",
+   "不正解。1 ではない。",
+   "不正解。3 ではない。",
+   "不正解。存在するのでエラーにならない。"
+  ],
   "code": "print([10, 20, 30].index(30))",
   "reference": "list.index"
  },
  {
-  "id": "ch09-036",
+  "id": "ch09-043",
   "chapter": 9,
   "topic": "list内包",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "[[0, 1], [0, 1]]",
    "[0, 1, 0, 1]",
@@ -708,17 +1099,23 @@
   "answer": [
    0
   ],
-  "explanation": "ネストした内包表記。外側2回・内側range(2)で [[0,1],[0,1]]。",
+  "explanation": "ネスト内包表記。",
+  "rationales": [
+   "正解。内側リストを2つ作る。",
+   "不正解。平坦化はされない。",
+   "不正解。別の並びではない。",
+   "不正解。正常動作。"
+  ],
   "code": "print([[j for j in range(2)] for i in range(2)])",
   "reference": "ネスト内包表記"
  },
  {
-  "id": "ch09-037",
+  "id": "ch09-044",
   "chapter": 9,
   "topic": "any/all",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "True",
    "False",
@@ -728,17 +1125,49 @@
   "answer": [
    0
   ],
-  "explanation": "all は全要素が真なら True。[1,2,3] は全て真なので True。any は1つでも真なら True。",
+  "explanation": "all は全真で True。",
+  "rationales": [
+   "正解。全要素が真。",
+   "不正解。偽要素は無い。",
+   "不正解。正常動作。",
+   "不正解。bool を返す。"
+  ],
   "code": "print(all([1, 2, 3]))",
   "reference": "all / any"
  },
  {
-  "id": "ch09-038",
+  "id": "ch09-045",
+  "chapter": 9,
+  "topic": "any/all",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "False",
+   "True",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "any は1つも真が無いと False。",
+  "rationales": [
+   "正解。全て偽なので False。",
+   "不正解。真要素が無い。",
+   "不正解。正常動作。",
+   "不正解。bool を返す。"
+  ],
+  "code": "print(any([0, '', None]))",
+  "reference": "any"
+ },
+ {
+  "id": "ch09-046",
   "chapter": 9,
   "topic": "max key",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "ccc",
    "a",
@@ -748,8 +1177,400 @@
   "answer": [
    0
   ],
-  "explanation": "max に key=len を渡すと、最も長い文字列を返す。'ccc' が最長。",
+  "explanation": "key=len で最長。",
+  "rationales": [
+   "正解。最長の 'ccc'。",
+   "不正解。最短ではない。",
+   "不正解。中間ではない。",
+   "不正解。1要素を返す。"
+  ],
   "code": "print(max(['a', 'bb', 'ccc'], key=len))",
   "reference": "max --- key"
+ },
+ {
+  "id": "ch09-047",
+  "chapter": 9,
+  "topic": "min",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "1",
+   "3",
+   "2",
+   "[1, 2, 3]"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "min は最小値。",
+  "rationales": [
+   "正解。最小は1。",
+   "不正解。最大ではない。",
+   "不正解。中間ではない。",
+   "不正解。1要素を返す。"
+  ],
+  "code": "print(min([3, 1, 2]))",
+  "reference": "min"
+ },
+ {
+  "id": "ch09-048",
+  "chapter": 9,
+  "topic": "sum",
+  "difficulty": 1,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "6",
+   "123",
+   "[1, 2, 3]",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "sum は合計。",
+  "rationales": [
+   "正解。1+2+3=6。",
+   "不正解。連結ではない。",
+   "不正解。リストではない。",
+   "不正解。正常動作。"
+  ],
+  "code": "print(sum([1, 2, 3]))",
+  "reference": "sum"
+ },
+ {
+  "id": "ch09-049",
+  "chapter": 9,
+  "topic": "sum",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "16",
+   "6",
+   "10",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "sum の start 引数。",
+  "rationales": [
+   "正解。初期値10+6=16。",
+   "不正解。start を足す。",
+   "不正解。start を無視しない。",
+   "不正解。正常動作。"
+  ],
+  "code": "print(sum([1, 2, 3], 10))",
+  "reference": "sum --- start"
+ },
+ {
+  "id": "ch09-050",
+  "chapter": 9,
+  "topic": "frozenset",
+  "difficulty": 3,
+  "type": "single",
+  "question": "イミュータブルな集合を作る型はどれか。",
+  "choices": [
+   "frozenset",
+   "tuple set",
+   "constset",
+   "immutableset"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "frozenset は不変集合。",
+  "rationales": [
+   "正解。frozenset は変更不可で辞書キーにもできる。",
+   "不正解。そのような型名は無い。",
+   "不正解。constset は無い。",
+   "不正解。immutableset は無い。"
+  ],
+  "reference": "frozenset"
+ },
+ {
+  "id": "ch09-051",
+  "chapter": 9,
+  "topic": "dict内包",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "{'a': 1, 'b': 2}",
+   "[('a', 1), ('b', 2)]",
+   "{'a', 'b'}",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "zip と dict 内包。",
+  "rationales": [
+   "正解。キーと値を対応づけ辞書化。",
+   "不正解。リストではなく辞書。",
+   "不正解。値も持つ。",
+   "不正解。正常動作。"
+  ],
+  "code": "ks = ['a', 'b']\nvs = [1, 2]\nprint({k: v for k, v in zip(ks, vs)})",
+  "reference": "辞書内包＋zip"
+ },
+ {
+  "id": "ch09-052",
+  "chapter": 9,
+  "topic": "in",
+  "difficulty": 2,
+  "type": "single",
+  "question": "辞書に対する in 演算子が判定する対象はどれか。",
+  "choices": [
+   "キー",
+   "値",
+   "(キー, 値)のタプル",
+   "常に False"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "in はキーを見る。",
+  "rationales": [
+   "正解。`k in d` はキーの有無を判定。",
+   "不正解。値は d.values() を使う。",
+   "不正解。items ではない。",
+   "不正解。存在すれば True。"
+  ],
+  "reference": "dict --- in"
+ },
+ {
+  "id": "ch09-053",
+  "chapter": 9,
+  "topic": "array",
+  "difficulty": 3,
+  "type": "single",
+  "question": "同じ型の数値を効率的に格納する標準ライブラリの型はどれか。",
+  "choices": [
+   "array.array",
+   "list",
+   "numpy.array（標準）",
+   "vector"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "array は型付き配列。",
+  "rationales": [
+   "正解。array.array は型コード付きの配列。",
+   "不正解。list は汎用で型固定でない。",
+   "不正解。numpy は標準ではない。",
+   "不正解。vector 型は無い。"
+  ],
+  "reference": "array"
+ },
+ {
+  "id": "ch09-054",
+  "chapter": 9,
+  "topic": "OrderedDict",
+  "difficulty": 3,
+  "type": "single",
+  "question": "OrderedDict に関する説明として正しいものはどれか。",
+  "choices": [
+   "挿入順を保持する辞書（dict も3.7+で順序保持）",
+   "常にキーをソートする",
+   "重複キーを許す",
+   "値しか保持しない"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "順序保持の辞書。",
+  "rationales": [
+   "正解。挿入順を保持する。通常 dict も3.7+で順序を保つ。",
+   "不正解。自動ソートはしない。",
+   "不正解。重複キーは持てない。",
+   "不正解。キーと値を持つ。"
+  ],
+  "reference": "OrderedDict"
+ },
+ {
+  "id": "ch09-055",
+  "chapter": 9,
+  "topic": "list",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "[1, 3, 2]",
+   "[1, 2, 3]",
+   "[1, 3]",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "remove は最初の該当値を削除。",
+  "rationales": [
+   "正解。最初の2だけ削除され [1,3,2]。",
+   "不正解。並べ替えはされない。",
+   "不正解。末尾の2は残る。",
+   "不正解。正常動作。"
+  ],
+  "code": "a = [1, 2, 3, 2]\na.remove(2)\nprint(a)",
+  "reference": "list.remove"
+ },
+ {
+  "id": "ch09-056",
+  "chapter": 9,
+  "topic": "clear",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "[]",
+   "[1, 2, 3]",
+   "None",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "clear は全削除。",
+  "rationales": [
+   "正解。全要素を削除し空に。",
+   "不正解。残らない。",
+   "不正解。None ではなくリスト。",
+   "不正解。正常動作。"
+  ],
+  "code": "a = [1, 2, 3]\na.clear()\nprint(a)",
+  "reference": "list.clear"
+ },
+ {
+  "id": "ch09-057",
+  "chapter": 9,
+  "topic": "slice代入",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "[0, 9, 9, 3]",
+   "[0, 9, 3]",
+   "[9, 9]",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "スライス代入で置換。",
+  "rationales": [
+   "正解。インデックス1,2 を [9,9] に置換。",
+   "不正解。要素数が合えば置換。",
+   "不正解。全置換ではない。",
+   "不正解。正常動作。"
+  ],
+  "code": "a = [0, 1, 2, 3]\na[1:3] = [9, 9]\nprint(a)",
+  "reference": "スライス代入"
+ },
+ {
+  "id": "ch09-058",
+  "chapter": 9,
+  "topic": "set method",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "True",
+   "False",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "issubset は部分集合判定。",
+  "rationales": [
+   "正解。{1,2} は部分集合で True。",
+   "不正解。部分集合である。",
+   "不正解。正常動作。",
+   "不正解。bool を返す。"
+  ],
+  "code": "print({1, 2}.issubset({1, 2, 3}))",
+  "reference": "set.issubset"
+ },
+ {
+  "id": "ch09-059",
+  "chapter": 9,
+  "topic": "dict get",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "0",
+   "None",
+   "KeyError",
+   "''"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "get の既定値。",
+  "rationales": [
+   "正解。キーが無いので既定0。",
+   "不正解。既定を指定したので None ではない。",
+   "不正解。例外は出ない。",
+   "不正解。空文字ではない。"
+  ],
+  "code": "print({'x': 5}.get('y', 0))",
+  "reference": "dict.get --- 既定"
+ },
+ {
+  "id": "ch09-060",
+  "chapter": 9,
+  "topic": "tuple unpack",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "3",
+   "(1, 2)",
+   "1",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "タプルもインデックス可。",
+  "rationales": [
+   "正解。インデックス2は3。",
+   "不正解。全体ではない。",
+   "不正解。先頭ではない。",
+   "不正解。添字アクセス可能。"
+  ],
+  "code": "t = (1, 2, 3)\nprint(t[2])",
+  "reference": "tuple --- 添字"
+ },
+ {
+  "id": "ch09-061",
+  "chapter": 9,
+  "topic": "list copy",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "[1, 2]",
+   "[1, 2, 3]",
+   "エラー",
+   "[3]"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "copy は独立。",
+  "rationales": [
+   "正解。b の追加は a に影響しない。",
+   "不正解。独立コピーなので変わらない。",
+   "不正解。正常動作。",
+   "不正解。全置換ではない。"
+  ],
+  "code": "a = [1, 2]\nb = a.copy()\nb.append(3)\nprint(a)",
+  "reference": "list.copy"
  }
 ]

@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "hashlib が各種ハッシュアルゴリズム（sha256, md5, sha1 等）を提供する。",
+  "explanation": "hashlib。",
+  "rationales": [
+   "正解。hashlib が各種ハッシュを提供。",
+   "不正解。crypt は一部用途のみ。",
+   "不正解。hashes は無い。",
+   "不正解。digest モジュールは無い。"
+  ],
   "reference": "hashlib"
  },
  {
@@ -24,7 +30,7 @@
   "topic": "hashlib",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "64",
    "32",
@@ -34,9 +40,15 @@
   "answer": [
    0
   ],
-  "explanation": "SHA-256 のダイジェストは256ビット＝32バイト。hexdigest() は1バイトを16進2文字で表すため文字数は64。",
+  "explanation": "SHA-256 の hex は64文字。",
+  "rationales": [
+   "正解。256ビット=32バイト→hex64文字。",
+   "不正解。32 はバイト数。",
+   "不正解。256 はビット数。",
+   "不正解。16 ではない。"
+  ],
   "code": "import hashlib\nprint(len(hashlib.sha256(b'abc').hexdigest()))",
-  "reference": "hashlib --- SHA-256 の長さ"
+  "reference": "hashlib --- SHA-256 長"
  },
  {
   "id": "ch18-003",
@@ -46,15 +58,21 @@
   "type": "single",
   "question": "ハッシュ関数の性質として正しいものはどれか。",
   "choices": [
-   "同じ入力からは常に同じハッシュ値が得られ、ハッシュから元の入力を復元するのは困難",
-   "ハッシュ値から元のデータを簡単に復元できる",
-   "同じ入力でも毎回異なる値になる",
-   "入力長に比例してハッシュ長が伸びる"
+   "同入力なら常に同出力で、出力から入力の復元は困難",
+   "出力から入力を簡単に復元できる",
+   "同入力でも毎回異なる",
+   "入力長に比例して出力長が伸びる"
   ],
   "answer": [
    0
   ],
-  "explanation": "暗号学的ハッシュは決定的（同入力→同出力）かつ一方向性（逆算困難）。固定長の値を返す。",
+  "explanation": "決定的かつ一方向。",
+  "rationales": [
+   "正解。決定的で一方向、固定長を返す。",
+   "不正解。復元は困難（一方向性）。",
+   "不正解。毎回同じ値になる。",
+   "不正解。出力長は固定。"
+  ],
   "reference": "ハッシュ関数の性質"
  },
  {
@@ -63,7 +81,7 @@
   "topic": "secrets",
   "difficulty": 3,
   "type": "single",
-  "question": "トークンやパスワードなど、安全な乱数を生成するために推奨される標準ライブラリはどれか。",
+  "question": "トークンやパスワードなど安全な乱数生成に推奨される標準ライブラリはどれか。",
   "choices": [
    "secrets",
    "random",
@@ -73,7 +91,13 @@
   "answer": [
    0
   ],
-  "explanation": "secrets は暗号用途向けの安全な乱数を生成する。random モジュールはセキュリティ用途には使わない。",
+  "explanation": "secrets。",
+  "rationales": [
+   "正解。secrets は暗号用途の安全な乱数。",
+   "不正解。random は予測可能で不適。",
+   "不正解。os.rand は無い。",
+   "不正解。uuid は識別子用で乱数強度の保証が目的でない。"
+  ],
   "reference": "secrets"
  },
  {
@@ -82,18 +106,24 @@
   "topic": "random",
   "difficulty": 2,
   "type": "single",
-  "question": "セキュリティ用途で random モジュールを使うべきでない理由として正しいものはどれか。",
+  "question": "セキュリティ用途で random を使うべきでない理由はどれか。",
   "choices": [
-   "疑似乱数で予測可能なため、トークン生成等には不適切",
-   "生成が遅すぎるため",
-   "整数しか生成できないため",
-   "標準ライブラリではないため"
+   "疑似乱数で予測可能だから",
+   "生成が遅いから",
+   "整数しか作れないから",
+   "標準ではないから"
   ],
   "answer": [
    0
   ],
-  "explanation": "random は決定的な疑似乱数生成器で予測可能。鍵・トークンには secrets を使う。",
-  "reference": "random と secrets の使い分け"
+  "explanation": "予測可能だから。",
+  "rationales": [
+   "正解。random は決定的で予測可能。",
+   "不正解。速度の問題ではない。",
+   "不正解。浮動小数等も作れる。",
+   "不正解。標準ライブラリではある。"
+  ],
+  "reference": "random と secrets"
  },
  {
   "id": "ch18-006",
@@ -101,17 +131,23 @@
   "topic": "パスワード",
   "difficulty": 3,
   "type": "single",
-  "question": "パスワードを保存する際の適切な扱いとして最も正しいものはどれか。",
+  "question": "パスワード保存の適切な扱いはどれか。",
   "choices": [
-   "ソルト付きの専用ハッシュ（例: hashlib.pbkdf2_hmac 等）でハッシュ化して保存する",
-   "平文のまま保存する",
-   "可逆暗号で暗号化して必ず復号できるようにする",
-   "MD5 で1回だけハッシュ化すれば十分"
+   "ソルト付きの鍵導出関数でハッシュ化して保存",
+   "平文のまま保存",
+   "可逆暗号で必ず復号できるように保存",
+   "MD5 を1回だけで十分"
   ],
   "answer": [
    0
   ],
-  "explanation": "パスワードはソルト付きの鍵導出関数（pbkdf2_hmac, scrypt 等）でハッシュ化して保存する。平文保存や単純MD5は不適切。",
+  "explanation": "ソルト付きハッシュ。",
+  "rationales": [
+   "正解。pbkdf2_hmac/scrypt 等＋ソルトでハッシュ化する。",
+   "不正解。平文保存は重大な脆弱性。",
+   "不正解。可逆である必要はなく不適。",
+   "不正解。単純MD5は脆弱。"
+  ],
   "reference": "パスワードのハッシュ化"
  },
  {
@@ -120,7 +156,7 @@
   "topic": "hmac",
   "difficulty": 3,
   "type": "single",
-  "question": "メッセージの改ざん検知・認証に使う、鍵付きハッシュを扱う標準ライブラリはどれか。",
+  "question": "メッセージ認証（改ざん検知）に使う鍵付きハッシュの標準ライブラリはどれか。",
   "choices": [
    "hmac",
    "hashlib のみ",
@@ -130,7 +166,13 @@
   "answer": [
    0
   ],
-  "explanation": "hmac は秘密鍵とハッシュ関数を組み合わせ、メッセージ認証コード（MAC）を生成する。",
+  "explanation": "hmac。",
+  "rationales": [
+   "正解。hmac が鍵付きハッシュ(MAC)を提供。",
+   "不正解。hashlib 単体では鍵付きにならない。",
+   "不正解。secrets は乱数用。",
+   "不正解。ssl は通信暗号化。"
+  ],
   "reference": "hmac"
  },
  {
@@ -139,7 +181,7 @@
   "topic": "比較",
   "difficulty": 3,
   "type": "single",
-  "question": "ハッシュ値やトークンを比較する際、タイミング攻撃を避けるために使う関数はどれか。",
+  "question": "ハッシュやトークンの比較でタイミング攻撃を避ける関数はどれか。",
   "choices": [
    "hmac.compare_digest",
    "==",
@@ -149,7 +191,315 @@
   "answer": [
    0
   ],
-  "explanation": "秘密情報の比較は hmac.compare_digest（または secrets.compare_digest）を使い、比較時間を一定にしてタイミング攻撃を防ぐ。",
+  "explanation": "compare_digest。",
+  "rationales": [
+   "正解。compare_digest は比較時間を一定にする。",
+   "不正解。== は早期終了で時間差が漏れる。",
+   "不正解。is は同一性比較で不適。",
+   "不正解。str.equals は無い。"
+  ],
   "reference": "compare_digest"
+ },
+ {
+  "id": "ch18-009",
+  "chapter": 18,
+  "topic": "hashlib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "32",
+   "16",
+   "64",
+   "128"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "MD5 hex は32文字。",
+  "rationales": [
+   "正解。128ビット=16バイト→hex32文字。",
+   "不正解。16 はバイト数。",
+   "不正解。64 は SHA-256。",
+   "不正解。128 はビット数。"
+  ],
+  "code": "import hashlib\nprint(len(hashlib.md5(b'abc').hexdigest()))",
+  "reference": "hashlib --- MD5 長"
+ },
+ {
+  "id": "ch18-010",
+  "chapter": 18,
+  "topic": "ソルト",
+  "difficulty": 3,
+  "type": "single",
+  "question": "パスワードハッシュにソルトを加える主な目的はどれか。",
+  "choices": [
+   "同じパスワードでも異なるハッシュにしレインボーテーブル攻撃を防ぐ",
+   "計算を速くする",
+   "ハッシュを短くする",
+   "復号を可能にする"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "事前計算攻撃を防ぐ。",
+  "rationales": [
+   "正解。ソルトで事前計算表（レインボーテーブル）を無効化する。",
+   "不正解。むしろ計算は意図的に重くする。",
+   "不正解。長さ短縮が目的ではない。",
+   "不正解。復号可能にはしない。"
+  ],
+  "reference": "ソルト"
+ },
+ {
+  "id": "ch18-011",
+  "chapter": 18,
+  "topic": "secrets",
+  "difficulty": 3,
+  "type": "single",
+  "question": "secrets で URL 安全なランダムトークン文字列を生成する関数はどれか。",
+  "choices": [
+   "secrets.token_urlsafe",
+   "secrets.random_str",
+   "secrets.token_text",
+   "secrets.make_token"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "token_urlsafe。",
+  "rationales": [
+   "正解。token_urlsafe が URL 安全なトークンを返す。",
+   "不正解。random_str は無い。",
+   "不正解。token_text は無い。",
+   "不正解。make_token は無い。"
+  ],
+  "reference": "secrets.token_urlsafe"
+ },
+ {
+  "id": "ch18-012",
+  "chapter": 18,
+  "topic": "hashlib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "hashlib でハッシュ計算に渡すデータの型はどれか。",
+  "choices": [
+   "バイト列（bytes）",
+   "str をそのまま",
+   "int",
+   "list"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "bytes を渡す。",
+  "rationales": [
+   "正解。bytes を渡す（str は encode が必要）。",
+   "不正解。str を直接渡すと TypeError。",
+   "不正解。int は不可。",
+   "不正解。list は不可。"
+  ],
+  "reference": "hashlib --- 入力型"
+ },
+ {
+  "id": "ch18-013",
+  "chapter": 18,
+  "topic": "鍵導出",
+  "difficulty": 3,
+  "type": "single",
+  "question": "パスワードから鍵を導出する hashlib の関数はどれか。",
+  "choices": [
+   "pbkdf2_hmac",
+   "sha256 のみ",
+   "derive_key",
+   "kdf"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "pbkdf2_hmac。",
+  "rationales": [
+   "正解。pbkdf2_hmac が反復＋ソルトで鍵導出する。",
+   "不正解。sha256 単体は鍵導出ではない。",
+   "不正解。derive_key は無い。",
+   "不正解。kdf 関数名は無い。"
+  ],
+  "reference": "hashlib.pbkdf2_hmac"
+ },
+ {
+  "id": "ch18-014",
+  "chapter": 18,
+  "topic": "対称・非対称",
+  "difficulty": 2,
+  "type": "single",
+  "question": "対称鍵暗号の説明として正しいものはどれか。",
+  "choices": [
+   "暗号化と復号に同じ鍵を使う",
+   "公開鍵と秘密鍵のペアを使う",
+   "鍵を使わない",
+   "ハッシュと同じで復号できない"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "同じ鍵を使う。",
+  "rationales": [
+   "正解。対称鍵は暗号化・復号で同一鍵。",
+   "不正解。それは非対称（公開鍵）暗号。",
+   "不正解。鍵は使う。",
+   "不正解。暗号は復号可能でハッシュとは異なる。"
+  ],
+  "reference": "対称鍵暗号"
+ },
+ {
+  "id": "ch18-015",
+  "chapter": 18,
+  "topic": "公開鍵",
+  "difficulty": 2,
+  "type": "single",
+  "question": "公開鍵暗号（非対称暗号）の説明として正しいものはどれか。",
+  "choices": [
+   "公開鍵で暗号化し対応する秘密鍵で復号する",
+   "1つの鍵を共有する",
+   "鍵が不要",
+   "必ず高速"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "公開鍵と秘密鍵のペア。",
+  "rationales": [
+   "正解。公開鍵で暗号化、秘密鍵で復号する。",
+   "不正解。それは対称鍵。",
+   "不正解。鍵は必要。",
+   "不正解。一般に対称鍵より低速。"
+  ],
+  "reference": "公開鍵暗号"
+ },
+ {
+  "id": "ch18-016",
+  "chapter": 18,
+  "topic": "secrets",
+  "difficulty": 3,
+  "type": "single",
+  "question": "secrets.choice の用途として正しいものはどれか。",
+  "choices": [
+   "シーケンスから暗号学的に安全に1要素を選ぶ",
+   "リストをソートする",
+   "乱数の種を固定する",
+   "ハッシュを計算する"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "安全な選択。",
+  "rationales": [
+   "正解。安全な乱択を行う。",
+   "不正解。ソートではない。",
+   "不正解。種固定はしない（むしろ予測不可）。",
+   "不正解。ハッシュ計算ではない。"
+  ],
+  "reference": "secrets.choice"
+ },
+ {
+  "id": "ch18-017",
+  "chapter": 18,
+  "topic": "ssl",
+  "difficulty": 2,
+  "type": "single",
+  "question": "通信路を暗号化する TLS/SSL を扱う標準ライブラリはどれか。",
+  "choices": [
+   "ssl",
+   "hashlib",
+   "secrets",
+   "hmac"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "ssl。",
+  "rationales": [
+   "正解。ssl が TLS による通信暗号化を担う。",
+   "不正解。hashlib はハッシュ。",
+   "不正解。secrets は乱数。",
+   "不正解。hmac は MAC。"
+  ],
+  "reference": "ssl"
+ },
+ {
+  "id": "ch18-018",
+  "chapter": 18,
+  "topic": "整合性",
+  "difficulty": 2,
+  "type": "single",
+  "question": "ダウンロードしたファイルが改ざんされていないか確認する一般的方法はどれか。",
+  "choices": [
+   "配布元のハッシュ値と計算したハッシュを比較",
+   "ファイル名を比較",
+   "サイズだけ比較",
+   "拡張子を確認"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "ハッシュ比較。",
+  "rationales": [
+   "正解。SHA-256 等のハッシュを照合する。",
+   "不正解。名前一致では改ざんを検知できない。",
+   "不正解。サイズ一致だけでは不十分。",
+   "不正解。拡張子では検知できない。"
+  ],
+  "reference": "整合性検証"
+ },
+ {
+  "id": "ch18-019",
+  "chapter": 18,
+  "topic": "hashlib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "True",
+   "False",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "同入力は同ハッシュ。",
+  "rationales": [
+   "正解。同じ入力なので一致し True。",
+   "不正解。決定的で False ではない。",
+   "不正解。正常動作。",
+   "不正解。bool を返す。"
+  ],
+  "code": "import hashlib\na = hashlib.sha256(b'x').hexdigest()\nb = hashlib.sha256(b'x').hexdigest()\nprint(a == b)",
+  "reference": "ハッシュの決定性"
+ },
+ {
+  "id": "ch18-020",
+  "chapter": 18,
+  "topic": "MD5注意",
+  "difficulty": 2,
+  "type": "single",
+  "question": "MD5 や SHA-1 の利用に関する説明として正しいものはどれか。",
+  "choices": [
+   "衝突が見つかっており、セキュリティ用途では非推奨",
+   "現在も暗号学的に安全",
+   "ハッシュ長が可変で便利",
+   "復号が可能"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "MD5/SHA-1 は非推奨。",
+  "rationales": [
+   "正解。衝突攻撃が知られセキュリティ用途は非推奨（SHA-256等を使う）。",
+   "不正解。安全ではない。",
+   "不正解。ハッシュ長は固定。",
+   "不正解。ハッシュは復号できない。"
+  ],
+  "reference": "MD5/SHA-1 の注意"
  }
 ]

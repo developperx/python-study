@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "pdb が標準ライブラリのデバッガ。ipdb・debugpy はサードパーティ。",
+  "explanation": "pdb。",
+  "rationales": [
+   "正解。pdb が標準デバッガ。",
+   "不正解。gdb は C 用。",
+   "不正解。ipdb はサードパーティ。",
+   "不正解。debugpy はサードパーティ。"
+  ],
   "reference": "pdb"
  },
  {
@@ -24,7 +30,7 @@
   "topic": "breakpoint",
   "difficulty": 2,
   "type": "single",
-  "question": "Python 3.7 以降で、コード中に書くだけでデバッガを起動できる組み込み関数はどれか。",
+  "question": "3.7 以降、書くだけでデバッガを起動する組み込み関数はどれか。",
   "choices": [
    "breakpoint()",
    "debug()",
@@ -34,7 +40,13 @@
   "answer": [
    0
   ],
-  "explanation": "breakpoint() は 3.7 で追加。既定で pdb.set_trace() を呼ぶ。環境変数 PYTHONBREAKPOINT で切替可能。",
+  "explanation": "breakpoint()。",
+  "rationales": [
+   "正解。breakpoint() が既定で pdb を起動。",
+   "不正解。debug() は無い。",
+   "不正解。pdb() は呼び出せない。",
+   "不正解。trace() は無い。"
+  ],
   "reference": "breakpoint()"
  },
  {
@@ -43,7 +55,7 @@
   "topic": "pdb",
   "difficulty": 3,
   "type": "single",
-  "question": "コード内で実行を止めて pdb を起動する従来の関数呼び出しはどれか。",
+  "question": "従来、コード内で pdb を起動する関数はどれか。",
   "choices": [
    "pdb.set_trace()",
    "pdb.start()",
@@ -53,7 +65,13 @@
   "answer": [
    0
   ],
-  "explanation": "import pdb; pdb.set_trace() で対話デバッグに入る。breakpoint() はこれの新しい入口。",
+  "explanation": "set_trace()。",
+  "rationales": [
+   "正解。set_trace() で対話デバッグに入る。",
+   "不正解。start() は無い。",
+   "不正解。run_here は無い。",
+   "不正解。break() は無い。"
+  ],
   "reference": "pdb.set_trace"
  },
  {
@@ -62,7 +80,7 @@
   "topic": "pdb コマンド",
   "difficulty": 3,
   "type": "single",
-  "question": "pdb の対話中で『次の行へ進む（関数には入らない）』コマンドはどれか。",
+  "question": "pdb で『次行へ進む（関数に入らない）』コマンドはどれか。",
   "choices": [
    "n (next)",
    "s (step)",
@@ -72,8 +90,14 @@
   "answer": [
    0
   ],
-  "explanation": "n は次行へ（ステップオーバー）、s は関数内へ入る（ステップイン）、c は次のブレークまで継続。",
-  "reference": "pdb --- コマンド"
+  "explanation": "n はステップオーバー。",
+  "rationales": [
+   "正解。n は関数に入らず次行へ。",
+   "不正解。s は関数内に入る。",
+   "不正解。c は継続実行。",
+   "不正解。q は終了。"
+  ],
+  "reference": "pdb --- next"
  },
  {
   "id": "ch17-005",
@@ -91,18 +115,74 @@
   "answer": [
    0
   ],
-  "explanation": "s は呼び出し先の関数に入る。n は関数を実行して次行に進む。",
+  "explanation": "s はステップイン。",
+  "rationales": [
+   "正解。s は呼び出し先に入る。",
+   "不正解。n は入らない。",
+   "不正解。r は関数終了まで進む。",
+   "不正解。l はソース表示。"
+  ],
   "reference": "pdb --- step"
  },
  {
   "id": "ch17-006",
   "chapter": 17,
+  "topic": "pdb コマンド",
+  "difficulty": 3,
+  "type": "single",
+  "question": "pdb で『現在の関数が return するまで実行』するコマンドはどれか。",
+  "choices": [
+   "r (return)",
+   "c (continue)",
+   "n (next)",
+   "u (up)"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "r は関数終了まで。",
+  "rationales": [
+   "正解。r は現在の関数を抜けるまで実行。",
+   "不正解。c は次のブレークまで。",
+   "不正解。n は1行。",
+   "不正解。u はスタックを上へ。"
+  ],
+  "reference": "pdb --- return"
+ },
+ {
+  "id": "ch17-007",
+  "chapter": 17,
+  "topic": "pdb コマンド",
+  "difficulty": 3,
+  "type": "single",
+  "question": "pdb で『変数の値を表示』するコマンドはどれか。",
+  "choices": [
+   "p 式",
+   "show 式",
+   "echo 式",
+   "v 式"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "p で表示。",
+  "rationales": [
+   "正解。p（または pp）で式を評価表示。",
+   "不正解。show は無い。",
+   "不正解。echo は無い。",
+   "不正解。v は無い。"
+  ],
+  "reference": "pdb --- print"
+ },
+ {
+  "id": "ch17-008",
+  "chapter": 17,
   "topic": "traceback",
   "difficulty": 2,
   "type": "single",
-  "question": "例外発生時に表示される、呼び出し履歴付きのエラー情報を何と呼ぶか。",
+  "question": "例外時に表示される呼び出し履歴付き情報を何と呼ぶか。",
   "choices": [
-   "トレースバック（traceback）",
+   "トレースバック",
    "スタックダンプ",
    "コアダンプ",
    "ログレベル"
@@ -110,16 +190,22 @@
   "answer": [
    0
   ],
-  "explanation": "例外時に出る呼び出し履歴付きのメッセージがトレースバック。traceback モジュールで整形・取得できる。",
+  "explanation": "トレースバック。",
+  "rationales": [
+   "正解。呼び出し履歴付きの情報がトレースバック。",
+   "不正解。スタックダンプは別文脈。",
+   "不正解。コアダンプは C のメモリダンプ。",
+   "不正解。ログレベルは別概念。"
+  ],
   "reference": "traceback"
  },
  {
-  "id": "ch17-007",
+  "id": "ch17-009",
   "chapter": 17,
   "topic": "traceback",
   "difficulty": 3,
   "type": "single",
-  "question": "捕捉した例外のトレースバックを文字列やコンソールに出力する標準ライブラリはどれか。",
+  "question": "捕捉した例外のトレースバックを出力する標準ライブラリはどれか。",
   "choices": [
    "traceback",
    "sys.exc",
@@ -129,55 +215,73 @@
   "answer": [
    0
   ],
-  "explanation": "traceback.print_exc() や format_exc() でトレースバックを出力・取得できる。",
+  "explanation": "traceback。",
+  "rationales": [
+   "正解。print_exc/format_exc で出力できる。",
+   "不正解。sys.exc は属性で関数群ではない。",
+   "不正解。inspect は別用途。",
+   "不正解。warnings は警告用。"
+  ],
   "reference": "traceback モジュール"
  },
  {
-  "id": "ch17-008",
+  "id": "ch17-010",
   "chapter": 17,
   "topic": "assert",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードを通常実行（最適化なし）したときの挙動として正しいものはどれか。",
+  "question": "次のコードを通常実行したときの挙動はどれか。",
   "choices": [
    "AssertionError が送出される",
-   "False と表示される",
-   "何も起きずに終了",
+   "False と表示",
+   "何も起きず終了",
    "SyntaxError"
   ],
   "answer": [
    0
   ],
-  "explanation": "assert 条件 は条件が偽のとき AssertionError を送出する。デバッグ・前提条件チェックに使う。",
+  "explanation": "偽の assert は例外。",
+  "rationales": [
+   "正解。条件が偽なので AssertionError。",
+   "不正解。False は表示しない。",
+   "不正解。例外が起きる。",
+   "不正解。構文は正しい。"
+  ],
   "code": "try:\n    assert 1 == 2\nexcept AssertionError:\n    print('AssertionError が送出される')",
-  "reference": "assert 文"
+  "reference": "assert"
  },
  {
-  "id": "ch17-009",
+  "id": "ch17-011",
   "chapter": 17,
   "topic": "assert",
   "difficulty": 3,
   "type": "single",
-  "question": "Python を `-O`（最適化）オプション付きで実行したときの assert の扱いはどれか。",
+  "question": "Python を `-O` 付きで実行したときの assert の扱いはどれか。",
   "choices": [
-   "assert 文は無効化される（実行されない）",
-   "assert がより厳密になる",
-   "全ての例外が無視される",
-   "影響はない"
+   "assert 文が無効化される",
+   "より厳密になる",
+   "全例外が無視される",
+   "影響なし"
   ],
   "answer": [
    0
   ],
-  "explanation": "`-O` 実行時は __debug__ が False になり assert 文が取り除かれる。前提保証を assert だけに頼らない理由。",
-  "reference": "assert と -O オプション"
+  "explanation": "-O で assert 除去。",
+  "rationales": [
+   "正解。-O で __debug__ が False になり assert が除去される。",
+   "不正解。厳密化はしない。",
+   "不正解。全例外無視ではない。",
+   "不正解。影響がある。"
+  ],
+  "reference": "assert と -O"
  },
  {
-  "id": "ch17-010",
+  "id": "ch17-012",
   "chapter": 17,
   "topic": "warnings",
   "difficulty": 3,
   "type": "single",
-  "question": "将来非推奨になる機能などについて、実行を止めずに警告を出す標準ライブラリはどれか。",
+  "question": "実行を止めずに警告を出す標準ライブラリはどれか。",
   "choices": [
    "warnings",
    "logging",
@@ -187,16 +291,22 @@
   "answer": [
    0
   ],
-  "explanation": "warnings.warn(...) で警告を出せる。DeprecationWarning などのカテゴリがある。",
+  "explanation": "warnings。",
+  "rationales": [
+   "正解。warnings.warn で警告を出す。",
+   "不正解。logging はログ出力。",
+   "不正解。exceptions モジュールは無い。",
+   "不正解。alerts は無い。"
+  ],
   "reference": "warnings"
  },
  {
-  "id": "ch17-011",
+  "id": "ch17-013",
   "chapter": 17,
   "topic": "logging",
   "difficulty": 2,
   "type": "single",
-  "question": "print デバッグの代わりに、レベル付き・出力先制御が可能なデバッグ手段として推奨されるのはどれか。",
+  "question": "print デバッグの代わりに推奨されるレベル付きの手段はどれか。",
   "choices": [
    "logging モジュール",
    "コメントアウト",
@@ -206,16 +316,22 @@
   "answer": [
    0
   ],
-  "explanation": "logging は出力レベルやフォーマット、出力先を制御でき、print デバッグより保守的。",
+  "explanation": "logging。",
+  "rationales": [
+   "正解。logging はレベル・出力先制御が可能。",
+   "不正解。コメントアウトは情報を得られない。",
+   "不正解。sleep は無関係。",
+   "不正解。input は停止用で不適。"
+  ],
   "reference": "logging によるデバッグ"
  },
  {
-  "id": "ch17-012",
+  "id": "ch17-014",
   "chapter": 17,
   "topic": "pprint",
   "difficulty": 2,
   "type": "single",
-  "question": "ネストした大きなデータ構造を見やすく整形して表示する標準ライブラリはどれか。",
+  "question": "入れ子の大きなデータを見やすく整形表示する標準ライブラリはどれか。",
   "choices": [
    "pprint",
    "prettyprint",
@@ -225,16 +341,22 @@
   "answer": [
    0
   ],
-  "explanation": "pprint.pprint は辞書やリストを整形（インデント・改行）して表示する。",
+  "explanation": "pprint。",
+  "rationales": [
+   "正解。pprint.pprint が整形表示。",
+   "不正解。prettyprint は無い。",
+   "不正解。format は文字列整形。",
+   "不正解。display は無い。"
+  ],
   "reference": "pprint"
  },
  {
-  "id": "ch17-013",
+  "id": "ch17-015",
   "chapter": 17,
   "topic": "inspect",
   "difficulty": 3,
   "type": "single",
-  "question": "実行中のオブジェクトのソースや引数情報などを調べる標準ライブラリはどれか。",
+  "question": "実行中オブジェクトのソースや引数情報を調べる標準ライブラリはどれか。",
   "choices": [
    "inspect",
    "dis",
@@ -244,16 +366,22 @@
   "answer": [
    0
   ],
-  "explanation": "inspect は関数のシグネチャやソース、スタックフレームなどを調べられる。",
+  "explanation": "inspect。",
+  "rationales": [
+   "正解。inspect がシグネチャやソースを調べる。",
+   "不正解。dis は逆アセンブル。",
+   "不正解。trace は実行追跡。",
+   "不正解。reflection モジュールは無い。"
+  ],
   "reference": "inspect"
  },
  {
-  "id": "ch17-014",
+  "id": "ch17-016",
   "chapter": 17,
   "topic": "timeit",
   "difficulty": 3,
   "type": "single",
-  "question": "小さなコード断片の実行時間を計測する標準ライブラリはどれか。",
+  "question": "小さなコードの実行時間を計測する標準ライブラリはどれか。",
   "choices": [
    "timeit",
    "time.clock",
@@ -263,16 +391,22 @@
   "answer": [
    0
   ],
-  "explanation": "timeit はコードを多数回実行して所要時間を計測する。マイクロベンチマーク向け。",
+  "explanation": "timeit。",
+  "rationales": [
+   "正解。timeit が多数回実行で計測する。",
+   "不正解。time.clock は廃止。",
+   "不正解。profile2 は無い。",
+   "不正解。benchmark は無い。"
+  ],
   "reference": "timeit"
  },
  {
-  "id": "ch17-015",
+  "id": "ch17-017",
   "chapter": 17,
   "topic": "cProfile",
   "difficulty": 3,
   "type": "single",
-  "question": "関数ごとの呼び出し回数や所要時間を計測（プロファイリング）する標準ライブラリはどれか。",
+  "question": "関数ごとの呼び出し回数や所要時間を計測する標準ライブラリはどれか。",
   "choices": [
    "cProfile",
    "timeit",
@@ -282,7 +416,238 @@
   "answer": [
    0
   ],
-  "explanation": "cProfile は実行をプロファイルし、関数単位の統計を出力する。ボトルネック特定に使う。",
+  "explanation": "cProfile。",
+  "rationales": [
+   "正解。cProfile が関数単位の統計を出す。",
+   "不正解。timeit はコード片の計測。",
+   "不正解。pdb はデバッガ。",
+   "不正解。trace は行追跡。"
+  ],
   "reference": "cProfile"
+ },
+ {
+  "id": "ch17-018",
+  "chapter": 17,
+  "topic": "dis",
+  "difficulty": 3,
+  "type": "single",
+  "question": "Python のバイトコードを逆アセンブルして表示する標準ライブラリはどれか。",
+  "choices": [
+   "dis",
+   "inspect",
+   "byteplay",
+   "asm"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "dis。",
+  "rationales": [
+   "正解。dis.dis() がバイトコードを表示。",
+   "不正解。inspect は別用途。",
+   "不正解。byteplay はサードパーティ。",
+   "不正解。asm は無い。"
+  ],
+  "reference": "dis"
+ },
+ {
+  "id": "ch17-019",
+  "chapter": 17,
+  "topic": "faulthandler",
+  "difficulty": 3,
+  "type": "single",
+  "question": "セグフォルトなど致命的エラー時に Python のトレースバックを出す標準ライブラリはどれか。",
+  "choices": [
+   "faulthandler",
+   "signal のみ",
+   "crashlog",
+   "coredump"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "faulthandler。",
+  "rationales": [
+   "正解。faulthandler が致命的エラー時にトレースを出す。",
+   "不正解。signal は別用途。",
+   "不正解。crashlog は無い。",
+   "不正解。coredump は無い。"
+  ],
+  "reference": "faulthandler"
+ },
+ {
+  "id": "ch17-020",
+  "chapter": 17,
+  "topic": "logging level",
+  "difficulty": 2,
+  "type": "single",
+  "question": "logging で既定（未設定）の出力閾値レベルはどれか。",
+  "choices": [
+   "WARNING",
+   "DEBUG",
+   "INFO",
+   "ERROR"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "既定は WARNING。",
+  "rationales": [
+   "正解。既定では WARNING 以上が出力される。",
+   "不正解。DEBUG は既定では出ない。",
+   "不正解。INFO も既定では出ない。",
+   "不正解。ERROR より低い WARNING が既定閾値。"
+  ],
+  "reference": "logging --- 既定レベル"
+ },
+ {
+  "id": "ch17-021",
+  "chapter": 17,
+  "topic": "assert使い方",
+  "difficulty": 3,
+  "type": "single",
+  "question": "assert の適切な使い方はどれか。",
+  "choices": [
+   "プログラム内部の前提（不変条件）の確認に使う",
+   "ユーザー入力の検証に使う",
+   "本番の必須チェックに頼る",
+   "例外処理の代わりに使う"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "内部前提の確認に使う。",
+  "rationales": [
+   "正解。不変条件など開発時の前提確認向け。",
+   "不正解。入力検証は -O で消えるため不適。",
+   "不正解。必須チェックを assert に頼らない。",
+   "不正解。通常の例外処理の代替にしない。"
+  ],
+  "reference": "assert の用途"
+ },
+ {
+  "id": "ch17-022",
+  "chapter": 17,
+  "topic": "デバッグ手法",
+  "difficulty": 2,
+  "type": "single",
+  "question": "バグの原因箇所を効率良く絞り込む手法として適切なものはどれか。",
+  "choices": [
+   "二分探索的に範囲を半分ずつ絞る",
+   "とにかく全部書き直す",
+   "ログを消す",
+   "乱数で当てる"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "二分探索的に絞る。",
+  "rationales": [
+   "正解。問題範囲を半分ずつ絞ると効率的。",
+   "不正解。全書き直しは非効率。",
+   "不正解。ログを消すと情報が減る。",
+   "不正解。当て推量は非効率。"
+  ],
+  "reference": "デバッグの基本"
+ },
+ {
+  "id": "ch17-023",
+  "chapter": 17,
+  "topic": "repr",
+  "difficulty": 2,
+  "type": "single",
+  "question": "デバッグ時、文字列の不可視文字も含めて正確に確認したいとき有効なのはどれか。",
+  "choices": [
+   "repr() で表示する",
+   "str() で表示する",
+   "print のみ",
+   "len() で表示"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "repr は厳密表現。",
+  "rationales": [
+   "正解。repr はクォートやエスケープを含め厳密に示す。",
+   "不正解。str は見た目重視で曖昧。",
+   "不正解。print(str) では空白等が分かりにくい。",
+   "不正解。len は長さのみ。"
+  ],
+  "reference": "repr によるデバッグ"
+ },
+ {
+  "id": "ch17-024",
+  "chapter": 17,
+  "topic": "例外連鎖",
+  "difficulty": 3,
+  "type": "single",
+  "question": "except 内で別例外を送出したとき、元の例外情報を保持する仕組みはどれか。",
+  "choices": [
+   "例外連鎖（raise ... from ...）",
+   "例外の握り潰し",
+   "finally のみ",
+   "warnings"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "例外連鎖。",
+  "rationales": [
+   "正解。raise NewError from err で原因を保持できる。",
+   "不正解。握り潰しは情報を失う。",
+   "不正解。finally は連鎖とは別。",
+   "不正解。warnings は警告用。"
+  ],
+  "reference": "例外連鎖"
+ },
+ {
+  "id": "ch17-025",
+  "chapter": 17,
+  "topic": "post-mortem",
+  "difficulty": 3,
+  "type": "single",
+  "question": "例外発生後にその時点の状態を調べる pdb の機能はどれか。",
+  "choices": [
+   "事後解析（pdb.pm / post_mortem）",
+   "事前解析",
+   "プロファイル",
+   "カバレッジ"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "post-mortem。",
+  "rationales": [
+   "正解。pdb.pm() で例外発生時のフレームを調べられる。",
+   "不正解。事前解析という機能名は無い。",
+   "不正解。プロファイルは別。",
+   "不正解。カバレッジは別。"
+  ],
+  "reference": "pdb --- post_mortem"
+ },
+ {
+  "id": "ch17-026",
+  "chapter": 17,
+  "topic": "logging format",
+  "difficulty": 3,
+  "type": "single",
+  "question": "logging で出力に時刻やレベルを含める設定で使うのはどれか。",
+  "choices": [
+   "フォーマッタ（Formatter / format 文字列）",
+   "フィルタのみ",
+   "ハンドラ名",
+   "ロガー名のみ"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "Formatter で整形。",
+  "rationales": [
+   "正解。Formatter の format 文字列で時刻・レベル等を指定。",
+   "不正解。フィルタは取捨選択用。",
+   "不正解。ハンドラは出力先。",
+   "不正解。ロガー名だけでは整形できない。"
+  ],
+  "reference": "logging --- Formatter"
  }
 ]

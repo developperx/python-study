@@ -158,6 +158,17 @@ code.inline { background: var(--bg-soft); padding: 1px 6px; border-radius: 6px; 
 .choice__mark { font-weight: 800; min-width: 22px; }
 .choice__body { white-space: pre-wrap; word-break: break-word; }
 
+/* 採点後・見直しの静的選択肢（正誤＋個別理由つき） */
+.choice--static { cursor: default; align-items: flex-start; }
+.choice--static:hover { border-color: var(--border); }
+.choice--static.is-correct:hover { border-color: var(--green); }
+.choice--static.is-wrong:hover { border-color: var(--red); }
+.choice__col { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
+.choice__rat { font-size: 13px; color: var(--text-soft); line-height: 1.5; }
+.choice--static.is-correct .choice__rat { color: var(--green); }
+.choice--static.is-wrong .choice__rat { color: var(--red); }
+.choice__picked { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 999px; background: var(--primary-soft); color: var(--primary-dark); vertical-align: middle; }
+
 .explanation { margin-top: 14px; padding: 14px 16px; border-radius: 10px; border-left: 4px solid var(--primary); background: var(--bg-soft); }
 .explanation__head { font-weight: 700; margin-bottom: 6px; }
 .explanation--correct { border-left-color: var(--green); }
