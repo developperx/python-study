@@ -14,7 +14,7 @@
 
 ```python
 q(chapter, topic, difficulty, question, choices, answer,
-  explanation, reference="", code=None, type="single", verify=False)
+  explanation, reference="", code=None, type="single", verify=False, rat=None)
 ```
 
 | 引数 | 説明 |
@@ -25,13 +25,32 @@ q(chapter, topic, difficulty, question, choices, answer,
 | `question` | 問題文 |
 | `choices` | 選択肢のリスト（2件以上） |
 | `answer` | 正解の **0始まりインデックス**（複数選択は `[0, 2]` のようにリスト） |
-| `explanation` | 解説 |
+| `explanation` | 総合解説（なぜ正解かの全体説明） |
 | `reference` | 学習リファレンス（任意。公式ドキュメント名など。書籍の引用はしない） |
 | `code` | 表示するコード（任意） |
 | `type` | `"single"` / `"multiple"` |
 | `verify` | `True` にすると `code` を実行し stdout が正解選択肢と一致するか自動検証 |
+| `rat` | **選択肢ごとの正誤理由**のリスト（`choices` と同じ長さ）。各選択肢が「なぜ正解／不正解か」を書く |
 
 `id` は `chNN-XXX` の形式で自動採番される。
+
+### 選択肢ごとの理由（`rat`）
+
+誤答を含む全選択肢に個別の理由を付けるため、`rat` に `choices` と同じ件数の理由を渡す。
+先頭の「**正解。**／**不正解。**」は build 側で**自動付与**されるので、理由本文だけを書けばよい。
+
+```python
+q(3, "数値", 1, "次のコードの出力はどれか。", ["3", "2", "2.5", "2.0"], 0,
+  "`//` は切り捨て除算。7//2=3。", "算術演算 --- //",
+  code="print(7 // 2)", verify=True,
+  rat=["7//2 は商の整数部 3。",         # → 「正解。7//2 は…」と表示される
+       "2 ではなく 3。",                # → 「不正解。2 ではなく 3。」
+       "// は小数を返さない。",
+       "整数同士の // は float にならない。"])
+```
+
+`rat` を省略すると、正解選択肢は「正解。」、それ以外は「不正解。」とだけ表示される（理由を書くことを推奨）。
+`validate_data.py` は `rationales` の件数が `choices` と一致するか検証する。
 
 ## verify=True の使い方（出力予測問題）
 

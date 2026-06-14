@@ -5,7 +5,7 @@
   "topic": "open mode",
   "difficulty": 1,
   "type": "single",
-  "question": "ファイルを「書き込み（既存内容を消去）」で開くモード文字列はどれか。",
+  "question": "書き込み（既存内容を消去）でファイルを開くモードはどれか。",
   "choices": [
    "'w'",
    "'r'",
@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "'w' は書き込み（truncate）、'r' は読み込み、'a' は追記、'x' は排他生成（既存だとエラー）。",
+  "explanation": "'w' は truncate 書き込み。",
+  "rationales": [
+   "正解。'w' は内容を消して書き込む。",
+   "不正解。'r' は読み込み。",
+   "不正解。'a' は追記。",
+   "不正解。'x' は排他生成。"
+  ],
   "reference": "open --- モード"
  },
  {
@@ -34,8 +40,14 @@
   "answer": [
    0
   ],
-  "explanation": "'a'（append）は末尾に追記する。'w' は内容を消してから書く。",
-  "reference": "open --- 追記モード"
+  "explanation": "'a' は追記。",
+  "rationales": [
+   "正解。'a' は末尾に追記する。",
+   "不正解。'w' は内容を消す。",
+   "不正解。'r+' は読み書きだが追記専用ではない。",
+   "不正解。'x' は新規生成。"
+  ],
+  "reference": "open --- 追記"
  },
  {
   "id": "ch11-003",
@@ -47,41 +59,78 @@
   "choices": [
    "'rb'",
    "'r'",
-   "'br'は不可",
+   "'br'は標準でない",
    "'binary'"
   ],
   "answer": [
    0
   ],
-  "explanation": "'rb' はバイナリ読み込み。テキストは 'r'、書き込みバイナリは 'wb'。",
-  "reference": "open --- バイナリモード"
+  "explanation": "'rb' はバイナリ読み込み。",
+  "rationales": [
+   "正解。'rb' が正しい。",
+   "不正解。'r' はテキスト。",
+   "不正解。順序は 'rb' が一般的。",
+   "不正解。'binary' は無効。"
+  ],
+  "reference": "open --- バイナリ"
  },
  {
   "id": "ch11-004",
   "chapter": 11,
+  "topic": "open mode",
+  "difficulty": 2,
+  "type": "single",
+  "question": "排他的に新規作成し、既存ファイルがあると失敗するモードはどれか。",
+  "choices": [
+   "'x'",
+   "'w'",
+   "'a'",
+   "'r'"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "'x' は排他生成。",
+  "rationales": [
+   "正解。'x' は既存だと FileExistsError。",
+   "不正解。'w' は上書きしてしまう。",
+   "不正解。'a' は追記。",
+   "不正解。'r' は読み込み。"
+  ],
+  "reference": "open --- 'x'"
+ },
+ {
+  "id": "ch11-005",
+  "chapter": 11,
   "topic": "with open",
   "difficulty": 2,
   "type": "single",
-  "question": "ファイルを扱うとき with 文を使う主な理由はどれか。",
+  "question": "ファイル操作で with 文を使う主な理由はどれか。",
   "choices": [
-   "ブロックを抜けるときに自動で close される",
-   "読み込み速度が必ず速くなる",
-   "ファイルを暗号化できる",
+   "ブロックを抜けるとき自動で close される",
+   "読み込みが速くなる",
+   "暗号化できる",
    "文字コードを自動判別する"
   ],
   "answer": [
    0
   ],
-  "explanation": "with open(...) as f: は確実にファイルを閉じる（例外時も）。close 漏れを防ぐ定石。",
+  "explanation": "確実に close される。",
+  "rationales": [
+   "正解。例外時も含め確実に閉じる。",
+   "不正解。速度のためではない。",
+   "不正解。暗号化機能はない。",
+   "不正解。自動判別はしない。"
+  ],
   "reference": "with open"
  },
  {
-  "id": "ch11-005",
+  "id": "ch11-006",
   "chapter": 11,
   "topic": "encoding",
   "difficulty": 2,
   "type": "single",
-  "question": "テキストファイルを UTF-8 で開くときの正しい指定はどれか。",
+  "question": "テキストを UTF-8 で開く正しい指定はどれか。",
   "choices": [
    "open(path, encoding='utf-8')",
    "open(path, charset='utf-8')",
@@ -91,16 +140,22 @@
   "answer": [
    0
   ],
-  "explanation": "文字コードは encoding 引数で指定する。プラットフォーム依存を避けるため明示が推奨される。",
+  "explanation": "encoding 引数。",
+  "rationales": [
+   "正解。encoding='utf-8' が正しい。",
+   "不正解。charset 引数は無い。",
+   "不正解。第2引数はモード。",
+   "不正解。code 引数は無い。"
+  ],
   "reference": "open --- encoding"
  },
  {
-  "id": "ch11-006",
+  "id": "ch11-007",
   "chapter": 11,
   "topic": "read",
   "difficulty": 2,
   "type": "single",
-  "question": "ファイルオブジェクト f の全内容を1つの文字列として読むメソッドはどれか。",
+  "question": "ファイル f の全内容を1つの文字列で読むメソッドはどれか。",
   "choices": [
    "f.read()",
    "f.readline()",
@@ -110,16 +165,22 @@
   "answer": [
    0
   ],
-  "explanation": "f.read() は全体を文字列で返す。readline は1行、readlines は行のリスト。",
+  "explanation": "read は全体を文字列で返す。",
+  "rationales": [
+   "正解。read() が全体を返す。",
+   "不正解。readline は1行。",
+   "不正解。readlines はリスト。",
+   "不正解。readall_str は無い。"
+  ],
   "reference": "file.read"
  },
  {
-  "id": "ch11-007",
+  "id": "ch11-008",
   "chapter": 11,
   "topic": "readlines",
   "difficulty": 2,
   "type": "single",
-  "question": "ファイルの全行をリストとして読み込むメソッドはどれか。",
+  "question": "ファイルの全行をリストで読むメソッドはどれか。",
   "choices": [
    "f.readlines()",
    "f.read()",
@@ -129,35 +190,47 @@
   "answer": [
    0
   ],
-  "explanation": "f.readlines() は各行（改行付き）を要素とするリストを返す。",
+  "explanation": "readlines はリスト。",
+  "rationales": [
+   "正解。各行を要素とするリストを返す。",
+   "不正解。read は1つの文字列。",
+   "不正解。lines() は無い。",
+   "不正解。readline は1行のみ。"
+  ],
   "reference": "file.readlines"
- },
- {
-  "id": "ch11-008",
-  "chapter": 11,
-  "topic": "イテレーション",
-  "difficulty": 2,
-  "type": "single",
-  "question": "ファイルオブジェクトを for 文で回したときに得られるものはどれか。",
-  "choices": [
-   "1行ずつ",
-   "1文字ずつ",
-   "1バイトずつ",
-   "全体を1つの文字列で1回"
-  ],
-  "answer": [
-   0
-  ],
-  "explanation": "ファイルオブジェクトはイテレートすると1行ずつ返す。大きなファイルでもメモリ効率が良い。",
-  "reference": "ファイルの行イテレーション"
  },
  {
   "id": "ch11-009",
   "chapter": 11,
+  "topic": "イテレーション",
+  "difficulty": 2,
+  "type": "single",
+  "question": "ファイルオブジェクトを for で回すと得られるものはどれか。",
+  "choices": [
+   "1行ずつ",
+   "1文字ずつ",
+   "1バイトずつ",
+   "全体を1回"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "行単位で反復。",
+  "rationales": [
+   "正解。1行ずつ得られメモリ効率が良い。",
+   "不正解。文字単位ではない。",
+   "不正解。バイト単位ではない。",
+   "不正解。1回でまとめてではない。"
+  ],
+  "reference": "ファイルの行反復"
+ },
+ {
+  "id": "ch11-010",
+  "chapter": 11,
   "topic": "pathlib",
   "difficulty": 2,
   "type": "single",
-  "question": "オブジェクト指向でパスを扱う標準ライブラリのクラスはどれか。",
+  "question": "オブジェクト指向でパスを扱うクラスはどれか。",
   "choices": [
    "pathlib.Path",
    "os.Path",
@@ -167,16 +240,22 @@
   "answer": [
    0
   ],
-  "explanation": "pathlib.Path はパス操作をメソッド/演算子で扱える。`/` でパスを結合できる。",
+  "explanation": "pathlib.Path。",
+  "rationales": [
+   "正解。Path がパスをメソッドで扱う。",
+   "不正解。os.Path は無い。",
+   "不正解。pathlib.File は無い。",
+   "不正解。path.Path は標準に無い。"
+  ],
   "reference": "pathlib.Path"
  },
  {
-  "id": "ch11-010",
+  "id": "ch11-011",
   "chapter": 11,
   "topic": "pathlib",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "a/b/c.txt",
    "a\\\\b\\\\c.txt",
@@ -186,17 +265,23 @@
   "answer": [
    0
   ],
-  "explanation": "pathlib では `/` 演算子でパスを連結できる。POSIX 環境では 'a/b/c.txt'。",
+  "explanation": "/ 演算子で結合。",
+  "rationales": [
+   "正解。/ でパス結合（POSIX 表示）。",
+   "不正解。バックスラッシュにはならない。",
+   "不正解。ハイフンにはならない。",
+   "不正解。正常動作。"
+  ],
   "code": "from pathlib import Path\nprint(Path('a') / 'b' / 'c.txt')",
-  "reference": "Path --- / 演算子"
+  "reference": "Path --- /"
  },
  {
-  "id": "ch11-011",
+  "id": "ch11-012",
   "chapter": 11,
   "topic": "pathlib",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    ".txt",
    "c",
@@ -206,17 +291,23 @@
   "answer": [
    0
   ],
-  "explanation": "Path.suffix は拡張子（ドット付き）を返す。",
+  "explanation": "suffix は拡張子。",
+  "rationales": [
+   "正解。ドット付き拡張子 '.txt'。",
+   "不正解。stem ではない。",
+   "不正解。name ではない。",
+   "不正解。ドットを含む。"
+  ],
   "code": "from pathlib import Path\nprint(Path('a/b/c.txt').suffix)",
   "reference": "Path.suffix"
  },
  {
-  "id": "ch11-012",
+  "id": "ch11-013",
   "chapter": 11,
   "topic": "pathlib",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "c.txt",
    "c",
@@ -226,17 +317,49 @@
   "answer": [
    0
   ],
-  "explanation": "Path.name はパス末尾の名前（拡張子含む）を返す。",
+  "explanation": "name は末尾名。",
+  "rationales": [
+   "正解。末尾名 'c.txt'。",
+   "不正解。stem ではない。",
+   "不正解。親ではない。",
+   "不正解。拡張子だけではない。"
+  ],
   "code": "from pathlib import Path\nprint(Path('a/b/c.txt').name)",
   "reference": "Path.name"
  },
  {
-  "id": "ch11-013",
+  "id": "ch11-014",
+  "chapter": 11,
+  "topic": "pathlib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "c",
+   "c.txt",
+   ".txt",
+   "a/b/c"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "stem は拡張子なしの名前。",
+  "rationales": [
+   "正解。拡張子を除いた 'c'。",
+   "不正解。拡張子は含まない。",
+   "不正解。拡張子だけではない。",
+   "不正解。親を含まない。"
+  ],
+  "code": "from pathlib import Path\nprint(Path('a/b/c.txt').stem)",
+  "reference": "Path.stem"
+ },
+ {
+  "id": "ch11-015",
   "chapter": 11,
   "topic": "存在確認",
   "difficulty": 2,
   "type": "single",
-  "question": "パスが存在するか確認する方法として正しいものはどれか。",
+  "question": "パスの存在を確認する方法として正しいものはどれか。",
   "choices": [
    "os.path.exists(path) または Path(path).exists()",
    "os.check(path)",
@@ -246,16 +369,47 @@
   "answer": [
    0
   ],
-  "explanation": "os.path.exists または pathlib の Path.exists() でファイル/ディレクトリの存在を確認できる。",
+  "explanation": "exists で確認。",
+  "rationales": [
+   "正解。exists() で存在確認できる。",
+   "不正解。os.check は無い。",
+   "不正解。is_there は無い。",
+   "不正解。os.path.has は無い。"
+  ],
   "reference": "exists"
  },
  {
-  "id": "ch11-014",
+  "id": "ch11-016",
+  "chapter": 11,
+  "topic": "pathlib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "ファイルかディレクトリかを判定する Path のメソッドの組はどれか。",
+  "choices": [
+   "is_file() / is_dir()",
+   "isfile() / isdir()",
+   "file?() / dir?()",
+   "type()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "is_file / is_dir。",
+  "rationales": [
+   "正解。is_file()/is_dir() が判定する。",
+   "不正解。os.path 側は isfile/isdir（Path とは別）。",
+   "不正解。?付きメソッドは無い。",
+   "不正解。type は型取得用。"
+  ],
+  "reference": "Path.is_file / is_dir"
+ },
+ {
+  "id": "ch11-017",
   "chapter": 11,
   "topic": "glob",
   "difficulty": 3,
   "type": "single",
-  "question": "パターンに一致するファイル一覧を取得する標準ライブラリはどれか。",
+  "question": "パターンに一致するファイルを列挙する標準ライブラリはどれか。",
   "choices": [
    "glob",
    "fnmatch2",
@@ -265,16 +419,22 @@
   "answer": [
    0
   ],
-  "explanation": "glob.glob('*.txt') のようにワイルドカードでファイルを列挙できる。pathlib の Path.glob も同様。",
+  "explanation": "glob。",
+  "rationales": [
+   "正解。glob.glob('*.txt') で列挙。",
+   "不正解。fnmatch2 は無い。",
+   "不正解。listdir は全件で絞り込みなし。",
+   "不正解。scandir2 は無い。"
+  ],
   "reference": "glob"
  },
  {
-  "id": "ch11-015",
+  "id": "ch11-018",
   "chapter": 11,
   "topic": "shutil",
   "difficulty": 3,
   "type": "single",
-  "question": "ファイルやディレクトリのコピー・移動を行う高レベルな標準ライブラリはどれか。",
+  "question": "ファイル/ディレクトリのコピー・移動を行う高レベルライブラリはどれか。",
   "choices": [
    "shutil",
    "os.copy",
@@ -284,7 +444,213 @@
   "answer": [
    0
   ],
-  "explanation": "shutil は shutil.copy/copytree/move/rmtree など高レベルなファイル操作を提供する。",
+  "explanation": "shutil。",
+  "rationales": [
+   "正解。shutil.copy/move/rmtree など。",
+   "不正解。os.copy は無い。",
+   "不正解。filecopy は無い。",
+   "不正解。movelib は無い。"
+  ],
   "reference": "shutil"
+ },
+ {
+  "id": "ch11-019",
+  "chapter": 11,
+  "topic": "pathlib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "Path オブジェクトでテキストを一括読み込みするメソッドはどれか。",
+  "choices": [
+   "read_text()",
+   "read_all()",
+   "text()",
+   "load()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "read_text。",
+  "rationales": [
+   "正解。read_text() が全文を読む。",
+   "不正解。read_all は無い。",
+   "不正解。text() は無い。",
+   "不正解。load() は無い。"
+  ],
+  "reference": "Path.read_text"
+ },
+ {
+  "id": "ch11-020",
+  "chapter": 11,
+  "topic": "pathlib",
+  "difficulty": 3,
+  "type": "single",
+  "question": "Path でディレクトリ内を反復するメソッドはどれか。",
+  "choices": [
+   "iterdir()",
+   "listdir()",
+   "scandir()",
+   "children()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "iterdir。",
+  "rationales": [
+   "正解。iterdir() が子要素を返す。",
+   "不正解。listdir は os 側。",
+   "不正解。scandir は os 側。",
+   "不正解。children は無い。"
+  ],
+  "reference": "Path.iterdir"
+ },
+ {
+  "id": "ch11-021",
+  "chapter": 11,
+  "topic": "tempfile",
+  "difficulty": 3,
+  "type": "single",
+  "question": "一時ファイル・一時ディレクトリを安全に作る標準ライブラリはどれか。",
+  "choices": [
+   "tempfile",
+   "tmpfile",
+   "ostemp",
+   "scratch"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "tempfile。",
+  "rationales": [
+   "正解。tempfile が一時ファイルを提供。",
+   "不正解。tmpfile は無い。",
+   "不正解。ostemp は無い。",
+   "不正解。scratch は無い。"
+  ],
+  "reference": "tempfile"
+ },
+ {
+  "id": "ch11-022",
+  "chapter": 11,
+  "topic": "os.path",
+  "difficulty": 2,
+  "type": "single",
+  "question": "ファイルサイズ（バイト）を得る os.path の関数はどれか。",
+  "choices": [
+   "getsize",
+   "size",
+   "filesize",
+   "length"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "os.path.getsize。",
+  "rationales": [
+   "正解。getsize がバイト数を返す。",
+   "不正解。size 関数は無い。",
+   "不正解。filesize は無い。",
+   "不正解。length は無い。"
+  ],
+  "reference": "os.path.getsize"
+ },
+ {
+  "id": "ch11-023",
+  "chapter": 11,
+  "topic": "write",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のうちファイルへ文字列を書き込むメソッドはどれか。",
+  "choices": [
+   "f.write(s)",
+   "f.print(s)",
+   "f.put(s)",
+   "f.append(s)"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "write で書く。",
+  "rationales": [
+   "正解。write(s) が書き込む。",
+   "不正解。file.print は無い。",
+   "不正解。put は無い。",
+   "不正解。append メソッドは無い（モードで追記）。"
+  ],
+  "reference": "file.write"
+ },
+ {
+  "id": "ch11-024",
+  "chapter": 11,
+  "topic": "改行",
+  "difficulty": 2,
+  "type": "single",
+  "question": "print が既定で行末に付ける文字はどれか。",
+  "choices": [
+   "改行（\\n）",
+   "スペース",
+   "タブ",
+   "何も付かない"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "end の既定は改行。",
+  "rationales": [
+   "正解。end の既定値が '\\n'。",
+   "不正解。区切りの sep がスペース。",
+   "不正解。タブではない。",
+   "不正解。既定では改行が付く。"
+  ],
+  "reference": "print --- end"
+ },
+ {
+  "id": "ch11-025",
+  "chapter": 11,
+  "topic": "with",
+  "difficulty": 2,
+  "type": "single",
+  "question": "複数ファイルを1つの with 文で同時に開く書き方はどれか。",
+  "choices": [
+   "with open(a) as f, open(b) as g:",
+   "with open(a), open(b):のみ",
+   "with [open(a), open(b)]:",
+   "with open(a) and open(b):"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "カンマで複数指定。",
+  "rationales": [
+   "正解。カンマ区切りで複数のコンテキストを開ける。",
+   "不正解。as を付けないと参照できない。",
+   "不正解。リスト指定は不可。",
+   "不正解。and 指定は不可。"
+  ],
+  "reference": "with --- 複数"
+ },
+ {
+  "id": "ch11-026",
+  "chapter": 11,
+  "topic": "seek",
+  "difficulty": 3,
+  "type": "single",
+  "question": "ファイルの読み書き位置を先頭に戻すメソッド呼び出しはどれか。",
+  "choices": [
+   "f.seek(0)",
+   "f.rewind()",
+   "f.reset()",
+   "f.top()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "seek(0) で先頭へ。",
+  "rationales": [
+   "正解。seek(0) が位置を先頭に。",
+   "不正解。rewind は無い。",
+   "不正解。reset は無い。",
+   "不正解。top は無い。"
+  ],
+  "reference": "file.seek"
  }
 ]

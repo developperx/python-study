@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "unittest が標準ライブラリのテストフレームワーク。pytest・nose はサードパーティ。",
+  "explanation": "unittest。",
+  "rationales": [
+   "正解。unittest が標準。",
+   "不正解。pytest はサードパーティ。",
+   "不正解。nose はサードパーティ。",
+   "不正解。testlib は無い。"
+  ],
   "reference": "unittest"
  },
  {
@@ -34,8 +40,14 @@
   "answer": [
    0
   ],
-  "explanation": "unittest.TestCase を継承し、test_ で始まるメソッドにテストを書く。",
-  "reference": "unittest.TestCase"
+  "explanation": "TestCase。",
+  "rationales": [
+   "正解。TestCase を継承する。",
+   "不正解。Test は無い。",
+   "不正解。Case は無い。",
+   "不正解。Suite は集合管理用。"
+  ],
+  "reference": "TestCase"
  },
  {
   "id": "ch16-003",
@@ -43,7 +55,7 @@
   "topic": "unittest",
   "difficulty": 2,
   "type": "single",
-  "question": "unittest で2つの値が等しいことを表明（assert）するメソッドはどれか。",
+  "question": "2つの値が等しいことを表明するメソッドはどれか。",
   "choices": [
    "assertEqual",
    "assertSame",
@@ -53,7 +65,13 @@
   "answer": [
    0
   ],
-  "explanation": "assertEqual(a, b) は a == b を表明する。失敗するとテストが fail する。",
+  "explanation": "assertEqual。",
+  "rationales": [
+   "正解。assertEqual(a,b) で == を表明。",
+   "不正解。assertSame は無い。",
+   "不正解。assertEquals2 は無い。",
+   "不正解。checkEqual は無い。"
+  ],
   "reference": "assertEqual"
  },
  {
@@ -72,7 +90,13 @@
   "answer": [
    0
   ],
-  "explanation": "assertTrue(x) は bool(x) が True であることを表明する。逆は assertFalse。",
+  "explanation": "assertTrue。",
+  "rationales": [
+   "正解。assertTrue(x) で真を表明。",
+   "不正解。assertOk は無い。",
+   "不正解。assertYes は無い。",
+   "不正解。assertValid は無い。"
+  ],
   "reference": "assertTrue"
  },
  {
@@ -91,7 +115,13 @@
   "answer": [
    0
   ],
-  "explanation": "assertIsNone(x) は x is None を表明する。逆は assertIsNotNone。",
+  "explanation": "assertIsNone。",
+  "rationales": [
+   "正解。assertIsNone(x) で is None。",
+   "不正解。assertNull は無い。",
+   "不正解。assertNone は無い。",
+   "不正解。assertEmpty は無い。"
+  ],
   "reference": "assertIsNone"
  },
  {
@@ -110,7 +140,13 @@
   "answer": [
    0
   ],
-  "explanation": "assertIn(a, b) は a in b を表明する。",
+  "explanation": "assertIn。",
+  "rationales": [
+   "正解。assertIn(a,b) で a in b。",
+   "不正解。assertContains は無い。",
+   "不正解。assertHas は無い。",
+   "不正解。assertMember は無い。"
+  ],
   "reference": "assertIn"
  },
  {
@@ -119,17 +155,23 @@
   "topic": "unittest",
   "difficulty": 3,
   "type": "single",
-  "question": "特定の例外が送出されることをテストするメソッドはどれか。",
+  "question": "特定の例外が送出されることをテストする方法はどれか。",
   "choices": [
-   "assertRaises",
-   "assertException",
-   "assertError",
-   "expectRaises"
+   "with self.assertRaises(例外):",
+   "self.assertException(例外)",
+   "self.assertError(例外)",
+   "expectRaises(例外)"
   ],
   "answer": [
    0
   ],
-  "explanation": "with self.assertRaises(ValueError): ... の形で、ブロック内が例外を送出することを表明する。",
+  "explanation": "assertRaises。",
+  "rationales": [
+   "正解。with assertRaises で例外送出を表明。",
+   "不正解。assertException は無い。",
+   "不正解。assertError は無い。",
+   "不正解。expectRaises は無い。"
+  ],
   "reference": "assertRaises"
  },
  {
@@ -138,17 +180,23 @@
   "topic": "unittest",
   "difficulty": 3,
   "type": "single",
-  "question": "各テストメソッドの実行前に毎回呼ばれる準備用メソッドはどれか。",
+  "question": "各テストの実行前に毎回呼ばれる準備メソッドはどれか。",
   "choices": [
    "setUp",
-   "setUpClass のみ",
    "before",
-   "init"
+   "init",
+   "prepare"
   ],
   "answer": [
    0
   ],
-  "explanation": "setUp は各テストの前、tearDown は後に毎回実行される。クラス単位は setUpClass/tearDownClass。",
+  "explanation": "setUp。",
+  "rationales": [
+   "正解。setUp が各テスト前、tearDown が各テスト後。",
+   "不正解。before は無い。",
+   "不正解。init は __init__ で別。",
+   "不正解。prepare は無い。"
+  ],
   "reference": "setUp / tearDown"
  },
  {
@@ -157,7 +205,7 @@
   "topic": "unittest",
   "difficulty": 3,
   "type": "single",
-  "question": "クラス内の全テストの前に一度だけ実行されるメソッドはどれか。",
+  "question": "クラス内の全テスト前に一度だけ実行されるメソッドはどれか。",
   "choices": [
    "setUpClass（@classmethod）",
    "setUp",
@@ -167,7 +215,13 @@
   "answer": [
    0
   ],
-  "explanation": "setUpClass は @classmethod として定義し、クラスの全テスト前に一度だけ実行される。",
+  "explanation": "setUpClass。",
+  "rationales": [
+   "正解。setUpClass はクラス単位で1度実行。",
+   "不正解。setUp は各テスト毎。",
+   "不正解。beforeAll は無い。",
+   "不正解。initClass は無い。"
+  ],
   "reference": "setUpClass"
  },
  {
@@ -176,7 +230,7 @@
   "topic": "実行",
   "difficulty": 2,
   "type": "single",
-  "question": "コマンドラインで unittest を使ってテストを自動検出・実行するコマンドはどれか。",
+  "question": "テストを自動検出・実行するコマンドはどれか。",
   "choices": [
    "python -m unittest",
    "python unittest",
@@ -186,7 +240,13 @@
   "answer": [
    0
   ],
-  "explanation": "`python -m unittest`（discover）でテストを自動検出して実行できる。",
+  "explanation": "-m unittest。",
+  "rationales": [
+   "正解。python -m unittest で検出実行。",
+   "不正解。そのままでは実行できない。",
+   "不正解。-t は無い。",
+   "不正解。--test は無い。"
+  ],
   "reference": "unittest --- 実行"
  },
  {
@@ -195,7 +255,7 @@
   "topic": "doctest",
   "difficulty": 3,
   "type": "single",
-  "question": "docstring 内に書いた対話例（>>> ...）を検証する標準ライブラリはどれか。",
+  "question": "docstring 内の対話例（>>> ...）を検証する標準ライブラリはどれか。",
   "choices": [
    "doctest",
    "unittest",
@@ -205,7 +265,13 @@
   "answer": [
    0
   ],
-  "explanation": "doctest は docstring の対話例を実行し、出力が一致するか検証する。",
+  "explanation": "doctest。",
+  "rationales": [
+   "正解。doctest が対話例を検証。",
+   "不正解。unittest は別形式。",
+   "不正解。pydoc は文書生成。",
+   "不正解。docexam は無い。"
+  ],
   "reference": "doctest"
  },
  {
@@ -214,17 +280,23 @@
   "topic": "doctest",
   "difficulty": 3,
   "type": "single",
-  "question": "doctest で検証されるのは、docstring 内のどの記述か。",
+  "question": "doctest が検証する対象はどれか。",
   "choices": [
-   ">>> で始まる行とその直後の期待出力",
-   "# で始まるコメント",
+   ">>> の式と直後の期待出力",
+   "# のコメント",
    "通常の説明文すべて",
-   "関数のシグネチャ"
+   "関数シグネチャ"
   ],
   "answer": [
    0
   ],
-  "explanation": "doctest は `>>>` の式とその次行の期待される出力を比較する。",
+  "explanation": ">>> 行と期待出力。",
+  "rationales": [
+   "正解。>>> の式と次行の期待出力を比較。",
+   "不正解。コメントは対象外。",
+   "不正解。説明文は対象外。",
+   "不正解。シグネチャは対象外。"
+  ],
   "reference": "doctest --- 記法"
  },
  {
@@ -233,7 +305,7 @@
   "topic": "mock",
   "difficulty": 3,
   "type": "single",
-  "question": "依存オブジェクトを偽物に差し替えるための標準ライブラリはどれか。",
+  "question": "依存を偽物に差し替える標準ライブラリはどれか。",
   "choices": [
    "unittest.mock",
    "unittest.fake",
@@ -243,7 +315,13 @@
   "answer": [
    0
   ],
-  "explanation": "unittest.mock の Mock/MagicMock/patch で依存を置き換え、外部依存を切り離してテストできる。",
+  "explanation": "unittest.mock。",
+  "rationales": [
+   "正解。mock の Mock/patch で依存を置換。",
+   "不正解。unittest.fake は無い。",
+   "不正解。mocklib は無い。",
+   "不正解。stubs は無い。"
+  ],
   "reference": "unittest.mock"
  },
  {
@@ -252,7 +330,7 @@
   "topic": "mock",
   "difficulty": 3,
   "type": "single",
-  "question": "unittest.mock で、テスト中だけ対象を一時的に置き換えるのに使うものはどれか。",
+  "question": "テスト中だけ対象を一時的に置き換えるものはどれか。",
   "choices": [
    "patch",
    "replace",
@@ -262,7 +340,13 @@
   "answer": [
    0
   ],
-  "explanation": "mock.patch はデコレータ/コンテキストマネージャとして対象を一時的に Mock に置き換える。",
+  "explanation": "mock.patch。",
+  "rationales": [
+   "正解。patch がデコレータ/コンテキストで一時置換。",
+   "不正解。replace は無い。",
+   "不正解。swap は無い。",
+   "不正解。override は無い。"
+  ],
   "reference": "mock.patch"
  },
  {
@@ -271,18 +355,24 @@
   "topic": "命名",
   "difficulty": 2,
   "type": "single",
-  "question": "unittest が自動的にテストと認識するメソッド名の条件はどれか。",
+  "question": "unittest がテストとして自動収集するメソッド名の条件はどれか。",
   "choices": [
    "test で始まる",
-   "必ず check で始まる",
+   "check で始まる",
    "末尾が _test",
    "大文字で始まる"
   ],
   "answer": [
    0
   ],
-  "explanation": "既定では `test` で始まるメソッドがテストとして収集・実行される。",
-  "reference": "テストメソッドの命名規則"
+  "explanation": "test で始まる。",
+  "rationales": [
+   "正解。test_ で始まるメソッドが収集される。",
+   "不正解。check ではない。",
+   "不正解。末尾 _test ではない。",
+   "不正解。大文字始まりは関係ない。"
+  ],
+  "reference": "テストメソッドの命名"
  },
  {
   "id": "ch16-016",
@@ -290,17 +380,23 @@
   "topic": "assertAlmostEqual",
   "difficulty": 3,
   "type": "single",
-  "question": "浮動小数点の比較で、丸め誤差を考慮して『ほぼ等しい』ことを表明するメソッドはどれか。",
+  "question": "浮動小数点を丸め誤差込みで比較するメソッドはどれか。",
   "choices": [
    "assertAlmostEqual",
    "assertEqual",
    "assertFloatEqual",
-   "assertnear"
+   "assertNear"
   ],
   "answer": [
    0
   ],
-  "explanation": "assertAlmostEqual は指定桁数で丸めて比較する。0.1+0.2 のような誤差に有効。",
+  "explanation": "assertAlmostEqual。",
+  "rationales": [
+   "正解。指定桁で丸めて比較する。",
+   "不正解。assertEqual は厳密一致で誤差に弱い。",
+   "不正解。assertFloatEqual は無い。",
+   "不正解。assertNear は無い。"
+  ],
   "reference": "assertAlmostEqual"
  },
  {
@@ -309,7 +405,7 @@
   "topic": "skip",
   "difficulty": 3,
   "type": "single",
-  "question": "特定のテストを条件付きでスキップするデコレータはどれか。",
+  "question": "テストを条件付きでスキップするデコレータはどれか。",
   "choices": [
    "@unittest.skipIf",
    "@unittest.ignore",
@@ -319,7 +415,13 @@
   "answer": [
    0
   ],
-  "explanation": "@unittest.skip / @unittest.skipIf / @unittest.skipUnless でスキップを制御できる。",
+  "explanation": "skipIf。",
+  "rationales": [
+   "正解。skip/skipIf/skipUnless で制御。",
+   "不正解。ignore は無い。",
+   "不正解。skiptest は無い。",
+   "不正解。pass は無い。"
+  ],
   "reference": "unittest --- skip"
  },
  {
@@ -328,17 +430,23 @@
   "topic": "AAA",
   "difficulty": 2,
   "type": "single",
-  "question": "単体テストの基本構成 Arrange-Act-Assert の説明として正しいものはどれか。",
+  "question": "Arrange-Act-Assert の説明として正しいものはどれか。",
   "choices": [
-   "準備→実行→検証 の順にテストを書く",
-   "実行→準備→検証 の順",
-   "全てのテストを1つの関数にまとめる",
+   "準備→実行→検証 の順",
+   "実行→準備→検証",
+   "全て1関数にまとめる",
    "本番DBを必ず使う"
   ],
   "answer": [
    0
   ],
-  "explanation": "Arrange（準備）→ Act（実行）→ Assert（検証）が読みやすいテストの基本構造。",
+  "explanation": "準備→実行→検証。",
+  "rationales": [
+   "正解。Arrange→Act→Assert の順。",
+   "不正解。順序が誤り。",
+   "不正解。まとめは可読性を損なう。",
+   "不正解。本番DB使用は不要。"
+  ],
   "reference": "テスト構造 --- AAA"
  },
  {
@@ -347,17 +455,23 @@
   "topic": "原則",
   "difficulty": 2,
   "type": "single",
-  "question": "良い単体テストの性質として最も適切なものはどれか。",
+  "question": "良い単体テストの性質はどれか。",
   "choices": [
-   "独立していて、実行順序に依存しない",
-   "互いに依存し、決まった順序で動く必要がある",
-   "必ずネットワークにアクセスする",
-   "1つのテストで全機能を検証する"
+   "独立し実行順に依存しない",
+   "互いに依存し順序が必要",
+   "必ずネットワークを使う",
+   "1テストで全機能を検証"
   ],
   "answer": [
    0
   ],
-  "explanation": "各テストは独立・再現可能で、順序に依存しないのが望ましい。外部依存は mock で切り離す。",
+  "explanation": "独立・再現可能。",
+  "rationales": [
+   "正解。各テストは独立で順序非依存が望ましい。",
+   "不正解。依存は避ける。",
+   "不正解。外部依存は mock で切る。",
+   "不正解。1テスト1検証が基本。"
+  ],
   "reference": "テストの独立性"
  },
  {
@@ -366,17 +480,23 @@
   "topic": "assertEqual",
   "difficulty": 2,
   "type": "single",
-  "question": "次の unittest のテストは成功するか失敗するか。",
+  "question": "次の unittest は成功するか失敗するか。",
   "choices": [
    "成功する",
    "失敗する",
-   "エラーで実行できない",
-   "スキップされる"
+   "実行できない",
+   "スキップ"
   ],
   "answer": [
    0
   ],
-  "explanation": "1 + 1 は 2 なので assertEqual(2, 1+1) は真、テストは成功する。",
+  "explanation": "1+1==2 なので成功。",
+  "rationales": [
+   "正解。条件が真なので成功。",
+   "不正解。失敗しない。",
+   "不正解。実行できる。",
+   "不正解。スキップしない。"
+  ],
   "code": "import unittest\nclass T(unittest.TestCase):\n    def test_add(self):\n        self.assertEqual(2, 1 + 1)\nr = unittest.TextTestRunner(verbosity=0).run(unittest.defaultTestLoader.loadTestsFromTestCase(T))\nprint('成功する' if r.wasSuccessful() else '失敗する')",
   "reference": "assertEqual の判定"
  },
@@ -386,9 +506,9 @@
   "topic": "カバレッジ",
   "difficulty": 2,
   "type": "single",
-  "question": "テストがソースコードのどれだけを実行したかを測る指標を何と呼ぶか。",
+  "question": "テストがコードのどれだけを実行したかを測る指標はどれか。",
   "choices": [
-   "コードカバレッジ（網羅率）",
+   "コードカバレッジ",
    "ベンチマーク",
    "リント率",
    "複雑度"
@@ -396,7 +516,13 @@
   "answer": [
    0
   ],
-  "explanation": "コードカバレッジはテストが実行した行・分岐の割合。coverage.py 等で計測する。",
+  "explanation": "カバレッジ。",
+  "rationales": [
+   "正解。実行された行・分岐の割合。",
+   "不正解。ベンチマークは速度。",
+   "不正解。リント率は規約適合。",
+   "不正解。複雑度は構造指標。"
+  ],
   "reference": "コードカバレッジ"
  },
  {
@@ -405,7 +531,7 @@
   "topic": "pytest",
   "difficulty": 2,
   "type": "single",
-  "question": "シンプルな assert 文でテストを書けることで知られるサードパーティ製テストツールはどれか（参考）。",
+  "question": "plain な assert でテストを書けるサードパーティ製ツールはどれか（参考）。",
   "choices": [
    "pytest",
    "unittest",
@@ -415,7 +541,464 @@
   "answer": [
    0
   ],
-  "explanation": "pytest は plain な assert でテストを書ける人気ツール。ただしサードパーティ製のため本試験の出題対象は標準ライブラリ中心であることに注意。",
+  "explanation": "pytest（参考）。",
+  "rationales": [
+   "正解。pytest は assert で書ける。標準ではない点に注意。",
+   "不正解。unittest は標準で assertXxx を使う。",
+   "不正解。doctest は対話例。",
+   "不正解。mock は差し替え。"
+  ],
   "reference": "pytest（参考）"
+ },
+ {
+  "id": "ch16-023",
+  "chapter": 16,
+  "topic": "assertFalse",
+  "difficulty": 2,
+  "type": "single",
+  "question": "条件が偽であることを表明するメソッドはどれか。",
+  "choices": [
+   "assertFalse",
+   "assertNot",
+   "assertNo",
+   "assertZero"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "assertFalse。",
+  "rationales": [
+   "正解。assertFalse(x) で偽を表明。",
+   "不正解。assertNot は無い。",
+   "不正解。assertNo は無い。",
+   "不正解。assertZero は無い。"
+  ],
+  "reference": "assertFalse"
+ },
+ {
+  "id": "ch16-024",
+  "chapter": 16,
+  "topic": "assertIs",
+  "difficulty": 3,
+  "type": "single",
+  "question": "2つが同一オブジェクト（is）であることを表明するメソッドはどれか。",
+  "choices": [
+   "assertIs",
+   "assertEqual",
+   "assertSame",
+   "assertIdentical"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "assertIs。",
+  "rationales": [
+   "正解。assertIs は is を表明。",
+   "不正解。assertEqual は値比較。",
+   "不正解。assertSame は無い。",
+   "不正解。assertIdentical は無い。"
+  ],
+  "reference": "assertIs"
+ },
+ {
+  "id": "ch16-025",
+  "chapter": 16,
+  "topic": "assertRaises",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次の unittest は成功するか。",
+  "choices": [
+   "成功する",
+   "失敗する",
+   "実行できない",
+   "スキップ"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "例外が出るので成功。",
+  "rationales": [
+   "正解。想定例外が出るのでテスト成功。",
+   "不正解。失敗しない。",
+   "不正解。実行できる。",
+   "不正解。スキップしない。"
+  ],
+  "code": "import unittest\nclass T(unittest.TestCase):\n    def test_e(self):\n        with self.assertRaises(ZeroDivisionError):\n            1 / 0\nr = unittest.TextTestRunner(verbosity=0).run(unittest.defaultTestLoader.loadTestsFromTestCase(T))\nprint('成功する' if r.wasSuccessful() else '失敗する')",
+  "reference": "assertRaises の判定"
+ },
+ {
+  "id": "ch16-026",
+  "chapter": 16,
+  "topic": "fixture",
+  "difficulty": 3,
+  "type": "single",
+  "question": "テストの前後で共通の準備・後始末を行う仕組みの総称はどれか。",
+  "choices": [
+   "フィクスチャ（fixture）",
+   "アサーション",
+   "モック",
+   "スイート"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "fixture。",
+  "rationales": [
+   "正解。前提条件の準備・後始末をフィクスチャと呼ぶ。",
+   "不正解。アサーションは検証。",
+   "不正解。モックは差し替え。",
+   "不正解。スイートはテスト集合。"
+  ],
+  "reference": "フィクスチャ"
+ },
+ {
+  "id": "ch16-027",
+  "chapter": 16,
+  "topic": "テスト分離",
+  "difficulty": 3,
+  "type": "single",
+  "question": "外部API依存をテストから切り離す一般的手法はどれか。",
+  "choices": [
+   "mock でレスポンスを差し替える",
+   "本番APIを必ず叩く",
+   "テストを書かない",
+   "ネットを切断するだけ"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "mock で分離。",
+  "rationales": [
+   "正解。mock/patch で外部呼び出しを置き換える。",
+   "不正解。本番依存は不安定。",
+   "不正解。テスト省略は不可。",
+   "不正解。切断だけでは例外になる。"
+  ],
+  "reference": "外部依存の分離"
+ },
+ {
+  "id": "ch16-028",
+  "chapter": 16,
+  "topic": "TDD",
+  "difficulty": 2,
+  "type": "single",
+  "question": "テスト駆動開発（TDD）の基本サイクルはどれか。",
+  "choices": [
+   "Red → Green → Refactor",
+   "Refactor → Red → Green",
+   "Green → Red",
+   "Build → Ship"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "Red→Green→Refactor。",
+  "rationales": [
+   "正解。失敗(Red)→通過(Green)→改善(Refactor)。",
+   "不正解。順序が誤り。",
+   "不正解。不完全。",
+   "不正解。TDD のサイクルではない。"
+  ],
+  "reference": "TDD"
+ },
+ {
+  "id": "ch16-029",
+  "chapter": 16,
+  "topic": "subTest",
+  "difficulty": 3,
+  "type": "single",
+  "question": "1つのテスト内で複数ケースを区別して検証する仕組みはどれか。",
+  "choices": [
+   "self.subTest",
+   "self.eachTest",
+   "self.caseLoop",
+   "self.multiTest"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "subTest。",
+  "rationales": [
+   "正解。subTest でループ内の各ケースを区別できる。",
+   "不正解。eachTest は無い。",
+   "不正解。caseLoop は無い。",
+   "不正解。multiTest は無い。"
+  ],
+  "reference": "subTest"
+ },
+ {
+  "id": "ch16-030",
+  "chapter": 16,
+  "topic": "assertGreater",
+  "difficulty": 3,
+  "type": "single",
+  "question": "a > b を表明するメソッドはどれか。",
+  "choices": [
+   "assertGreater",
+   "assertBigger",
+   "assertGT",
+   "assertMore"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "assertGreater。",
+  "rationales": [
+   "正解。assertGreater(a,b) で a>b。",
+   "不正解。assertBigger は無い。",
+   "不正解。assertGT は無い。",
+   "不正解。assertMore は無い。"
+  ],
+  "reference": "assertGreater"
+ },
+ {
+  "id": "ch16-031",
+  "chapter": 16,
+  "topic": "discover",
+  "difficulty": 3,
+  "type": "single",
+  "question": "test*.py を再帰的に探して実行する unittest の機能はどれか。",
+  "choices": [
+   "test discovery（-m unittest discover）",
+   "auto-run",
+   "scan",
+   "collect-all"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "discovery。",
+  "rationales": [
+   "正解。discover がテストを自動探索する。",
+   "不正解。auto-run は無い。",
+   "不正解。scan は無い。",
+   "不正解。collect-all は無い。"
+  ],
+  "reference": "unittest --- discover"
+ },
+ {
+  "id": "ch16-032",
+  "chapter": 16,
+  "topic": "assertListEqual",
+  "difficulty": 3,
+  "type": "single",
+  "question": "2つのリストが等しいことを明示的に表明するメソッドはどれか。",
+  "choices": [
+   "assertListEqual",
+   "assertArrayEqual",
+   "assertSeqEqual のみ",
+   "assertItemsEqual"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "assertListEqual。",
+  "rationales": [
+   "正解。assertListEqual がリスト比較用。assertEqual でも可。",
+   "不正解。assertArrayEqual は無い。",
+   "不正解。順序無視は別物。",
+   "不正解。assertItemsEqual は古い名称。"
+  ],
+  "reference": "assertListEqual"
+ },
+ {
+  "id": "ch16-033",
+  "chapter": 16,
+  "topic": "mock",
+  "difficulty": 3,
+  "type": "single",
+  "question": "Mock オブジェクトが『呼ばれたか』を検証するメソッドはどれか。",
+  "choices": [
+   "assert_called",
+   "was_called",
+   "called_check",
+   "verify_call"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "assert_called。",
+  "rationales": [
+   "正解。assert_called / assert_called_with で確認。",
+   "不正解。was_called は属性 called に近いがメソッドではない。",
+   "不正解。called_check は無い。",
+   "不正解。verify_call は無い。"
+  ],
+  "reference": "Mock.assert_called"
+ },
+ {
+  "id": "ch16-034",
+  "chapter": 16,
+  "topic": "原則",
+  "difficulty": 2,
+  "type": "single",
+  "question": "テストが信頼できるための性質として最も適切なものはどれか。",
+  "choices": [
+   "決定的（同条件なら毎回同じ結果）",
+   "毎回結果が変わる",
+   "実行に外部状態が必須",
+   "時々失敗してよい"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "決定的であること。",
+  "rationales": [
+   "正解。決定的であるべき。",
+   "不正解。結果が揺れるのは flaky で問題。",
+   "不正解。外部状態依存は避ける。",
+   "不正解。不安定なテストは是正対象。"
+  ],
+  "reference": "テストの決定性"
+ },
+ {
+  "id": "ch16-035",
+  "chapter": 16,
+  "topic": "アサーション",
+  "difficulty": 2,
+  "type": "single",
+  "question": "テストでの『アサーション』の役割はどれか。",
+  "choices": [
+   "期待結果と実際の結果を比較し違えば失敗させる",
+   "ログを出力する",
+   "コードを整形する",
+   "依存をインストールする"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "期待と実際の比較。",
+  "rationales": [
+   "正解。期待と実際を比較し検証する。",
+   "不正解。ログ出力ではない。",
+   "不正解。整形ではない。",
+   "不正解。インストールではない。"
+  ],
+  "reference": "アサーション"
+ },
+ {
+  "id": "ch16-036",
+  "chapter": 16,
+  "topic": "テスト粒度",
+  "difficulty": 2,
+  "type": "single",
+  "question": "単体テスト（ユニットテスト）が対象とする粒度はどれか。",
+  "choices": [
+   "関数やメソッドなど小さな単位",
+   "システム全体",
+   "UI操作のみ",
+   "本番環境"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "小さな単位を対象。",
+  "rationales": [
+   "正解。関数・メソッド単位を検証する。",
+   "不正解。全体は結合/システムテスト。",
+   "不正解。UI は別種のテスト。",
+   "不正解。本番ではなくテスト環境。"
+  ],
+  "reference": "単体テストの粒度"
+ },
+ {
+  "id": "ch16-037",
+  "chapter": 16,
+  "topic": "doctest 実行",
+  "difficulty": 3,
+  "type": "single",
+  "question": "doctest をコマンドラインで実行する方法はどれか。",
+  "choices": [
+   "python -m doctest ファイル",
+   "python -t doctest",
+   "python doctest run",
+   "python --doc"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "-m doctest。",
+  "rationales": [
+   "正解。python -m doctest file.py で実行。",
+   "不正解。-t は無い。",
+   "不正解。run サブコマンドは無い。",
+   "不正解。--doc は無い。"
+  ],
+  "reference": "doctest --- 実行"
+ },
+ {
+  "id": "ch16-038",
+  "chapter": 16,
+  "topic": "MagicMock",
+  "difficulty": 3,
+  "type": "single",
+  "question": "属性アクセスやマジックメソッドにも対応する mock のクラスはどれか。",
+  "choices": [
+   "MagicMock",
+   "SuperMock",
+   "FullMock",
+   "DeepMock"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "MagicMock。",
+  "rationales": [
+   "正解。MagicMock は __len__ 等のマジックメソッドにも対応。",
+   "不正解。SuperMock は無い。",
+   "不正解。FullMock は無い。",
+   "不正解。DeepMock は無い。"
+  ],
+  "reference": "MagicMock"
+ },
+ {
+  "id": "ch16-039",
+  "chapter": 16,
+  "topic": "assertDictEqual",
+  "difficulty": 3,
+  "type": "single",
+  "question": "2つの辞書が等しいことを表明するメソッドはどれか。",
+  "choices": [
+   "assertDictEqual",
+   "assertMapEqual",
+   "assertHashEqual",
+   "assertObjEqual"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "assertDictEqual。",
+  "rationales": [
+   "正解。assertDictEqual が辞書比較。assertEqual でも可。",
+   "不正解。assertMapEqual は無い。",
+   "不正解。assertHashEqual は無い。",
+   "不正解。assertObjEqual は無い。"
+  ],
+  "reference": "assertDictEqual"
+ },
+ {
+  "id": "ch16-040",
+  "chapter": 16,
+  "topic": "回帰テスト",
+  "difficulty": 2,
+  "type": "single",
+  "question": "一度直したバグが再発していないか確認するテストを何と呼ぶか。",
+  "choices": [
+   "回帰テスト（リグレッションテスト）",
+   "負荷テスト",
+   "受け入れテスト",
+   "探索的テスト"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "回帰テスト。",
+  "rationales": [
+   "正解。既存機能の再発防止を確認する回帰テスト。",
+   "不正解。負荷テストは性能確認。",
+   "不正解。受け入れは要件確認。",
+   "不正解。探索的は手動探索。"
+  ],
+  "reference": "回帰テスト"
  }
 ]

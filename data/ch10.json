@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "os.environ は環境変数の辞書。os.environ.get('KEY') や os.getenv('KEY') で安全に取得できる。",
+  "explanation": "os.environ。",
+  "rationales": [
+   "正解。os.environ が環境変数の辞書。",
+   "不正解。os.env は無い。",
+   "不正解。getenvs は無い。",
+   "不正解。variables は無い。"
+  ],
   "reference": "os.environ"
  },
  {
@@ -24,17 +30,23 @@
   "topic": "os.getenv",
   "difficulty": 2,
   "type": "single",
-  "question": "環境変数 PATH を、未設定なら None を返す形で取得する式はどれか。",
+  "question": "環境変数 PATH を未設定なら None で取得する式はどれか。",
   "choices": [
    "os.getenv('PATH')",
-   "os.environ['PATH'] は未設定でも None",
+   "os.environ['PATH']",
    "os.path('PATH')",
    "os.env('PATH')"
   ],
   "answer": [
    0
   ],
-  "explanation": "os.getenv('PATH') は未設定で None を返す。os.environ['PATH'] は未設定だと KeyError。",
+  "explanation": "getenv は未設定で None。",
+  "rationales": [
+   "正解。getenv は未設定で None を返す。",
+   "不正解。environ['PATH'] は未設定だと KeyError。",
+   "不正解。os.path は別物。",
+   "不正解。os.env は無い。"
+  ],
   "reference": "os.getenv"
  },
  {
@@ -53,7 +65,13 @@
   "answer": [
    0
   ],
-  "explanation": "sys.argv はコマンドライン引数のリスト。argv[0] はスクリプト名。",
+  "explanation": "sys.argv。",
+  "rationales": [
+   "正解。sys.argv が引数リスト。argv[0] はスクリプト名。",
+   "不正解。args は無い。",
+   "不正解。params は無い。",
+   "不正解。input は無い。"
+  ],
   "reference": "sys.argv"
  },
  {
@@ -62,7 +80,7 @@
   "topic": "sys.argv",
   "difficulty": 2,
   "type": "single",
-  "question": "`python script.py foo bar` を実行したとき sys.argv[1] の値はどれか。",
+  "question": "`python script.py foo bar` で sys.argv[1] はどれか。",
   "choices": [
    "foo",
    "script.py",
@@ -72,8 +90,14 @@
   "answer": [
    0
   ],
-  "explanation": "argv[0] が 'script.py'、argv[1] が 'foo'、argv[2] が 'bar'。",
-  "reference": "sys.argv のインデックス"
+  "explanation": "argv[1]=foo。",
+  "rationales": [
+   "正解。argv[0]=script.py, argv[1]=foo。",
+   "不正解。それは argv[0]。",
+   "不正解。それは argv[2]。",
+   "不正解。argv に python は含まれない。"
+  ],
+  "reference": "sys.argv の索引"
  },
  {
   "id": "ch10-005",
@@ -91,7 +115,13 @@
   "answer": [
    0
   ],
-  "explanation": "argparse がコマンドライン引数解析の標準。ヘルプやオプション定義を簡潔に書ける。",
+  "explanation": "argparse。",
+  "rationales": [
+   "正解。argparse が標準の引数パーサ。",
+   "不正解。getopts はシェル機能。",
+   "不正解。click はサードパーティ。",
+   "不正解。optparse2 は無い。"
+  ],
   "reference": "argparse"
  },
  {
@@ -110,7 +140,13 @@
   "answer": [
    0
   ],
-  "explanation": "sys.exit([status]) で終了できる。status に整数（0=正常）や文字列を渡せる。",
+  "explanation": "sys.exit()。",
+  "rationales": [
+   "正解。sys.exit([status]) で終了。",
+   "不正解。os.quit は無い。",
+   "不正解。exit.now は無い。",
+   "不正解。sys.stop は無い。"
+  ],
   "reference": "sys.exit"
  },
  {
@@ -119,7 +155,7 @@
   "topic": "os.path",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "a/b/c.txt",
    "a\\\\b\\\\c.txt",
@@ -129,7 +165,13 @@
   "answer": [
    0
   ],
-  "explanation": "os.path.join はパス区切りで結合する（POSIX では '/'）。",
+  "explanation": "join はパス結合。",
+  "rationales": [
+   "正解。POSIX 区切りで結合。",
+   "不正解。バックスラッシュにはならない（Windows除く）。",
+   "不正解。区切りが入る。",
+   "不正解。文字列を返す。"
+  ],
   "code": "import os\nprint(os.path.join('a', 'b', 'c.txt'))",
   "reference": "os.path.join"
  },
@@ -139,7 +181,7 @@
   "topic": "os.path",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "c.txt",
    "a/b",
@@ -149,7 +191,13 @@
   "answer": [
    0
   ],
-  "explanation": "os.path.basename はパスの末尾（ファイル名）を返す。",
+  "explanation": "basename は末尾名。",
+  "rationales": [
+   "正解。末尾のファイル名。",
+   "不正解。ディレクトリ部ではない。",
+   "不正解。拡張子だけではない。",
+   "不正解。拡張子付きで返る。"
+  ],
   "code": "import os\nprint(os.path.basename('a/b/c.txt'))",
   "reference": "os.path.basename"
  },
@@ -159,19 +207,25 @@
   "topic": "os.path",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
-   "('a/b', 'c.txt')",
-   "('a', 'b/c.txt')",
-   "('a/b/c', '.txt')",
-   "['a', 'b', 'c.txt']"
+   "a/b",
+   "c.txt",
+   "a",
+   "['a', 'b']"
   ],
   "answer": [
    0
   ],
-  "explanation": "os.path.split はディレクトリ部分とファイル名に分ける。",
-  "code": "import os\nprint(os.path.split('a/b/c.txt'))",
-  "reference": "os.path.split"
+  "explanation": "dirname はディレクトリ部。",
+  "rationales": [
+   "正解。ディレクトリ部 'a/b'。",
+   "不正解。ファイル名ではない。",
+   "不正解。一部ではなく全体。",
+   "不正解。文字列を返す。"
+  ],
+  "code": "import os\nprint(os.path.dirname('a/b/c.txt'))",
+  "reference": "os.path.dirname"
  },
  {
   "id": "ch10-010",
@@ -179,7 +233,7 @@
   "topic": "os.path",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "('a/b/c', '.txt')",
    "('a/b/c.txt', '')",
@@ -189,7 +243,13 @@
   "answer": [
    0
   ],
-  "explanation": "os.path.splitext は拡張子を分離する。",
+  "explanation": "splitext は拡張子分離。",
+  "rationales": [
+   "正解。拡張子を分離。",
+   "不正解。拡張子が分かれる。",
+   "不正解。順序が逆。",
+   "不正解。パスは保持される。"
+  ],
   "code": "import os\nprint(os.path.splitext('a/b/c.txt'))",
   "reference": "os.path.splitext"
  },
@@ -199,7 +259,7 @@
   "topic": "subprocess",
   "difficulty": 3,
   "type": "single",
-  "question": "外部コマンドを実行する標準ライブラリで、推奨される高レベル関数はどれか。",
+  "question": "外部コマンドを実行する推奨の高レベル関数はどれか。",
   "choices": [
    "subprocess.run()",
    "os.system2()",
@@ -209,7 +269,13 @@
   "answer": [
    0
   ],
-  "explanation": "subprocess.run() が推奨される高レベルAPI。os.system は機能が限定的。",
+  "explanation": "subprocess.run。",
+  "rationales": [
+   "正解。run() が推奨API。",
+   "不正解。os.system2 は無い。",
+   "不正解。commands は Python3 で削除。",
+   "不正解。exec.shell は無い。"
+  ],
   "reference": "subprocess.run"
  },
  {
@@ -218,7 +284,7 @@
   "topic": "logging",
   "difficulty": 2,
   "type": "single",
-  "question": "アプリケーションのログ出力に使う標準ライブラリはどれか。",
+  "question": "ログ出力に使う標準ライブラリはどれか。",
   "choices": [
    "logging",
    "log",
@@ -228,7 +294,13 @@
   "answer": [
    0
   ],
-  "explanation": "logging モジュールがログ出力の標準。レベル（DEBUG/INFO/WARNING/ERROR/CRITICAL）を持つ。",
+  "explanation": "logging。",
+  "rationales": [
+   "正解。logging が標準のログ機構。",
+   "不正解。log モジュールは無い。",
+   "不正解。syslog2 は無い。",
+   "不正解。printlog は無い。"
+  ],
   "reference": "logging"
  },
  {
@@ -237,7 +309,7 @@
   "topic": "logging",
   "difficulty": 3,
   "type": "single",
-  "question": "logging のログレベルを、低い（詳細）方から高い（重大）方へ正しく並べたものはどれか。",
+  "question": "logging のレベルを低い順に並べたものはどれか。",
   "choices": [
    "DEBUG < INFO < WARNING < ERROR < CRITICAL",
    "INFO < DEBUG < WARNING < ERROR < CRITICAL",
@@ -247,8 +319,14 @@
   "answer": [
    0
   ],
-  "explanation": "深刻度は DEBUG(10) < INFO(20) < WARNING(30) < ERROR(40) < CRITICAL(50)。既定の出力閾値は WARNING。",
-  "reference": "logging --- ログレベル"
+  "explanation": "DEBUG が最も詳細。",
+  "rationales": [
+   "正解。DEBUG(10)〜CRITICAL(50) の順。",
+   "不正解。DEBUG が INFO より低い。",
+   "不正解。順序が逆。",
+   "不正解。順序が誤り。"
+  ],
+  "reference": "ログレベル"
  },
  {
   "id": "ch10-014",
@@ -256,7 +334,7 @@
   "topic": "platform",
   "difficulty": 2,
   "type": "single",
-  "question": "実行中のOS名やマシン情報を取得できる標準ライブラリはどれか。",
+  "question": "OS名やマシン情報を取得する標準ライブラリはどれか。",
   "choices": [
    "platform",
    "machine",
@@ -266,7 +344,13 @@
   "answer": [
    0
   ],
-  "explanation": "platform モジュールで platform.system()（OS名）や platform.python_version() などを取得できる。",
+  "explanation": "platform。",
+  "rationales": [
+   "正解。platform.system() 等で取得。",
+   "不正解。machine モジュールは無い。",
+   "不正解。osinfo は無い。",
+   "不正解。sysconfig2 は無い。"
+  ],
   "reference": "platform"
  },
  {
@@ -285,7 +369,289 @@
   "answer": [
    0
   ],
-  "explanation": "os.getcwd() が現在の作業ディレクトリ（文字列）を返す。変更は os.chdir()。",
+  "explanation": "os.getcwd()。",
+  "rationales": [
+   "正解。getcwd() が現在の作業ディレクトリ。",
+   "不正解。os.pwd は無い。",
+   "不正解。curdir は '.' 定数。",
+   "不正解。path.cwd は無い。"
+  ],
   "reference": "os.getcwd"
+ },
+ {
+  "id": "ch10-016",
+  "chapter": 10,
+  "topic": "os",
+  "difficulty": 2,
+  "type": "single",
+  "question": "ディレクトリ内のファイル名一覧を返す os の関数はどれか。",
+  "choices": [
+   "os.listdir()",
+   "os.dir()",
+   "os.ls()",
+   "os.files()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "os.listdir()。",
+  "rationales": [
+   "正解。listdir がエントリ名のリストを返す。",
+   "不正解。os.dir は無い。",
+   "不正解。os.ls は無い。",
+   "不正解。os.files は無い。"
+  ],
+  "reference": "os.listdir"
+ },
+ {
+  "id": "ch10-017",
+  "chapter": 10,
+  "topic": "os",
+  "difficulty": 3,
+  "type": "single",
+  "question": "中間ディレクトリも含めて再帰的に作成する os の関数はどれか。",
+  "choices": [
+   "os.makedirs()",
+   "os.mkdir()",
+   "os.createdir()",
+   "os.md()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "makedirs は再帰作成。",
+  "rationales": [
+   "正解。makedirs は親も含めて作成。",
+   "不正解。mkdir は1階層のみ。",
+   "不正解。createdir は無い。",
+   "不正解。os.md は無い。"
+  ],
+  "reference": "os.makedirs"
+ },
+ {
+  "id": "ch10-018",
+  "chapter": 10,
+  "topic": "sys.path",
+  "difficulty": 3,
+  "type": "single",
+  "question": "import 時にモジュールを探索するパスのリストはどれか。",
+  "choices": [
+   "sys.path",
+   "sys.modules",
+   "sys.argv",
+   "os.path"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "sys.path が探索パス。",
+  "rationales": [
+   "正解。sys.path が探索ディレクトリのリスト。",
+   "不正解。sys.modules は読込済みモジュール。",
+   "不正解。argv は引数。",
+   "不正解。os.path はパス操作関数群。"
+  ],
+  "reference": "sys.path"
+ },
+ {
+  "id": "ch10-019",
+  "chapter": 10,
+  "topic": "sys.platform",
+  "difficulty": 2,
+  "type": "single",
+  "question": "実行中のプラットフォーム識別子（'linux' 等）を持つ属性はどれか。",
+  "choices": [
+   "sys.platform",
+   "sys.os",
+   "sys.system",
+   "os.platform"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "sys.platform。",
+  "rationales": [
+   "正解。sys.platform が 'linux'/'win32' 等を返す。",
+   "不正解。sys.os は無い。",
+   "不正解。sys.system は無い。",
+   "不正解。os.platform は無い。"
+  ],
+  "reference": "sys.platform"
+ },
+ {
+  "id": "ch10-020",
+  "chapter": 10,
+  "topic": "os.path",
+  "difficulty": 2,
+  "type": "single",
+  "question": "パスが絶対パスかを判定する os.path の関数はどれか。",
+  "choices": [
+   "isabs",
+   "isabsolute",
+   "abspath のみ",
+   "isfullpath"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "isabs で判定。",
+  "rationales": [
+   "正解。isabs が絶対パス判定。",
+   "不正解。isabsolute は無い。",
+   "不正解。abspath は変換用。",
+   "不正解。isfullpath は無い。"
+  ],
+  "reference": "os.path.isabs"
+ },
+ {
+  "id": "ch10-021",
+  "chapter": 10,
+  "topic": "env",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "fallback",
+   "None",
+   "KeyError",
+   "''"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "getenv の既定値。",
+  "rationales": [
+   "正解。未設定なので既定 'fallback'。",
+   "不正解。既定を指定したので None ではない。",
+   "不正解。例外は出ない。",
+   "不正解。空文字ではない。"
+  ],
+  "code": "import os\nprint(os.getenv('NO_SUCH_VAR_XYZ', 'fallback'))",
+  "reference": "os.getenv --- 既定"
+ },
+ {
+  "id": "ch10-022",
+  "chapter": 10,
+  "topic": "shutil",
+  "difficulty": 2,
+  "type": "single",
+  "question": "ディスクの空き容量などを調べる際にも使える高レベルファイル操作ライブラリはどれか。",
+  "choices": [
+   "shutil",
+   "os.stat のみ",
+   "diskutil",
+   "fslib"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "shutil。",
+  "rationales": [
+   "正解。shutil は copy/move や disk_usage を提供。",
+   "不正解。os.stat も使えるが高レベルは shutil。",
+   "不正解。diskutil は標準に無い。",
+   "不正解。fslib は無い。"
+  ],
+  "reference": "shutil"
+ },
+ {
+  "id": "ch10-023",
+  "chapter": 10,
+  "topic": "os",
+  "difficulty": 2,
+  "type": "single",
+  "question": "環境変数を新たに設定するにはどうするか。",
+  "choices": [
+   "os.environ['KEY'] = '値'",
+   "os.setenv('KEY', '値')",
+   "os.env.KEY = '値'",
+   "setenv KEY 値"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "environ への代入。",
+  "rationales": [
+   "正解。os.environ['KEY']='値' で設定する。",
+   "不正解。os.setenv は無い。",
+   "不正解。os.env は無い。",
+   "不正解。それはシェルの構文。"
+  ],
+  "reference": "os.environ --- 設定"
+ },
+ {
+  "id": "ch10-024",
+  "chapter": 10,
+  "topic": "time",
+  "difficulty": 2,
+  "type": "single",
+  "question": "プログラムを指定秒だけ一時停止する関数はどれか。",
+  "choices": [
+   "time.sleep(秒)",
+   "time.wait(秒)",
+   "time.pause(秒)",
+   "os.sleep(秒)"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "time.sleep。",
+  "rationales": [
+   "正解。time.sleep が一時停止。",
+   "不正解。time.wait は無い。",
+   "不正解。time.pause は別用途/プラットフォーム依存。",
+   "不正解。os.sleep は無い。"
+  ],
+  "reference": "time.sleep"
+ },
+ {
+  "id": "ch10-025",
+  "chapter": 10,
+  "topic": "__name__",
+  "difficulty": 2,
+  "type": "single",
+  "question": "スクリプトが直接実行されたか判定する慣用句はどれか。",
+  "choices": [
+   "if __name__ == '__main__':",
+   "if __main__:",
+   "if __file__ == '__main__':",
+   "if run_main():"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "__name__ で判定。",
+  "rationales": [
+   "正解。直接実行時 __name__ が '__main__' になる。",
+   "不正解。__main__ という変数はない。",
+   "不正解。__file__ はパス。",
+   "不正解。run_main は無い。"
+  ],
+  "reference": "__name__ == '__main__'"
+ },
+ {
+  "id": "ch10-026",
+  "chapter": 10,
+  "topic": "os.path",
+  "difficulty": 2,
+  "type": "single",
+  "question": "ユーザーのホームディレクトリの ~ を展開する os.path の関数はどれか。",
+  "choices": [
+   "expanduser",
+   "expandhome",
+   "homedir",
+   "userpath"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "expanduser。",
+  "rationales": [
+   "正解。expanduser('~') がホームに展開。",
+   "不正解。expandhome は無い。",
+   "不正解。homedir は無い。",
+   "不正解。userpath は無い。"
+  ],
+  "reference": "os.path.expanduser"
  }
 ]

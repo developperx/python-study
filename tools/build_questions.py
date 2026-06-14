@@ -41,11 +41,25 @@ _counter = {}
 
 
 def q(chapter, topic, difficulty, question, choices, answer,
-      explanation, reference="", code=None, type="single", verify=False):
-    """1問を登録する。answer は 0 始まりの index か index のリスト。"""
+      explanation, reference="", code=None, type="single", verify=False,
+      rat=None):
+    """1問を登録する。answer は 0 始まりの index か index のリスト。
+
+    rat: 各選択肢の正誤理由のリスト（choices と同じ長さ）。
+         省略時はビルド時に「正解／不正解」の最小限の理由を自動補完する。
+    """
     _counter[chapter] = _counter.get(chapter, 0) + 1
     qid = f"ch{chapter:02d}-{_counter[chapter]:03d}"
     ans = answer if isinstance(answer, list) else [answer]
+    ansset = set(ans)
+    if rat is None:
+        rationales = [("正解。" if i in ansset else "不正解。")
+                      for i in range(len(choices))]
+    else:
+        rationales = [
+            (("正解。" if i in ansset else "不正解。") + r if r and not r.startswith(("正解", "不正解", "○", "×")) else (r or ("正解。" if i in ansset else "不正解。")))
+            for i, r in enumerate(rat)
+        ]
     item = {
         "id": qid,
         "chapter": chapter,
@@ -56,12 +70,15 @@ def q(chapter, topic, difficulty, question, choices, answer,
         "choices": choices,
         "answer": ans,
         "explanation": explanation,
+        "rationales": rationales,
     }
     if code:
         item["code"] = code
     if reference:
         item["reference"] = reference
     item["_verify"] = verify
+    if rat is not None and len(rat) != len(choices):
+        raise ValueError(f"{qid}: rat の長さ({len(rat)})が choices({len(choices)})と不一致")
     _bank.setdefault(chapter, []).append(item)
     return item
 

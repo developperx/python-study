@@ -5,7 +5,7 @@
   "topic": "型ヒント",
   "difficulty": 1,
   "type": "single",
-  "question": "型ヒント（型アノテーション）の仕様を定めた PEP はどれか。",
+  "question": "型ヒントの仕様を定めた PEP はどれか。",
   "choices": [
    "PEP 484",
    "PEP 8",
@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "PEP 484 が型ヒントを導入した。typing モジュールもこれに基づく。",
+  "explanation": "型ヒントは PEP 484。",
+  "rationales": [
+   "正解。PEP 484 が型ヒントを導入。",
+   "不正解。PEP 8 はスタイル。",
+   "不正解。PEP 257 は docstring。",
+   "不正解。PEP 20 は Zen。"
+  ],
   "reference": "PEP 484"
  },
  {
@@ -24,7 +30,7 @@
   "topic": "型ヒント",
   "difficulty": 1,
   "type": "single",
-  "question": "関数の引数と戻り値に型ヒントを付ける正しい構文はどれか。",
+  "question": "引数と戻り値に型ヒントを付ける正しい構文はどれか。",
   "choices": [
    "def f(x: int) -> str:",
    "def f(x is int) returns str:",
@@ -34,7 +40,13 @@
   "answer": [
    0
   ],
-  "explanation": "引数は `名前: 型`、戻り値は `-> 型` で書く。",
+  "explanation": "引数は名前:型、戻り値は ->。",
+  "rationales": [
+   "正解。名前: 型 と -> 型 が正しい。",
+   "不正解。is/returns は使わない。",
+   "不正解。型を前置する C 言語式ではない。",
+   "不正解。=> ではなく ->。"
+  ],
   "reference": "型ヒントの構文"
  },
  {
@@ -43,18 +55,24 @@
   "topic": "実行時",
   "difficulty": 2,
   "type": "single",
-  "question": "Python の型ヒントの実行時の扱いとして正しいものはどれか。",
+  "question": "Python の型ヒントの実行時の扱いはどれか。",
   "choices": [
-   "実行時には強制されず、原則チェックされない",
-   "実行時に型が違うと必ず例外になる",
-   "型ヒントを書くと自動でキャストされる",
-   "型ヒントは構文エラーになる"
+   "原則チェックされず強制されない",
+   "違反すると必ず例外になる",
+   "自動でキャストされる",
+   "構文エラーになる"
   ],
   "answer": [
    0
   ],
-  "explanation": "型ヒントは原則として実行時に強制されない（ドキュメント・静的解析用）。チェックは mypy 等のツールで行う。",
-  "reference": "型ヒントは実行時に強制されない"
+  "explanation": "実行時は強制されない。",
+  "rationales": [
+   "正解。実行時には原則チェックされない。",
+   "不正解。違反しても自動で例外にはならない。",
+   "不正解。キャストは行われない。",
+   "不正解。正当な構文でエラーにならない。"
+  ],
+  "reference": "型ヒントは強制されない"
  },
  {
   "id": "ch05-004",
@@ -62,7 +80,7 @@
   "topic": "ツール",
   "difficulty": 2,
   "type": "single",
-  "question": "型ヒントに基づく静的型チェックを行う代表的なツールはどれか。",
+  "question": "型ヒントに基づく静的型チェックの代表的ツールはどれか。",
   "choices": [
    "mypy",
    "pytest",
@@ -72,7 +90,13 @@
   "answer": [
    0
   ],
-  "explanation": "mypy が代表的な静的型チェッカー。pytest はテスト、flake8 はスタイル、black はフォーマッタ。",
+  "explanation": "mypy が型チェッカー。",
+  "rationales": [
+   "正解。mypy が代表的な静的型チェッカー。",
+   "不正解。pytest はテスト。",
+   "不正解。flake8 はスタイル。",
+   "不正解。black はフォーマッタ。"
+  ],
   "reference": "mypy"
  },
  {
@@ -81,7 +105,7 @@
   "topic": "typing",
   "difficulty": 2,
   "type": "single",
-  "question": "「int のリスト」を表す型ヒントとして適切なものはどれか（Python 3.9以降の組み込み記法）。",
+  "question": "「int のリスト」を表す型ヒント（3.9以降の組み込み記法）はどれか。",
   "choices": [
    "list[int]",
    "List(int)",
@@ -91,8 +115,14 @@
   "answer": [
    0
   ],
-  "explanation": "Python 3.9 以降は組み込み型で `list[int]` と書ける。以前は typing.List[int] を使った。",
-  "reference": "ジェネリック型 --- list[int]"
+  "explanation": "list[int]（3.9+）。",
+  "rationales": [
+   "正解。3.9 以降は list[int]。",
+   "不正解。List(int) という呼び出しではない。",
+   "不正解。int[] は無効。",
+   "不正解。array[int] は無効。"
+  ],
+  "reference": "ジェネリック型"
  },
  {
   "id": "ch05-006",
@@ -100,7 +130,7 @@
   "topic": "Optional",
   "difficulty": 2,
   "type": "single",
-  "question": "「int または None」を表す型ヒントとして適切なものはどれか。",
+  "question": "「int または None」を表す型ヒントはどれか。",
   "choices": [
    "Optional[int]",
    "Maybe[int]",
@@ -110,8 +140,14 @@
   "answer": [
    0
   ],
-  "explanation": "typing.Optional[int] は int | None を意味する。Python 3.10 以降は `int | None` とも書ける。",
-  "reference": "typing.Optional"
+  "explanation": "Optional[int]=int|None。",
+  "rationales": [
+   "正解。Optional[int] が int|None を表す。",
+   "不正解。Maybe は Python に無い。",
+   "不正解。Nullable は無い。",
+   "不正解。int? という構文は無い。"
+  ],
+  "reference": "Optional"
  },
  {
   "id": "ch05-007",
@@ -119,7 +155,7 @@
   "topic": "Union",
   "difficulty": 2,
   "type": "single",
-  "question": "Python 3.10 以降で「int または str」を表す最も簡潔な記法はどれか。",
+  "question": "3.10 以降で「int または str」を表す最も簡潔な記法はどれか。",
   "choices": [
    "int | str",
    "int & str",
@@ -129,8 +165,14 @@
   "answer": [
    0
   ],
-  "explanation": "3.10 以降はパイプ演算子で `int | str` と書ける（PEP 604）。従来は typing.Union[int, str]。",
-  "reference": "Union 型 --- |"
+  "explanation": "int | str（PEP 604）。",
+  "rationales": [
+   "正解。3.10+ は | で書ける。",
+   "不正解。& は交差ではなくこの用途に無い。",
+   "不正解。Union は [] 添字で使う。",
+   "不正解。カンマ区切りは型として無効。"
+  ],
+  "reference": "Union 型"
  },
  {
   "id": "ch05-008",
@@ -138,7 +180,7 @@
   "topic": "変数アノテーション",
   "difficulty": 2,
   "type": "single",
-  "question": "変数に型ヒントだけを付ける正しい構文はどれか。",
+  "question": "変数に型ヒントを付ける正しい構文はどれか。",
   "choices": [
    "count: int",
    "int count",
@@ -148,7 +190,138 @@
   "answer": [
    0
   ],
-  "explanation": "変数アノテーションは `変数名: 型`（必要なら `= 初期値`）の形式（PEP 526）。",
+  "explanation": "変数名: 型（PEP 526）。",
+  "rationales": [
+   "正解。count: int が正しい（必要なら =値）。",
+   "不正解。型前置は無効。",
+   "不正解。= int は型エイリアス代入になってしまう。",
+   "不正解。:: は無効。"
+  ],
   "reference": "変数アノテーション"
+ },
+ {
+  "id": "ch05-009",
+  "chapter": 5,
+  "topic": "typing",
+  "difficulty": 2,
+  "type": "single",
+  "question": "任意の型を表す typing の特別な型はどれか。",
+  "choices": [
+   "Any",
+   "Object",
+   "Unknown",
+   "Var"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "Any は何でも許容。",
+  "rationales": [
+   "正解。Any は型チェックを実質無効化する万能型。",
+   "不正解。Object という typing 型は無い。",
+   "不正解。Unknown は無い。",
+   "不正解。Var は無い。"
+  ],
+  "reference": "typing.Any"
+ },
+ {
+  "id": "ch05-010",
+  "chapter": 5,
+  "topic": "Callable",
+  "difficulty": 3,
+  "type": "single",
+  "question": "「int を受け取り str を返す関数」の型ヒントはどれか。",
+  "choices": [
+   "Callable[[int], str]",
+   "Callable(int, str)",
+   "Function[int, str]",
+   "def[int]->str"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "Callable[[引数], 戻り値]。",
+  "rationales": [
+   "正解。Callable[[int], str] が正しい。",
+   "不正解。丸括弧呼び出しではない。",
+   "不正解。Function 型は無い。",
+   "不正解。そのような構文は無い。"
+  ],
+  "reference": "typing.Callable"
+ },
+ {
+  "id": "ch05-011",
+  "chapter": 5,
+  "topic": "TypeAlias",
+  "difficulty": 3,
+  "type": "single",
+  "question": "型に別名を付ける（型エイリアス）正しい例はどれか。",
+  "choices": [
+   "Vector = list[float]",
+   "typedef Vector list[float]",
+   "alias Vector = list[float]",
+   "Vector := list[float]"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "通常の代入で別名を作る。",
+  "rationales": [
+   "正解。Vector = list[float] のように代入で定義できる。",
+   "不正解。typedef は Python に無い。",
+   "不正解。alias 文は無い。",
+   "不正解。:= は代入式で型エイリアスの慣用ではない。"
+  ],
+  "reference": "型エイリアス"
+ },
+ {
+  "id": "ch05-012",
+  "chapter": 5,
+  "topic": "利点",
+  "difficulty": 2,
+  "type": "single",
+  "question": "型ヒントを書く利点として最も適切なものはどれか。",
+  "choices": [
+   "静的解析・補完・可読性が向上する",
+   "実行速度が必ず上がる",
+   "メモリ使用量が減る",
+   "例外が自動的に消える"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "ツール支援と可読性向上。",
+  "rationales": [
+   "正解。IDE 補完や mypy 検査、可読性に役立つ。",
+   "不正解。速度向上は保証されない。",
+   "不正解。メモリ削減効果はない。",
+   "不正解。例外が消えるわけではない。"
+  ],
+  "reference": "型ヒントの利点"
+ },
+ {
+  "id": "ch05-013",
+  "chapter": 5,
+  "topic": "None",
+  "difficulty": 2,
+  "type": "single",
+  "question": "戻り値が無い（None を返す）関数の戻り値型ヒントはどれか。",
+  "choices": [
+   "-> None",
+   "-> void",
+   "-> null",
+   "省略は必須"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "None を明示する。",
+  "rationales": [
+   "正解。-> None と書く。",
+   "不正解。void は Python に無い。",
+   "不正解。null は無い。",
+   "不正解。省略も可能だが明示が推奨。"
+  ],
+  "reference": "戻り値 None"
  }
 ]

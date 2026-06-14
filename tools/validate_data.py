@@ -14,7 +14,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 
-REQUIRED = {"id", "chapter", "topic", "difficulty", "type", "question", "choices", "answer", "explanation"}
+REQUIRED = {"id", "chapter", "topic", "difficulty", "type", "question", "choices", "answer", "explanation", "rationales"}
 # js/data.js の EXAM.distribution と一致させること
 DISTRIBUTION = {1: 1, 2: 2, 3: 7, 4: 2, 5: 1, 6: 4, 8: 2, 9: 5,
                 10: 2, 11: 2, 13: 3, 14: 2, 16: 3, 17: 2, 18: 2}
@@ -52,6 +52,10 @@ def main():
             n = len(it["choices"])
             if n < 2:
                 errors.append(f"{it['id']}: choices が少なすぎる({n})")
+            if len(it.get("rationales", [])) != n:
+                errors.append(f"{it['id']}: rationales 件数({len(it.get('rationales', []))})が choices({n})と不一致")
+            elif any(not str(r).strip() for r in it["rationales"]):
+                errors.append(f"{it['id']}: 空の rationale がある")
             if not it["answer"]:
                 errors.append(f"{it['id']}: answer が空")
             for a in it["answer"]:

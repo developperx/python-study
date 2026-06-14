@@ -1,5 +1,5 @@
 {
- "total": 292,
+ "total": 500,
  "chapters": [
   {
    "chapter": 1,
@@ -7,7 +7,7 @@
    "shortTitle": "環境",
    "weight": "2.5%",
    "file": "ch01.json",
-   "count": 8
+   "count": 13
   },
   {
    "chapter": 2,
@@ -15,7 +15,7 @@
    "shortTitle": "規約",
    "weight": "5.0%",
    "file": "ch02.json",
-   "count": 15
+   "count": 25
   },
   {
    "chapter": 3,
@@ -23,7 +23,7 @@
    "shortTitle": "言語仕様",
    "weight": "17.5%",
    "file": "ch03.json",
-   "count": 52
+   "count": 87
   },
   {
    "chapter": 4,
@@ -31,7 +31,7 @@
    "shortTitle": "クラス",
    "weight": "5.0%",
    "file": "ch04.json",
-   "count": 16
+   "count": 25
   },
   {
    "chapter": 5,
@@ -39,7 +39,7 @@
    "shortTitle": "型ヒント",
    "weight": "2.5%",
    "file": "ch05.json",
-   "count": 8
+   "count": 13
   },
   {
    "chapter": 6,
@@ -47,7 +47,7 @@
    "shortTitle": "テキスト",
    "weight": "10.0%",
    "file": "ch06.json",
-   "count": 30
+   "count": 48
   },
   {
    "chapter": 8,
@@ -55,7 +55,7 @@
    "shortTitle": "日付時刻",
    "weight": "5.0%",
    "file": "ch08.json",
-   "count": 16
+   "count": 25
   },
   {
    "chapter": 9,
@@ -63,7 +63,7 @@
    "shortTitle": "データ型",
    "weight": "12.5%",
    "file": "ch09.json",
-   "count": 38
+   "count": 61
   },
   {
    "chapter": 10,
@@ -71,7 +71,7 @@
    "shortTitle": "OS",
    "weight": "5.0%",
    "file": "ch10.json",
-   "count": 15
+   "count": 26
   },
   {
    "chapter": 11,
@@ -79,7 +79,7 @@
    "shortTitle": "ファイル",
    "weight": "5.0%",
    "file": "ch11.json",
-   "count": 15
+   "count": 26
   },
   {
    "chapter": 13,
@@ -87,7 +87,7 @@
    "shortTitle": "データ形式",
    "weight": "7.5%",
    "file": "ch13.json",
-   "count": 22
+   "count": 39
   },
   {
    "chapter": 14,
@@ -95,7 +95,7 @@
    "shortTitle": "ネット",
    "weight": "5.0%",
    "file": "ch14.json",
-   "count": 12
+   "count": 26
   },
   {
    "chapter": 16,
@@ -103,7 +103,7 @@
    "shortTitle": "テスト",
    "weight": "7.5%",
    "file": "ch16.json",
-   "count": 22
+   "count": 40
   },
   {
    "chapter": 17,
@@ -111,7 +111,7 @@
    "shortTitle": "デバッグ",
    "weight": "5.0%",
    "file": "ch17.json",
-   "count": 15
+   "count": 26
   },
   {
    "chapter": 18,
@@ -119,7 +119,7 @@
    "shortTitle": "暗号",
    "weight": "2.5%",
    "file": "ch18.json",
-   "count": 8
+   "count": 20
   }
  ]
 }

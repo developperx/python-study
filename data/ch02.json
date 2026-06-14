@@ -5,7 +5,7 @@
   "topic": "PEP8",
   "difficulty": 1,
   "type": "single",
-  "question": "PEP 8 が推奨するインデントの方法として正しいものはどれか。",
+  "question": "PEP 8 が推奨するインデント方法はどれか。",
   "choices": [
    "スペース4つ",
    "タブ1つ",
@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "PEP 8 はインデントに半角スペース4つを推奨している。タブとスペースの混在は禁止。",
+  "explanation": "インデントは半角スペース4つが推奨。",
+  "rationales": [
+   "正解。PEP 8 はスペース4つを推奨する。",
+   "不正解。タブも可能だが推奨はスペース。新規コードでタブ単独は推奨されない。",
+   "不正解。2スペースは他言語の慣習で、Python の推奨ではない。",
+   "不正解。タブとスペースの混在は Python3 では原則エラーで禁止。"
+  ],
   "reference": "PEP 8 --- インデント"
  },
  {
@@ -34,7 +40,13 @@
   "answer": [
    0
   ],
-  "explanation": "PEP 8 ではコード行は最大79文字、docstring・コメントは72文字を推奨している。",
+  "explanation": "コードは最大79文字、コメント/docstringは72文字。",
+  "rationales": [
+   "正解。PEP 8 はコード行を最大79文字とする。",
+   "不正解。80ではなく79が PEP 8 の数値。",
+   "不正解。100は一部プロジェクトの独自設定で PEP 8 の値ではない。",
+   "不正解。120も独自拡張であり PEP 8 の推奨値ではない。"
+  ],
   "reference": "PEP 8 --- 行の長さ"
  },
  {
@@ -45,7 +57,7 @@
   "type": "single",
   "question": "PEP 8 における関数名・変数名の推奨スタイルはどれか。",
   "choices": [
-   "snake_case（小文字とアンダースコア）",
+   "snake_case",
    "camelCase",
    "PascalCase",
    "UPPER_CASE"
@@ -53,7 +65,13 @@
   "answer": [
    0
   ],
-  "explanation": "関数名・変数名は snake_case。クラス名は PascalCase（CapWords）、定数は UPPER_CASE が推奨される。",
+  "explanation": "関数・変数は snake_case。",
+  "rationales": [
+   "正解。小文字とアンダースコアの snake_case が推奨。",
+   "不正解。camelCase はクラスでも変数でも Python の推奨ではない。",
+   "不正解。PascalCase はクラス名向け。",
+   "不正解。UPPER_CASE は定数向け。"
+  ],
   "reference": "PEP 8 --- 命名規約"
  },
  {
@@ -72,7 +90,13 @@
   "answer": [
    0
   ],
-  "explanation": "クラス名は各単語の先頭を大文字にする CapWords 方式（例: MyClass）が推奨される。",
+  "explanation": "クラス名は CapWords。",
+  "rationales": [
+   "正解。各単語の先頭を大文字にする CapWords が推奨。",
+   "不正解。snake_case は関数・変数向け。",
+   "不正解。camelCase は Python の推奨スタイルではない。",
+   "不正解。UPPER_SNAKE_CASE は定数向け。"
+  ],
   "reference": "PEP 8 --- クラス名"
  },
  {
@@ -91,7 +115,13 @@
   "answer": [
    0
   ],
-  "explanation": "モジュールレベルの定数は全て大文字＋アンダースコア区切り（例: MAX_OVERFLOW）が推奨される。",
+  "explanation": "定数は全て大文字＋アンダースコア。",
+  "rationales": [
+   "正解。モジュールレベル定数は UPPER_CASE が推奨。",
+   "不正解。maxCount は camelCase で定数の推奨ではない。",
+   "不正解。MaxCount は CapWords でクラス向け。",
+   "不正解。max_count は通常の変数スタイルで定数の表現ではない。"
+  ],
   "reference": "PEP 8 --- 定数"
  },
  {
@@ -100,17 +130,23 @@
   "topic": "import",
   "difficulty": 2,
   "type": "single",
-  "question": "PEP 8 における import 文の並び順として正しいものはどれか。",
+  "question": "PEP 8 における import 文のグループ順はどれか。",
   "choices": [
-   "標準ライブラリ → サードパーティ → ローカル の順にグループ化",
-   "ローカル → サードパーティ → 標準ライブラリ の順",
+   "標準ライブラリ → サードパーティ → ローカル",
+   "ローカル → サードパーティ → 標準ライブラリ",
    "アルファベット順のみで分類しない",
-   "使う直前に書き、ファイル先頭にまとめない"
+   "使う直前に書きファイル先頭にまとめない"
   ],
   "answer": [
    0
   ],
-  "explanation": "import は (1)標準ライブラリ (2)サードパーティ (3)自作（ローカル）の順にグループ分けし、各グループを空行で区切る。",
+  "explanation": "(1)標準 (2)サードパーティ (3)ローカルの順。",
+  "rationales": [
+   "正解。この3グループ順で各グループを空行区切りにする。",
+   "不正解。順序が逆で誤り。",
+   "不正解。グループ分けをするのが PEP 8 の方針。",
+   "不正解。import は原則ファイル先頭にまとめる。"
+  ],
   "reference": "PEP 8 --- インポート"
  },
  {
@@ -119,17 +155,23 @@
   "topic": "import",
   "difficulty": 2,
   "type": "single",
-  "question": "PEP 8 が推奨する import の書き方として正しいものはどれか。",
+  "question": "PEP 8 が推奨する import の書き方はどれか。",
   "choices": [
-   "import os\\nimport sys のように1行に1モジュール",
+   "import os と import sys を別々の行に書く",
    "import os, sys のように1行にまとめる",
-   "from os import * を推奨",
-   "import は関数内に書くのが原則"
+   "from os import * を使う",
+   "import は必ず関数内に書く"
   ],
   "answer": [
    0
   ],
-  "explanation": "複数モジュールを import するときは1行に1つずつ書く。`import os, sys` は非推奨。ワイルドカード import も避ける。",
+  "explanation": "1行に1モジュール。",
+  "rationales": [
+   "正解。複数モジュールは1行1つずつが推奨。",
+   "不正解。1行にカンマでまとめるのは非推奨。",
+   "不正解。ワイルドカード import は名前空間を汚すため避ける。",
+   "不正解。通常はモジュール先頭に書く。関数内 import は限定的な用途。"
+  ],
   "reference": "PEP 8 --- インポート"
  },
  {
@@ -138,18 +180,24 @@
   "topic": "空白",
   "difficulty": 2,
   "type": "single",
-  "question": "PEP 8 の空白に関する規約として正しいものはどれか。",
+  "question": "PEP 8 の空白の規約として正しいものはどれか。",
   "choices": [
-   "カンマの前には空白を入れず、後ろに1つ入れる",
-   "関数呼び出しの括弧の内側に空白を入れる",
+   "カンマの前に空白を入れず後ろに1つ入れる",
+   "関数呼び出しの括弧内側に空白を入れる",
    "二項演算子の前後に空白を入れない",
-   "代入演算子 = の前後は常に空白を入れない"
+   "キーワード引数の = の前後に必ず空白を入れる"
   ],
   "answer": [
    0
   ],
-  "explanation": "カンマ・セミコロンの前に空白を置かず後ろに1つ。括弧の内側直後には空白を置かない。キーワード引数のデフォルト指定の = は前後に空白を入れない。",
-  "reference": "PEP 8 --- 式と文中の空白"
+  "explanation": "カンマは前空白なし・後1つ。",
+  "rationales": [
+   "正解。カンマ/セミコロンは前に空白なし、後ろに1つ。",
+   "不正解。括弧の内側直後に空白は入れない。",
+   "不正解。二項演算子の前後には空白を1つ入れるのが推奨。",
+   "不正解。キーワード引数の = は前後に空白を入れない。"
+  ],
+  "reference": "PEP 8 --- 空白"
  },
  {
   "id": "ch02-009",
@@ -157,7 +205,7 @@
   "topic": "比較",
   "difficulty": 2,
   "type": "single",
-  "question": "PEP 8 が推奨する、None との比較方法はどれか。",
+  "question": "PEP 8 が推奨する None との比較方法はどれか。",
   "choices": [
    "if x is None:",
    "if x == None:",
@@ -167,7 +215,13 @@
   "answer": [
    0
   ],
-  "explanation": "None はシングルトンなので、`==` ではなく `is` / `is not` で比較するのが PEP 8 の推奨。",
+  "explanation": "None は is で比較する。",
+  "rationales": [
+   "正解。None はシングルトンなので is/is not で比較する。",
+   "不正解。== でも動くが PEP 8 は is を推奨。",
+   "不正解。= は代入で条件式では構文エラー。",
+   "不正解。None は呼び出せず TypeError になる。"
+  ],
   "reference": "PEP 8 --- 推奨事項"
  },
  {
@@ -176,7 +230,7 @@
   "topic": "docstring",
   "difficulty": 2,
   "type": "single",
-  "question": "ドキュメンテーション文字列（docstring）の規約を定めた PEP はどれか。",
+  "question": "docstring の規約を定めた PEP はどれか。",
   "choices": [
    "PEP 257",
    "PEP 8",
@@ -186,7 +240,13 @@
   "answer": [
    0
   ],
-  "explanation": "PEP 257 が docstring の規約。PEP 8 はコーディング規約、PEP 20 は The Zen of Python、PEP 484 は型ヒント。",
+  "explanation": "docstring は PEP 257。",
+  "rationales": [
+   "正解。PEP 257 が docstring の規約。",
+   "不正解。PEP 8 はコーディングスタイル全般。",
+   "不正解。PEP 20 は The Zen of Python。",
+   "不正解。PEP 484 は型ヒント。"
+  ],
   "reference": "PEP 257"
  },
  {
@@ -197,15 +257,21 @@
   "type": "single",
   "question": "対話モードで `import this` を実行すると表示されるものはどれか。",
   "choices": [
-   "The Zen of Python（Pythonの設計哲学）",
+   "The Zen of Python（設計哲学）",
    "ライセンス文",
-   "インストール済みパッケージ一覧",
+   "パッケージ一覧",
    "現在時刻"
   ],
   "answer": [
    0
   ],
-  "explanation": "`import this` は PEP 20「The Zen of Python」を表示するイースターエッグ。",
+  "explanation": "The Zen of Python が表示される。",
+  "rationales": [
+   "正解。PEP 20『The Zen of Python』が表示されるイースターエッグ。",
+   "不正解。ライセンスは license() で表示される。",
+   "不正解。パッケージ一覧は pip list 等で確認する。",
+   "不正解。現在時刻とは無関係。"
+  ],
   "reference": "PEP 20"
  },
  {
@@ -214,7 +280,7 @@
   "topic": "ツール",
   "difficulty": 2,
   "type": "single",
-  "question": "PEP 8 準拠かどうかをチェックする静的解析ツールとして代表的なものはどれか。",
+  "question": "PEP 8 準拠をチェックする静的解析ツールはどれか。",
   "choices": [
    "flake8 / pycodestyle",
    "pytest",
@@ -224,8 +290,14 @@
   "answer": [
    0
   ],
-  "explanation": "pycodestyle（旧 pep8）や flake8 がスタイルチェックに使われる。pytest はテスト、pdb はデバッガ。",
-  "reference": "コーディング規約チェックツール"
+  "explanation": "pycodestyle/flake8 がスタイル検査。",
+  "rationales": [
+   "正解。pycodestyle（旧 pep8）や flake8 がスタイルを検査する。",
+   "不正解。pytest はテスト実行ツール。",
+   "不正解。venv は仮想環境作成ツール。",
+   "不正解。pdb はデバッガ。"
+  ],
+  "reference": "規約チェックツール"
  },
  {
   "id": "ch02-013",
@@ -233,17 +305,23 @@
   "topic": "コメント",
   "difficulty": 2,
   "type": "single",
-  "question": "PEP 8 のコメントに関する規約として正しいものはどれか。",
+  "question": "PEP 8 のコメントの規約として正しいものはどれか。",
   "choices": [
-   "インラインコメントはコードと少なくとも2スペース空け、# の後に1スペース",
-   "コメントは必ず英語で書かなければならない",
-   "ブロックコメントの # の後ろに空白を入れてはならない",
+   "インラインコメントはコードと2スペース以上空け # の後に1スペース",
+   "コメントは必ず英語で書く",
+   "ブロックコメントの # の後ろに空白を入れない",
    "インラインコメントはコードに密着させる"
   ],
   "answer": [
    0
   ],
-  "explanation": "インラインコメントは文と最低2スペース空け、`#` の直後に空白を1つ入れる。言語の指定はない。",
+  "explanation": "# の後に空白1つ、コードと2スペース。",
+  "rationales": [
+   "正解。インラインは2スペース以上空け、# の後に1スペースを入れる。",
+   "不正解。言語の指定はない。",
+   "不正解。# の後ろには空白を入れるのが推奨。",
+   "不正解。密着させず2スペース以上空ける。"
+  ],
   "reference": "PEP 8 --- コメント"
  },
  {
@@ -252,17 +330,23 @@
   "topic": "命名規約",
   "difficulty": 3,
   "type": "single",
-  "question": "PEP 8 で、予約語と衝突する場合に推奨される変数名の付け方はどれか。",
+  "question": "予約語と衝突する場合に PEP 8 が推奨する変数名はどれか。",
   "choices": [
-   "末尾にアンダースコアを付ける（例: class_）",
-   "先頭に2つアンダースコアを付ける",
+   "末尾にアンダースコア（class_）",
+   "先頭に __ を付ける",
    "全て大文字にする",
-   "数字を付ける（例: class1）"
+   "数字を付ける（class1）"
   ],
   "answer": [
    0
   ],
-  "explanation": "予約語と被る場合は、略語や綴り変更より末尾にアンダースコアを付ける（trailing underscore）方法が推奨される。",
+  "explanation": "末尾アンダースコアで回避。",
+  "rationales": [
+   "正解。trailing underscore（class_）で予約語衝突を避ける。",
+   "不正解。先頭 __ は名前マングリングが起き意図が変わる。",
+   "不正解。全て大文字だと定数の意味になる。",
+   "不正解。数字付けは綴り変更で可読性が落ちる。"
+  ],
   "reference": "PEP 8 --- 命名のヒント"
  },
  {
@@ -271,17 +355,273 @@
   "topic": "PEP8",
   "difficulty": 3,
   "type": "single",
-  "question": "PEP 8 における、トップレベルの関数定義やクラス定義の前後に入れる空行の数はどれか。",
+  "question": "PEP 8 で、トップレベルの関数・クラス定義の前後に入れる空行数はどれか。",
   "choices": [
    "2行",
    "1行",
    "3行",
-   "0行（空けない）"
+   "0行"
   ],
   "answer": [
    0
   ],
-  "explanation": "トップレベルの関数・クラス定義は前後を2行空ける。クラス内のメソッド定義は1行空ける。",
+  "explanation": "トップレベルは2行、メソッドは1行。",
+  "rationales": [
+   "正解。トップレベル定義は前後2行空ける。",
+   "不正解。1行はクラス内メソッド間の空行数。",
+   "不正解。3行は多すぎて推奨されない。",
+   "不正解。0行では区切りが不明瞭で非推奨。"
+  ],
   "reference": "PEP 8 --- 空行"
+ },
+ {
+  "id": "ch02-016",
+  "chapter": 2,
+  "topic": "PEP8",
+  "difficulty": 2,
+  "type": "single",
+  "question": "PEP 8 における演算子と改行の関係について正しいものはどれか。",
+  "choices": [
+   "長い式を折り返すとき二項演算子の前で改行するのが推奨",
+   "演算子の後で改行しなければならない",
+   "改行は禁止されている",
+   "バックスラッシュでの行継続が常に推奨される"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "演算子の前で改行が読みやすい。",
+  "rationales": [
+   "正解。演算子の前で改行する方が可読性が高いと推奨される。",
+   "不正解。後で改行する旧来式より前で改行が推奨に変わった。",
+   "不正解。適切な折り返しは認められている。",
+   "不正解。括弧での暗黙の継続が推奨で、\\ は最小限に。"
+  ],
+  "reference": "PEP 8 --- 行の継続"
+ },
+ {
+  "id": "ch02-017",
+  "chapter": 2,
+  "topic": "PEP8",
+  "difficulty": 2,
+  "type": "single",
+  "question": "PEP 8 が推奨する文字列のクォートに関する説明として正しいものはどれか。",
+  "choices": [
+   "シングルとダブルのどちらでもよいが一貫させる",
+   "必ずシングルクォートを使う",
+   "必ずダブルクォートを使う",
+   "クォートは使ってはいけない"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "一貫性が重要で種類自体は問わない。",
+  "rationales": [
+   "正解。PEP 8 はどちらでもよいとし、一貫性を重視する。",
+   "不正解。シングル固定とは定めていない。",
+   "不正解。ダブル固定とは定めていない。",
+   "不正解。文字列にクォートは必須。"
+  ],
+  "reference": "PEP 8 --- 文字列クォート"
+ },
+ {
+  "id": "ch02-018",
+  "chapter": 2,
+  "topic": "PEP8",
+  "difficulty": 2,
+  "type": "single",
+  "question": "末尾の不要な空白（trailing whitespace）について PEP 8 の立場はどれか。",
+  "choices": [
+   "取り除くべき",
+   "残すべき",
+   "推奨される",
+   "必須である"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "行末の空白は除去する。",
+  "rationales": [
+   "正解。行末の余分な空白は削除すべきとされる。",
+   "不正解。残すのは非推奨。",
+   "不正解。推奨されない。",
+   "不正解。必須どころか除去対象。"
+  ],
+  "reference": "PEP 8 --- 空白"
+ },
+ {
+  "id": "ch02-019",
+  "chapter": 2,
+  "topic": "命名規約",
+  "difficulty": 2,
+  "type": "single",
+  "question": "モジュール名（ファイル名）の PEP 8 推奨スタイルはどれか。",
+  "choices": [
+   "短い全小文字（必要ならアンダースコア）",
+   "CapWords",
+   "camelCase",
+   "全て大文字"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "モジュール名は短い小文字。",
+  "rationales": [
+   "正解。短く全小文字、必要に応じてアンダースコアが推奨。",
+   "不正解。CapWords はクラス向け。",
+   "不正解。camelCase は非推奨。",
+   "不正解。全大文字は定数向けでモジュール名ではない。"
+  ],
+  "reference": "PEP 8 --- モジュール名"
+ },
+ {
+  "id": "ch02-020",
+  "chapter": 2,
+  "topic": "tabs",
+  "difficulty": 2,
+  "type": "single",
+  "question": "Python 3 でインデントにタブとスペースを混在させた場合の挙動はどれか。",
+  "choices": [
+   "TabError などの構文エラーになることがある",
+   "自動で整形される",
+   "警告のみで実行される",
+   "高速化される"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "混在は原則エラー。",
+  "rationales": [
+   "正解。Python3 は混在を許さず TabError になることがある。",
+   "不正解。自動整形はされない。",
+   "不正解。単なる警告では済まずエラーになりうる。",
+   "不正解。高速化とは無関係。"
+  ],
+  "reference": "インデントの一貫性"
+ },
+ {
+  "id": "ch02-021",
+  "chapter": 2,
+  "topic": "可読性",
+  "difficulty": 2,
+  "type": "single",
+  "question": "PEP 8 の根底にある考え方として最も適切なものはどれか。",
+  "choices": [
+   "コードは書く回数より読まれる回数が多いので可読性を重視する",
+   "実行速度を最優先する",
+   "行数を最小化することが最重要",
+   "コメントは一切書かない"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "可読性重視が PEP 8 の理念。",
+  "rationales": [
+   "正解。『読みやすさが重要』という理念に基づく。",
+   "不正解。PEP 8 は速度最優先の規約ではない。",
+   "不正解。行数最小化が目的ではない。",
+   "不正解。適切なコメントはむしろ推奨される。"
+  ],
+  "reference": "PEP 8 --- 理念"
+ },
+ {
+  "id": "ch02-022",
+  "chapter": 2,
+  "topic": "一貫性",
+  "difficulty": 3,
+  "type": "single",
+  "question": "PEP 8 が「一貫性」について述べている内容として最も適切なものはどれか。",
+  "choices": [
+   "プロジェクト内の一貫性が最優先で、規約を破るべき場合もある",
+   "いかなる場合も規約を例外なく守る",
+   "個人の好みを各ファイルで変えてよい",
+   "一貫性は不要"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "場面により規約より一貫性・可読性を優先。",
+  "rationales": [
+   "正解。『愚かな一貫性は…』の精神で、可読性のため規約を破る判断もありうる。",
+   "不正解。例外なしではなく、読みやすさを優先する余地がある。",
+   "不正解。ファイルごとに好みを変えると一貫性が損なわれる。",
+   "不正解。一貫性は重要とされている。"
+  ],
+  "reference": "PEP 8 --- 一貫性"
+ },
+ {
+  "id": "ch02-023",
+  "chapter": 2,
+  "topic": "black",
+  "difficulty": 2,
+  "type": "single",
+  "question": "コードを PEP 8 に沿って自動整形する代表的なフォーマッタはどれか（参考）。",
+  "choices": [
+   "black / autopep8",
+   "pytest",
+   "mypy",
+   "pip"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "black/autopep8 が自動整形。",
+  "rationales": [
+   "正解。black や autopep8 が自動整形ツール。サードパーティ製である点に注意。",
+   "不正解。pytest はテスト実行。",
+   "不正解。mypy は型チェッカー。",
+   "不正解。pip はパッケージ管理。"
+  ],
+  "reference": "自動整形ツール（参考）"
+ },
+ {
+  "id": "ch02-024",
+  "chapter": 2,
+  "topic": "命名規約",
+  "difficulty": 2,
+  "type": "single",
+  "question": "1文字変数名として PEP 8 が避けるよう勧めているものはどれか。",
+  "choices": [
+   "l, O, I（紛らわしい1文字）",
+   "x, y, z",
+   "i, j（ループ変数）",
+   "全ての1文字"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "l/O/I は数字と紛らわしい。",
+  "rationales": [
+   "正解。小文字l・大文字O・大文字Iは 1 や 0 と紛らわしく避ける。",
+   "不正解。x,y,z は座標等で使ってよい。",
+   "不正解。i,j はループ変数として一般的。",
+   "不正解。全ての1文字が禁止なのではなく紛らわしいものを避ける。"
+  ],
+  "reference": "PEP 8 --- 命名のヒント"
+ },
+ {
+  "id": "ch02-025",
+  "chapter": 2,
+  "topic": "PEP",
+  "difficulty": 1,
+  "type": "single",
+  "question": "PEP の正式名称として正しいものはどれか。",
+  "choices": [
+   "Python Enhancement Proposal",
+   "Python Example Program",
+   "Public Editing Process",
+   "Python Easy Programming"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "PEP=Python Enhancement Proposal。",
+  "rationales": [
+   "正解。Python の改善提案文書 Python Enhancement Proposal の略。",
+   "不正解。Example Program ではない。",
+   "不正解。Editing Process ではない。",
+   "不正解。Easy Programming ではない。"
+  ],
+  "reference": "PEP とは"
  }
 ]

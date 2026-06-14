@@ -5,7 +5,7 @@
   "topic": "仮想環境",
   "difficulty": 1,
   "type": "single",
-  "question": "標準ライブラリだけを使い、プロジェクト専用の仮想環境を作成するコマンドとして正しいものはどれか。",
+  "question": "標準ライブラリだけを使い、プロジェクト専用の仮想環境を作成するコマンドはどれか。",
   "choices": [
    "python -m venv .venv",
    "python -m virtualenv .venv",
@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "仮想環境は標準ライブラリの venv モジュールで作成する。`python -m venv <dir>` が正しい。virtualenv はサードパーティ製で標準ではない。",
+  "explanation": "仮想環境は標準ライブラリ venv で作る。`python -m venv <dir>` が正しい。",
+  "rationales": [
+   "正解。venv モジュールを -m で実行する正式な作成方法。",
+   "不正解。virtualenv はサードパーティ製で標準ではなく、未インストールだと失敗する。",
+   "不正解。venv はインストール対象ではなく標準同梱。pip install の対象ではない。",
+   "不正解。pip に venv サブコマンドは存在しない。"
+  ],
   "reference": "venv --- 仮想環境の作成"
  },
  {
@@ -24,7 +30,7 @@
   "topic": "pip",
   "difficulty": 1,
   "type": "single",
-  "question": "インストール済みパッケージの一覧を、requirements.txt 形式で出力するコマンドはどれか。",
+  "question": "インストール済みパッケージを requirements.txt 形式で出力するコマンドはどれか。",
   "choices": [
    "pip freeze",
    "pip list --all",
@@ -34,7 +40,13 @@
   "answer": [
    0
   ],
-  "explanation": "`pip freeze` は `名前==バージョン` の形式で一覧を出力し、requirements.txt の生成に使う。`pip list` は表形式で freeze 形式ではない。",
+  "explanation": "`pip freeze` は `名前==バージョン` 形式で出力する。",
+  "rationales": [
+   "正解。requirements.txt にそのまま使える形式で出力する。",
+   "不正解。pip list は表形式での一覧であり freeze 形式ではない。--all も存在しない。",
+   "不正解。pip show は個別パッケージの詳細表示で一覧用途ではない。",
+   "不正解。pip dump というコマンドは存在しない。"
+  ],
   "reference": "pip freeze"
  },
  {
@@ -53,8 +65,14 @@
   "answer": [
    0
   ],
-  "explanation": "`-m` は指定したモジュールを sys.path から探して __main__ として実行する。`-c` は文字列のコードを実行するオプション。",
-  "reference": "コマンドラインと環境 --- -m"
+  "explanation": "`-m` は指定モジュールを sys.path から探し __main__ として実行する。",
+  "rationales": [
+   "正解。-m はモジュールをスクリプトとして実行する正しいオプション。",
+   "不正解。-c は『文字列のコード』を実行するオプションでモジュール名用ではない。",
+   "不正解。-x は先頭行をスキップするオプションで実行用途ではない。",
+   "不正解。--run というオプションは存在しない。"
+  ],
+  "reference": "コマンドライン --- -m"
  },
  {
   "id": "ch01-004",
@@ -62,7 +80,7 @@
   "topic": "インタプリタ",
   "difficulty": 1,
   "type": "single",
-  "question": "Python本体のバージョンを表示するコマンドとして正しいものを選べ。",
+  "question": "Python本体のバージョンを表示するコマンドはどれか。",
   "choices": [
    "python --version",
    "python --ver",
@@ -73,6 +91,12 @@
    0
   ],
   "explanation": "`python --version`（または `-V`）でバージョンを表示する。",
+  "rationales": [
+   "正解。--version / -V が正しい。",
+   "不正解。--ver という省略形は存在しない。",
+   "不正解。-version は1ハイフンで、このような長形式オプションは無効。",
+   "不正解。version はサブコマンドではなくスクリプト名として解釈される。"
+  ],
   "reference": "コマンドライン"
  },
  {
@@ -81,7 +105,7 @@
   "topic": "sys",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードを Python 3 で実行したときの出力として正しいものはどれか。",
+  "question": "次のコードを Python 3 で実行したときの出力はどれか。",
   "choices": [
    "3",
    "3.11",
@@ -91,7 +115,13 @@
   "answer": [
    0
   ],
-  "explanation": "sys.version_info はバージョン情報の名前付きタプルで、major 属性はメジャーバージョン番号（整数の3）を返す。",
+  "explanation": "sys.version_info.major はメジャーバージョン番号（整数3）。",
+  "rationales": [
+   "正解。major 属性はメジャーバージョンの整数 3。",
+   "不正解。'3.11' は full のバージョン文字列のイメージで major 単体ではない。",
+   "不正解。'python3' のような文字列は返らない。",
+   "不正解。version_info.major は有効な属性でエラーにならない。"
+  ],
   "code": "import sys\nprint(sys.version_info.major)",
   "reference": "sys.version_info"
  },
@@ -101,7 +131,7 @@
   "topic": "pip",
   "difficulty": 2,
   "type": "single",
-  "question": "特定バージョン 2.28.1 のパッケージ requests を pip でインストールするコマンドはどれか。",
+  "question": "特定バージョン 2.28.1 の requests を pip でインストールするコマンドはどれか。",
   "choices": [
    "pip install requests==2.28.1",
    "pip install requests:2.28.1",
@@ -111,7 +141,13 @@
   "answer": [
    0
   ],
-  "explanation": "バージョン指定は `パッケージ名==バージョン` の形式で行う。",
+  "explanation": "バージョン指定は `パッケージ名==バージョン`。",
+  "rationales": [
+   "正解。== でバージョンを固定するのが正しい記法。",
+   "不正解。コロン区切りはバージョン指定の構文ではない。",
+   "不正解。ハイフンだと別名のパッケージ名と解釈される。",
+   "不正解。@ は通常 URL/VCS 指定に使う記法でバージョン番号には使わない。"
+  ],
   "reference": "pip --- バージョン指定"
  },
  {
@@ -130,7 +166,13 @@
   "answer": [
    0
   ],
-  "explanation": "activate するとシェルの PATH が書き換わり、python・pip がその仮想環境のものを指すようになる。作成は venv、活性化は activate と役割が分かれている。",
+  "explanation": "activate でシェルの PATH が書き換わる。",
+  "rationales": [
+   "正解。PATH を一時的に書き換え、python/pip が環境内のものになる。",
+   "不正解。作成は venv コマンドの役割で、activate は作成しない。",
+   "不正解。activate は削除を行わない。",
+   "不正解。activate は本体のアップグレードとは無関係。"
+  ],
   "reference": "venv --- activate"
  },
  {
@@ -139,7 +181,7 @@
   "topic": "対話モード",
   "difficulty": 1,
   "type": "single",
-  "question": "Python の対話モード（REPL）で、直前の式の評価結果を参照する変数はどれか。",
+  "question": "対話モード（REPL）で、直前の式の評価結果を参照する変数はどれか。",
   "choices": [
    "_",
    "$",
@@ -149,7 +191,138 @@
   "answer": [
    0
   ],
-  "explanation": "対話モードでは直前に評価した式の結果がアンダースコア `_` に格納される。",
+  "explanation": "直前の評価結果はアンダースコア `_` に入る。",
+  "rationales": [
+   "正解。対話モードでは直前の結果が _ に格納される。",
+   "不正解。$ は Python の変数ではない（シェルの記法）。",
+   "不正解。ans という自動変数は存在しない。",
+   "不正解。it という自動変数は存在しない。"
+  ],
   "reference": "対話モード --- _"
+ },
+ {
+  "id": "ch01-009",
+  "chapter": 1,
+  "topic": "実行モデル",
+  "difficulty": 2,
+  "type": "single",
+  "question": "Python の実行方式の説明として最も適切なものはどれか。",
+  "choices": [
+   "ソースをバイトコードにコンパイルし仮想マシンで実行するインタプリタ型",
+   "実行前に必ず機械語の実行ファイルを生成するコンパイル型のみ",
+   "ブラウザ上でしか動かない",
+   "型を宣言しないと実行できない静的型付け言語"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "CPython はバイトコードに変換し PVM で実行する。",
+  "rationales": [
+   "正解。.pyc のバイトコードに変換して仮想マシンで実行する。",
+   "不正解。事前に機械語実行ファイルを必須とするわけではない。",
+   "不正解。ブラウザ専用ではなく多様な環境で動作する。",
+   "不正解。Python は動的型付けで、型宣言は必須ではない。"
+  ],
+  "reference": "Python の実行モデル"
+ },
+ {
+  "id": "ch01-010",
+  "chapter": 1,
+  "topic": "pip",
+  "difficulty": 2,
+  "type": "single",
+  "question": "インストール済みパッケージを最新へ更新する pip のオプションはどれか。",
+  "choices": [
+   "pip install --upgrade パッケージ名",
+   "pip update パッケージ名",
+   "pip upgrade パッケージ名",
+   "pip install --new パッケージ名"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`--upgrade`（-U）で最新版へ更新する。",
+  "rationales": [
+   "正解。install --upgrade（または -U）が更新の正しい方法。",
+   "不正解。pip update というサブコマンドは存在しない。",
+   "不正解。pip upgrade というサブコマンドは存在しない。",
+   "不正解。--new というオプションは存在しない。"
+  ],
+  "reference": "pip --- アップグレード"
+ },
+ {
+  "id": "ch01-011",
+  "chapter": 1,
+  "topic": "site-packages",
+  "difficulty": 2,
+  "type": "single",
+  "question": "pip でインストールしたサードパーティ製パッケージが配置される場所を一般に何と呼ぶか。",
+  "choices": [
+   "site-packages",
+   "dist-packages のみ",
+   "標準ライブラリ",
+   "__pycache__"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "サードパーティは site-packages に置かれる。",
+  "rationales": [
+   "正解。pip 導入のパッケージは site-packages に配置される。",
+   "不正解。dist-packages は一部ディストリ固有で、一般名は site-packages。",
+   "不正解。標準ライブラリは Python 同梱で pip 導入物とは別。",
+   "不正解。__pycache__ はバイトコードのキャッシュ置き場で配布先ではない。"
+  ],
+  "reference": "site-packages"
+ },
+ {
+  "id": "ch01-012",
+  "chapter": 1,
+  "topic": "requirements",
+  "difficulty": 2,
+  "type": "single",
+  "question": "requirements.txt の用途として正しいものはどれか。",
+  "choices": [
+   "依存パッケージとバージョンを記録し pip install -r で再現する",
+   "Python本体をインストールする",
+   "テストを実行する設定ファイル",
+   "仮想環境を作成する"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "依存関係を記録し再現インストールに使う。",
+  "rationales": [
+   "正解。`pip install -r requirements.txt` で同じ依存を再現できる。",
+   "不正解。本体のインストール用ではない。",
+   "不正解。テスト設定ファイルではない。",
+   "不正解。仮想環境の作成は venv の役割。"
+  ],
+  "reference": "requirements.txt"
+ },
+ {
+  "id": "ch01-013",
+  "chapter": 1,
+  "topic": "python -m",
+  "difficulty": 2,
+  "type": "single",
+  "question": "`python -m http.server` を実行したときの動作として正しいものはどれか。",
+  "choices": [
+   "簡易HTTPサーバが起動しカレントディレクトリを配信する",
+   "HTMLファイルを生成する",
+   "HTTPクライアントとしてリクエストを送る",
+   "エラーになる（標準にそのようなモジュールはない）"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "http.server は標準ライブラリの簡易サーバ。",
+  "rationales": [
+   "正解。カレントディレクトリを配信する簡易サーバが起動する。",
+   "不正解。ファイル生成は行わない。",
+   "不正解。クライアントではなくサーバとして動く。",
+   "不正解。http.server は標準ライブラリに存在する。"
+  ],
+  "reference": "http.server"
  }
 ]

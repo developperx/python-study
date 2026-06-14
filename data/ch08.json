@@ -15,8 +15,14 @@
   "answer": [
    0
   ],
-  "explanation": "datetime モジュールが date・time・datetime・timedelta などのクラスを提供する。",
-  "reference": "datetime モジュール"
+  "explanation": "datetime モジュール。",
+  "rationales": [
+   "正解。datetime が date/time/datetime/timedelta を提供。",
+   "不正解。date は datetime 内のクラス名。",
+   "不正解。calendar はカレンダー用途。",
+   "不正解。chrono は Python に無い。"
+  ],
+  "reference": "datetime"
  },
  {
   "id": "ch08-002",
@@ -24,7 +30,7 @@
   "topic": "date.today",
   "difficulty": 1,
   "type": "single",
-  "question": "今日の日付（date オブジェクト）を取得するメソッドはどれか。",
+  "question": "今日の日付（date）を取得するメソッドはどれか。",
   "choices": [
    "date.today()",
    "date.now()",
@@ -34,7 +40,13 @@
   "answer": [
    0
   ],
-  "explanation": "date.today() が今日の日付を返す。現在日時（datetime）は datetime.now()。",
+  "explanation": "date.today()。",
+  "rationales": [
+   "正解。date.today() が今日の日付。",
+   "不正解。now は datetime 用。",
+   "不正解。datetime.date() は引数が要る。",
+   "不正解。current は無い。"
+  ],
   "reference": "date.today"
  },
  {
@@ -53,7 +65,13 @@
   "answer": [
    0
   ],
-  "explanation": "datetime.now() が現在の日付＋時刻の datetime オブジェクトを返す。",
+  "explanation": "datetime.now()。",
+  "rationales": [
+   "正解。datetime.now() が現在日時。",
+   "不正解。today_time は無い。",
+   "不正解。time.now は無い。",
+   "不正解。date に now は無い。"
+  ],
   "reference": "datetime.now"
  },
  {
@@ -62,7 +80,7 @@
   "topic": "timedelta",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "2024-01-08",
    "2024-01-01",
@@ -72,9 +90,15 @@
   "answer": [
    0
   ],
-  "explanation": "timedelta(days=7) を足すと7日後になる。2024-01-01 + 7日 = 2024-01-08。",
+  "explanation": "timedelta を加算。",
+  "rationales": [
+   "正解。7日後で 2024-01-08。",
+   "不正解。加算されている。",
+   "不正解。8日目になる。",
+   "不正解。正常動作。"
+  ],
   "code": "from datetime import date, timedelta\nprint(date(2024, 1, 1) + timedelta(days=7))",
-  "reference": "timedelta による加算"
+  "reference": "timedelta"
  },
  {
   "id": "ch08-005",
@@ -92,9 +116,15 @@
   "answer": [
    0
   ],
-  "explanation": "date 同士の引き算は経過日数を表す timedelta を返す。",
+  "explanation": "差は timedelta。",
+  "rationales": [
+   "正解。差は経過時間を表す timedelta。",
+   "不正解。date ではない。",
+   "不正解。int ではなく timedelta（.days で int 取得）。",
+   "不正解。datetime ではない。"
+  ],
   "code": "from datetime import date\nprint(type(date(2024,1,8) - date(2024,1,1)).__name__)",
-  "reference": "date の差 --- timedelta"
+  "reference": "date の差"
  },
  {
   "id": "ch08-006",
@@ -102,7 +132,7 @@
   "topic": "timedelta",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "7",
    "1",
@@ -112,7 +142,13 @@
   "answer": [
    0
   ],
-  "explanation": "date の差は timedelta になり、その days 属性で日数を取れる。差は7日。",
+  "explanation": ".days で日数。",
+  "rationales": [
+   "正解。差は7日。",
+   "不正解。1 ではない。",
+   "不正解。数値だけが出る。",
+   "不正解。時間ではなく日数。"
+  ],
   "code": "from datetime import date\nd = date(2024, 1, 8) - date(2024, 1, 1)\nprint(d.days)",
   "reference": "timedelta.days"
  },
@@ -132,7 +168,13 @@
   "answer": [
    0
   ],
-  "explanation": "strftime（string from time）は datetime→文字列。strptime（string parse time）は文字列→datetime。",
+  "explanation": "strftime は time→string。",
+  "rationales": [
+   "正解。strftime が datetime→文字列。",
+   "不正解。strptime は文字列→datetime。",
+   "不正解。format_time は無い。",
+   "不正解。tostr は無い。"
+  ],
   "reference": "strftime"
  },
  {
@@ -141,7 +183,7 @@
   "topic": "strftime",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "2024-03-05",
    "03-05-2024",
@@ -151,9 +193,15 @@
   "answer": [
    0
   ],
-  "explanation": "%Y=4桁年, %m=2桁月, %d=2桁日。書式 '%Y-%m-%d' で '2024-03-05'。",
+  "explanation": "%Y-%m-%d 書式。",
+  "rationales": [
+   "正解。年-月-日で 2024-03-05。",
+   "不正解。順序が違う。",
+   "不正解。区切りはハイフン指定。",
+   "不正解。%Y は4桁。"
+  ],
   "code": "from datetime import date\nprint(date(2024, 3, 5).strftime('%Y-%m-%d'))",
-  "reference": "strftime --- 書式コード"
+  "reference": "strftime --- 書式"
  },
  {
   "id": "ch08-009",
@@ -161,7 +209,7 @@
   "topic": "strptime",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "2024-03-05",
    "03-05-2024",
@@ -171,7 +219,13 @@
   "answer": [
    0
   ],
-  "explanation": "strptime で文字列をパースし datetime を得る。date() で日付部分にし print すると '2024-03-05'。",
+  "explanation": "strptime で解析。",
+  "rationales": [
+   "正解。解析後 date() で 2024-03-05。",
+   "不正解。順序は ISO 形式で出る。",
+   "不正解。repr ではない。",
+   "不正解。書式が合えば成功。"
+  ],
   "code": "from datetime import datetime\nd = datetime.strptime('2024/03/05', '%Y/%m/%d')\nprint(d.date())",
   "reference": "strptime"
  },
@@ -181,7 +235,7 @@
   "topic": "属性",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "2024",
    "3",
@@ -191,7 +245,13 @@
   "answer": [
    0
   ],
-  "explanation": "date オブジェクトの year 属性で年を取得できる。",
+  "explanation": ".year で年。",
+  "rationales": [
+   "正解。year 属性で 2024。",
+   "不正解。month は 3。",
+   "不正解。day は 5。",
+   "不正解。タプルではない。"
+  ],
   "code": "from datetime import date\nprint(date(2024, 3, 5).year)",
   "reference": "date.year"
  },
@@ -201,7 +261,7 @@
   "topic": "isoformat",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "2024-03-05",
    "2024/03/05",
@@ -211,7 +271,13 @@
   "answer": [
    0
   ],
-  "explanation": "date.isoformat() は ISO 8601 形式 'YYYY-MM-DD' の文字列を返す。",
+  "explanation": "ISO 8601 形式。",
+  "rationales": [
+   "正解。YYYY-MM-DD で 2024-03-05。",
+   "不正解。スラッシュではない。",
+   "不正解。区切りが入る。",
+   "不正解。英語表記ではない。"
+  ],
   "code": "from datetime import date\nprint(date(2024, 3, 5).isoformat())",
   "reference": "isoformat"
  },
@@ -221,7 +287,7 @@
   "topic": "weekday",
   "difficulty": 3,
   "type": "single",
-  "question": "date.weekday() が月曜日に対して返す値はどれか。",
+  "question": "date.weekday() が月曜日に返す値はどれか。",
   "choices": [
    "0",
    "1",
@@ -231,7 +297,13 @@
   "answer": [
    0
   ],
-  "explanation": "weekday() は月曜=0 〜 日曜=6。isoweekday() は月曜=1〜日曜=7。",
+  "explanation": "月曜=0。",
+  "rationales": [
+   "正解。weekday() は月曜0〜日曜6。",
+   "不正解。isoweekday() なら月曜1。",
+   "不正解。7 は無い（日曜は6）。",
+   "不正解。数値を返す。"
+  ],
   "reference": "weekday"
  },
  {
@@ -240,7 +312,7 @@
   "topic": "time",
   "difficulty": 2,
   "type": "single",
-  "question": "プログラムの経過時間を測るのに適した、time モジュールの関数はどれか。",
+  "question": "経過時間の計測に適した time モジュールの関数はどれか。",
   "choices": [
    "time.time()",
    "time.date()",
@@ -250,7 +322,13 @@
   "answer": [
    0
   ],
-  "explanation": "time.time() はエポックからの秒数（float）を返す。差を取って経過時間を測れる。",
+  "explanation": "time.time() はエポック秒。",
+  "rationales": [
+   "正解。エポックからの秒数を返し差で計測できる。",
+   "不正解。time.date は無い。",
+   "不正解。time.now は無い。",
+   "不正解。clock_date は無い。"
+  ],
   "reference": "time.time"
  },
  {
@@ -269,7 +347,13 @@
   "answer": [
    0
   ],
-  "explanation": "tzinfo を持たない datetime は naive、持つものは aware と呼ばれる。",
+  "explanation": "tzinfo 無しは naive。",
+  "rationales": [
+   "正解。tzinfo が無い datetime は naive。",
+   "不正解。tzinfo を持つのは aware。",
+   "不正解。utc は具体的なゾーン。",
+   "不正解。local は概念で用語ではない。"
+  ],
   "reference": "naive / aware"
  },
  {
@@ -278,7 +362,7 @@
   "topic": "timezone",
   "difficulty": 3,
   "type": "single",
-  "question": "UTC を表す固定タイムゾーンとして使える定数はどれか。",
+  "question": "UTC を表す固定タイムゾーンの定数はどれか。",
   "choices": [
    "timezone.utc",
    "timezone.UTC",
@@ -288,7 +372,13 @@
   "answer": [
    0
   ],
-  "explanation": "datetime.timezone.utc が UTC を表す。aware な datetime を作る際に tzinfo として渡す。",
+  "explanation": "datetime.timezone.utc。",
+  "rationales": [
+   "正解。timezone.utc が UTC を表す。",
+   "不正解。UTC 大文字属性は無い。",
+   "不正解。datetime.utc は無い。",
+   "不正解。tz.UTC は標準に無い。"
+  ],
   "reference": "timezone.utc"
  },
  {
@@ -297,7 +387,7 @@
   "topic": "calendar",
   "difficulty": 2,
   "type": "single",
-  "question": "うるう年かどうかを判定できる標準ライブラリの関数はどれか。",
+  "question": "うるう年判定ができる標準ライブラリの関数はどれか。",
   "choices": [
    "calendar.isleap(year)",
    "datetime.isleap(year)",
@@ -307,8 +397,244 @@
   "answer": [
    0
   ],
-  "explanation": "calendar.isleap(year) がうるう年判定を行う。",
+  "explanation": "calendar.isleap。",
+  "rationales": [
+   "正解。calendar.isleap がうるう年を判定。",
+   "不正解。datetime に isleap は無い。",
+   "不正解。time に isleap は無い。",
+   "不正解。date.leap は無い。"
+  ],
   "code": "import calendar\nprint(calendar.isleap(2024))",
   "reference": "calendar.isleap"
+ },
+ {
+  "id": "ch08-017",
+  "chapter": 8,
+  "topic": "now",
+  "difficulty": 2,
+  "type": "single",
+  "question": "現在の UTC 時刻を aware な datetime で得る方法として適切なものはどれか。",
+  "choices": [
+   "datetime.now(timezone.utc)",
+   "datetime.utcnow()（aware）",
+   "datetime.now() は UTC",
+   "date.today()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "now(tz) で aware に。",
+  "rationales": [
+   "正解。now(timezone.utc) は tzinfo 付きの aware を返す。",
+   "不正解。utcnow() は naive を返すため非推奨。",
+   "不正解。now() はローカルかつ naive。",
+   "不正解。today() は日付のみ。"
+  ],
+  "reference": "aware な現在時刻"
+ },
+ {
+  "id": "ch08-018",
+  "chapter": 8,
+  "topic": "比較",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "True",
+   "False",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "date は比較可能。",
+  "rationales": [
+   "正解。前の日付が小さく True。",
+   "不正解。False ではない。",
+   "不正解。比較できる。",
+   "不正解。bool を返す。"
+  ],
+  "code": "from datetime import date\nprint(date(2024, 1, 1) < date(2024, 12, 31))",
+  "reference": "date の比較"
+ },
+ {
+  "id": "ch08-019",
+  "chapter": 8,
+  "topic": "timedelta",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "3600",
+   "60",
+   "1",
+   "3600.0"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "total_seconds で秒数。",
+  "rationales": [
+   "正解。1時間=3600秒。",
+   "不正解。分ではない。",
+   "不正解。時間数ではなく秒。",
+   "不正解。int 化したので整数表示。"
+  ],
+  "code": "from datetime import timedelta\nprint(int(timedelta(hours=1).total_seconds()))",
+  "reference": "timedelta.total_seconds"
+ },
+ {
+  "id": "ch08-020",
+  "chapter": 8,
+  "topic": "属性",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "30",
+   "12",
+   "2024",
+   "(2024, 12, 30)"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": ".day で日。",
+  "rationales": [
+   "正解。day 属性で 30。",
+   "不正解。month は 12。",
+   "不正解。year は 2024。",
+   "不正解。タプルではない。"
+  ],
+  "code": "from datetime import date\nprint(date(2024, 12, 30).day)",
+  "reference": "date.day"
+ },
+ {
+  "id": "ch08-021",
+  "chapter": 8,
+  "topic": "replace",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "2025-03-05",
+   "2024-03-05",
+   "エラー",
+   "2025-01-01"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "replace で一部置換。",
+  "rationales": [
+   "正解。年だけ 2025 に置換。",
+   "不正解。年が変わる。",
+   "不正解。replace は有効。",
+   "不正解。月日は保持される。"
+  ],
+  "code": "from datetime import date\nprint(date(2024, 3, 5).replace(year=2025))",
+  "reference": "date.replace"
+ },
+ {
+  "id": "ch08-022",
+  "chapter": 8,
+  "topic": "fromisoformat",
+  "difficulty": 3,
+  "type": "single",
+  "question": "ISO形式の文字列から date を生成するメソッドはどれか。",
+  "choices": [
+   "date.fromisoformat",
+   "date.parse",
+   "date.fromstring",
+   "date.strptime のみ"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "fromisoformat が逆変換。",
+  "rationales": [
+   "正解。fromisoformat('2024-03-05') で date 生成。",
+   "不正解。parse は標準に無い。",
+   "不正解。fromstring は無い。",
+   "不正解。strptime も使えるが専用は fromisoformat。"
+  ],
+  "reference": "date.fromisoformat"
+ },
+ {
+  "id": "ch08-023",
+  "chapter": 8,
+  "topic": "timedelta",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "2024-01-01",
+   "2024-01-11",
+   "2023-12-22",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "timedelta を減算。",
+  "rationales": [
+   "正解。10日前で 2024-01-01。",
+   "不正解。加算ではなく減算。",
+   "不正解。前月にはならない。",
+   "不正解。正常動作。"
+  ],
+  "code": "from datetime import date, timedelta\nprint(date(2024, 1, 11) - timedelta(days=10))",
+  "reference": "timedelta の減算"
+ },
+ {
+  "id": "ch08-024",
+  "chapter": 8,
+  "topic": "monotonic",
+  "difficulty": 3,
+  "type": "single",
+  "question": "経過時間計測でシステム時刻の変更に影響されない time の関数はどれか。",
+  "choices": [
+   "time.monotonic()",
+   "time.time()",
+   "time.localtime()",
+   "time.gmtime()"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "monotonic は単調増加。",
+  "rationales": [
+   "正解。monotonic は逆行しない計測用クロック。",
+   "不正解。time() はシステム時刻変更の影響を受けうる。",
+   "不正解。localtime は時刻構造体。",
+   "不正解。gmtime は UTC 構造体。"
+  ],
+  "reference": "time.monotonic"
+ },
+ {
+  "id": "ch08-025",
+  "chapter": 8,
+  "topic": "strftime",
+  "difficulty": 3,
+  "type": "single",
+  "question": "strftime の書式コードで「24時間制の時」を表すものはどれか。",
+  "choices": [
+   "%H",
+   "%h",
+   "%I",
+   "%T"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "%H は24時間制の時。",
+  "rationales": [
+   "正解。%H は 00-23 の時。",
+   "不正解。%h は月名の別表記で時ではない。",
+   "不正解。%I は12時間制の時。",
+   "不正解。%T は一部で時:分:秒だが時単体ではない。"
+  ],
+  "reference": "strftime --- %H"
  }
 ]

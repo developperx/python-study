@@ -5,7 +5,7 @@
   "topic": "str method",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "ABC",
    "abc",
@@ -15,7 +15,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.upper() は全ての文字を大文字にする。",
+  "explanation": "upper は大文字化。",
+  "rationales": [
+   "正解。全て大文字 'ABC'。",
+   "不正解。元のままではない。",
+   "不正解。全て大文字化される。",
+   "不正解。正常動作。"
+  ],
   "code": "print('abc'.upper())",
   "reference": "str.upper"
  },
@@ -25,7 +31,7 @@
   "topic": "str method",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "hello",
    "HELLO",
@@ -35,7 +41,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.lower() は全て小文字にする。",
+  "explanation": "lower は小文字化。",
+  "rationales": [
+   "正解。全て小文字 'hello'。",
+   "不正解。元のままではない。",
+   "不正解。全て小文字になる。",
+   "不正解。正常動作。"
+  ],
   "code": "print('HELLO'.lower())",
   "reference": "str.lower"
  },
@@ -45,7 +57,7 @@
   "topic": "str method",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "abc",
    " abc ",
@@ -55,7 +67,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.strip() は前後の空白を除去する。",
+  "explanation": "strip は前後の空白除去。",
+  "rationales": [
+   "正解。前後の空白を除去して 'abc'。",
+   "不正解。空白は残らない。",
+   "不正解。両側除去される。",
+   "不正解。両側除去される。"
+  ],
   "code": "print('  abc  '.strip())",
   "reference": "str.strip"
  },
@@ -65,7 +83,7 @@
   "topic": "split",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "['a', 'b', 'c']",
    "['a,b,c']",
@@ -75,7 +93,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.split(',') は区切り文字でリストに分割する。",
+  "explanation": "split は区切りで分割。",
+  "rationales": [
+   "正解。カンマで3要素に分割。",
+   "不正解。分割される。",
+   "不正解。リストでありタプルではない。",
+   "不正解。リストを返す。"
+  ],
   "code": "print('a,b,c'.split(','))",
   "reference": "str.split"
  },
@@ -85,17 +109,23 @@
   "topic": "split",
   "difficulty": 2,
   "type": "single",
-  "question": "区切り文字を指定せず str.split() を呼んだときの挙動として正しいものはどれか。",
+  "question": "引数なし str.split() の挙動はどれか。",
   "choices": [
-   "連続する空白をまとめて区切り、空文字を含めない",
-   "1文字ずつ分割する",
-   "改行のみで分割する",
-   "エラーになる"
+   "連続空白をまとめ空文字を含めない",
+   "1文字ずつ分割",
+   "改行のみで分割",
+   "エラー"
   ],
   "answer": [
    0
   ],
-  "explanation": "引数なしの split() は任意個の空白（スペース・タブ・改行）を区切りとし、空要素を生成しない。",
+  "explanation": "空白区切りで空要素なし。",
+  "rationales": [
+   "正解。任意個の空白で分割し空要素を作らない。",
+   "不正解。文字単位ではない。",
+   "不正解。改行限定ではない。",
+   "不正解。正当な呼び出し。"
+  ],
   "reference": "str.split --- 引数なし"
  },
  {
@@ -104,7 +134,7 @@
   "topic": "join",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "a-b-c",
    "['a', 'b', 'c']",
@@ -114,7 +144,13 @@
   "answer": [
    0
   ],
-  "explanation": "'区切り'.join(リスト) は要素を区切り文字で連結する。",
+  "explanation": "join は区切りで連結。",
+  "rationales": [
+   "正解。'-' で連結し 'a-b-c'。",
+   "不正解。リストではなく文字列。",
+   "不正解。区切りが入る。",
+   "不正解。末尾に区切りは付かない。"
+  ],
   "code": "print('-'.join(['a', 'b', 'c']))",
   "reference": "str.join"
  },
@@ -124,17 +160,23 @@
   "topic": "join",
   "difficulty": 2,
   "type": "single",
-  "question": "リスト ['1', '2', '3'] を 'カンマ＋空白' で連結した文字列を作る正しい式はどれか。",
+  "question": "リストを ', ' で連結する正しい式はどれか。",
   "choices": [
-   "', '.join(['1', '2', '3'])",
-   "['1', '2', '3'].join(', ')",
-   "join(', ', ['1','2','3'])",
-   "', '.concat(['1','2','3'])"
+   "', '.join(['1', '2'])",
+   "['1', '2'].join(', ')",
+   "join(', ', ['1','2'])",
+   "', '.concat(['1','2'])"
   ],
   "answer": [
    0
   ],
-  "explanation": "join は区切り文字側のメソッド。`セパレータ.join(イテラブル)` の形。",
+  "explanation": "セパレータ.join(iterable)。",
+  "rationales": [
+   "正解。区切り側のメソッドとして呼ぶ。",
+   "不正解。リストに join メソッドは無い。",
+   "不正解。組み込み join 関数は無い。",
+   "不正解。concat メソッドは無い。"
+  ],
   "reference": "str.join"
  },
  {
@@ -143,7 +185,7 @@
   "topic": "replace",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "a-b-c",
    "abc",
@@ -153,7 +195,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.replace(old, new) は全ての出現を置換する。",
+  "explanation": "replace は全置換。",
+  "rationales": [
+   "正解。全ての _ を - に置換。",
+   "不正解。区切りは残る。",
+   "不正解。置換される。",
+   "不正解。正常動作。"
+  ],
   "code": "print('a_b_c'.replace('_', '-'))",
   "reference": "str.replace"
  },
@@ -163,7 +211,7 @@
   "topic": "find",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "2",
    "1",
@@ -173,7 +221,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.find(sub) は最初に見つかったインデックスを返す。'c' は 'abcd' のインデックス2。",
+  "explanation": "find は最初の位置。",
+  "rationales": [
+   "正解。'c' はインデックス2。",
+   "不正解。1 ではない。",
+   "不正解。見つかるので -1 ではない。",
+   "不正解。3 ではない。"
+  ],
   "code": "print('abcd'.find('c'))",
   "reference": "str.find"
  },
@@ -183,18 +237,24 @@
   "topic": "find",
   "difficulty": 2,
   "type": "single",
-  "question": "str.find と str.index の違いとして正しいものはどれか。",
+  "question": "str.find と str.index の違いはどれか。",
   "choices": [
-   "見つからないとき find は -1、index は ValueError を返す",
-   "両方とも -1 を返す",
-   "両方とも例外を出す",
-   "find は例外、index は -1 を返す"
+   "未発見時 find は -1、index は ValueError",
+   "両方 -1",
+   "両方例外",
+   "find が例外、index が -1"
   ],
   "answer": [
    0
   ],
-  "explanation": "find は未発見で -1、index は ValueError を送出する点が違う。",
-  "reference": "str.find / str.index"
+  "explanation": "find=-1 / index=例外。",
+  "rationales": [
+   "正解。find は -1、index は例外を出す。",
+   "不正解。index は -1 を返さない。",
+   "不正解。find は例外を出さない。",
+   "不正解。逆である。"
+  ],
+  "reference": "find / index"
  },
  {
   "id": "ch06-011",
@@ -202,7 +262,7 @@
   "topic": "startswith",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "True",
    "False",
@@ -212,7 +272,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.startswith(prefix) は接頭辞で始まるかを判定する。",
+  "explanation": "接頭辞判定。",
+  "rationales": [
+   "正解。'py' で始まるので True。",
+   "不正解。False ではない。",
+   "不正解。正常動作。",
+   "不正解。bool を返す。"
+  ],
   "code": "print('python'.startswith('py'))",
   "reference": "str.startswith"
  },
@@ -222,7 +288,7 @@
   "topic": "endswith",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "True",
    "False",
@@ -232,7 +298,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.endswith(suffix) は接尾辞で終わるかを判定する。'.txt' で終わるので True。",
+  "explanation": "接尾辞判定。",
+  "rationales": [
+   "正解。'.txt' で終わるので True。",
+   "不正解。False ではない。",
+   "不正解。正常動作。",
+   "不正解。bool を返す。"
+  ],
   "code": "print('data.txt'.endswith('.txt'))",
   "reference": "str.endswith"
  },
@@ -242,7 +314,7 @@
   "topic": "count",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "3",
    "2",
@@ -252,7 +324,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.count(sub) は重ならない出現回数を返す。'banana' に 'a' は3回。",
+  "explanation": "count は出現回数。",
+  "rationales": [
+   "正解。'a' は3回。",
+   "不正解。2 ではない。",
+   "不正解。1 ではない。",
+   "不正解。4 ではない。"
+  ],
   "code": "print('banana'.count('a'))",
   "reference": "str.count"
  },
@@ -262,7 +340,7 @@
   "topic": "format",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "name=Bob age=20",
    "name={} age={}",
@@ -272,7 +350,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.format() は {} を引数で順に置換する。",
+  "explanation": "format は {} を置換。",
+  "rationales": [
+   "正解。順に Bob, 20 が入る。",
+   "不正解。波括弧は置換される。",
+   "不正解。ラベルも残る。",
+   "不正解。正常動作。"
+  ],
   "code": "print('name={} age={}'.format('Bob', 20))",
   "reference": "str.format"
  },
@@ -282,7 +366,7 @@
   "topic": "format spec",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "003",
    "3",
@@ -292,9 +376,15 @@
   "answer": [
    0
   ],
-  "explanation": "書式指定 `:03d` は3桁・ゼロ埋め。3 は '003' になる。",
+  "explanation": ":03d はゼロ埋め3桁。",
+  "rationales": [
+   "正解。3桁ゼロ埋めで '003'。",
+   "不正解。幅指定がある。",
+   "不正解。右側ではなく左ゼロ埋め。",
+   "不正解。空白でなくゼロ埋め。"
+  ],
   "code": "print(f'{3:03d}')",
-  "reference": "書式指定ミニ言語 --- ゼロ埋め"
+  "reference": "書式 --- ゼロ埋め"
  },
  {
   "id": "ch06-016",
@@ -302,7 +392,7 @@
   "topic": "format spec",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "3.14",
    "3.141593",
@@ -312,9 +402,15 @@
   "answer": [
    0
   ],
-  "explanation": "`:.2f` は小数点以下2桁の固定小数表記。",
+  "explanation": ":.2f は小数2桁。",
+  "rationales": [
+   "正解。小数2桁に丸めて 3.14。",
+   "不正解。桁数が指定される。",
+   "不正解。2桁である。",
+   "不正解。2桁である。"
+  ],
   "code": "import math\nprint(f'{math.pi:.2f}')",
-  "reference": "書式指定 --- 浮動小数点"
+  "reference": "書式 --- 浮動小数"
  },
  {
   "id": "ch06-017",
@@ -322,7 +418,7 @@
   "topic": "format spec",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    ">>>>5",
    "5>>>>",
@@ -332,9 +428,15 @@
   "answer": [
    0
   ],
-  "explanation": "`:>5` は右寄せ幅5、埋め文字を '>' に指定。'>>>>5' になる。",
+  "explanation": ":>5 で右寄せ、埋め>。",
+  "rationales": [
+   "正解。右寄せ幅5、埋め > で '>>>>5'。",
+   "不正解。左寄せではない。",
+   "不正解。空白埋めではない。",
+   "不正解。埋め文字が > になる。"
+  ],
   "code": "print(f'{5:>>5}')",
-  "reference": "書式指定 --- 寄せと埋め文字"
+  "reference": "書式 --- 寄せ"
  },
  {
   "id": "ch06-018",
@@ -342,7 +444,7 @@
   "topic": "zfill",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "00042",
    "42000",
@@ -352,7 +454,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.zfill(width) は左側をゼロ埋めして指定幅にする。",
+  "explanation": "zfill は左ゼロ埋め。",
+  "rationales": [
+   "正解。5桁左ゼロ埋めで '00042'。",
+   "不正解。右ではなく左。",
+   "不正解。空白でなくゼロ。",
+   "不正解。幅5になる。"
+  ],
   "code": "print('42'.zfill(5))",
   "reference": "str.zfill"
  },
@@ -362,7 +470,7 @@
   "topic": "title",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "Hello World",
    "HELLO WORLD",
@@ -372,7 +480,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.title() は各単語の先頭を大文字にする。",
+  "explanation": "title は各単語先頭大文字。",
+  "rationales": [
+   "正解。各単語の先頭を大文字。",
+   "不正解。全大文字ではない。",
+   "不正解。先頭は大文字化される。",
+   "不正解。2語目も大文字化。"
+  ],
   "code": "print('hello world'.title())",
   "reference": "str.title"
  },
@@ -382,7 +496,7 @@
   "topic": "capitalize",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "Hello world",
    "Hello World",
@@ -392,7 +506,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.capitalize() は先頭だけ大文字、残りを小文字にする。",
+  "explanation": "先頭のみ大文字、他小文字。",
+  "rationales": [
+   "正解。先頭だけ大文字 'Hello world'。",
+   "不正解。2語目は大文字化しない。",
+   "不正解。全大文字ではない。",
+   "不正解。先頭は大文字化される。"
+  ],
   "code": "print('hello world'.capitalize())",
   "reference": "str.capitalize"
  },
@@ -412,7 +532,13 @@
   "answer": [
    0
   ],
-  "explanation": "str.encode('utf-8') で str→bytes。逆は bytes.decode('utf-8') で bytes→str。",
+  "explanation": "encode は str→bytes。",
+  "rationales": [
+   "正解。str.encode('utf-8') で bytes に。",
+   "不正解。decode は bytes→str。",
+   "不正解。bytes に encode は無い。",
+   "不正解。tobytes は無い。"
+  ],
   "reference": "encode / decode"
  },
  {
@@ -421,7 +547,7 @@
   "topic": "bytes",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "b'abc'",
    "abc",
@@ -431,17 +557,23 @@
   "answer": [
    0
   ],
-  "explanation": "str.encode() は bytes を返す。ASCII 範囲はそのまま表示され b'abc'。",
+  "explanation": "encode は bytes を返す。",
+  "rationales": [
+   "正解。ASCII はそのまま b'abc'。",
+   "不正解。bytes リテラル表示になる。",
+   "不正解。str ではない。",
+   "不正解。数値リストではない。"
+  ],
   "code": "print('abc'.encode('utf-8'))",
   "reference": "str.encode"
  },
  {
   "id": "ch06-023",
   "chapter": 6,
-  "topic": "ord/chr",
+  "topic": "ord",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "65",
    "A",
@@ -451,17 +583,23 @@
   "answer": [
    0
   ],
-  "explanation": "ord(文字) は Unicode コードポイントを返す。'A' は 65。",
+  "explanation": "ord はコードポイント。",
+  "rationales": [
+   "正解。'A' は 65。",
+   "不正解。数値が返る。",
+   "不正解。'a' は 97 で別。",
+   "不正解。数値が返る。"
+  ],
   "code": "print(ord('A'))",
   "reference": "ord"
  },
  {
   "id": "ch06-024",
   "chapter": 6,
-  "topic": "ord/chr",
+  "topic": "chr",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "A",
    "65",
@@ -471,7 +609,13 @@
   "answer": [
    0
   ],
-  "explanation": "chr(整数) はコードポイントに対応する文字を返す。chr(65) は 'A'。",
+  "explanation": "chr は文字を返す。",
+  "rationales": [
+   "正解。65 は 'A'。",
+   "不正解。文字が返る。",
+   "不正解。'a' は 97。",
+   "不正解。正常動作。"
+  ],
   "code": "print(chr(65))",
   "reference": "chr"
  },
@@ -481,7 +625,7 @@
   "topic": "in",
   "difficulty": 1,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "False",
    "True",
@@ -491,7 +635,13 @@
   "answer": [
    0
   ],
-  "explanation": "in は部分文字列の有無を判定する。'z' は 'abc' に含まれないので False。",
+  "explanation": "in は部分文字列判定。",
+  "rationales": [
+   "正解。'z' は含まれず False。",
+   "不正解。含まれない。",
+   "不正解。正常動作。",
+   "不正解。bool を返す。"
+  ],
   "code": "print('z' in 'abc')",
   "reference": "in 演算子"
  },
@@ -501,7 +651,7 @@
   "topic": "rstrip",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "'  abc'",
    "'abc'",
@@ -511,17 +661,49 @@
   "answer": [
    0
   ],
-  "explanation": "str.rstrip() は右側（末尾）の空白だけを除去する。repr 表示なので先頭の空白は残る。",
+  "explanation": "rstrip は右側のみ除去。",
+  "rationales": [
+   "正解。右だけ除去、左の空白は残る。",
+   "不正解。左は残るので 'abc' ではない。",
+   "不正解。右が除去される。",
+   "不正解。右は除去される。"
+  ],
   "code": "print(repr('  abc  '.rstrip()))",
   "reference": "str.rstrip"
  },
  {
   "id": "ch06-027",
   "chapter": 6,
+  "topic": "lstrip",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "'abc  '",
+   "'  abc'",
+   "'abc'",
+   "'  abc  '"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "lstrip は左側のみ除去。",
+  "rationales": [
+   "正解。左だけ除去、右の空白は残る。",
+   "不正解。左が除去される。",
+   "不正解。右は残る。",
+   "不正解。左は除去される。"
+  ],
+  "code": "print(repr('  abc  '.lstrip()))",
+  "reference": "str.lstrip"
+ },
+ {
+  "id": "ch06-028",
+  "chapter": 6,
   "topic": "splitlines",
   "difficulty": 3,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "['a', 'b']",
    "['a\\nb']",
@@ -531,17 +713,23 @@
   "answer": [
    0
   ],
-  "explanation": "str.splitlines() は改行で分割し、末尾の改行では空要素を作らない。",
+  "explanation": "splitlines は行分割。",
+  "rationales": [
+   "正解。改行で分割し ['a','b']。",
+   "不正解。分割される。",
+   "不正解。末尾空要素は作らない。",
+   "不正解。リストを返す。"
+  ],
   "code": "print('a\\nb'.splitlines())",
   "reference": "str.splitlines"
  },
  {
-  "id": "ch06-028",
+  "id": "ch06-029",
   "chapter": 6,
   "topic": "textwrap",
   "difficulty": 3,
   "type": "single",
-  "question": "長い文字列を指定幅で折り返すための標準ライブラリはどれか。",
+  "question": "長い文字列を指定幅で折り返す標準ライブラリはどれか。",
   "choices": [
    "textwrap",
    "string",
@@ -551,16 +739,22 @@
   "answer": [
    0
   ],
-  "explanation": "textwrap モジュールの wrap/fill/shorten で折り返しや短縮ができる。",
+  "explanation": "textwrap で折り返し。",
+  "rationales": [
+   "正解。textwrap.wrap/fill で折り返せる。",
+   "不正解。string は定数/Template。",
+   "不正解。re は正規表現。",
+   "不正解。io はストリーム。"
+  ],
   "reference": "textwrap"
  },
  {
-  "id": "ch06-029",
+  "id": "ch06-030",
   "chapter": 6,
   "topic": "string定数",
   "difficulty": 2,
   "type": "single",
-  "question": "string モジュールの string.ascii_lowercase が表すものはどれか。",
+  "question": "string.ascii_lowercase が表すものはどれか。",
   "choices": [
    "abcdefghijklmnopqrstuvwxyz",
    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -570,17 +764,23 @@
   "answer": [
    0
   ],
-  "explanation": "string.ascii_lowercase は小文字アルファベット26文字の定数。",
+  "explanation": "小文字26文字。",
+  "rationales": [
+   "正解。小文字アルファベット。",
+   "不正解。大文字は ascii_uppercase。",
+   "不正解。数字は digits。",
+   "不正解。印字可能は printable。"
+  ],
   "code": "import string\nprint(string.ascii_lowercase)",
-  "reference": "string モジュールの定数"
+  "reference": "string の定数"
  },
  {
-  "id": "ch06-030",
+  "id": "ch06-031",
   "chapter": 6,
   "topic": "f文字列",
   "difficulty": 2,
   "type": "single",
-  "question": "次のコードの出力として正しいものはどれか（Python 3.8以降のデバッグ用記法）。",
+  "question": "次のコードの出力はどれか。",
   "choices": [
    "x=10",
    "x 10",
@@ -590,8 +790,454 @@
   "answer": [
    0
   ],
-  "explanation": "f文字列の `{x=}` は『変数名=値』を出力するデバッグ用記法（3.8以降）。x=10 を出力する。",
+  "explanation": "{x=} デバッグ記法。",
+  "rationales": [
+   "正解。'x=10' を出力。",
+   "不正解。= が残る。",
+   "不正解。変数名も出る。",
+   "不正解。波括弧は出ない。"
+  ],
   "code": "x = 10\nprint(f'{x=}')",
-  "reference": "f文字列 --- = 記法"
+  "reference": "f-string --- = 記法"
+ },
+ {
+  "id": "ch06-032",
+  "chapter": 6,
+  "topic": "正規表現",
+  "difficulty": 3,
+  "type": "single",
+  "question": "正規表現を扱う標準ライブラリはどれか。",
+  "choices": [
+   "re",
+   "regex（標準）",
+   "pattern",
+   "match"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "標準は re。",
+  "rationales": [
+   "正解。re が標準の正規表現モジュール。",
+   "不正解。regex はサードパーティ。",
+   "不正解。pattern モジュールは標準に無い。",
+   "不正解。match モジュールは無い。"
+  ],
+  "reference": "re モジュール"
+ },
+ {
+  "id": "ch06-033",
+  "chapter": 6,
+  "topic": "正規表現",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "123",
+   "['1','2','3']",
+   "None",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "\\d+ で数字列を抽出。",
+  "rationales": [
+   "正解。連続する数字 '123' にマッチ。",
+   "不正解。1文字ずつではない。",
+   "不正解。マッチするので None ではない。",
+   "不正解。正常動作。"
+  ],
+  "code": "import re\nm = re.search(r'\\d+', 'abc123')\nprint(m.group())",
+  "reference": "re.search"
+ },
+ {
+  "id": "ch06-034",
+  "chapter": 6,
+  "topic": "正規表現",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "['1', '2', '3']",
+   "123",
+   "['123']",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "findall は全マッチをリストで。",
+  "rationales": [
+   "正解。各数字を要素に ['1','2','3']。",
+   "不正解。文字列連結ではない。",
+   "不正解。1桁ずつ分かれる。",
+   "不正解。リストを返す。"
+  ],
+  "code": "import re\nprint(re.findall(r'\\d', '1a2b3'))",
+  "reference": "re.findall"
+ },
+ {
+  "id": "ch06-035",
+  "chapter": 6,
+  "topic": "正規表現",
+  "difficulty": 3,
+  "type": "single",
+  "question": "re.match と re.search の違いはどれか。",
+  "choices": [
+   "match は先頭のみ、search は文字列全体から探す",
+   "両方先頭のみ",
+   "両方全体",
+   "match が全体、search が先頭"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "match=先頭 / search=どこでも。",
+  "rationales": [
+   "正解。match は文字列の先頭で照合、search は任意位置。",
+   "不正解。search は先頭限定ではない。",
+   "不正解。match は全体検索ではない。",
+   "不正解。逆である。"
+  ],
+  "reference": "re.match / re.search"
+ },
+ {
+  "id": "ch06-036",
+  "chapter": 6,
+  "topic": "正規表現",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "a-b-c",
+   "abc",
+   "a_b_c",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "re.sub は置換。",
+  "rationales": [
+   "正解。_ を - に全置換。",
+   "不正解。区切りは残る。",
+   "不正解。置換される。",
+   "不正解。正常動作。"
+  ],
+  "code": "import re\nprint(re.sub(r'_', '-', 'a_b_c'))",
+  "reference": "re.sub"
+ },
+ {
+  "id": "ch06-037",
+  "chapter": 6,
+  "topic": "str method",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "True",
+   "False",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "isdigit は数字判定。",
+  "rationales": [
+   "正解。全て数字なので True。",
+   "不正解。数字のみで False ではない。",
+   "不正解。正常動作。",
+   "不正解。bool を返す。"
+  ],
+  "code": "print('123'.isdigit())",
+  "reference": "str.isdigit"
+ },
+ {
+  "id": "ch06-038",
+  "chapter": 6,
+  "topic": "str method",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "True",
+   "False",
+   "エラー",
+   "None"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "isalpha は英字判定。",
+  "rationales": [
+   "正解。全て英字なので True。",
+   "不正解。英字のみで False ではない。",
+   "不正解。正常動作。",
+   "不正解。bool を返す。"
+  ],
+  "code": "print('abc'.isalpha())",
+  "reference": "str.isalpha"
+ },
+ {
+  "id": "ch06-039",
+  "chapter": 6,
+  "topic": "str method",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "3",
+   "2",
+   "0",
+   "-1"
+  ],
+  "answer": [
+   1
+  ],
+  "explanation": "index は最初の位置。",
+  "rationales": [
+   "不正解。3 ではない。先頭からの距離を数える。",
+   "正解。最初の 'c' はインデックス2で正しい。",
+   "不正解。0 ではない。",
+   "不正解。見つかるので -1 ではない（find と混同）。"
+  ],
+  "code": "print('abcabc'.index('c'))",
+  "reference": "str.index"
+ },
+ {
+  "id": "ch06-040",
+  "chapter": 6,
+  "topic": "f文字列",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "42  ",
+   "  42",
+   "42",
+   "0042"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": ":<4 は左寄せ幅4。",
+  "rationales": [
+   "正解。左寄せ幅4で右に空白2つ '42  '。",
+   "不正解。右寄せではない。",
+   "不正解。幅4で空白が付く。",
+   "不正解。ゼロ埋めではない。"
+  ],
+  "code": "print(repr(f'{42:<4}'))",
+  "reference": "書式 --- 左寄せ"
+ },
+ {
+  "id": "ch06-041",
+  "chapter": 6,
+  "topic": "partition",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "('a', '=', 'b=c')",
+   "('a', 'b', 'c')",
+   "['a', 'b=c']",
+   "('a=b', '=', 'c')"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "partition は最初の区切りで3分割。",
+  "rationales": [
+   "正解。最初の = で (前, 区切り, 後) に分ける。",
+   "不正解。全分割ではない。",
+   "不正解。リストではなくタプル。",
+   "不正解。最初の区切りで分ける。"
+  ],
+  "code": "print('a=b=c'.partition('='))",
+  "reference": "str.partition"
+ },
+ {
+  "id": "ch06-042",
+  "chapter": 6,
+  "topic": "str method",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "Abc",
+   "abc",
+   "ABC",
+   "aBC"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "先頭のみ大文字化（swapcase ではない）。",
+  "rationales": [
+   "正解。先頭大文字＋残り小文字で 'Abc'。",
+   "不正解。元のままではない。",
+   "不正解。全大文字ではない。",
+   "不正解。残りは小文字化される。"
+  ],
+  "code": "print('aBC'.capitalize())",
+  "reference": "str.capitalize"
+ },
+ {
+  "id": "ch06-043",
+  "chapter": 6,
+  "topic": "center",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "-abc--",
+   "abc---",
+   "---abc",
+   "-abc-"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "center は中央寄せ。",
+  "rationales": [
+   "正解。幅6で中央寄せ、余り3を左1右2に '-abc--'。",
+   "不正解。左寄せではない。",
+   "不正解。右寄せではない。",
+   "不正解。幅6になる。"
+  ],
+  "code": "print('abc'.center(6, '-'))",
+  "reference": "str.center"
+ },
+ {
+  "id": "ch06-044",
+  "chapter": 6,
+  "topic": "swapcase",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "aBC",
+   "AbC",
+   "abc",
+   "ABC"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "swapcase は大小反転。",
+  "rationales": [
+   "正解。A→a, b→B, c→C で 'aBC'。",
+   "不正解。別パターン。",
+   "不正解。小文字化ではない。",
+   "不正解。大文字化ではない。"
+  ],
+  "code": "print('Abc'.swapcase())",
+  "reference": "str.swapcase"
+ },
+ {
+  "id": "ch06-045",
+  "chapter": 6,
+  "topic": "format",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "b a",
+   "a b",
+   "{1} {0}",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "位置引数の番号指定。",
+  "rationales": [
+   "正解。{1}=b, {0}=a で 'b a'。",
+   "不正解。順序が入れ替わる。",
+   "不正解。番号は置換される。",
+   "不正解。正常動作。"
+  ],
+  "code": "print('{1} {0}'.format('a', 'b'))",
+  "reference": "format --- 位置番号"
+ },
+ {
+  "id": "ch06-046",
+  "chapter": 6,
+  "topic": "format",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "Bob",
+   "{name}",
+   "name",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "名前付きフィールド。",
+  "rationales": [
+   "正解。name に 'Bob' が入る。",
+   "不正解。波括弧は置換される。",
+   "不正解。キー名は出ない。",
+   "不正解。正常動作。"
+  ],
+  "code": "print('{name}'.format(name='Bob'))",
+  "reference": "format --- キーワード"
+ },
+ {
+  "id": "ch06-047",
+  "chapter": 6,
+  "topic": "エンコーディング",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "6",
+   "2",
+   "3",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "日本語1文字は UTF-8 で3バイト。",
+  "rationales": [
+   "正解。『あ』『い』各3バイトで計6。",
+   "不正解。文字数2ではなくバイト数。",
+   "不正解。1文字分ではない。",
+   "不正解。正常動作。"
+  ],
+  "code": "print(len('あい'.encode('utf-8')))",
+  "reference": "UTF-8 のバイト数"
+ },
+ {
+  "id": "ch06-048",
+  "chapter": 6,
+  "topic": "str method",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "a*b*c",
+   "abc",
+   "a b c",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "join はイテラブルを連結。",
+  "rationales": [
+   "正解。文字列もイテラブルで各文字を * で連結。",
+   "不正解。区切りが入る。",
+   "不正解。区切りは * でスペースではない。",
+   "不正解。正常動作。"
+  ],
+  "code": "print('*'.join('abc'))",
+  "reference": "str.join --- 文字列"
  }
 ]
