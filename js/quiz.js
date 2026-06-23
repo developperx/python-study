@@ -14,6 +14,24 @@ function pick(arr, n) {
   return shuffle(arr).slice(0, n);
 }
 
+// 問題の選択肢をシャッフルし、正解インデックス・選択肢別理由を対応づけて並び替える。
+// 元の問題は変更せず、新しいオブジェクトを返す（作問は正解=index0 のため表示時にランダム化）。
+export function shuffleChoices(q) {
+  const n = q.choices.length;
+  const perm = shuffle([...Array(n).keys()]); // perm[newIdx] = oldIdx
+  const oldAns = new Set(Array.isArray(q.answer) ? q.answer : [q.answer]);
+  const choices = perm.map((o) => q.choices[o]);
+  const rationales = Array.isArray(q.rationales) ? perm.map((o) => q.rationales[o]) : q.rationales;
+  const answer = [];
+  perm.forEach((o, newIdx) => { if (oldAns.has(o)) answer.push(newIdx); });
+  return { ...q, choices, rationales, answer };
+}
+
+// セッション内の各問について選択肢をシャッフルする。
+function prepare(questions) {
+  return questions.map(shuffleChoices);
+}
+
 // 配列を正解判定可能な形に正規化（answer は number か number[]）
 function answerSet(q) {
   return new Set(Array.isArray(q.answer) ? q.answer : [q.answer]);
@@ -49,7 +67,7 @@ export function buildMockSession() {
   }
   return {
     mode: 'mock',
-    questions: shuffle(questions).slice(0, EXAM.totalQuestions),
+    questions: prepare(shuffle(questions).slice(0, EXAM.totalQuestions)),
     timed: true,
     durationSec: EXAM.durationSec,
   };
@@ -58,19 +76,19 @@ export function buildMockSession() {
 export function buildChapterSession(chapter, limit = 0) {
   let pool = shuffle(data.byChapter(chapter));
   if (limit > 0) pool = pool.slice(0, limit);
-  return { mode: 'chapter', chapter, questions: pool, timed: false };
+  return { mode: 'chapter', chapter, questions: prepare(pool), timed: false };
 }
 
 export function buildRandomSession({ count = 20, chapters = null, difficulty = null } = {}) {
   let pool = data.questions();
   if (chapters && chapters.length) pool = pool.filter((q) => chapters.includes(q.chapter));
   if (difficulty) pool = pool.filter((q) => q.difficulty === difficulty);
-  return { mode: 'random', questions: pick(pool, Math.min(count, pool.length)), timed: false };
+  return { mode: 'random', questions: prepare(pick(pool, Math.min(count, pool.length))), timed: false };
 }
 
 export function buildReviewSession(ids) {
   const qs = data.byIds(ids);
-  return { mode: 'review', questions: shuffle(qs), timed: false };
+  return { mode: 'review', questions: prepare(shuffle(qs)), timed: false };
 }
 
 // 採点（章別集計つき）
