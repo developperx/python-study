@@ -7,6 +7,13 @@
 > ⚠️ **非公式アプリです。** 本アプリは一般社団法人Pythonエンジニア育成推進協会／株式会社オデッセイ コミュニケーションズとは一切関係ありません。
 > 掲載問題はすべてオリジナル作問で、**公式試験問題や教材『Python実践レシピ』の文章は転載していません**。
 
+## 公開URL（Vercel）
+
+`main` へ push すると Vercel が自動でビルド・検証・デプロイします。PR を作成するとプレビュー URL も自動生成されます。
+
+- 公開URL: **https://python-study.vercel.app/**
+- 初回のみ [Vercel Dashboard](https://vercel.com/) で "Add New Project" → GitHub リポジトリ `developperx/python-study` をインポートしてください（`vercel.json` の設定が自動で読み込まれます）。
+
 ## 主な機能
 
 | モード | 内容 |
