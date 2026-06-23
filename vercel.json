@@ -1,0 +1,5 @@
+{
+  "buildCommand": "python3 tools/build_questions.py && python3 tools/validate_data.py",
+  "outputDirectory": ".",
+  "installCommand": ""
+}
