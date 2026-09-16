@@ -37,11 +37,5 @@ export function accClass(ratio) {
   return '';
 }
 
-// コードブロックHTML（コードがある時のみ）
-export function codeBlock(code) {
-  if (!code) return '';
-  return `<pre class="code">${escapeHtml(code)}</pre>`;
-}
-
 // 選択肢の記号 A,B,C,D...
 export const MARK = (i) => String.fromCharCode(65 + i);
