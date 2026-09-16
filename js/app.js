@@ -6,6 +6,7 @@ import {
   gradeSession, isCorrect, isMultiple,
 } from './quiz.js';
 import { h, escapeHtml, formatTime, pct, chLabel, codeBlock, MARK, accClass } from './ui.js';
+import { loadGlossary, annotate, bindGlossaryEvents, glossaryTerms } from './glossary.js';
 
 const appEl = document.getElementById('app');
 let timerHandle = null;
@@ -34,6 +35,7 @@ const routes = {
   random: renderRandomSetup,
   review: renderReview,
   stats: renderStats,
+  glossary: renderGlossary,
 };
 
 function setActiveNav(route) {
@@ -245,6 +247,30 @@ function renderStats() {
   });
 }
 
+/* ---------- 用語集 ---------- */
+function renderGlossary() {
+  const terms = [...glossaryTerms()].sort((a, b) => a.term.localeCompare(b.term, 'ja'));
+  const rows = terms.map((t) => `
+    <div class="gloss-row" data-search="${escapeHtml((t.term + ' ' + t.definition).toLowerCase())}">
+      <div class="gloss-row__term">${escapeHtml(t.term)} <span class="tag tag--ch">${chLabel(t.chapter)}</span></div>
+      <div class="gloss-row__def">${escapeHtml(t.definition)}</div>
+    </div>`).join('');
+  appEl.innerHTML = `
+    <section class="card">
+      <h2 class="section-title">📖 用語集</h2>
+      <p class="section-sub">出題範囲に登場する専門用語をまとめました。解説文中でハイライトされた用語をクリックしても同じ内容が確認できます。</p>
+      <input type="text" id="glossSearch" class="search-input" placeholder="用語を検索…" />
+    </section>
+    <section class="card" id="glossList">${rows || '<p class="note">用語集を読み込めませんでした。</p>'}</section>`;
+  const input = document.getElementById('glossSearch');
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    document.querySelectorAll('.gloss-row').forEach((row) => {
+      row.style.display = row.dataset.search.includes(q) ? '' : 'none';
+    });
+  });
+}
+
 /* ---------- クイズ進行 ---------- */
 let SESSION = null;
 let IDX = 0;
@@ -407,7 +433,7 @@ function annotatedChoicesHtml(q, selected) {
       <span class="choice__mark">${correct ? '✓' : '✗'}</span>
       <div class="choice__col">
         <div class="choice__body">${MARK(idx)}. ${escapeHtml(c)}${sel.has(idx) ? ' <span class="choice__picked">あなたの解答</span>' : ''}</div>
-        <div class="choice__rat">${escapeHtml(rat)}</div>
+        <div class="choice__rat">${annotate(escapeHtml(rat))}</div>
       </div>
     </div>`;
   }).join('');
@@ -416,7 +442,7 @@ function annotatedChoicesHtml(q, selected) {
 function explanationHtml(q, ok) {
   return `<div class="explanation ${ok ? 'explanation--correct' : 'explanation--wrong'}">
     <div class="explanation__head">${ok ? '✅ 正解' : '❌ 不正解'} ・ 総合解説</div>
-    <div>${escapeHtml(q.explanation)}</div>
+    <div>${annotate(escapeHtml(q.explanation))}</div>
     ${q.reference ? `<div class="explanation__ref">📘 参考: ${escapeHtml(q.reference)}</div>` : ''}
   </div>`;
 }
@@ -503,7 +529,7 @@ function questionReviewHtml(d, i) {
     <div class="choices">${annotatedChoicesHtml(q, d.selected)}</div>
     <div class="explanation ${d.correct ? 'explanation--correct' : 'explanation--wrong'}">
       <div class="explanation__head">総合解説</div>
-      <div>${escapeHtml(q.explanation)}</div>
+      <div>${annotate(escapeHtml(q.explanation))}</div>
       ${q.reference ? `<div class="explanation__ref">📘 参考: ${escapeHtml(q.reference)}</div>` : ''}
     </div>
   </div>`;
@@ -519,8 +545,9 @@ function bindNav() {
 async function main() {
   initTheme();
   bindNav();
+  bindGlossaryEvents();
   try {
-    await loadData();
+    await Promise.all([loadData(), loadGlossary().catch((e) => console.warn('glossary load failed', e))]);
     navigate('home');
   } catch (e) {
     console.error(e);
