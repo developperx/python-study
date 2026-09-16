@@ -25,8 +25,9 @@ export function pct(x) {
   return `${Math.round(x * 100)}%`;
 }
 
-// 章番号 -> ラベル「第N章」
+// 章番号 -> ラベル「第N章」（0は出題章に属さない基礎用語）
 export function chLabel(n) {
+  if (n === 0) return '基礎';
   return `第${n}章`;
 }
 
