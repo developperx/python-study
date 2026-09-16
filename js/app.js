@@ -5,8 +5,8 @@ import {
   buildMockSession, buildChapterSession, buildRandomSession, buildReviewSession,
   gradeSession, isCorrect, isMultiple,
 } from './quiz.js';
-import { h, escapeHtml, formatTime, pct, chLabel, codeBlock, MARK, accClass } from './ui.js';
-import { loadGlossary, annotate, bindGlossaryEvents, glossaryTerms } from './glossary.js';
+import { h, escapeHtml, formatTime, pct, chLabel, MARK, accClass } from './ui.js';
+import { loadGlossary, annotate, codeBlock, bindGlossaryEvents, glossaryTerms } from './glossary.js';
 
 const appEl = document.getElementById('app');
 let timerHandle = null;

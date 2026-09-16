@@ -232,6 +232,7 @@ select, input[type="number"] { font: inherit; padding: 8px 10px; border-radius: 
 }
 @keyframes gloss-slide-up { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 .gloss-sheet__term { font-weight: 800; font-size: 17px; margin-bottom: 8px; }
+.gloss-sheet__sig { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; font-size: 13px; background: var(--bg-soft); color: var(--text); padding: 6px 10px; border-radius: 6px; margin-bottom: 10px; overflow-x: auto; white-space: pre; }
 .gloss-sheet__def { font-size: 14px; line-height: 1.7; color: var(--text-soft); white-space: pre-wrap; }
 
 /* 用語集：一覧ページ */
