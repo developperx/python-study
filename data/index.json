@@ -1,5 +1,5 @@
 {
- "total": 500,
+ "total": 512,
  "chapters": [
   {
    "chapter": 1,
@@ -23,7 +23,7 @@
    "shortTitle": "言語仕様",
    "weight": "17.5%",
    "file": "ch03.json",
-   "count": 87
+   "count": 93
   },
   {
    "chapter": 4,
@@ -39,7 +39,7 @@
    "shortTitle": "型ヒント",
    "weight": "2.5%",
    "file": "ch05.json",
-   "count": 13
+   "count": 19
   },
   {
    "chapter": 6,
