@@ -2234,5 +2234,161 @@
   ],
   "code": "lst = []\nprint('empty' if not lst else 'full')",
   "reference": "コンテナの真偽"
+ },
+ {
+  "id": "ch03-088",
+  "chapter": 3,
+  "topic": "match文",
+  "difficulty": 1,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "起動",
+   "停止",
+   "不明",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "match文による構造的パターンマッチはcaseを上から順に照合し、最初に一致したブロックを実行する。command は 'start' なので最初のcaseに一致する。",
+  "rationales": [
+   "正解。command=='start' に一致するcaseが実行され「起動」が出力される。",
+   "不正解。'stop' ではないためこのcaseは実行されない。",
+   "不正解。最初のcaseで一致したため、ワイルドカードの _ には到達しない。",
+   "不正解。match文はcaseに一致すればエラーにはならない。"
+  ],
+  "code": "command = 'start'\nmatch command:\n    case 'start':\n        print('起動')\n    case 'stop':\n        print('停止')\n    case _:\n        print('不明')",
+  "reference": "match文 --- 基本構文"
+ },
+ {
+  "id": "ch03-089",
+  "chapter": 3,
+  "topic": "ワイルドカード",
+  "difficulty": 1,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "other",
+   "one",
+   "two",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`case _:` はどのcaseにも一致しなかった場合に実行されるワイルドカード（デフォルトケース）。value(99)はどれにも一致しないため _ が実行される。",
+  "rationales": [
+   "正解。value(99)はどのリテラルにも一致せず、ワイルドカード _ のcaseが実行される。",
+   "不正解。value == 1 ではないため一致しない。",
+   "不正解。value == 2 ではないため一致しない。",
+   "不正解。_ があるためどの値でも必ずいずれかのcaseに一致し、エラーにはならない。"
+  ],
+  "code": "value = 99\nmatch value:\n    case 1:\n        print('one')\n    case 2:\n        print('two')\n    case _:\n        print('other')",
+  "reference": "match文 --- ワイルドカードパターン"
+ },
+ {
+  "id": "ch03-090",
+  "chapter": 3,
+  "topic": "キャプチャパターン",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "x=3, y=4",
+   "x=4, y=3",
+   "原点",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`case (x, y):` はタプルの要素をそれぞれ変数x, yに束縛する（キャプチャパターン）。pointは(0, 0)ではないため2つ目のcaseに一致する。",
+  "rationales": [
+   "正解。(0, 0) ではないため2つ目の case (x, y) に一致し、x=3, y=4 が束縛される。",
+   "不正解。タプルの要素順序はそのまま x=3, y=4 に対応し、入れ替わらない。",
+   "不正解。point は (0, 0) ではないため『原点』のcaseには一致しない。",
+   "不正解。パターンに一致すればエラーにはならない。"
+  ],
+  "code": "point = (3, 4)\nmatch point:\n    case (0, 0):\n        print('原点')\n    case (x, y):\n        print(f'x={x}, y={y}')",
+  "reference": "match文 --- キャプチャパターン"
+ },
+ {
+  "id": "ch03-091",
+  "chapter": 3,
+  "topic": "ORパターン",
+  "difficulty": 2,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "休日",
+   "平日",
+   "Sat",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`case 'Sat' | 'Sun':` は「'Sat' または 'Sun'」に一致するORパターン。day='Sat' はこれに一致する。",
+  "rationales": [
+   "正解。'Sat' | 'Sun' のいずれかに一致すれば休日のcaseが実行される。",
+   "不正解。'Sat' は休日のcaseに一致するため平日には進まない。",
+   "不正解。case内の文字列がそのまま出力されるのではなく、『休日』という決め打ちの文字列が出力される。",
+   "不正解。パターンに一致すればエラーにはならない。"
+  ],
+  "code": "day = 'Sat'\nmatch day:\n    case 'Sat' | 'Sun':\n        print('休日')\n    case _:\n        print('平日')",
+  "reference": "match文 --- ORパターン(|)"
+ },
+ {
+  "id": "ch03-092",
+  "chapter": 3,
+  "topic": "ガード節",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "FizzBuzz",
+   "Fizz",
+   "15",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`case x if 条件:` はガード節。パターンに一致しても条件式が偽なら次のcaseに進む。n=15は最初のガード条件(15で割り切れる)を満たす。",
+  "rationales": [
+   "正解。15 % 15 == 0 のガード条件を満たす最初のcaseが実行される。",
+   "不正解。最初のガード条件を満たすため、2番目のcase（Fizz）には進まない。",
+   "不正解。最初のcaseのガード条件を満たすため、ワイルドカードのcase（print(n)）には到達しない。",
+   "不正解。ガード条件を満たすcaseがあるためエラーにはならない。"
+  ],
+  "code": "n = 15\nmatch n:\n    case x if x % 15 == 0:\n        print('FizzBuzz')\n    case x if x % 3 == 0:\n        print('Fizz')\n    case _:\n        print(n)",
+  "reference": "match文 --- ガード節(if)"
+ },
+ {
+  "id": "ch03-093",
+  "chapter": 3,
+  "topic": "シーケンスパターン",
+  "difficulty": 3,
+  "type": "single",
+  "question": "次のコードの出力はどれか。",
+  "choices": [
+   "1 [2, 3, 4]",
+   "[1, 2, 3, 4]",
+   "1 2 3 4",
+   "エラー"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`case [first, *rest]:` はシーケンスの先頭要素をfirstに、残り全部をリストとしてrestに束縛する。",
+  "rationales": [
+   "正解。先頭要素がfirstに、残りがリストとしてrestに束縛され、print(first, rest)は'1 [2, 3, 4]'と出力される。",
+   "不正解。firstとrestに分解されるため、リスト全体がそのまま出力されるわけではない。",
+   "不正解。restはリストのまま出力され、要素がバラバラに展開されるわけではない。",
+   "不正解。[first, *rest] パターンは要素数4のリストにも一致するためエラーにはならない。"
+  ],
+  "code": "items = [1, 2, 3, 4]\nmatch items:\n    case [first, *rest]:\n        print(first, rest)",
+  "reference": "match文 --- シーケンスパターン(*rest)"
  }
 ]

@@ -323,5 +323,155 @@
    "不正解。省略も可能だが明示が推奨。"
   ],
   "reference": "戻り値 None"
+ },
+ {
+  "id": "ch05-014",
+  "chapter": 5,
+  "topic": "type文",
+  "difficulty": 2,
+  "type": "single",
+  "question": "Python 3.12 で追加された、型エイリアスを定義する新しい構文はどれか。",
+  "choices": [
+   "type IntList = list[int]",
+   "IntList = TypeAlias(list[int])",
+   "typealias IntList = list[int]",
+   "alias IntList = list[int]"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "Python 3.12 で `type` 文が追加され、`type 名前 = 型` の形で型エイリアスを定義できるようになった。",
+  "rationales": [
+   "正解。`type` 文はPython 3.12で追加された正しい構文。",
+   "不正解。`TypeAlias()` という関数呼び出し構文は存在しない。typing.TypeAliasは値であり関数ではない。",
+   "不正解。`typealias` という文はPythonに存在しない。",
+   "不正解。`alias` という文はPythonに存在しない。"
+  ],
+  "reference": "PEP 695 --- type文"
+ },
+ {
+  "id": "ch05-015",
+  "chapter": 5,
+  "topic": "type文",
+  "difficulty": 3,
+  "type": "single",
+  "question": "`type` 文（3.12〜）と、従来の `Vector: TypeAlias = list[float]` の違いとして最も適切なものはどれか。",
+  "choices": [
+   "type文の右辺は遅延評価され、後方で定義される型も参照しやすい",
+   "type文は実行時に型チェックを強制する",
+   "type文はPython 3.8から使える",
+   "書き方が違うだけで挙動に差は無い"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`type` 文で定義したエイリアスの値は遅延評価（lazy evaluation）されるため、まだ定義されていないクラスなどを前方参照しやすい。",
+  "rationales": [
+   "正解。type文の値は遅延評価されるため、後方で定義される型も参照しやすい。",
+   "不正解。型ヒントはPythonの実行時には強制されない。type文も例外ではない。",
+   "不正解。type文はPython 3.12で追加された機能であり、3.8では使えない。",
+   "不正解。遅延評価という重要な挙動の違いがある。"
+  ],
+  "reference": "PEP 695 --- type文の遅延評価"
+ },
+ {
+  "id": "ch05-016",
+  "chapter": 5,
+  "topic": "Protocol",
+  "difficulty": 2,
+  "type": "single",
+  "question": "継承関係が無くても、必要なメソッドを実装していれば適合とみなす「構造的部分型」を実現する typing の機能はどれか。",
+  "choices": [
+   "Protocol",
+   "ABC",
+   "Generic",
+   "NewType"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`Protocol` を継承したクラスを定義すると、実際の継承関係が無くても必要なメソッド・属性を実装していれば型チェッカーに適合と判定される。",
+  "rationales": [
+   "正解。Protocolは構造的部分型（ダックタイピングの静的チェック版）を実現する。",
+   "不正解。ABC（抽象基底クラス）は継承関係を前提とした名前的部分型であり、構造的部分型とは異なる。",
+   "不正解。Genericは型パラメータ化のための機能で、構造的部分型とは別の目的。",
+   "不正解。NewTypeは既存の型に新しい名前を付けるだけで、構造的部分型ではない。"
+  ],
+  "reference": "typing.Protocol"
+ },
+ {
+  "id": "ch05-017",
+  "chapter": 5,
+  "topic": "ジェネリクス",
+  "difficulty": 3,
+  "type": "single",
+  "question": "リストの要素型を保ったまま先頭要素を返す関数の型ヒントとして適切なものはどれか（T は TypeVar とする）。",
+  "choices": [
+   "def first(items: list[T]) -> T: ...",
+   "def first(items: list) -> list: ...",
+   "def first(items: T) -> list[T]: ...",
+   "def first(items: list[T]) -> list: ..."
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "TypeVarを使うことで、引数の要素型Tと戻り値の型を連動させられる（ジェネリック関数）。",
+  "rationales": [
+   "正解。list[T]を受け取りTを返すことで、要素の型情報を戻り値に伝播できる。",
+   "不正解。list型とだけ書くと要素の型情報が失われ、int/strどちらのリストでも同じ扱いになってしまう。",
+   "不正解。引数と戻り値の型が逆になっている（要素を1つ受け取りリストを返す形になっている）。",
+   "不正解。戻り値をlistとしてしまうと、要素の型Tの情報が戻り値側で失われる。"
+  ],
+  "reference": "typing.TypeVar --- ジェネリック関数"
+ },
+ {
+  "id": "ch05-018",
+  "chapter": 5,
+  "topic": "TypedDict",
+  "difficulty": 2,
+  "type": "single",
+  "question": "辞書のキーごとに期待する値の型を定義し、静的にチェックできるようにする typing の機能はどれか。",
+  "choices": [
+   "TypedDict",
+   "NamedTuple",
+   "dataclass",
+   "Dict"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`TypedDict` を使うと辞書のキーごとに値の型を定義でき、静的型チェッカーがキーの誤りや型の不一致を検出できるようになる。",
+  "rationales": [
+   "正解。TypedDictは辞書のキーと値の型をキーごとに定義するための機能。",
+   "不正解。NamedTupleはタプルに名前付きフィールドを持たせるもので辞書ではない。",
+   "不正解。dataclassはクラスの定型メソッドを自動生成するもので、辞書の型チェックとは別の機能。",
+   "不正解。Dict[str, int]は値の型を一括で表すだけで、キーごとに異なる型は指定できない（TypedDictとの違い）。"
+  ],
+  "reference": "typing.TypedDict"
+ },
+ {
+  "id": "ch05-019",
+  "chapter": 5,
+  "topic": "Literal",
+  "difficulty": 2,
+  "type": "single",
+  "question": "変数が特定の決まった値（例: 'red', 'green', 'blue' のいずれか）だけを取りうることを表す型ヒントはどれか。",
+  "choices": [
+   "Literal['red', 'green', 'blue']",
+   "Union[str]",
+   "Enum['red', 'green', 'blue']",
+   "Optional['red', 'green', 'blue']"
+  ],
+  "answer": [
+   0
+  ],
+  "explanation": "`Literal` を使うと、変数が指定した特定の値のいずれかであることを型ヒントとして表現できる。",
+  "rationales": [
+   "正解。Literalは列挙した特定の値のみを許容する型ヒント。",
+   "不正解。Union[str]はただのstr型と同じで、値を特定の候補に限定できない。",
+   "不正解。Enumは列挙型のクラスを定義する仕組みであり、この形で型ヒントとして書くことはできない。",
+   "不正解。Optionalは「その型かNone」を表すもので、複数の値を直接列挙する構文ではない。"
+  ],
+  "reference": "typing.Literal"
  }
 ]
